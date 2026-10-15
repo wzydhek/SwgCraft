@@ -6,9 +6,9 @@ I have created this SwgCraft too as a replacement. I have painstakingly added al
 
 There may be an inaccuracy in schematic information here or there but have done my best to have as accurate of a dataset as possible. This app allows you to add/edit all that static data if you choose.
 
-##What's done:
+## What's done:
 
-###Static data - 
+### Static data - 
 -  Resource Tree
 -  Professions
 -  Crafted item categories
@@ -18,7 +18,7 @@ There may be an inaccuracy in schematic information here or there but have done 
 -  Schematics
 -  String table (string id to string text, english version only)
 
-###Resources
+###R esources
 -  Feed sync from galaxyharvester.net
 -  Spawn Browser
 -  Galaxy list
@@ -27,7 +27,7 @@ There may be an inaccuracy in schematic information here or there but have done 
 -  What to Harvest detail
 -  What th Harvest summary
   
-##What's next:
+# #What's next:
 
 Schematic BOM planner which will integrate with inventory data to help choose best resources you have for a build. This planner will let you customize your build such as using optional items, or choosing an item to use in a classed slot. The BOM generation will be more intelligent than the JnF tool, taking into account multiple levels of component build, and taking manufactuing schematic for components into account. There are a number of features I am planning for this phase of the project.
 
