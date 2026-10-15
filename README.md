@@ -18,7 +18,7 @@ There may be an inaccuracy in schematic information here or there but have done 
 -  Schematics
 -  String table (string id to string text, english version only)
 
-###R esources
+### Resources
 -  Feed sync from galaxyharvester.net
 -  Spawn Browser
 -  Galaxy list
