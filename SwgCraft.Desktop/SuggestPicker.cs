@@ -1,53 +1,46 @@
 using System.Globalization;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Controls.Primitives;
 using System.Windows.Data;
 using System.Windows.Input;
+using System.Windows.Media;
 using System.Windows.Threading;
 
 namespace SwgCraft.Desktop;
 
 /// <summary>
-/// An editable combo box that filters its list as you type: every word typed has to appear somewhere in the entry
-/// (case-insensitive), so "scope adv" finds "Class: Advanced Weapon Scope". Pick with the mouse, the arrow keys + Enter,
-/// or just type the whole name (or enough of it that only one entry is left) and press Enter/Tab.
+/// A text box with an auto-suggest list, behaving like a Windows Forms combo box with AutoComplete "Suggest":
+/// <list type="bullet">
+/// <item>Typing filters the list: every word typed has to appear somewhere in the entry (case-insensitive), so
+///       "scope adv" finds "Class: Advanced Weapon Scope". The best match (an exact name, else the first) is highlighted.</item>
+/// <item>Up/Down/PageUp/PageDown move the highlight; Enter or Tab takes the highlighted entry; Escape closes the list.</item>
+/// <item>Clicking an entry takes it straight away. Just hovering over the list never changes anything.</item>
+/// <item>Leaving the box keeps an exact or only match of what was typed; otherwise the previous choice is shown again.</item>
+/// <item>The arrow button (or Alt+Down / F4) shows the whole list.</item>
+/// </list>
+/// The chosen entry is <see cref="Key"/>; nothing is chosen while typing, so a half-typed name can't change the value.
 /// </summary>
-public sealed class SuggestComboBox : ComboBox
+public sealed class SuggestComboBox : UserControl
 {
     IReadOnlyList<RefOption> _all;
     ListCollectionView _view;
     string[] _words = Array.Empty<string>();
-    TextBox? _tb;
-    bool _busy;
-    string? _typedText;   // what the user had typed (and where the caret was) when we opened the list
-    int _typedCaret;
-    readonly DispatcherTimer _filterTimer;   // filtering waits until typing pauses briefly, instead of running on every key
-
-    /// <summary>How long typing has to pause before the list is filtered.</summary>
-    static readonly TimeSpan FilterDelay = TimeSpan.FromMilliseconds(120);
-
-    /// <summary>
-    /// A virtualizing list panel: only the rows actually on screen get built. The default ComboBox panel builds a row for every
-    /// entry, which with ~1,700 schematics and looted items took up to a couple of seconds after each keystroke.
-    /// </summary>
-    static readonly ItemsPanelTemplate VirtualPanel = CreateVirtualPanel();
-
-    static ItemsPanelTemplate CreateVirtualPanel()
-    {
-        var t = new ItemsPanelTemplate(new FrameworkElementFactory(typeof(VirtualizingStackPanel)));
-        t.Seal();
-        return t;
-    }
+    readonly TextBox _text;
+    readonly Popup _popup;
+    readonly ListBox _list;
+    bool _suppressText;   // the text is being set by code, not typed
 
     public static readonly DependencyProperty KeyProperty = DependencyProperty.Register(
         nameof(Key), typeof(string), typeof(SuggestComboBox),
-        new FrameworkPropertyMetadata("", (d, e) => ((SuggestComboBox)d).OnKeyChanged((string?)e.NewValue ?? "")));
+        new FrameworkPropertyMetadata("", FrameworkPropertyMetadataOptions.BindsTwoWayByDefault,
+                                      (d, e) => ((SuggestComboBox)d).ShowKey()));
 
-    /// <summary>The key of the chosen option ("" for none). Bind this, not SelectedValue.</summary>
+    /// <summary>The key of the chosen option ("" for none). Bind this.</summary>
     public string Key
     {
         get => (string)GetValue(KeyProperty);
-        set => SetValue(KeyProperty, value);
+        set => SetValue(KeyProperty, value ?? "");
     }
 
     /// <summary>When true, clearing the text and leaving the box means "nothing chosen" (Key becomes ""). Off for grid cells.</summary>
@@ -57,200 +50,296 @@ public sealed class SuggestComboBox : ComboBox
     {
         _all = options;
         _view = NewView(options);
-        IsEditable = true;
-        IsTextSearchEnabled = false;
-        StaysOpenOnEdit = true;
-        DisplayMemberPath = nameof(RefOption.Display);
+        IsTabStop = false;   // the text box inside takes the focus
+        Focusable = false;
 
-        ItemsPanel = VirtualPanel;
-        VirtualizingPanel.SetIsVirtualizing(this, true);
-        VirtualizingPanel.SetVirtualizationMode(this, VirtualizationMode.Recycling);
-        ScrollViewer.SetCanContentScroll(this, true);   // scroll by row, which virtualization needs
-        MaxDropDownHeight = 320;
+        _text = new TextBox { VerticalContentAlignment = VerticalAlignment.Center, BorderThickness = new Thickness(0) };
+        _text.TextChanged += OnTextChanged;
+        _text.PreviewKeyDown += OnTextKeyDown;
+        _text.GotKeyboardFocus += (_, _) => _text.SelectAll();
+        _text.PreviewMouseLeftButtonDown += (_, e) =>
+        {
+            if (_text.IsKeyboardFocusWithin) return;   // first click into the box selects everything, later clicks place the cursor
+            e.Handled = true;
+            _text.Focus();
+        };
 
-        _filterTimer = new DispatcherTimer(DispatcherPriority.Input, Dispatcher) { Interval = FilterDelay };
-        _filterTimer.Tick += (_, _) => { _filterTimer.Stop(); ApplyFilter(); };
+        var arrow = new Button
+        {
+            Content = new TextBlock { Text = "▾", FontSize = 11, Margin = new Thickness(0, -1, 0, 0) },
+            Width = 18,
+            Focusable = false,
+            IsTabStop = false,
+            BorderThickness = new Thickness(1, 0, 0, 0),
+            Background = Brushes.Transparent,
+            ToolTip = "Show the whole list",
+        };
+        arrow.Click += (_, _) =>
+        {
+            if (_popup!.IsOpen) { _popup.IsOpen = false; return; }
+            _text.Focus();
+            OpenFullList();
+        };
 
-        ItemsSource = _view;
+        _list = new ListBox
+        {
+            Focusable = false,
+            DisplayMemberPath = nameof(RefOption.Display),
+            BorderThickness = new Thickness(0),
+            ItemsSource = _view,
+        };
+        VirtualizingPanel.SetIsVirtualizing(_list, true);
+        VirtualizingPanel.SetVirtualizationMode(_list, VirtualizationMode.Recycling);
+        ScrollViewer.SetHorizontalScrollBarVisibility(_list, ScrollBarVisibility.Disabled);
+        // the highlight looks the same whether or not the list itself has focus (it never does)
+        _list.Resources[SystemColors.InactiveSelectionHighlightBrushKey] = SystemColors.HighlightBrush;
+        _list.Resources[SystemColors.InactiveSelectionHighlightTextBrushKey] = SystemColors.HighlightTextBrush;
+        _list.PreviewMouseLeftButtonDown += OnListMouseDown;
+
+        _popup = new Popup
+        {
+            PlacementTarget = this,
+            Placement = PlacementMode.Bottom,
+            StaysOpen = true,
+            AllowsTransparency = false,
+            Child = new Border
+            {
+                BorderBrush = SystemColors.ActiveBorderBrush,
+                BorderThickness = new Thickness(1),
+                Background = SystemColors.WindowBrush,
+                MaxHeight = 320,
+                Child = _list,
+            },
+        };
+
+        var grid = new Grid();
+        grid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(1, GridUnitType.Star) });
+        grid.ColumnDefinitions.Add(new ColumnDefinition { Width = GridLength.Auto });
+        Grid.SetColumn(arrow, 1);
+        grid.Children.Add(_text);
+        grid.Children.Add(arrow);
+        grid.Children.Add(_popup);
+
+        Content = new Border
+        {
+            BorderBrush = SystemColors.ControlDarkBrush,
+            BorderThickness = new Thickness(1),
+            Background = SystemColors.WindowBrush,
+            Child = grid,
+        };
+        MinHeight = 22;
     }
 
     // our own view per box, so filtering never affects other pickers
     ListCollectionView NewView(IReadOnlyList<RefOption> options)
     {
         var view = new ListCollectionView(options.ToList());
-        view.Filter = Match;
+        view.Filter = o =>
+        {
+            var display = ((RefOption)o).Display;
+            foreach (var w in _words)
+                if (display.IndexOf(w, StringComparison.OrdinalIgnoreCase) < 0) return false;
+            return true;
+        };
         return view;
     }
 
-    /// <summary>Replaces the list of entries (for example after the categories were edited), keeping the current choice if it still exists.</summary>
+    RefOption? Current => Key.Length == 0 ? null : _all.FirstOrDefault(o => o.Key == Key);
+
+    /// <summary>Replaces the list of entries (for example after the categories were edited), keeping the current choice.</summary>
     public void SetOptions(IReadOnlyList<RefOption> options)
     {
-        _filterTimer.Stop();
-        var key = Key;
         _all = options;
         _words = Array.Empty<string>();
         _view = NewView(options);
-        ItemsSource = _view;
-        OnKeyChanged(key);
+        _list.ItemsSource = _view;
+        if (!_text.IsKeyboardFocusWithin) ShowKey();
     }
 
-    protected override void OnLostKeyboardFocus(KeyboardFocusChangedEventArgs e)
+    /// <summary>Shows the chosen entry's name in the box (or the key itself if it isn't in the list, so a dangling value is visible).</summary>
+    void ShowKey()
     {
-        base.OnLostKeyboardFocus(e);
-        if (IsKeyboardFocusWithin) return;   // focus only moved between the box, its text field and its list
-        FlushFilter();
+        var current = Current;
+        SetText(current?.Display ?? Key);
+    }
 
-        var resolved = ResolveKey();
-        if (resolved != null && resolved != Key) { Key = resolved; return; }
-
-        // Nothing usable was typed (or nothing changed): show the current choice again instead of leftover text.
-        _busy = true;
+    void SetText(string text)
+    {
+        _suppressText = true;
         try
         {
-            _words = Array.Empty<string>();
-            _view.Refresh();
-            var current = Key.Length == 0 ? null : _all.FirstOrDefault(o => o.Key == Key);
-            SelectedItem = current;
-            if (_tb != null) _tb.Text = current?.Display ?? "";
+            _text.Text = text;
+            _text.CaretIndex = text.Length;
         }
-        finally { _busy = false; }
+        finally { _suppressText = false; }
     }
 
-    public override void OnApplyTemplate()
-    {
-        base.OnApplyTemplate();
-        if (_tb != null) _tb.TextChanged -= OnTextChanged;
-        _tb = GetTemplateChild("PART_EditableTextBox") as TextBox;
-        if (_tb != null) _tb.TextChanged += OnTextChanged;
-    }
-
-    bool Match(object o)
-    {
-        var display = ((RefOption)o).Display;
-        foreach (var w in _words)
-            if (display.IndexOf(w, StringComparison.OrdinalIgnoreCase) < 0) return false;
-        return true;
-    }
-
-    /// <summary>Picking an entry (mouse, or arrows + Enter) writes the key straight away, so the choice never depends on when the grid commits the cell.</summary>
-    protected override void OnSelectionChanged(SelectionChangedEventArgs e)
-    {
-        base.OnSelectionChanged(e);
-        if (_busy || SelectedItem is not RefOption picked || picked.Key == Key) return;
-        _busy = true;
-        try { Key = picked.Key; }
-        finally { _busy = false; }
-    }
-
-    void OnKeyChanged(string key)
-    {
-        _busy = true;
-        try { SelectedItem = key.Length == 0 ? null : _all.FirstOrDefault(o => o.Key == key); }
-        finally { _busy = false; }
-    }
+    // ------------------------------------------------------------ typing
 
     void OnTextChanged(object sender, TextChangedEventArgs e)
     {
-        if (_busy || _tb == null) return;
-        var text = _tb.Text ?? "";
-        if (SelectedItem is RefOption sel && sel.Display == text) return;   // the text came from picking an entry, not from typing
-
-        // restart the wait: the list is filtered once typing pauses
-        _filterTimer.Stop();
-        _filterTimer.Start();
+        if (_suppressText) return;
+        Filter(_text.Text ?? "");
+        if (_view.Count == 0) { _popup.IsOpen = false; return; }
+        HighlightBest(_text.Text ?? "");
+        Open();
     }
 
-    /// <summary>Runs a filter that is still waiting, so keys like Enter, Tab and the arrows act on what was actually typed.</summary>
-    void FlushFilter()
+    void Filter(string text)
     {
-        if (!_filterTimer.IsEnabled) return;
-        _filterTimer.Stop();
-        ApplyFilter();
+        _words = text.Split(' ', StringSplitOptions.RemoveEmptyEntries);
+        _view.Refresh();
     }
 
-    protected override void OnPreviewKeyDown(KeyEventArgs e)
+    /// <summary>Highlights the entry named exactly as typed, else the first one left.</summary>
+    void HighlightBest(string text)
     {
-        // (spelled out in full: inside this class, plain "Key" means the chosen-option property)
-        if (e.Key is System.Windows.Input.Key.Enter or System.Windows.Input.Key.Tab or System.Windows.Input.Key.Down
-                  or System.Windows.Input.Key.Up or System.Windows.Input.Key.PageDown or System.Windows.Input.Key.PageUp)
-            FlushFilter();
-        base.OnPreviewKeyDown(e);
+        var t = text.Trim();
+        RefOption? exact = null;
+        if (t.Length > 0)
+            foreach (RefOption o in _view)
+                if (string.Equals(o.Display, t, StringComparison.OrdinalIgnoreCase)) { exact = o; break; }
+        Highlight(exact ?? (_view.Count > 0 ? (RefOption)_view.GetItemAt(0) : null));
     }
 
-    void ApplyFilter()
+    void Highlight(RefOption? option)
     {
-        if (_tb == null) return;
-        var text = _tb.Text ?? "";
-        if (SelectedItem is RefOption sel && sel.Display == text) return;
+        _list.SelectedItem = option;
+        if (option != null) _list.ScrollIntoView(option);
+    }
 
-        _busy = true;
-        try
+    void Open()
+    {
+        if (_popup.IsOpen) return;
+        _popup.MinWidth = Math.Max(ActualWidth, 200);
+        _popup.IsOpen = true;
+    }
+
+    /// <summary>The arrow button / Alt+Down: every entry, with the current choice highlighted.</summary>
+    void OpenFullList()
+    {
+        Filter("");
+        Highlight(Current);
+        Open();
+    }
+
+    void OnTextKeyDown(object sender, KeyEventArgs e)
+    {
+        var key = e.Key == System.Windows.Input.Key.System ? e.SystemKey : e.Key;   // (in this class plain "Key" is the chosen-option property)
+        bool alt = (Keyboard.Modifiers & ModifierKeys.Alt) != 0;
+        switch (key)
         {
-            int caret = _tb.CaretIndex;
-            _words = text.Split(' ', StringSplitOptions.RemoveEmptyEntries);
-            _view.Refresh();                       // may clear the selection, which can wipe the text, so put it back
-            _tb.Text = text;
-            _tb.CaretIndex = Math.Min(caret, text.Length);
+            case System.Windows.Input.Key.Down when alt:
+            case System.Windows.Input.Key.F4:
+                if (_popup.IsOpen) _popup.IsOpen = false; else OpenFullList();
+                e.Handled = true;
+                break;
+            case System.Windows.Input.Key.Down:
+            case System.Windows.Input.Key.Up:
+            case System.Windows.Input.Key.PageDown:
+            case System.Windows.Input.Key.PageUp:
+                if (!_popup.IsOpen)
+                {
+                    if (key != System.Windows.Input.Key.Down) return;   // let a grid use the other keys when the list is closed
+                    Filter(_text.Text == (Current?.Display ?? "") ? "" : _text.Text ?? "");
+                    HighlightBest(_text.Text ?? "");
+                    Open();
+                }
+                else MoveHighlight(key switch
+                {
+                    System.Windows.Input.Key.Down => 1,
+                    System.Windows.Input.Key.Up => -1,
+                    System.Windows.Input.Key.PageDown => 10,
+                    _ => -10,
+                });
+                e.Handled = true;
+                break;
+            case System.Windows.Input.Key.Enter:
+            case System.Windows.Input.Key.Tab:
+                if (_popup.IsOpen && _list.SelectedItem is RefOption pick) Commit(pick);
+                else ResolveAndShow();
+                break;   // not handled: Enter still finishes a grid cell and Tab still moves on
+            case System.Windows.Input.Key.Escape:
+                if (_popup.IsOpen)
+                {
+                    _popup.IsOpen = false;
+                    e.Handled = true;
+                }
+                else ShowKey();   // a grid then cancels the edit as usual
+                break;
         }
-        finally { _busy = false; }
-
-        _typedText = text;
-        _typedCaret = Math.Min(_tb.CaretIndex, text.Length);
-        IsDropDownOpen = _view.Count > 0;
-        KeepCaret();
     }
 
-    protected override void OnDropDownOpened(EventArgs e)
+    void MoveHighlight(int delta)
     {
-        base.OnDropDownOpened(e);
-        KeepCaret();
+        if (_view.Count == 0) return;
+        int i = _list.SelectedItem is RefOption cur ? _view.IndexOf(cur) : -1;
+        int next = i < 0 ? (delta > 0 ? 0 : _view.Count - 1) : Math.Clamp(i + delta, 0, _view.Count - 1);
+        Highlight((RefOption)_view.GetItemAt(next));
     }
 
-    protected override void OnDropDownClosed(EventArgs e)
+    // ------------------------------------------------------------ choosing
+
+    /// <summary>A click on an entry takes it at once; handled here so the list never takes the focus away from the text box.</summary>
+    void OnListMouseDown(object sender, MouseButtonEventArgs e)
     {
-        base.OnDropDownClosed(e);
-        _typedText = null;
+        if (ItemsControl.ContainerFromElement(_list, e.OriginalSource as DependencyObject) is not ListBoxItem item) return;   // e.g. the scroll bar
+        if (_list.ItemContainerGenerator.ItemFromContainer(item) is RefOption option)
+        {
+            Commit(option);
+            e.Handled = true;
+        }
+    }
+
+    void Commit(RefOption option)
+    {
+        _popup.IsOpen = false;
+        Key = option.Key;
+        SetText(option.Display);   // also when the key didn't change (the text may have been edited)
+        Filter("");
     }
 
     /// <summary>
-    /// Opening the list of an editable ComboBox selects all of its text, so the next keystroke would replace what was just typed.
-    /// Put the caret back at the end of the typed text (right away, and again once the box has finished opening).
+    /// The key the typed text stands for: the current choice if its name is still shown, an entry named exactly like the text,
+    /// the only entry left after filtering, or "" for an empty box when <see cref="AllowEmpty"/>. Null when it stands for nothing
+    /// (the caller then keeps the old value).
     /// </summary>
-    void KeepCaret()
-    {
-        if (_tb == null || _typedText == null) return;
-        var text = _typedText;
-        int caret = _typedCaret;
-        void Restore()
-        {
-            // only if the user hasn't typed again in the meantime
-            if (_tb != null && _tb.Text == text && _tb.SelectionLength > 0) _tb.Select(caret, 0);
-        }
-        Restore();
-        Dispatcher.BeginInvoke(new Action(Restore), DispatcherPriority.Input);
-    }
-
-    /// <summary>The key the user ended up with, or null if the text matches nothing (the caller then keeps the old value).</summary>
     public string? ResolveKey()
     {
-        FlushFilter();
-        var text = (_tb?.Text ?? Text ?? "").Trim();
-        if (SelectedItem is RefOption sel && sel.Display == text) return sel.Key;
+        var text = (_text.Text ?? "").Trim();
+        if (Current is { } cur && string.Equals(cur.Display, text, StringComparison.Ordinal)) return cur.Key;
         if (text.Length == 0) return AllowEmpty ? "" : null;
         var exact = _all.FirstOrDefault(o => string.Equals(o.Display, text, StringComparison.OrdinalIgnoreCase));
         if (exact != null) return exact.Key;
-        if (_view.Count == 1) return ((RefOption)_view.GetItemAt(0)).Key;   // only one entry left after filtering
-        return null;
+        Filter(text);
+        return _view.Count == 1 ? ((RefOption)_view.GetItemAt(0)).Key : null;
     }
 
+    /// <summary>Takes what the text stands for, or shows the previous choice again.</summary>
+    void ResolveAndShow()
+    {
+        var resolved = ResolveKey();
+        if (resolved != null) Key = resolved;
+        ShowKey();
+        Filter("");
+    }
+
+    protected override void OnIsKeyboardFocusWithinChanged(DependencyPropertyChangedEventArgs e)
+    {
+        base.OnIsKeyboardFocusWithinChanged(e);
+        if ((bool)e.NewValue) return;
+        _popup.IsOpen = false;
+        ResolveAndShow();
+    }
+
+    /// <summary>For grid cells: focus the box with its text selected and show the whole list.</summary>
     public void FocusForEditing()
     {
         Dispatcher.BeginInvoke(new Action(() =>
         {
-            ApplyTemplate();
-            _tb?.Focus();
-            _tb?.SelectAll();
-            IsDropDownOpen = true;
+            _text.Focus();
+            _text.SelectAll();
+            OpenFullList();
         }), DispatcherPriority.Input);
     }
 }
