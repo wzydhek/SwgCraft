@@ -1,0 +1,73 @@
+{
+  "schemaVersion": 1,
+  "tabs": [
+    {
+      "id": "armor",
+      "name": "Armor"
+    },
+    {
+      "id": "chemical",
+      "name": "Chemical"
+    },
+    {
+      "id": "clothing",
+      "name": "Clothing"
+    },
+    {
+      "id": "creatures",
+      "name": "Creatures"
+    },
+    {
+      "id": "droid",
+      "name": "Droid"
+    },
+    {
+      "id": "food",
+      "name": "Food"
+    },
+    {
+      "id": "furniture",
+      "name": "Furniture"
+    },
+    {
+      "id": "genetics",
+      "name": "Genetics"
+    },
+    {
+      "id": "installation",
+      "name": "Installation"
+    },
+    {
+      "id": "lightsaber",
+      "name": "Lightsaber"
+    },
+    {
+      "id": "misc",
+      "name": "Misc"
+    },
+    {
+      "id": "mission",
+      "name": "Mission"
+    },
+    {
+      "id": "ship_tools",
+      "name": "Ship Tools"
+    },
+    {
+      "id": "starship_components",
+      "name": "Starship Components"
+    },
+    {
+      "id": "tissues",
+      "name": "Tissues"
+    },
+    {
+      "id": "vehicle",
+      "name": "Vehicle"
+    },
+    {
+      "id": "weapons",
+      "name": "Weapons"
+    }
+  ]
+}

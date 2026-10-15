@@ -1,0 +1,6 @@
+<Solution>
+  <Project Path="SwgCraft.Core/SwgCraft.Core.csproj" />
+  <Project Path="SwgCraft.Data/SwgCraft.Data.csproj" />
+  <Project Path="SwgCraft.Desktop/SwgCraft.Desktop.csproj" />
+  <Project Path="SwgCraft.Tests/SwgCraft.Tests.csproj" />
+</Solution>

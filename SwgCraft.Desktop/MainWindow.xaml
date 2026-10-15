@@ -1,0 +1,46 @@
+<Window x:Class="SwgCraft.Desktop.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="SWG Craft Planner" Height="560" Width="880" Loaded="Window_Loaded">
+    <DockPanel>
+        <Menu DockPanel.Dock="Top">
+            <MenuItem Header="_File">
+                <MenuItem Header="Open _Data Folder" Click="OpenDataFolder_Click"/>
+                <Separator/>
+                <MenuItem Header="E_xit" Click="Exit_Click"/>
+            </MenuItem>
+            <MenuItem Header="_Static Data">
+                <MenuItem Header="_Resource Tree Editor..." Click="ResourceEditor_Click"/>
+                <MenuItem Header="_Professions..." Click="Professions_Click"/>
+                <MenuItem Header="C_ategories..." Click="Categories_Click"/>
+                <MenuItem Header="_Tabs..." Click="Tabs_Click"/>
+                <MenuItem Header="_Looted Items..." Click="LootItems_Click"/>
+                <MenuItem Header="_Component Classes..." Click="Classes_Click"/>
+                <MenuItem Header="_Schematics..." Click="Schematics_Click"/>
+                <Separator/>
+                <MenuItem Header="Str_ings..." Click="Strings_Click"/>
+            </MenuItem>
+            <MenuItem Header="_Resources">
+                <MenuItem Header="_What to Harvest..." Click="Harvest_Click"/>
+                <MenuItem Header="WTH S_ummary..." Click="WthSummary_Click"/>
+                <Separator/>
+                <MenuItem Header="_Spawn Browser..." Click="SpawnBrowser_Click"/>
+                <MenuItem Header="_Manage Galaxies..." Click="Galaxies_Click"/>
+                <MenuItem Header="_Inventory..." Click="Inventory_Click"/>
+                <MenuItem Header="I_tem Inventory..." Click="ItemInventory_Click"/>
+            </MenuItem>
+        </Menu>
+        <ToolBar DockPanel.Dock="Top">
+            <Label Content="Galaxy:"/>
+            <ComboBox x:Name="GalaxyCombo" Width="220" SelectionChanged="GalaxyCombo_SelectionChanged"/>
+            <Separator/>
+            <Button x:Name="SyncButton" Content="Sync Feed" Click="Sync_Click" Padding="8,2"/>
+            <Button x:Name="ForceButton" Content="Force Sync" Click="ForceSync_Click" Padding="8,2"/>
+        </ToolBar>
+        <StatusBar DockPanel.Dock="Bottom">
+            <StatusBarItem><TextBlock x:Name="StatusText"/></StatusBarItem>
+        </StatusBar>
+        <TextBox x:Name="LogBox" IsReadOnly="True" Margin="4" TextWrapping="Wrap"
+                 VerticalScrollBarVisibility="Auto" FontFamily="Consolas"/>
+    </DockPanel>
+</Window>

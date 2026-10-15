@@ -1,0 +1,44 @@
+<Window x:Class="SwgCraft.Desktop.WthSummaryWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="WTH Summary" Height="620" Width="1180">
+    <DockPanel>
+        <ToolBar DockPanel.Dock="Top">
+            <Button Content="Refresh" Click="Refresh_Click" Padding="8,2" FontWeight="Bold"/>
+            <Separator/>
+            <CheckBox x:Name="OnlyBetterBox" Content="Only spawns that beat my inventory" VerticalAlignment="Center" Margin="4,0"
+                      Click="Option_Click"
+                      ToolTip="Leave out spawns that aren't better than a stack you already hold for any of the lines they're best for"/>
+            <Separator/>
+            <Label Content="Planet:"/>
+            <ComboBox x:Name="PlanetBox" Width="160" SelectionChanged="PlanetBox_SelectionChanged"
+                      ToolTip="Show only spawns found on this planet"/>
+        </ToolBar>
+        <TextBlock DockPanel.Dock="Top" TextWrapping="Wrap" Margin="8,4,8,4" Foreground="Gray"
+                   Text="Every spawn that is the best current spawn for at least one What to Harvest line, listed once. Stats are highlighted like the resource inventory: light green at 90% and darker green at 95% of the most the resource type can have."/>
+        <StatusBar DockPanel.Dock="Bottom">
+            <StatusBarItem><TextBlock x:Name="StatusText"/></StatusBarItem>
+        </StatusBar>
+        <DataGrid x:Name="SummaryGrid" AutoGenerateColumns="False" IsReadOnly="True" SelectionMode="Single"
+                  GridLinesVisibility="Horizontal" HeadersVisibility="Column" CanUserAddRows="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Resource" Width="130" Binding="{Binding Name}" FontWeight="SemiBold"/>
+                <DataGridTextColumn Header="Type" Width="190" Binding="{Binding TypeName}"/>
+                <DataGridTextColumn Header="Planets" Width="200" Binding="{Binding Planets}">
+                    <DataGridTextColumn.ElementStyle>
+                        <Style TargetType="TextBlock">
+                            <Setter Property="TextTrimming" Value="CharacterEllipsis"/>
+                            <Setter Property="ToolTip" Value="{Binding Planets}"/>
+                        </Style>
+                    </DataGridTextColumn.ElementStyle>
+                </DataGridTextColumn>
+                <!-- the 11 stat columns are inserted here in code -->
+                <DataGridTextColumn Header="Days" Width="50" Binding="{Binding Days}" SortMemberPath="DaysSort">
+                    <DataGridTextColumn.ElementStyle>
+                        <Style TargetType="TextBlock"><Setter Property="HorizontalAlignment" Value="Right"/></Style>
+                    </DataGridTextColumn.ElementStyle>
+                </DataGridTextColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+    </DockPanel>
+</Window>

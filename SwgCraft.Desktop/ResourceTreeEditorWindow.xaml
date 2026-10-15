@@ -1,0 +1,88 @@
+<Window x:Class="SwgCraft.Desktop.ResourceTreeEditorWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Resource Tree Editor" Height="720" Width="1020">
+    <Window.Resources>
+        <BooleanToVisibilityConverter x:Key="BoolToVis"/>
+    </Window.Resources>
+    <DockPanel>
+        <ToolBar DockPanel.Dock="Top">
+            <Button Content="Add Root" Click="AddRoot_Click" Padding="6,2"/>
+            <Button Content="Add Child" Click="AddChild_Click" Padding="6,2"/>
+            <Button Content="Add Sibling" Click="AddSibling_Click" Padding="6,2"/>
+            <Button Content="Delete" Click="Delete_Click" Padding="6,2"/>
+            <Separator/>
+            <Button Content="Move Up" Click="MoveUp_Click" Padding="6,2"/>
+            <Button Content="Move Down" Click="MoveDown_Click" Padding="6,2"/>
+            <Separator/>
+            <Button Content="Validate" Click="Validate_Click" Padding="6,2"/>
+            <Button Content="Save" Click="Save_Click" Padding="6,2" FontWeight="Bold"/>
+            <Button Content="Reload" Click="Reload_Click" Padding="6,2"/>
+        </ToolBar>
+        <StatusBar DockPanel.Dock="Bottom">
+            <StatusBarItem DockPanel.Dock="Right">
+                <TextBlock x:Name="CountText"/>
+            </StatusBarItem>
+            <StatusBarItem>
+                <TextBlock x:Name="StatusText"/>
+            </StatusBarItem>
+        </StatusBar>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="5"/>
+                <RowDefinition Height="170"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="330"/>
+                <ColumnDefinition Width="5"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <TreeView x:Name="NodeTree" Grid.Row="0" Grid.Column="0" SelectedItemChanged="NodeTree_SelectedItemChanged">
+                <TreeView.ItemContainerStyle>
+                    <Style TargetType="TreeViewItem">
+                        <Setter Property="IsExpanded" Value="{Binding IsExpanded, Mode=TwoWay}"/>
+                        <Setter Property="IsSelected" Value="{Binding IsSelected, Mode=TwoWay}"/>
+                    </Style>
+                </TreeView.ItemContainerStyle>
+                <TreeView.ItemTemplate>
+                    <HierarchicalDataTemplate ItemsSource="{Binding Children}">
+                        <TextBlock Text="{Binding Name}"/>
+                    </HierarchicalDataTemplate>
+                </TreeView.ItemTemplate>
+            </TreeView>
+            <GridSplitter Grid.Row="0" Grid.Column="1" Width="5" HorizontalAlignment="Stretch"/>
+
+            <ScrollViewer Grid.Row="0" Grid.Column="2" VerticalScrollBarVisibility="Auto">
+                <StackPanel x:Name="Detail" Margin="10" Visibility="Collapsed">
+                    <TextBlock Text="Name"/>
+                    <TextBox Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}"/>
+                    <TextBlock Text="ID (the SWGEmu resource ID; schematics reference this, so don't rename it after use)" Margin="0,8,0,0"/>
+                    <TextBox Text="{Binding Id, UpdateSourceTrigger=PropertyChanged}"/>
+                    <TextBlock Text="{Binding KindText}" FontStyle="Italic" TextWrapping="Wrap" Margin="0,8,0,0"/>
+
+                    <StackPanel Visibility="{Binding IsLeaf, Converter={StaticResource BoolToVis}}" Margin="0,8,0,0">
+                        <TextBlock Text="Galaxy Harvester resource_type id" Margin="0,8,0,0"/>
+                        <TextBox Text="{Binding GhId, UpdateSourceTrigger=PropertyChanged}"/>
+                        <TextBlock Text="Stat ranges (tick the stats this resource type has)" Margin="0,12,0,4" FontWeight="SemiBold"/>
+                        <DataGrid ItemsSource="{Binding Ranges}" AutoGenerateColumns="False" CanUserAddRows="False"
+                                  CanUserDeleteRows="False" HeadersVisibility="Column" GridLinesVisibility="Horizontal">
+                            <DataGrid.Columns>
+                                <DataGridCheckBoxColumn Header="Used" Binding="{Binding Applies, UpdateSourceTrigger=PropertyChanged}"/>
+                                <DataGridTextColumn Header="Stat" Binding="{Binding Label, Mode=OneWay}" IsReadOnly="True" Width="*"/>
+                                <DataGridTextColumn Header="Min" Binding="{Binding Min, UpdateSourceTrigger=PropertyChanged}" Width="80"/>
+                                <DataGridTextColumn Header="Max" Binding="{Binding Max, UpdateSourceTrigger=PropertyChanged}" Width="80"/>
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </StackPanel>
+                </StackPanel>
+            </ScrollViewer>
+
+            <GridSplitter Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" Height="5" HorizontalAlignment="Stretch"/>
+            <ListBox x:Name="IssueList" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3"
+                     DisplayMemberPath="Text" FontFamily="Consolas" MouseDoubleClick="IssueList_DoubleClick"
+                     ToolTip="Double-click an issue to jump to its node"/>
+        </Grid>
+    </DockPanel>
+</Window>

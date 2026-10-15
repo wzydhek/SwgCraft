@@ -1,0 +1,67 @@
+<Window x:Class="SwgCraft.Desktop.InventoryWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Resource Inventory" Height="640" Width="1320">
+    <DockPanel>
+        <ToolBarTray DockPanel.Dock="Top">
+            <ToolBar Band="0">
+                <Button Content="Add Resource..." Click="AddResource_Click" Padding="8,2"/>
+                <Separator/>
+                <Label Content="Amount:"/>
+                <TextBox x:Name="AmountBox" Width="70"/>
+                <Button Content="+ Add" Click="Plus_Click" Padding="8,2" ToolTip="Add the amount to the selected stack"/>
+                <Button Content="- Use" Click="Minus_Click" Padding="8,2" ToolTip="Subtract the amount from the selected stack"/>
+                <Button Content="= Set" Click="Set_Click" Padding="8,2" ToolTip="Set the selected stack to exactly this amount (0 removes it)"/>
+                <Button Content="Remove" Click="Remove_Click" Padding="8,2"/>
+                <Separator/>
+                <Label Content="Search:"/>
+                <TextBox x:Name="SearchBox" Width="110" TextChanged="Search_Changed"/>
+            </ToolBar>
+            <ToolBar Band="1">
+                <Label Content="Note:"/>
+                <TextBox x:Name="NoteBox" Width="170"/>
+                <Button Content="Save Note" Click="SaveNote_Click" Padding="8,2"/>
+                <Separator/>
+                <Label Content="Price/unit:"/>
+                <TextBox x:Name="PriceBox" Width="70"/>
+                <Button Content="Set Price" Click="SetPrice_Click" Padding="8,2" ToolTip="Leave the box empty to clear the price"/>
+                <Button Content="Recalculate" Click="Recalc_Click" Padding="8,2"
+                        ToolTip="Replace the price with the calculated default for this resource"/>
+                <Separator/>
+                <CheckBox x:Name="FilterCheck" Content="Filter (skip in builds)" Click="FilterCheck_Click"
+                          VerticalAlignment="Center" Margin="4,0"
+                          ToolTip="Excludes this resource from build generation"/>
+                <CheckBox x:Name="GenericCheck" Content="Generic" Click="GenericCheck_Click"
+                          VerticalAlignment="Center" Margin="8,0,4,0"
+                          ToolTip="Marks this resource as usable where stats and experimentation do not matter"/>
+            </ToolBar>
+        </ToolBarTray>
+        <StatusBar DockPanel.Dock="Bottom">
+            <StatusBarItem><TextBlock x:Name="StatusText"/></StatusBarItem>
+        </StatusBar>
+        <DataGrid x:Name="InvGrid" AutoGenerateColumns="False" IsReadOnly="True" CanUserAddRows="False"
+                  SelectionMode="Single" GridLinesVisibility="Horizontal" AlternatingRowBackground="#F4F4F4"
+                  SelectionChanged="InvGrid_SelectionChanged">
+            <DataGrid.RowStyle>
+                <Style TargetType="DataGridRow" BasedOn="{StaticResource {x:Type DataGridRow}}">
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding Filtered}" Value="True">
+                            <Setter Property="Foreground" Value="Gray"/>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </DataGrid.RowStyle>
+            <!-- The 11 stat columns are inserted after Qty (index 3) in code. -->
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Name" Binding="{Binding Name}" Width="100"/>
+                <DataGridTextColumn Header="Type" Binding="{Binding TypeName}" Width="170"/>
+                <DataGridTextColumn Header="Qty" Binding="{Binding Quantity, StringFormat=N0}" Width="70"/>
+                <DataGridTextColumn Header="Price/unit" Binding="{Binding Price}" Width="75"/>
+                <DataGridTextColumn Header="Filter" Binding="{Binding FilterText}" Width="45"/>
+                <DataGridTextColumn Header="Generic" Binding="{Binding GenericText}" Width="55"/>
+                <DataGridTextColumn Header="Status" Binding="{Binding Status}" Width="130"/>
+                <DataGridTextColumn Header="Note" Binding="{Binding Note}" Width="*"/>
+            </DataGrid.Columns>
+        </DataGrid>
+    </DockPanel>
+</Window>

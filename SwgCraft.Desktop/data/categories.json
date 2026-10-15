@@ -1,0 +1,465 @@
+{
+  "schemaVersion": 1,
+  "categories": [
+    {
+      "id": "tool",
+      "name": "Tool"
+    },
+    {
+      "id": "1h_weapon",
+      "name": "1H Weapon"
+    },
+    {
+      "id": "drink",
+      "name": "Drink"
+    },
+    {
+      "id": "food",
+      "name": "Food"
+    },
+    {
+      "id": "2h_weapon",
+      "name": "2H Weapon"
+    },
+    {
+      "id": "bone_armor",
+      "name": "Bone Armor"
+    },
+    {
+      "id": "chitin_armor",
+      "name": "Chitin Armor"
+    },
+    {
+      "id": "composite_armor",
+      "name": "Composite Armor"
+    },
+    {
+      "id": "kashyyykian_black_mountain_armor",
+      "name": "Kashyyykian Armor"
+    },
+    {
+      "id": "mabari_armorweave",
+      "name": "Mabari Armorweave"
+    },
+    {
+      "id": "padded_armor",
+      "name": "Padded Armor"
+    },
+    {
+      "id": "psgs",
+      "name": "PSGs"
+    },
+    {
+      "id": "r_i_s_armor",
+      "name": "R.I.S. Armor"
+    },
+    {
+      "id": "tantel_armor",
+      "name": "Tantel Armor"
+    },
+    {
+      "id": "ubese_armor",
+      "name": "Ubese Armor"
+    },
+    {
+      "id": "carbine",
+      "name": "Carbine"
+    },
+    {
+      "id": "heavy_weapon",
+      "name": "Heavy Weapon"
+    },
+    {
+      "id": "melee_weapon_component",
+      "name": "Melee Weapon Component"
+    },
+    {
+      "id": "mine",
+      "name": "Mine"
+    },
+    {
+      "id": "munition_component",
+      "name": "Munition Component"
+    },
+    {
+      "id": "pistol",
+      "name": "Pistol"
+    },
+    {
+      "id": "polearm",
+      "name": "Polearm"
+    },
+    {
+      "id": "ranged_weapon_component",
+      "name": "Ranged Weapon Component"
+    },
+    {
+      "id": "rifle",
+      "name": "Rifle"
+    },
+    {
+      "id": "special_heavy_weapon",
+      "name": "Special Heavy Weapon"
+    },
+    {
+      "id": "thrown_munition",
+      "name": "Thrown Weapon"
+    },
+    {
+      "id": "unarmed_weapon",
+      "name": "Unarmed Weapon"
+    },
+    {
+      "id": "armor_component",
+      "name": "Armor Component"
+    },
+    {
+      "id": "bandolier",
+      "name": "Bandolier"
+    },
+    {
+      "id": "belt",
+      "name": "Belt"
+    },
+    {
+      "id": "crafting_tool",
+      "name": "Crafting Tool"
+    },
+    {
+      "id": "dress",
+      "name": "Dress"
+    },
+    {
+      "id": "electronics_component",
+      "name": "Electronics Component"
+    },
+    {
+      "id": "firework",
+      "name": "Firework"
+    },
+    {
+      "id": "fishing_pole",
+      "name": "Fishing Pole"
+    },
+    {
+      "id": "footwear",
+      "name": "Footwear"
+    },
+    {
+      "id": "generic_item",
+      "name": "Generic Item"
+    },
+    {
+      "id": "handwear",
+      "name": "Handwear"
+    },
+    {
+      "id": "harvester",
+      "name": "Harvester"
+    },
+    {
+      "id": "harvesting_tool",
+      "name": "Harvesting Tool"
+    },
+    {
+      "id": "installation_deed",
+      "name": "Installation Deed"
+    },
+    {
+      "id": "melee_weapon_powerup",
+      "name": "Melee Weapon Powerup"
+    },
+    {
+      "id": "mine_powerup",
+      "name": "Mine Powerup"
+    },
+    {
+      "id": "misc",
+      "name": "Misc"
+    },
+    {
+      "id": "pants",
+      "name": "Pants"
+    },
+    {
+      "id": "ranged_weapon_powerup",
+      "name": "Ranged Weapon Powerup"
+    },
+    {
+      "id": "repair_tool",
+      "name": "Repair Tool"
+    },
+    {
+      "id": "shirt",
+      "name": "Shirt"
+    },
+    {
+      "id": "survey_tool",
+      "name": "Survey Tool"
+    },
+    {
+      "id": "thrown_weapon_powerup",
+      "name": "Thrown Weapon Powerup"
+    },
+    {
+      "id": "vehicle_deed",
+      "name": "Vehicle Deed"
+    },
+    {
+      "id": "vest",
+      "name": "Vest"
+    },
+    {
+      "id": "wearable_container",
+      "name": "Wearable Container"
+    },
+    {
+      "id": "wookiee_garb",
+      "name": "Wookiee Garb"
+    },
+    {
+      "id": "genetic_component",
+      "name": "Genetic Component"
+    },
+    {
+      "id": "pet_deed",
+      "name": "Pet Deed"
+    },
+    {
+      "id": "looted_schematic",
+      "name": "Looted Schematic"
+    },
+    {
+      "id": "pharmaceutical",
+      "name": "Pharmaceutical"
+    },
+    {
+      "id": "tissue_component",
+      "name": "Tissue Component"
+    },
+    {
+      "id": "bodysuit",
+      "name": "Bodysuit"
+    },
+    {
+      "id": "bracelet",
+      "name": "Bracelet"
+    },
+    {
+      "id": "cloak",
+      "name": "Cloak"
+    },
+    {
+      "id": "clothing_component",
+      "name": "Clothing Component"
+    },
+    {
+      "id": "jacket",
+      "name": "Jacket"
+    },
+    {
+      "id": "necklace",
+      "name": "Necklace"
+    },
+    {
+      "id": "ring",
+      "name": "Ring"
+    },
+    {
+      "id": "robe",
+      "name": "Robe"
+    },
+    {
+      "id": "skirt",
+      "name": "Skirt"
+    },
+    {
+      "id": "droid_component",
+      "name": "Droid Component"
+    },
+    {
+      "id": "droid_deed",
+      "name": "Droid Deed"
+    },
+    {
+      "id": "droid_programming_chip",
+      "name": "Droid Programming Chip"
+    },
+    {
+      "id": "droid_repair_kits",
+      "name": "Droid Repair Kits"
+    },
+    {
+      "id": "building_component",
+      "name": "Building Component"
+    },
+    {
+      "id": "city_buildings",
+      "name": "City Buildings"
+    },
+    {
+      "id": "city_decoration",
+      "name": "City Decoration"
+    },
+    {
+      "id": "crafting_station",
+      "name": "Crafting Station"
+    },
+    {
+      "id": "factory",
+      "name": "Factory"
+    },
+    {
+      "id": "furniture",
+      "name": "Furniture"
+    },
+    {
+      "id": "generator",
+      "name": "Generator"
+    },
+    {
+      "id": "guild_hall",
+      "name": "Guild Hall"
+    },
+    {
+      "id": "house",
+      "name": "House"
+    },
+    {
+      "id": "lamps_and_candles",
+      "name": "Lamps and Candles"
+    },
+    {
+      "id": "merchant_building",
+      "name": "Merchant Building"
+    },
+    {
+      "id": "chemical_component",
+      "name": "Chemical Component"
+    },
+    {
+      "id": "stimpack",
+      "name": "Stimpack"
+    },
+    {
+      "id": "wound_medpack",
+      "name": "Wound Medpack"
+    },
+    {
+      "id": "state_cure_medpack",
+      "name": "State-Cure Medpack"
+    },
+    {
+      "id": "buff",
+      "name": "Buff"
+    },
+    {
+      "id": "poison_and_disease",
+      "name": "Poison and Disease"
+    },
+    {
+      "id": "musical_instrument",
+      "name": "Musical Instrument"
+    },
+    {
+      "id": "camp",
+      "name": "Camp"
+    },
+    {
+      "id": "trap",
+      "name": "Trap"
+    },
+    {
+      "id": "camo_kit",
+      "name": "Camo Kit"
+    },
+    {
+      "id": "spice",
+      "name": "Spice"
+    },
+    {
+      "id": "ship_armor",
+      "name": "Ship Armor"
+    },
+    {
+      "id": "ship_booster",
+      "name": "Ship Booster"
+    },
+    {
+      "id": "ship_capacitor",
+      "name": "Ship Capacitor"
+    },
+    {
+      "id": "countermeasure_pack",
+      "name": "Countermeasure Pack"
+    },
+    {
+      "id": "droid_interface",
+      "name": "Droid Interface"
+    },
+    {
+      "id": "ship_engine",
+      "name": "Ship Engine"
+    },
+    {
+      "id": "missile_pack",
+      "name": "Missile Pack"
+    },
+    {
+      "id": "ship_reactor",
+      "name": "Ship Reactor"
+    },
+    {
+      "id": "ship_shield",
+      "name": "Ship Shield"
+    },
+    {
+      "id": "ship_chassis",
+      "name": "Ship Chassis"
+    },
+    {
+      "id": "ship_tool",
+      "name": "Ship Tool"
+    },
+    {
+      "id": "ship_weapon",
+      "name": "Ship Weapon"
+    },
+    {
+      "id": "lightsaber",
+      "name": "Lightsaber"
+    },
+    {
+      "id": "headwear",
+      "name": "Headwear"
+    },
+    {
+      "id": "terminal",
+      "name": "Terminal"
+    },
+    {
+      "id": "food_component",
+      "name": "Food Component"
+    },
+    {
+      "id": "countermeasure_launcher",
+      "name": "Countermeasure Launcher"
+    },
+    {
+      "id": "missile_launcher",
+      "name": "Missile Launcher"
+    },
+    {
+      "id": "melee_weapon",
+      "name": "Melee Weapon"
+    },
+    {
+      "id": "jedi_weapon",
+      "name": "Jedi Weapon"
+    },
+    {
+      "id": "ris_armor",
+      "name": "RIS Armor"
+    }
+  ]
+}

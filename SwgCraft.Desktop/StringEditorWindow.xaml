@@ -1,0 +1,99 @@
+<Window x:Class="SwgCraft.Desktop.StringEditorWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Strings" Height="760" Width="1100" WindowStartupLocation="CenterOwner">
+    <DockPanel>
+        <ToolBar x:Name="MainToolBar" DockPanel.Dock="Top">
+            <Button Content="Import..." Click="Import_Click" Padding="8,2" FontWeight="Bold"
+                    ToolTip="Choose the client's string\en folder; every .stf file below it is read and replaces what is stored here"/>
+            <Separator/>
+            <Button Content="Add File" Click="AddFile_Click" Padding="8,2"/>
+            <Button Content="Delete File" Click="DeleteFile_Click" Padding="8,2"/>
+            <Separator/>
+            <Button Content="Validate" Click="Validate_Click" Padding="8,2"/>
+            <Button Content="Save" Click="Save_Click" Padding="8,2" FontWeight="Bold"/>
+            <Button Content="Reload" Click="Reload_Click" Padding="8,2"/>
+            <Separator/>
+            <TextBlock Text="Text is exactly" VerticalAlignment="Center" Margin="4,0,6,0"/>
+            <TextBox x:Name="SearchBox" Width="240" KeyDown="SearchBox_KeyDown"
+                     ToolTip="Find every string whose whole text is exactly this (leading and trailing spaces ignored). Press Enter to search."/>
+            <CheckBox x:Name="MatchCaseBox" Content="Match case" VerticalAlignment="Center" Margin="6,0,6,0"/>
+            <Button Content="Search" Click="Search_Click" Padding="8,2"/>
+        </ToolBar>
+        <TextBlock DockPanel.Dock="Top" TextWrapping="Wrap" Margin="8,6,8,6" Foreground="Gray"
+                   Text="The client's English string tables (.stf). A file's name is its path below the import folder without the extension (e.g. obj_n or space/space_item), which is how '@file:id' references name it. Import replaces everything with what is in the folder you choose."/>
+        <StatusBar DockPanel.Dock="Bottom">
+            <StatusBarItem DockPanel.Dock="Right">
+                <TextBlock x:Name="CountText"/>
+            </StatusBarItem>
+            <StatusBarItem><TextBlock x:Name="StatusText"/></StatusBarItem>
+        </StatusBar>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="5"/>
+                <RowDefinition Height="110"/>
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="300"/>
+                    <ColumnDefinition Width="5"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <DockPanel Grid.Column="0">
+                    <TextBox x:Name="FileFilterBox" DockPanel.Dock="Top" Margin="4" TextChanged="FileFilterBox_TextChanged"
+                             ToolTip="Filter files by name"/>
+                    <ListBox x:Name="FileList" DisplayMemberPath="Label" SelectionChanged="FileList_SelectionChanged"
+                             VirtualizingPanel.IsVirtualizing="True" VirtualizingPanel.VirtualizationMode="Recycling"/>
+                </DockPanel>
+                <GridSplitter Grid.Column="1" Width="5" HorizontalAlignment="Stretch"/>
+
+                <DockPanel x:Name="Detail" Grid.Column="2" Margin="6,4,4,4" IsEnabled="False">
+                    <Grid DockPanel.Dock="Top" Margin="0,0,0,4">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Text="File" VerticalAlignment="Center" Margin="0,0,8,0"/>
+                        <TextBox x:Name="FileNameBox" Grid.Column="1" Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}"/>
+                    </Grid>
+                    <DockPanel DockPanel.Dock="Top" Margin="0,0,0,4">
+                        <Button Content="Add String" Click="AddString_Click" Padding="8,2" Margin="0,0,4,0"/>
+                        <Button Content="Delete String" Click="DeleteString_Click" Padding="8,2" Margin="0,0,12,0"/>
+                        <TextBlock Text="Find" VerticalAlignment="Center" Margin="0,0,6,0"/>
+                        <TextBox x:Name="EntryFilterBox" TextChanged="EntryFilterBox_TextChanged"
+                                 ToolTip="Show only strings whose ID or text contains this"/>
+                    </DockPanel>
+                    <DataGrid x:Name="EntryGrid" AutoGenerateColumns="False" CanUserAddRows="False" CanUserDeleteRows="False"
+                              CanUserReorderColumns="False" SelectionMode="Single" GridLinesVisibility="Horizontal"
+                              HeadersVisibility="Column" EnableRowVirtualization="True" EnableColumnVirtualization="True"
+                              VirtualizingPanel.VirtualizationMode="Recycling">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="ID" Width="260" SortMemberPath="Id"
+                                                Binding="{Binding Id, UpdateSourceTrigger=PropertyChanged}"/>
+                            <DataGridTextColumn Header="Text" Width="*" SortMemberPath="Value"
+                                                Binding="{Binding Value, UpdateSourceTrigger=PropertyChanged}">
+                                <DataGridTextColumn.ElementStyle>
+                                    <Style TargetType="TextBlock">
+                                        <Setter Property="TextTrimming" Value="CharacterEllipsis"/>
+                                        <Setter Property="ToolTip" Value="{Binding Value}"/>
+                                    </Style>
+                                </DataGridTextColumn.ElementStyle>
+                                <DataGridTextColumn.EditingElementStyle>
+                                    <Style TargetType="TextBox">
+                                        <Setter Property="AcceptsReturn" Value="True"/>
+                                        <Setter Property="TextWrapping" Value="Wrap"/>
+                                    </Style>
+                                </DataGridTextColumn.EditingElementStyle>
+                            </DataGridTextColumn>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </DockPanel>
+            </Grid>
+            <GridSplitter Grid.Row="1" Height="5" HorizontalAlignment="Stretch"/>
+            <ListBox x:Name="IssueList" Grid.Row="2" DisplayMemberPath="Text" FontFamily="Consolas"
+                     MouseDoubleClick="IssueList_DoubleClick" ToolTip="Double-click a line to jump to its file (and string, for search results)"/>
+        </Grid>
+    </DockPanel>
+</Window>

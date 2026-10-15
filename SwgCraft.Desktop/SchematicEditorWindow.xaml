@@ -1,0 +1,266 @@
+<Window x:Class="SwgCraft.Desktop.SchematicEditorWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Schematics" Height="880" Width="1180" WindowStartupLocation="CenterOwner">
+    <DockPanel>
+        <ToolBar DockPanel.Dock="Top">
+            <Button Content="Add" Click="Add_Click" Padding="8,2"/>
+            <Button Content="Duplicate" Click="Duplicate_Click" Padding="8,2"/>
+            <Button Content="Delete" Click="Delete_Click" Padding="8,2"/>
+            <Separator/>
+            <Button Content="Validate" Click="Validate_Click" Padding="8,2"/>
+            <Button Content="Save" Click="Save_Click" Padding="8,2" FontWeight="Bold"/>
+            <Button Content="Reload" Click="Reload_Click" Padding="8,2"/>
+            <Separator/>
+            <Button Content="Fill" Click="Fill_Click" Padding="8,2"
+                    ToolTip="Overwrite the selected schematic's name, ID, skill, complexity and size from one copied line of 6 tab-separated values (name, ID, skill, -, complexity, size). The skill may be cut short; it matches the skill whose name starts with it."/>
+        </ToolBar>
+        <StatusBar DockPanel.Dock="Bottom">
+            <StatusBarItem DockPanel.Dock="Right">
+                <TextBlock x:Name="CountText"/>
+            </StatusBarItem>
+            <StatusBarItem>
+                <TextBlock x:Name="StatusText"/>
+            </StatusBarItem>
+        </StatusBar>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="5"/>
+                <RowDefinition Height="140"/>
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="280"/>
+                    <ColumnDefinition Width="5"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <DockPanel Grid.Column="0">
+                    <ComboBox x:Name="ProfessionFilter" DockPanel.Dock="Top" Margin="4,4,4,0" DisplayMemberPath="Display"
+                              SelectionChanged="ProfessionFilter_SelectionChanged"
+                              ToolTip="Show only schematics that have this profession ticked. Add then starts a new schematic with it ticked."/>
+                    <TextBox x:Name="FilterBox" DockPanel.Dock="Top" Margin="4" TextChanged="FilterBox_TextChanged"
+                             ToolTip="Filter schematics by name"/>
+                    <ListBox x:Name="SchematicList" DisplayMemberPath="Name" SelectionChanged="SchematicList_SelectionChanged"/>
+                </DockPanel>
+                <GridSplitter Grid.Column="1" Width="5" HorizontalAlignment="Stretch"/>
+
+                <Grid x:Name="Detail" Grid.Column="2" Margin="6" IsEnabled="False">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+
+                    <Grid Grid.Row="0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+
+                        <TextBlock Grid.Row="0" Grid.Column="0" Text="Name" VerticalAlignment="Center" Margin="0,0,8,4"/>
+                        <TextBox x:Name="NameBox" Grid.Row="0" Grid.Column="1" Margin="0,0,12,4"
+                                 Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}"/>
+                        <TextBlock Grid.Row="0" Grid.Column="2" Text="ID" VerticalAlignment="Center" Margin="0,0,8,4"/>
+                        <TextBox x:Name="IDBox" Grid.Row="0" Grid.Column="3" Margin="0,0,0,4"
+                                 Text="{Binding Id, UpdateSourceTrigger=PropertyChanged}"/>
+
+                        <TextBlock Grid.Row="1" Grid.Column="0" Text="Category" VerticalAlignment="Center" Margin="0,0,8,4"/>
+                        <Border x:Name="CategoryHost" Grid.Row="1" Grid.Column="1" Margin="0,0,12,4"/>
+                        <TextBlock Grid.Row="1" Grid.Column="2" Text="Show item" VerticalAlignment="Center" Margin="0,0,8,4"/>
+                        <ComboBox Grid.Row="1" Grid.Column="3" Margin="0,0,0,4" HorizontalAlignment="Left" Width="200" IsTabStop="False" 
+                                  SelectedIndex="{Binding ShowIndex}"
+                                  ToolTip="JnF's 'Show Item' column. Leave on Default unless you need to override it.">
+                            <ComboBoxItem Content="Default (no override)"/>
+                            <ComboBoxItem Content="Show"/>
+                            <ComboBoxItem Content="Hide"/>
+                        </ComboBox>
+
+                        <TextBlock Grid.Row="2" Grid.Column="0" Text="Complexity" VerticalAlignment="Top" Margin="0,3,8,4"/>
+                        <StackPanel Grid.Row="2" Grid.Column="1" Orientation="Horizontal" VerticalAlignment="Top" Margin="0,0,12,4">
+                            <TextBox x:Name="ComplexityBox" Width="50" Text="{Binding Complexity, UpdateSourceTrigger=PropertyChanged}"
+                                     GotKeyboardFocus="SelectAllOnFocus" PreviewMouseLeftButtonDown="SelectAllOnClick"/>
+                            <TextBlock Text="Size" VerticalAlignment="Center" Margin="16,0,8,0"/>
+                            <TextBox x:Name="SizeBox" Width="50" Text="{Binding Size, UpdateSourceTrigger=PropertyChanged}"
+                                     GotKeyboardFocus="SelectAllOnFocus" PreviewMouseLeftButtonDown="SelectAllOnClick"/>
+                            <TextBlock Text="Tab" VerticalAlignment="Center" Margin="16,0,8,0"/>
+                            <Border x:Name="TabHost" Width="170"/>
+                        </StackPanel>
+
+                        <TextBlock Grid.Row="2" Grid.Column="2" Text="Skills" VerticalAlignment="Top" Margin="0,3,8,4"/>
+                        <DockPanel Grid.Row="2" Grid.Column="3" Margin="0,0,0,4">
+                            <StackPanel DockPanel.Dock="Right" Margin="4,0,0,0">
+                                <Button Content="Add" Click="AddSkill_Click" Padding="8,1" Margin="0,0,0,2"
+                                        ToolTip="Add a skill that can craft this schematic (its profession is ticked for you)"/>
+                                <Button Content="Remove" Click="DeleteSkill_Click" Padding="8,1"/>
+                            </StackPanel>
+                            <DataGrid x:Name="SkillGrid" Height="78" AutoGenerateColumns="False" CanUserAddRows="False"
+                                      CanUserDeleteRows="False" CanUserSortColumns="False" CanUserReorderColumns="False"
+                                      SelectionMode="Single" GridLinesVisibility="Horizontal" HeadersVisibility="None"
+                                      ItemsSource="{Binding Skills}"
+                                      ToolTip="The skills that can craft this schematic. Type to search; each skill's profession must be ticked below."/>
+                        </DockPanel>
+                    </Grid>
+
+                    <GroupBox Grid.Row="1" Header="Professions that can make it" Margin="0,2,0,6">
+                        <StackPanel>
+                            <ItemsControl ItemsSource="{Binding Professions}" Margin="4">
+                                <ItemsControl.ItemsPanel>
+                                    <ItemsPanelTemplate><WrapPanel/></ItemsPanelTemplate>
+                                </ItemsControl.ItemsPanel>
+                                <ItemsControl.ItemTemplate>
+                                    <DataTemplate>
+                                        <CheckBox Content="{Binding Name}" IsChecked="{Binding IsSelected}" Margin="0,0,16,2"/>
+                                    </DataTemplate>
+                                </ItemsControl.ItemTemplate>
+                            </ItemsControl>
+                            <TextBlock Text="{Binding UnknownProfessions}" Foreground="Firebrick" Margin="4,0,4,2"/>
+                        </StackPanel>
+                    </GroupBox>
+
+                    <TabControl x:Name="DetailTabs" Grid.Row="2">
+                        <TabItem x:Name="ResourcesTab" Header="Resources">
+                            <DockPanel>
+                                <StackPanel DockPanel.Dock="Top" Orientation="Horizontal" Margin="4">
+                                    <Button Content="Add" Click="AddResource_Click" Padding="8,2" Margin="0,0,4,0"/>
+                                    <Button Content="Delete" Click="DeleteResource_Click" Padding="8,2" Margin="0,0,4,0"/>
+                                    <Button Content="Move Up" Click="ResourceUp_Click" Padding="8,2" Margin="0,0,4,0"/>
+                                    <Button Content="Move Down" Click="ResourceDown_Click" Padding="8,2"/>
+                                    <TextBlock Foreground="Gray" Margin="12,0,0,0" VerticalAlignment="Center"
+                                               Text="Choosing a group such as 'Metal (any)' means any resource below it."/>
+                                </StackPanel>
+                                <DataGrid x:Name="ResourceGrid" AutoGenerateColumns="False" CanUserAddRows="False"
+                                          CanUserDeleteRows="False" CanUserSortColumns="False" CanUserReorderColumns="False"
+                                          SelectionMode="Single" GridLinesVisibility="Horizontal" HeadersVisibility="Column"
+                                          ItemsSource="{Binding Resources}">
+                                    <DataGrid.Columns>
+                                        <DataGridTextColumn Header="Amount" Width="80"
+                                                            Binding="{Binding Amount, UpdateSourceTrigger=PropertyChanged}"/>
+                                    </DataGrid.Columns>
+                                </DataGrid>
+                            </DockPanel>
+                        </TabItem>
+
+                        <TabItem Header="Components">
+                            <DockPanel>
+                                <StackPanel DockPanel.Dock="Top" Orientation="Horizontal" Margin="4">
+                                    <Button Content="Add" Click="AddComponent_Click" Padding="8,2" Margin="0,0,4,0"/>
+                                    <Button Content="Delete" Click="DeleteComponent_Click" Padding="8,2" Margin="0,0,4,0"/>
+                                    <Button Content="Move Up" Click="ComponentUp_Click" Padding="8,2" Margin="0,0,4,0"/>
+                                    <Button Content="Move Down" Click="ComponentDown_Click" Padding="8,2"/>
+                                    <TextBlock Foreground="Gray" Margin="12,0,0,0" VerticalAlignment="Center"
+                                               Text="Identical needs a quantity of 2 or more. Optional means the item can be made without it."/>
+                                </StackPanel>
+                                <DataGrid x:Name="ComponentGrid" AutoGenerateColumns="False" CanUserAddRows="False"
+                                          CanUserDeleteRows="False" CanUserSortColumns="False" CanUserReorderColumns="False"
+                                          SelectionMode="Single" GridLinesVisibility="Horizontal" HeadersVisibility="Column"
+                                          ItemsSource="{Binding Components}">
+                                    <DataGrid.Columns>
+                                        <DataGridTextColumn Header="Qty" Width="60"
+                                                            Binding="{Binding Quantity, UpdateSourceTrigger=PropertyChanged}"/>
+                                        <DataGridCheckBoxColumn Header="Identical" Width="70"
+                                                                Binding="{Binding Identical, UpdateSourceTrigger=PropertyChanged}"/>
+                                        <DataGridCheckBoxColumn Header="Optional" Width="70"
+                                                                Binding="{Binding Optional, UpdateSourceTrigger=PropertyChanged}"/>
+                                    </DataGrid.Columns>
+                                </DataGrid>
+                            </DockPanel>
+                        </TabItem>
+
+                        <TabItem>
+                            <TabItem.Style>
+                                <Style TargetType="TabItem">
+                                    <Setter Property="Header" Value="Experimentation"/>
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding IgnoreExperimentation}" Value="True">
+                                            <Setter Property="Header" Value="Experimentation (ignored)"/>
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </TabItem.Style>
+                            <DockPanel>
+                            <CheckBox DockPanel.Dock="Top" Margin="6,6,6,2" IsChecked="{Binding IgnoreExperimentation}"
+                                      Content="Ignore experimentation in builds (the game never uses these values, e.g. Experimental Quality on most furniture)"
+                                      ToolTip="Builds skip this schematic's experimentation even when the build itself uses experimentation. The experimentals below are kept."/>
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="*"/>
+                                    <RowDefinition Height="5"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="*"/>
+                                </Grid.RowDefinitions>
+
+                                <StackPanel Grid.Row="0" Orientation="Horizontal" Margin="4">
+                                    <TextBlock Text="Experimentals" FontWeight="Bold" VerticalAlignment="Center" Margin="0,0,8,0"/>
+                                    <Button Content="Add" Click="AddExperiment_Click" Padding="8,2" Margin="0,0,4,0"/>
+                                    <Button Content="Delete" Click="DeleteExperiment_Click" Padding="8,2" Margin="0,0,4,0"/>
+                                    <Button Content="Move Up" Click="ExperimentUp_Click" Padding="8,2" Margin="0,0,4,0"/>
+                                    <Button Content="Move Down" Click="ExperimentDown_Click" Padding="8,2"/>
+                                    <TextBlock Foreground="Gray" Margin="12,0,0,0" VerticalAlignment="Center"
+                                               Text="What you spend experimentation points on (e.g. Charges). Select one to edit the modifiers it raises."/>
+                                </StackPanel>
+                                <DataGrid x:Name="ExperimentGrid" Grid.Row="1" AutoGenerateColumns="False" CanUserAddRows="False"
+                                          CanUserDeleteRows="False" CanUserSortColumns="False" CanUserReorderColumns="False"
+                                          SelectionMode="Single" GridLinesVisibility="Horizontal" HeadersVisibility="Column"
+                                          ItemsSource="{Binding Experiments}">
+                                    <DataGrid.Columns>
+                                        <DataGridTextColumn Header="Experimental" Width="240"
+                                                            Binding="{Binding Name, UpdateSourceTrigger=PropertyChanged}"/>
+                                        <DataGridTextColumn Header="Modifiers" Width="*" IsReadOnly="True"
+                                                            Binding="{Binding Summary, Mode=OneWay}">
+                                            <DataGridTextColumn.ElementStyle>
+                                                <Style TargetType="TextBlock">
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding AllOk}" Value="False">
+                                                            <Setter Property="Foreground" Value="Red"/>
+                                                            <Setter Property="ToolTip" Value="A modifier's percentages don't total 100, or there are no modifiers."/>
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </DataGridTextColumn.ElementStyle>
+                                        </DataGridTextColumn>
+                                    </DataGrid.Columns>
+                                </DataGrid>
+
+                                <GridSplitter Grid.Row="2" Height="5" HorizontalAlignment="Stretch"/>
+
+                                <StackPanel Grid.Row="3" Orientation="Horizontal" Margin="4">
+                                    <TextBlock FontWeight="Bold" VerticalAlignment="Center" Margin="0,0,8,0"
+                                               Text="{Binding SelectedItem.Name, ElementName=ExperimentGrid, StringFormat='Modifiers of {0}', FallbackValue='Modifiers', TargetNullValue='Modifiers'}"/>
+                                    <Button Content="Add" Click="AddModifier_Click" Padding="8,2" Margin="0,0,4,0"/>
+                                    <Button Content="Delete" Click="DeleteModifier_Click" Padding="8,2" Margin="0,0,4,0"/>
+                                    <Button Content="Move Up" Click="ModifierUp_Click" Padding="8,2" Margin="0,0,4,0"/>
+                                    <Button Content="Move Down" Click="ModifierDown_Click" Padding="8,2"/>
+                                    <TextBlock Foreground="Gray" Margin="12,0,0,0" VerticalAlignment="Center"
+                                               Text="Whole-number percentages per stat; each modifier must total 100. Leave unused stats blank."/>
+                                </StackPanel>
+                                <DataGrid x:Name="ModifierGrid" Grid.Row="4" AutoGenerateColumns="False" CanUserAddRows="False"
+                                          CanUserDeleteRows="False" CanUserSortColumns="False" CanUserReorderColumns="False"
+                                          SelectionMode="Single" GridLinesVisibility="All" HeadersVisibility="Column"
+                                          ItemsSource="{Binding SelectedItem.Modifiers, ElementName=ExperimentGrid}">
+                                    <DataGrid.Columns>
+                                        <DataGridTextColumn Header="Modifier" Width="200"
+                                                            Binding="{Binding Name, UpdateSourceTrigger=PropertyChanged}"/>
+                                    </DataGrid.Columns>
+                                </DataGrid>
+                            </Grid>
+                            </DockPanel>
+                        </TabItem>
+                    </TabControl>
+                </Grid>
+            </Grid>
+            <GridSplitter Grid.Row="1" Height="5" HorizontalAlignment="Stretch"/>
+            <ListBox x:Name="IssueList" Grid.Row="2" DisplayMemberPath="Text" FontFamily="Consolas"
+                     MouseDoubleClick="IssueList_DoubleClick" ToolTip="Double-click an issue to jump to its schematic"/>
+        </Grid>
+    </DockPanel>
+</Window>

@@ -1,0 +1,79 @@
+<Window x:Class="SwgCraft.Desktop.ProfessionEditorWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Professions" Height="620" Width="1100" WindowStartupLocation="CenterOwner">
+    <DockPanel>
+        <ToolBar DockPanel.Dock="Top">
+            <Button Content="Add" Click="Add_Click" Padding="8,2"/>
+            <Button Content="Delete" Click="Delete_Click" Padding="8,2"/>
+            <Separator/>
+            <Button Content="Move Up" Click="MoveUp_Click" Padding="8,2"/>
+            <Button Content="Move Down" Click="MoveDown_Click" Padding="8,2"/>
+            <Separator/>
+            <Button Content="Validate" Click="Validate_Click" Padding="8,2"/>
+            <Button Content="Save" Click="Save_Click" Padding="8,2" FontWeight="Bold"/>
+            <Button Content="Reload" Click="Reload_Click" Padding="8,2"/>
+        </ToolBar>
+        <TextBlock DockPanel.Dock="Top" TextWrapping="Wrap" Margin="8,6,8,6" Foreground="Gray"
+                   Text="Name, ID and skills are saved in professions.json (shared reference data; IDs are what other data refers to, so don't change them once used). A skill's ID starts with its profession's ID, e.g. artisan_novice_artisan. 'Include in builds' is your own setting, saved in settings.json: it decides which professions' schematics are offered by default."/>
+        <StatusBar DockPanel.Dock="Bottom">
+            <StatusBarItem><TextBlock x:Name="StatusText"/></StatusBarItem>
+        </StatusBar>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="5"/>
+                <RowDefinition Height="120"/>
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="5*"/>
+                    <ColumnDefinition Width="5"/>
+                    <ColumnDefinition Width="6*"/>
+                </Grid.ColumnDefinitions>
+
+                <DataGrid x:Name="ProfGrid" Grid.Column="0" AutoGenerateColumns="False" CanUserAddRows="False"
+                          CanUserDeleteRows="False" CanUserSortColumns="False" CanUserReorderColumns="False"
+                          SelectionMode="Single" GridLinesVisibility="Horizontal" HeadersVisibility="Column">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Name" Width="*"
+                                            Binding="{Binding Name, UpdateSourceTrigger=PropertyChanged}"/>
+                        <DataGridTextColumn Header="ID" Width="150"
+                                            Binding="{Binding Id, UpdateSourceTrigger=PropertyChanged}"/>
+                        <DataGridTextColumn Header="Skills" Width="50" IsReadOnly="True"
+                                            Binding="{Binding SkillCount, Mode=OneWay}"/>
+                        <DataGridCheckBoxColumn Header="Include in builds" Width="110"
+                                                Binding="{Binding Enabled, UpdateSourceTrigger=PropertyChanged}"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+
+                <GridSplitter Grid.Column="1" Width="5" HorizontalAlignment="Stretch"/>
+
+                <DockPanel Grid.Column="2">
+                    <StackPanel DockPanel.Dock="Top" Orientation="Horizontal" Margin="4">
+                        <TextBlock FontWeight="Bold" VerticalAlignment="Center" Margin="0,0,8,0"
+                                   Text="{Binding SelectedItem.Name, ElementName=ProfGrid, StringFormat='Skills of {0}', FallbackValue='Skills', TargetNullValue='Skills'}"/>
+                        <Button Content="Add" Click="AddSkill_Click" Padding="8,2" Margin="0,0,4,0"/>
+                        <Button Content="Delete" Click="DeleteSkill_Click" Padding="8,2" Margin="0,0,4,0"/>
+                        <Button Content="Move Up" Click="SkillUp_Click" Padding="8,2" Margin="0,0,4,0"/>
+                        <Button Content="Move Down" Click="SkillDown_Click" Padding="8,2"/>
+                    </StackPanel>
+                    <DataGrid x:Name="SkillGrid" AutoGenerateColumns="False" CanUserAddRows="False"
+                              CanUserDeleteRows="False" CanUserSortColumns="False" CanUserReorderColumns="False"
+                              SelectionMode="Single" GridLinesVisibility="Horizontal" HeadersVisibility="Column"
+                              ItemsSource="{Binding SelectedItem.Skills, ElementName=ProfGrid}">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Skill" Width="*"
+                                                Binding="{Binding Name, UpdateSourceTrigger=PropertyChanged}"/>
+                            <DataGridTextColumn Header="ID" Width="*"
+                                                Binding="{Binding Id, UpdateSourceTrigger=PropertyChanged}"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </DockPanel>
+            </Grid>
+            <GridSplitter Grid.Row="1" Height="5" HorizontalAlignment="Stretch"/>
+            <ListBox x:Name="IssueList" Grid.Row="2" DisplayMemberPath="Text" FontFamily="Consolas"
+                     MouseDoubleClick="IssueList_DoubleClick" ToolTip="Double-click an issue to jump to its row"/>
+        </Grid>
+    </DockPanel>
+</Window>

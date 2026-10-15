@@ -1,0 +1,3275 @@
+{
+  "schemaVersion": 1,
+  "classes": [
+    {
+      "id": "armor_layer",
+      "name": "Armor Layer",
+      "members": [
+        {
+          "kind": "Schematic",
+          "id": "armor_component_armor_layer_acid"
+        },
+        {
+          "kind": "Schematic",
+          "id": "armor_component_armor_layer_blast"
+        },
+        {
+          "kind": "Schematic",
+          "id": "armor_component_armor_layer_cold"
+        },
+        {
+          "kind": "Schematic",
+          "id": "armor_component_armor_layer_energy"
+        },
+        {
+          "kind": "Schematic",
+          "id": "armor_component_armor_layer_electrical"
+        },
+        {
+          "kind": "Schematic",
+          "id": "armor_component_armor_layer_heat"
+        },
+        {
+          "kind": "Schematic",
+          "id": "armor_component_armor_layer_stun"
+        },
+        {
+          "kind": "Schematic",
+          "id": "armor_component_armor_layer_kinetic"
+        },
+        {
+          "kind": "LootItem",
+          "id": "armor_layer_nightsister"
+        },
+        {
+          "kind": "Schematic",
+          "id": "armor_component_armor_layer_ris"
+        }
+      ]
+    },
+    {
+      "id": "armor_segment_enhancement",
+      "name": "Armor Segment Enhancement",
+      "members": [
+        {
+          "kind": "LootItem",
+          "id": "armor_segment_enhancement_brackaset"
+        },
+        {
+          "kind": "LootItem",
+          "id": "armor_segment_enhancement_fambaa"
+        },
+        {
+          "kind": "LootItem",
+          "id": "armor_segment_enhancement_janta"
+        },
+        {
+          "kind": "LootItem",
+          "id": "armor_segment_enhancement_kimogila"
+        },
+        {
+          "kind": "LootItem",
+          "id": "armor_segment_enhancement_krayt"
+        },
+        {
+          "kind": "LootItem",
+          "id": "armor_segment_enhancement_nightsister"
+        },
+        {
+          "kind": "LootItem",
+          "id": "armor_segment_enhancement_rancor"
+        },
+        {
+          "kind": "LootItem",
+          "id": "armor_segment_enhancement_sharnaff"
+        },
+        {
+          "kind": "LootItem",
+          "id": "armor_segment_enhancement_voritor_lizard"
+        }
+      ]
+    },
+    {
+      "id": "armorweave_segment_class",
+      "name": "Armorweave Segment Class",
+      "members": [
+        {
+          "kind": "Schematic",
+          "id": "armor_segment_zam"
+        },
+        {
+          "kind": "Schematic",
+          "id": "armor_segment_zam_advanced"
+        }
+      ]
+    },
+    {
+      "id": "biological_component",
+      "name": "Biological Component",
+      "members": [
+        {
+          "kind": "Schematic",
+          "id": "bio_component_clothing_casual_medic_2"
+        },
+        {
+          "kind": "Schematic",
+          "id": "bio_component_clothing_casual_taming_2"
+        },
+        {
+          "kind": "Schematic",
+          "id": "bio_engineer_bio_component_bio_component_clothing_field_bleeding_2"
+        },
+        {
+          "kind": "Schematic",
+          "id": "bio_engineer_bio_component_bio_component_clothing_field_intimidate"
+        },
+        {
+          "kind": "Schematic",
+          "id": "bio_engineer_bio_component_bio_component_clothing_field_bleeding"
+        },
+        {
+          "kind": "Schematic",
+          "id": "bio_engineer_bio_component_bio_component_clothing_casual_entertainer_2"
+        },
+        {
+          "kind": "Schematic",
+          "id": "bio_engineer_bio_component_bio_component_clothing_field_intimidate_2"
+        },
+        {
+          "kind": "Schematic",
+          "id": "bio_engineer_bio_component_bio_component_clothing_field_cover_2"
+        },
+        {
+          "kind": "Schematic",
+          "id": "bio_engineer_bio_component_bio_component_clothing_casual_entertainer"
+        },
+        {
+          "kind": "Schematic",
+          "id": "bio_engineer_bio_component_bio_component_clothing_casual_medic"
+        },
+        {
+          "kind": "Schematic",
+          "id": "bio_engineer_bio_component_bio_component_clothing_casual_taming"
+        },
+        {
+          "kind": "Schematic",
+          "id": "bio_engineer_bio_component_bio_component_clothing_field_camo"
+        },
+        {
+          "kind": "Schematic",
+          "id": "bio_engineer_bio_component_bio_component_clothing_field_camo_2"
+        },
+        {
+          "kind": "Schematic",
+          "id": "bio_engineer_bio_component_bio_component_clothing_field_defense_2"
+        },
+        {
+          "kind": "Schematic",
+          "id": "bio_engineer_bio_component_bio_component_clothing_field_defense"
+        },
+        {
+          "kind": "Schematic",
+          "id": "bio_engineer_bio_component_bio_component_clothing_field_cover"
+        }
+      ]
+    },
+    {
+      "id": "biological_effect_controller_class",
+      "name": "Biological Effect Controller Class",
+      "members": [
+        {
+          "kind": "Schematic",
+          "id": "chemistry_component_biologic_effect_controller"
+        },
+        {
+          "kind": "Schematic",
+          "id": "chemistry_component_biologic_effect_controller_advanced"
+        },
+        {
+          "kind": "LootItem",
+          "id": "janta_blood"
+        }
+      ]
+    },
+    {
+      "id": "blade_vibro_unit_class",
+      "name": "Blade Vibro Unit Class",
+      "members": [
+        {
+          "kind": "Schematic",
+          "id": "weapon_component_blade_vibro_unit"
+        },
+        {
+          "kind": "Schematic",
+          "id": "weapon_component_blade_vibro_unit_advanced"
+        },
+        {
+          "kind": "LootItem",
+          "id": "vibro_unit_quest"
+        }
+      ]
+    },
+    {
+      "id": "blaster_power_handler_enhancement",
+      "name": "Blaster Power Handler Enhancement",
+      "members": [
+        {
+          "kind": "LootItem",
+          "id": "blaster_power_handler_enhancement_krayt"
+        },
+        {
+          "kind": "LootItem",
+          "id": "blaster_power_handler_enhancement_max_damage"
+        }
+      ]
+    },
+    {
+      "id": "blaster_power_handler_class",
+      "name": "Blaster Power-handler Class",
+      "members": [
+        {
+          "kind": "Schematic",
+          "id": "weapon_component_blaster_power_handler"
+        },
+        {
+          "kind": "Schematic",
+          "id": "weapon_component_blaster_power_handler_advanced"
+        },
+        {
+          "kind": "LootItem",
+          "id": "blaster_power_handler_quest"
+        }
+      ]
+    },
+    {
+      "id": "blaster_pistol_barrel_class",
+      "name": "Blaster-pistol Barrel Class",
+      "members": [
+        {
+          "kind": "Schematic",
+          "id": "weapon_component_blaster_pistol_barrel"
+        },
+        {
+          "kind": "Schematic",
+          "id": "weapon_component_blaster_pistol_barrel_advanced"
+        },
+        {
+          "kind": "LootItem",
+          "id": "blaster_pistol_barrel_quest"
+        }
+      ]
+    },
+    {
+      "id": "blaster_rifle_barrel_class",
+      "name": "Blaster-rifle Barrel Class",
+      "members": [
+        {
+          "kind": "Schematic",
+          "id": "weapon_component_blaster_rifle_barrel"
+        },
+        {
+          "kind": "Schematic",
+          "id": "weapon_component_blaster_rifle_barrel_advanced"
+        }
+      ]
+    },
+    {
+      "id": "bone_armor_segment_class",
+      "name": "Bone Armor Segment Class",
+      "members": [
+        {
+          "kind": "Schematic",
+          "id": "armor_segment_bone"
+        },
+        {
+          "kind": "Schematic",
+          "id": "armor_segment_bone_advanced"
+        },
+        {
+          "kind": "Schematic",
+          "id": "armor_armor_segment_bone_acklay"
+        },
+        {
+          "kind": "LootItem",
+          "id": "armor_segment_bone_kimogila"
+        },
+        {
+          "kind": "LootItem",
+          "id": "armor_segment_bone_voritor_lizard"
+        }
+      ]
+    },
+    {
+      "id": "capacitor_discharge_unit_class",
+      "name": "Capacitor Discharge Unit Class",
+      "members": [
+        {
+          "kind": "Schematic",
+          "id": "droid_component_capacitor_low_discharge"
+        },
+        {
+          "kind": "Schematic",
+          "id": "droid_component_capacitor_high_discharge"
+        }
+      ]
+    },
+    {
+      "id": "chemical_dispersion_mechanism_class",
+      "name": "Chemical Dispersion Mechanism Class",
+      "members": [
+        {
+          "kind": "Schematic",
+          "id": "weapon_component_chemical_dispersion_mechanism"
+        },
+        {
+          "kind": "Schematic",
+          "id": "weapon_component_chemical_dispersion_mechanism_advanced"
+        },
+        {
+          "kind": "LootItem",
+          "id": "dispersal_mechanism_quest"
+        }
+      ]
+    },
+    {
+      "id": "chemical_release_duration_mechanism_class",
+      "name": "Chemical Release Duration Mechanism Class",
+      "members": [
+        {
+          "kind": "Schematic",
+          "id": "chemistry_component_release_mechanism_duration"
+        },
+        {
+          "kind": "Schematic",
+          "id": "chemistry_component_release_mechanism_duration_advanced"
+        }
+      ]
+    },
+    {
+      "id": "chitin_armor_segment_class",
+      "name": "Chitin Armor Segment Class",
+      "members": [
+        {
+          "kind": "Schematic",
+          "id": "armor_segment_chitin"
+        },
+        {
+          "kind": "Schematic",
+          "id": "armor_segment_chitin_advanced"
+        },
+        {
+          "kind": "LootItem",
+          "id": "armor_segment_chitin_brackaset"
+        },
+        {
+          "kind": "LootItem",
+          "id": "armor_segment_chitin_kliknick"
+        },
+        {
+          "kind": "LootItem",
+          "id": "armor_segment_chitin_sharnaff"
+        }
+      ]
+    },
+    {
+      "id": "combat_capable_service_module",
+      "name": "Combat Capable Service Module",
+      "members": [
+        {
+          "kind": "Schematic",
+          "id": "droid_component_auto_repair_module"
+        },
+        {
+          "kind": "Schematic",
+          "id": "droid_component_crafting_module_clothing"
+        },
+        {
+          "kind": "Schematic",
+          "id": "droid_component_harvest_module"
+        },
+        {
+          "kind": "Schematic",
+          "id": "droid_component_detonation_module"
+        },
+        {
+          "kind": "Schematic",
+          "id": "droid_component_combat_module"
+        },
+        {
+          "kind": "Schematic",
+          "id": "droid_component_droid_repair_module"
+        },
+        {
+          "kind": "Schematic",
+          "id": "droid_component_performer_effects_aa"
+        },
+        {
+          "kind": "Schematic",
+          "id": "droid_component_performer_effects_c"
+        },
+        {
+          "kind": "Schematic",
+          "id": "droid_component_performer_effects_e"
+        },
+        {
+          "kind": "Schematic",
+          "id": "droid_component_performer_effects_b"
+        },
+        {
+          "kind": "Schematic",
+          "id": "droid_component_performer_effects_a"
+        },
+        {
+          "kind": "Schematic",
+          "id": "droid_component_performer_effects_d"
+        },
+        {
+          "kind": "Schematic",
+          "id": "droid_component_crafting_module_food"
+        },
+        {
+          "kind": "Schematic",
+          "id": "droid_component_data_storage_module_1"
+        },
+        {
+          "kind": "Schematic",
+          "id": "droid_component_item_storage_module_1"
+        },
+        {
+          "kind": "Schematic",
+          "id": "droid_component_medic_module_1"
+        },
+        {
+          "kind": "Schematic",
+          "id": "droid_component_struct_maint_module_1"
+        },
+        {
+          "kind": "Schematic",
+          "id": "droid_component_data_storage_module_2"
+        },
+        {
+          "kind": "Schematic",
+          "id": "droid_component_item_storage_module_2"
+        },
+        {
+          "kind": "Schematic",
+          "id": "droid_component_medic_module_2"
+        },
+        {
+          "kind": "Schematic",
+          "id": "droid_component_struct_maint_module_2"
+        },
+        {
+          "kind": "Schematic",
+          "id": "droid_component_data_storage_module_3"
+        },
+        {
+          "kind": "Schematic",
+          "id": "droid_component_item_storage_module_3"
+        },
+        {
+          "kind": "Schematic",
+          "id": "droid_component_medic_module_3"
+        },
+        {
+          "kind": "Schematic",
+          "id": "droid_component_struct_maint_module_3"
+        },
+        {
+          "kind": "Schematic",
+          "id": "droid_component_data_storage_module_4"
+        },
+        {
+          "kind": "Schematic",
+          "id": "droid_component_item_storage_module_4"
+        },
+        {
+          "kind": "Schematic",
+          "id": "droid_component_medic_module_4"
+        },
+        {
+          "kind": "Schematic",
+          "id": "droid_component_data_storage_module_5"
+        },
+        {
+          "kind": "Schematic",
+          "id": "droid_component_item_storage_module_5"
+        },
+        {
+          "kind": "Schematic",
+          "id": "droid_component_medic_module_5"
+        },
+        {
+          "kind": "Schematic",
+          "id": "droid_component_data_storage_module_6"
+        },
+        {
+          "kind": "Schematic",
+          "id": "droid_component_item_storage_module_6"
+        },
+        {
+          "kind": "Schematic",
+          "id": "droid_component_medic_module_6"
+        },
+        {
+          "kind": "Schematic",
+          "id": "droid_component_merchant_barker"
+        },
+        {
+          "kind": "Schematic",
+          "id": "droid_component_playback_module"
+        },
+        {
+          "kind": "Schematic",
+          "id": "droid_component_trap_module"
+        },
+        {
+          "kind": "Schematic",
+          "id": "droid_component_stimpack_dispensor"
+        },
+        {
+          "kind": "Schematic",
+          "id": "droid_component_crafting_module_structure"
+        },
+        {
+          "kind": "Schematic",
+          "id": "droid_component_crafting_module_weapon"
+        }
+      ]
+    },
+    {
+      "id": "combat_capable_socket_cluster_class",
+      "name": "Combat-Capable Socket Cluster Class",
+      "members": [
+        {
+          "kind": "Schematic",
+          "id": "droid_component_combat_socket_bank"
+        },
+        {
+          "kind": "Schematic",
+          "id": "droid_component_module_socket_bank"
+        }
+      ]
+    },
+    {
+      "id": "composite_armor_segment_class",
+      "name": "Composite Armor Segment Class",
+      "members": [
+        {
+          "kind": "Schematic",
+          "id": "armor_segment_composite"
+        },
+        {
+          "kind": "Schematic",
+          "id": "armor_segment_composite_advanced"
+        },
+        {
+          "kind": "LootItem",
+          "id": "armor_segment_composite_krayt"
+        }
+      ]
+    },
+    {
+      "id": "diagnostic_circuit_class",
+      "name": "Diagnostic Circuit Class",
+      "members": [
+        {
+          "kind": "Schematic",
+          "id": "droid_component_diagnostic_circuit"
+        },
+        {
+          "kind": "Schematic",
+          "id": "droid_component_diagnostic_circuit_advanced"
+        }
+      ]
+    },
+    {
+      "id": "dispersal_mechanism_classs",
+      "name": "Dispersal Mechanism Classs",
+      "members": [
+        {
+          "kind": "Schematic",
+          "id": "chemistry_component_dispersal_mechanism"
+        },
+        {
+          "kind": "Schematic",
+          "id": "chemistry_component_dispersal_mechanism_advanced"
+        },
+        {
+          "kind": "LootItem",
+          "id": "rancor_bile"
+        }
+      ]
+    },
+    {
+      "id": "dna_sample",
+      "name": "DNA Sample",
+      "members": [
+        {
+          "kind": "LootItem",
+          "id": "very_low_quality_dna_sample"
+        },
+        {
+          "kind": "LootItem",
+          "id": "low_quality_dna_sample"
+        },
+        {
+          "kind": "LootItem",
+          "id": "below_average_quality_dna_sample"
+        },
+        {
+          "kind": "LootItem",
+          "id": "average_quality_dna_sample"
+        },
+        {
+          "kind": "LootItem",
+          "id": "above_average_quality_dna_sample"
+        },
+        {
+          "kind": "LootItem",
+          "id": "high_quality_dna_sample"
+        },
+        {
+          "kind": "LootItem",
+          "id": "very_high_quality_dna_sample"
+        }
+      ]
+    },
+    {
+      "id": "glass",
+      "name": "Drink Container",
+      "members": [
+        {
+          "kind": "Schematic",
+          "id": "food_component_container_small_glass"
+        },
+        {
+          "kind": "Schematic",
+          "id": "food_component_container_large_glass"
+        },
+        {
+          "kind": "Schematic",
+          "id": "food_component_container_cask"
+        },
+        {
+          "kind": "Schematic",
+          "id": "food_component_container_barrel"
+        }
+      ]
+    },
+    {
+      "id": "droid_defensive_module",
+      "name": "Droid Defensive Module Harness",
+      "members": [
+        {
+          "kind": "Schematic",
+          "id": "droid_component_armor_module_1"
+        },
+        {
+          "kind": "Schematic",
+          "id": "droid_component_armor_module_2"
+        },
+        {
+          "kind": "Schematic",
+          "id": "droid_component_armor_module_3"
+        },
+        {
+          "kind": "Schematic",
+          "id": "droid_component_armor_module_4"
+        },
+        {
+          "kind": "Schematic",
+          "id": "droid_component_armor_module_5"
+        },
+        {
+          "kind": "Schematic",
+          "id": "droid_component_armor_module_6"
+        }
+      ]
+    },
+    {
+      "id": "droid_personality_chip",
+      "name": "Droid Personality Chip",
+      "members": [
+        {
+          "kind": "Schematic",
+          "id": "droid_component_personality_module_geek"
+        },
+        {
+          "kind": "Schematic",
+          "id": "droid_component_personality_module_prissy"
+        },
+        {
+          "kind": "Schematic",
+          "id": "droid_component_personality_module_sarcastic"
+        },
+        {
+          "kind": "Schematic",
+          "id": "droid_component_personality_module_slang"
+        },
+        {
+          "kind": "Schematic",
+          "id": "droid_component_personality_module_stupid"
+        },
+        {
+          "kind": "Schematic",
+          "id": "droid_component_personality_module_worshipful"
+        }
+      ]
+    },
+    {
+      "id": "droid_service_module",
+      "name": "Droid Service Module Harness",
+      "members": [
+        {
+          "kind": "Schematic",
+          "id": "droid_component_auto_repair_module"
+        },
+        {
+          "kind": "Schematic",
+          "id": "droid_component_crafting_module_clothing"
+        },
+        {
+          "kind": "Schematic",
+          "id": "droid_component_harvest_module"
+        },
+        {
+          "kind": "Schematic",
+          "id": "droid_component_detonation_module"
+        },
+        {
+          "kind": "Schematic",
+          "id": "droid_component_droid_repair_module"
+        },
+        {
+          "kind": "Schematic",
+          "id": "droid_component_performer_effects_aa"
+        },
+        {
+          "kind": "Schematic",
+          "id": "droid_component_performer_effects_c"
+        },
+        {
+          "kind": "Schematic",
+          "id": "droid_component_performer_effects_e"
+        },
+        {
+          "kind": "Schematic",
+          "id": "droid_component_performer_effects_b"
+        },
+        {
+          "kind": "Schematic",
+          "id": "droid_component_performer_effects_a"
+        },
+        {
+          "kind": "Schematic",
+          "id": "droid_component_performer_effects_d"
+        },
+        {
+          "kind": "Schematic",
+          "id": "droid_component_crafting_module_food"
+        },
+        {
+          "kind": "Schematic",
+          "id": "droid_component_data_storage_module_1"
+        },
+        {
+          "kind": "Schematic",
+          "id": "droid_component_item_storage_module_1"
+        },
+        {
+          "kind": "Schematic",
+          "id": "droid_component_medic_module_1"
+        },
+        {
+          "kind": "Schematic",
+          "id": "droid_component_struct_maint_module_1"
+        },
+        {
+          "kind": "Schematic",
+          "id": "droid_component_data_storage_module_2"
+        },
+        {
+          "kind": "Schematic",
+          "id": "droid_component_item_storage_module_2"
+        },
+        {
+          "kind": "Schematic",
+          "id": "droid_component_medic_module_2"
+        },
+        {
+          "kind": "Schematic",
+          "id": "droid_component_struct_maint_module_2"
+        },
+        {
+          "kind": "Schematic",
+          "id": "droid_component_data_storage_module_3"
+        },
+        {
+          "kind": "Schematic",
+          "id": "droid_component_item_storage_module_3"
+        },
+        {
+          "kind": "Schematic",
+          "id": "droid_component_medic_module_3"
+        },
+        {
+          "kind": "Schematic",
+          "id": "droid_component_struct_maint_module_3"
+        },
+        {
+          "kind": "Schematic",
+          "id": "droid_component_data_storage_module_4"
+        },
+        {
+          "kind": "Schematic",
+          "id": "droid_component_item_storage_module_4"
+        },
+        {
+          "kind": "Schematic",
+          "id": "droid_component_medic_module_4"
+        },
+        {
+          "kind": "Schematic",
+          "id": "droid_component_data_storage_module_5"
+        },
+        {
+          "kind": "Schematic",
+          "id": "droid_component_item_storage_module_5"
+        },
+        {
+          "kind": "Schematic",
+          "id": "droid_component_medic_module_5"
+        },
+        {
+          "kind": "Schematic",
+          "id": "droid_component_data_storage_module_6"
+        },
+        {
+          "kind": "Schematic",
+          "id": "droid_component_item_storage_module_6"
+        },
+        {
+          "kind": "Schematic",
+          "id": "droid_component_medic_module_6"
+        },
+        {
+          "kind": "Schematic",
+          "id": "droid_component_merchant_barker"
+        },
+        {
+          "kind": "Schematic",
+          "id": "droid_component_playback_module"
+        },
+        {
+          "kind": "Schematic",
+          "id": "droid_component_trap_module"
+        },
+        {
+          "kind": "Schematic",
+          "id": "droid_component_stimpack_dispensor"
+        },
+        {
+          "kind": "Schematic",
+          "id": "droid_component_crafting_module_structure"
+        },
+        {
+          "kind": "Schematic",
+          "id": "droid_component_crafting_module_weapon"
+        }
+      ]
+    },
+    {
+      "id": "enhanced_destructive_pulse_channeling",
+      "name": "Enhanced Destructive Pulse Channeling",
+      "members": [
+        {
+          "kind": "LootItem",
+          "id": "enhanced_destructive_pulse_channeling"
+        }
+      ]
+    },
+    {
+      "id": "enhanced_effect_fragmentation_sleeve",
+      "name": "Enhanced Effect Fragmentation Sleeve",
+      "members": [
+        {
+          "kind": "LootItem",
+          "id": "enhanced_effect_fragmentation_sleeve"
+        }
+      ]
+    },
+    {
+      "id": "enhanced_explosive_charge_composition",
+      "name": "Enhanced Explosive Charge Composition",
+      "members": [
+        {
+          "kind": "LootItem",
+          "id": "enhanced_explosive_charge_composition"
+        },
+        {
+          "kind": "LootItem",
+          "id": "acklay_venom"
+        },
+        {
+          "kind": "LootItem",
+          "id": "kliknick_gland"
+        }
+      ]
+    },
+    {
+      "id": "enhanced_explosive_charge_shaping",
+      "name": "Enhanced Explosive Charge Shaping",
+      "members": [
+        {
+          "kind": "LootItem",
+          "id": "enhanced_explosive_charge_shaping"
+        }
+      ]
+    },
+    {
+      "id": "geonosian_power_cube",
+      "name": "Geonosian Power Cube",
+      "members": [
+        {
+          "kind": "LootItem",
+          "id": "geonosian_power_cube"
+        },
+        {
+          "kind": "LootItem",
+          "id": "geonosian_power_cube_red"
+        },
+        {
+          "kind": "LootItem",
+          "id": "geonosian_power_cube_yellow"
+        },
+        {
+          "kind": "LootItem",
+          "id": "geonosian_power_cube_green"
+        }
+      ]
+    },
+    {
+      "id": "heavy_bio_food_component",
+      "name": "Heavy Bio Food Component",
+      "members": [
+        {
+          "kind": "Schematic",
+          "id": "bio_engineer_bio_component_bio_component_food_heavy_flavor"
+        },
+        {
+          "kind": "Schematic",
+          "id": "bio_engineer_bio_component_bio_component_food_heavy_filling"
+        },
+        {
+          "kind": "Schematic",
+          "id": "bio_engineer_bio_component_bio_component_food_heavy_quantity"
+        },
+        {
+          "kind": "Schematic",
+          "id": "bio_engineer_bio_component_bio_component_food_heavy_nutrition"
+        }
+      ]
+    },
+    {
+      "id": "heavy_food_additive_class",
+      "name": "Heavy Food Additive Class",
+      "members": [
+        {
+          "kind": "Schematic",
+          "id": "food_additive_additive_light"
+        },
+        {
+          "kind": "Schematic",
+          "id": "food_additive_additive_medium"
+        },
+        {
+          "kind": "Schematic",
+          "id": "food_additive_additive_heavy"
+        }
+      ]
+    },
+    {
+      "id": "infection_amplifier_class",
+      "name": "Infection Amplifier Class",
+      "members": [
+        {
+          "kind": "Schematic",
+          "id": "chemistry_component_infection_amplifier"
+        },
+        {
+          "kind": "Schematic",
+          "id": "chemistry_component_infection_amplifier_advanced"
+        },
+        {
+          "kind": "LootItem",
+          "id": "spider_venom"
+        }
+      ]
+    },
+    {
+      "id": "kashyyykian_black_mountain_armor_segment_class",
+      "name": "Kashyyykian Black Mountain Armor Segment Class",
+      "members": [
+        {
+          "kind": "Schematic",
+          "id": "armor_segment_kashyyykian_black_mtn"
+        },
+        {
+          "kind": "Schematic",
+          "id": "armor_segment_kashyyykian_black_mtn_advanced"
+        }
+      ]
+    },
+    {
+      "id": "kashyyykian_ceremonial_armor_segment_class",
+      "name": "Kashyyykian Ceremonial Armor Segment Class",
+      "members": [
+        {
+          "kind": "Schematic",
+          "id": "armor_segment_kashyyykian_ceremonial"
+        },
+        {
+          "kind": "Schematic",
+          "id": "armor_segment_kashyyykian_ceremonial_advanced"
+        }
+      ]
+    },
+    {
+      "id": "kashyyykian_hunting_armor_segment_class",
+      "name": "Kashyyykian Hunting Armor Segment Class",
+      "members": [
+        {
+          "kind": "Schematic",
+          "id": "armor_segment_kashyyykian_hunting"
+        },
+        {
+          "kind": "Schematic",
+          "id": "armor_segment_kashyyykian_hunting_advanced"
+        }
+      ]
+    },
+    {
+      "id": "light_food_additive_class",
+      "name": "Light Food Additive Class",
+      "members": [
+        {
+          "kind": "Schematic",
+          "id": "food_additive_additive_light"
+        }
+      ]
+    },
+    {
+      "id": "light_food_bio_component",
+      "name": "Light Food Bio Component",
+      "members": [
+        {
+          "kind": "Schematic",
+          "id": "bio_engineer_bio_component_bio_component_food_light_flavor"
+        },
+        {
+          "kind": "Schematic",
+          "id": "bio_engineer_bio_component_bio_component_food_light_filling"
+        },
+        {
+          "kind": "Schematic",
+          "id": "bio_engineer_bio_component_bio_component_food_light_quantity"
+        },
+        {
+          "kind": "Schematic",
+          "id": "bio_engineer_bio_component_bio_component_food_light_nutrition"
+        }
+      ]
+    },
+    {
+      "id": "liquid_suspension_class",
+      "name": "Liquid Suspension Class",
+      "members": [
+        {
+          "kind": "Schematic",
+          "id": "chemistry_component_liquid_delivery_suspension"
+        },
+        {
+          "kind": "Schematic",
+          "id": "chemistry_component_liquid_delivery_suspension_advanced"
+        }
+      ]
+    },
+    {
+      "id": "live_creature_sample",
+      "name": "Live Creature Sample",
+      "members": [
+        {
+          "kind": "LootItem",
+          "id": "sample_of_live_bats"
+        },
+        {
+          "kind": "LootItem",
+          "id": "sample_of_live_bees"
+        },
+        {
+          "kind": "LootItem",
+          "id": "sample_of_live_butterflies"
+        },
+        {
+          "kind": "LootItem",
+          "id": "sample_of_live_flies"
+        },
+        {
+          "kind": "LootItem",
+          "id": "sample_of_live_glowzees"
+        },
+        {
+          "kind": "LootItem",
+          "id": "sample_of_live_moths"
+        }
+      ]
+    },
+    {
+      "id": "mark_i_armor_upgrade",
+      "name": "Mark I Armor Upgrade",
+      "members": [
+        {
+          "kind": "Schematic",
+          "id": "space_armor_armor_reinforcement_panel_mk1"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_armor_mass_reduction_kit_mk1"
+        }
+      ]
+    },
+    {
+      "id": "mark_i_booster_upgrade",
+      "name": "Mark I Booster Upgrade",
+      "members": [
+        {
+          "kind": "Schematic",
+          "id": "space_booster_booster_overdriver_mk1"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_booster_extended_life_fuel_cell_mk1"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_booster_fast_charge_fuel_cell_mk1"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_booster_heavy_fuel_cell_mk1"
+        }
+      ]
+    },
+    {
+      "id": "mark_i_capacitor_upgrade",
+      "name": "Mark I Capacitor Upgrade",
+      "members": [
+        {
+          "kind": "Schematic",
+          "id": "space_capacitor_energy_saver_battery_mk1"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_capacitor_extended_life_battery_mk1"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_capacitor_heavy_battery_mk1"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_capacitor_quick_recharge_battery_mk1"
+        }
+      ]
+    },
+    {
+      "id": "mark_i_droid_interface_upgrade",
+      "name": "Mark I Droid Interface Upgrade",
+      "members": [
+        {
+          "kind": "Schematic",
+          "id": "space_droid_interface_droid_brain_upgrade_mk1"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_droid_interface_maintenance_reduction_kit_mk1"
+        }
+      ]
+    },
+    {
+      "id": "mark_i_engine_upgrade",
+      "name": "Mark I Engine Upgrade",
+      "members": [
+        {
+          "kind": "Schematic",
+          "id": "space_engine_engine_limiter_mk1"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_engine_engine_overdriver_mk1"
+        }
+      ]
+    },
+    {
+      "id": "mark_i_reactor_upgrade",
+      "name": "Mark I Reactor Upgrade",
+      "members": [
+        {
+          "kind": "Schematic",
+          "id": "space_reactor_reactor_limiter_mk1"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_reactor_reactor_overcharger_mk1"
+        }
+      ]
+    },
+    {
+      "id": "mark_i_shield_upgrade",
+      "name": "Mark I Shield Upgrade",
+      "members": [
+        {
+          "kind": "Schematic",
+          "id": "space_shields_shield_energy_saver_kit_mk1"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_shields_shield_intensifier_mk1"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_shields_shield_limiter_mk1"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_shields_shield_overcharger_mk1"
+        }
+      ]
+    },
+    {
+      "id": "mark_i_weapon_upgrade",
+      "name": "Mark I Weapon Upgrade",
+      "members": [
+        {
+          "kind": "Schematic",
+          "id": "space_weapon_armor_effectiveness_intensifier_mk1"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_weapon_max_damage_intensifier_mk1"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_weapon_min_damage_intensifier_mk1"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_weapon_quick_shot_upgrade_mk1"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_weapon_shield_effectiveness_intensifier_mk1"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_weapon_speed_limiter_upgrade_mk1"
+        }
+      ]
+    },
+    {
+      "id": "mark_ii_armor_upgrade",
+      "name": "Mark II Armor Upgrade",
+      "members": [
+        {
+          "kind": "Schematic",
+          "id": "space_armor_armor_reinforcement_panel_mk1"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_armor_armor_reinforcement_panel_mk2"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_armor_mass_reduction_kit_mk1"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_armor_mass_reduction_kit_mk2"
+        }
+      ]
+    },
+    {
+      "id": "mark_ii_booster_upgrade",
+      "name": "Mark II Booster Upgrade",
+      "members": [
+        {
+          "kind": "Schematic",
+          "id": "space_booster_booster_overdriver_mk1"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_booster_booster_overdriver_mk2"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_booster_extended_life_fuel_cell_mk1"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_booster_extended_life_fuel_cell_mk2"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_booster_fast_charge_fuel_cell_mk1"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_booster_fast_charge_fuel_cell_mk2"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_booster_heavy_fuel_cell_mk1"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_booster_heavy_fuel_cell_mk2"
+        }
+      ]
+    },
+    {
+      "id": "mark_ii_capacitor_upgrade",
+      "name": "Mark II Capacitor Upgrade",
+      "members": [
+        {
+          "kind": "Schematic",
+          "id": "space_capacitor_energy_saver_battery_mk1"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_capacitor_energy_saver_battery_mk2"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_capacitor_extended_life_battery_mk1"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_capacitor_extended_life_battery_mk2"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_capacitor_heavy_battery_mk1"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_capacitor_heavy_battery_mk2"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_capacitor_quick_recharge_battery_mk1"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_capacitor_quick_recharge_battery_mk2"
+        }
+      ]
+    },
+    {
+      "id": "mark_ii_droid_interface_upgrade",
+      "name": "Mark II Droid Interface Upgrade",
+      "members": [
+        {
+          "kind": "Schematic",
+          "id": "space_droid_interface_droid_brain_upgrade_mk1"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_droid_interface_droid_brain_upgrade_mk2"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_droid_interface_maintenance_reduction_kit_mk1"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_droid_interface_maintenance_reduction_kit_mk2"
+        }
+      ]
+    },
+    {
+      "id": "mark_ii_engine_upgrade",
+      "name": "Mark II Engine Upgrade",
+      "members": [
+        {
+          "kind": "Schematic",
+          "id": "space_engine_engine_limiter_mk1"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_engine_engine_limiter_mk2"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_engine_engine_overdriver_mk1"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_engine_engine_overdriver_mk2"
+        }
+      ]
+    },
+    {
+      "id": "mark_ii_reactor_upgrade",
+      "name": "Mark II Reactor Upgrade",
+      "members": [
+        {
+          "kind": "Schematic",
+          "id": "space_reactor_reactor_limiter_mk1"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_reactor_reactor_limiter_mk2"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_reactor_reactor_overcharger_mk1"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_reactor_reactor_overcharger_mk2"
+        }
+      ]
+    },
+    {
+      "id": "mark_ii_shield_upgrade",
+      "name": "Mark II Shield Upgrade",
+      "members": [
+        {
+          "kind": "Schematic",
+          "id": "space_shields_shield_energy_saver_kit_mk1"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_shields_shield_energy_saver_kit_mk2"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_shields_shield_intensifier_mk1"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_shields_shield_intensifier_mk2"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_shields_shield_limiter_mk1"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_shields_shield_limiter_mk2"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_shields_shield_overcharger_mk1"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_shields_shield_overcharger_mk2"
+        }
+      ]
+    },
+    {
+      "id": "mark_ii_weapon_upgrade",
+      "name": "Mark II Weapon Upgrade",
+      "members": [
+        {
+          "kind": "Schematic",
+          "id": "space_weapon_armor_effectiveness_intensifier_mk1"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_weapon_armor_effectiveness_intensifier_mk2"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_weapon_max_damage_intensifier_mk1"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_weapon_max_damage_intensifier_mk2"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_weapon_min_damage_intensifier_mk1"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_weapon_min_damage_intensifier_mk2"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_weapon_quick_shot_upgrade_mk1"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_weapon_quick_shot_upgrade_mk2"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_weapon_shield_effectiveness_intensifier_mk1"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_weapon_shield_effectiveness_intensifier_mk2"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_weapon_speed_limiter_upgrade_mk1"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_weapon_speed_limiter_upgrade_mk2"
+        }
+      ]
+    },
+    {
+      "id": "mark_iii_armor_upgrade",
+      "name": "Mark III Armor Upgrade",
+      "members": [
+        {
+          "kind": "Schematic",
+          "id": "space_armor_armor_reinforcement_panel_mk1"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_armor_armor_reinforcement_panel_mk2"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_armor_armor_reinforcement_panel_mk3"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_armor_mass_reduction_kit_mk1"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_armor_mass_reduction_kit_mk2"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_armor_mass_reduction_kit_mk3"
+        }
+      ]
+    },
+    {
+      "id": "mark_iii_booster_upgrade",
+      "name": "Mark III Booster Upgrade",
+      "members": [
+        {
+          "kind": "Schematic",
+          "id": "space_booster_booster_overdriver_mk1"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_booster_booster_overdriver_mk2"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_booster_booster_overdriver_mk3"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_booster_extended_life_fuel_cell_mk1"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_booster_extended_life_fuel_cell_mk2"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_booster_extended_life_fuel_cell_mk3"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_booster_fast_charge_fuel_cell_mk1"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_booster_fast_charge_fuel_cell_mk2"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_booster_fast_charge_fuel_cell_mk3"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_booster_heavy_fuel_cell_mk1"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_booster_heavy_fuel_cell_mk2"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_booster_heavy_fuel_cell_mk3"
+        }
+      ]
+    },
+    {
+      "id": "mark_iii_capacitor_upgrade",
+      "name": "Mark III Capacitor Upgrade",
+      "members": [
+        {
+          "kind": "Schematic",
+          "id": "space_capacitor_energy_saver_battery_mk1"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_capacitor_energy_saver_battery_mk2"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_capacitor_energy_saver_battery_mk3"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_capacitor_extended_life_battery_mk1"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_capacitor_extended_life_battery_mk2"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_capacitor_extended_life_battery_mk3"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_capacitor_heavy_battery_mk1"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_capacitor_heavy_battery_mk2"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_capacitor_heavy_battery_mk3"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_capacitor_quick_recharge_battery_mk1"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_capacitor_quick_recharge_battery_mk2"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_capacitor_quick_recharge_battery_mk3"
+        }
+      ]
+    },
+    {
+      "id": "mark_iii_droid_interface_upgrade",
+      "name": "Mark III Droid Interface Upgrade",
+      "members": [
+        {
+          "kind": "Schematic",
+          "id": "space_droid_interface_droid_brain_upgrade_mk1"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_droid_interface_droid_brain_upgrade_mk2"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_droid_interface_droid_brain_upgrade_mk3"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_droid_interface_maintenance_reduction_kit_mk1"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_droid_interface_maintenance_reduction_kit_mk2"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_droid_interface_maintenance_reduction_kit_mk3"
+        }
+      ]
+    },
+    {
+      "id": "mark_iii_engine_upgrade",
+      "name": "Mark III Engine Upgrade",
+      "members": [
+        {
+          "kind": "Schematic",
+          "id": "space_engine_engine_limiter_mk1"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_engine_engine_limiter_mk2"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_engine_engine_limiter_mk3"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_engine_engine_overdriver_mk1"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_engine_engine_overdriver_mk2"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_engine_engine_overdriver_mk3"
+        }
+      ]
+    },
+    {
+      "id": "mark_iii_reactor_upgrade",
+      "name": "Mark III Reactor Upgrade",
+      "members": [
+        {
+          "kind": "Schematic",
+          "id": "space_reactor_reactor_limiter_mk1"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_reactor_reactor_limiter_mk2"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_reactor_reactor_limiter_mk3"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_reactor_reactor_overcharger_mk1"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_reactor_reactor_overcharger_mk2"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_reactor_reactor_overcharger_mk3"
+        }
+      ]
+    },
+    {
+      "id": "mark_iii_shield_upgrade",
+      "name": "Mark III Shield Upgrade",
+      "members": [
+        {
+          "kind": "Schematic",
+          "id": "space_shields_shield_energy_saver_kit_mk1"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_shields_shield_energy_saver_kit_mk2"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_shields_shield_energy_saver_kit_mk3"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_shields_shield_intensifier_mk1"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_shields_shield_intensifier_mk2"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_shields_shield_intensifier_mk3"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_shields_shield_limiter_mk1"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_shields_shield_limiter_mk2"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_shields_shield_limiter_mk3"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_shields_shield_overcharger_mk1"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_shields_shield_overcharger_mk2"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_shields_shield_overcharger_mk3"
+        }
+      ]
+    },
+    {
+      "id": "mark_iii_weapon_upgrade",
+      "name": "Mark III Weapon Upgrade",
+      "members": [
+        {
+          "kind": "Schematic",
+          "id": "space_weapon_armor_effectiveness_intensifier_mk1"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_weapon_armor_effectiveness_intensifier_mk2"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_weapon_armor_effectiveness_intensifier_mk3"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_weapon_max_damage_intensifier_mk1"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_weapon_max_damage_intensifier_mk2"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_weapon_max_damage_intensifier_mk3"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_weapon_min_damage_intensifier_mk1"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_weapon_min_damage_intensifier_mk2"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_weapon_min_damage_intensifier_mk3"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_weapon_quick_shot_upgrade_mk1"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_weapon_quick_shot_upgrade_mk2"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_weapon_quick_shot_upgrade_mk3"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_weapon_shield_effectiveness_intensifier_mk1"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_weapon_shield_effectiveness_intensifier_mk2"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_weapon_shield_effectiveness_intensifier_mk3"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_weapon_speed_limiter_upgrade_mk1"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_weapon_speed_limiter_upgrade_mk2"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_weapon_speed_limiter_upgrade_mk3"
+        }
+      ]
+    },
+    {
+      "id": "mark_iv_armor_upgrade",
+      "name": "Mark IV Armor Upgrade",
+      "members": [
+        {
+          "kind": "Schematic",
+          "id": "space_armor_armor_reinforcement_panel_mk1"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_armor_armor_reinforcement_panel_mk2"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_armor_armor_reinforcement_panel_mk3"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_armor_armor_reinforcement_panel_mk4"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_armor_mass_reduction_kit_mk1"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_armor_mass_reduction_kit_mk2"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_armor_mass_reduction_kit_mk3"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_armor_mass_reduction_kit_mk4"
+        }
+      ]
+    },
+    {
+      "id": "mark_iv_booster_upgrade",
+      "name": "Mark IV Booster Upgrade",
+      "members": [
+        {
+          "kind": "Schematic",
+          "id": "space_booster_booster_overdriver_mk1"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_booster_booster_overdriver_mk2"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_booster_booster_overdriver_mk3"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_booster_booster_overdriver_mk4"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_booster_extended_life_fuel_cell_mk1"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_booster_extended_life_fuel_cell_mk2"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_booster_extended_life_fuel_cell_mk3"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_booster_extended_life_fuel_cell_mk4"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_booster_fast_charge_fuel_cell_mk1"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_booster_fast_charge_fuel_cell_mk2"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_booster_fast_charge_fuel_cell_mk3"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_booster_fast_charge_fuel_cell_mk4"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_booster_heavy_fuel_cell_mk1"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_booster_heavy_fuel_cell_mk2"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_booster_heavy_fuel_cell_mk3"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_booster_heavy_fuel_cell_mk4"
+        }
+      ]
+    },
+    {
+      "id": "mark_iv_capacitor_upgrade",
+      "name": "Mark IV Capacitor Upgrade",
+      "members": [
+        {
+          "kind": "Schematic",
+          "id": "space_capacitor_energy_saver_battery_mk1"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_capacitor_energy_saver_battery_mk2"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_capacitor_energy_saver_battery_mk3"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_capacitor_energy_saver_battery_mk4"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_capacitor_extended_life_battery_mk1"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_capacitor_extended_life_battery_mk2"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_capacitor_extended_life_battery_mk3"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_capacitor_extended_life_battery_mk4"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_capacitor_heavy_battery_mk1"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_capacitor_heavy_battery_mk2"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_capacitor_heavy_battery_mk3"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_capacitor_heavy_battery_mk4"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_capacitor_quick_recharge_battery_mk1"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_capacitor_quick_recharge_battery_mk2"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_capacitor_quick_recharge_battery_mk3"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_capacitor_quick_recharge_battery_mk4"
+        }
+      ]
+    },
+    {
+      "id": "mark_iv_droid_interface_upgrade",
+      "name": "Mark IV Droid Interface Upgrade",
+      "members": [
+        {
+          "kind": "Schematic",
+          "id": "space_droid_interface_droid_brain_upgrade_mk1"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_droid_interface_droid_brain_upgrade_mk2"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_droid_interface_droid_brain_upgrade_mk3"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_droid_interface_droid_brain_upgrade_mk4"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_droid_interface_maintenance_reduction_kit_mk1"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_droid_interface_maintenance_reduction_kit_mk2"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_droid_interface_maintenance_reduction_kit_mk3"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_droid_interface_maintenance_reduction_kit_mk4"
+        }
+      ]
+    },
+    {
+      "id": "mark_iv_engine_upgrade",
+      "name": "Mark IV Engine Upgrade",
+      "members": [
+        {
+          "kind": "Schematic",
+          "id": "space_engine_engine_limiter_mk1"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_engine_engine_limiter_mk2"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_engine_engine_limiter_mk3"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_engine_engine_limiter_mk4"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_engine_engine_overdriver_mk1"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_engine_engine_overdriver_mk2"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_engine_engine_overdriver_mk3"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_engine_engine_overdriver_mk4"
+        }
+      ]
+    },
+    {
+      "id": "mark_iv_reactor_upgrade",
+      "name": "Mark IV Reactor Upgrade",
+      "members": [
+        {
+          "kind": "Schematic",
+          "id": "space_reactor_reactor_limiter_mk1"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_reactor_reactor_limiter_mk2"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_reactor_reactor_limiter_mk3"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_reactor_reactor_limiter_mk4"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_reactor_reactor_overcharger_mk1"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_reactor_reactor_overcharger_mk2"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_reactor_reactor_overcharger_mk3"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_reactor_reactor_overcharger_mk4"
+        }
+      ]
+    },
+    {
+      "id": "mark_iv_shield_upgrade",
+      "name": "Mark IV Shield Upgrade",
+      "members": [
+        {
+          "kind": "Schematic",
+          "id": "space_shields_shield_energy_saver_kit_mk1"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_shields_shield_energy_saver_kit_mk2"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_shields_shield_energy_saver_kit_mk3"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_shields_shield_energy_saver_kit_mk4"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_shields_shield_intensifier_mk1"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_shields_shield_intensifier_mk2"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_shields_shield_intensifier_mk3"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_shields_shield_intensifier_mk4"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_shields_shield_limiter_mk1"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_shields_shield_limiter_mk2"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_shields_shield_limiter_mk3"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_shields_shield_limiter_mk4"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_shields_shield_overcharger_mk1"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_shields_shield_overcharger_mk2"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_shields_shield_overcharger_mk3"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_shields_shield_overcharger_mk4"
+        }
+      ]
+    },
+    {
+      "id": "mark_iv_weapon_upgrade",
+      "name": "Mark IV Weapon Upgrade",
+      "members": [
+        {
+          "kind": "Schematic",
+          "id": "space_weapon_armor_effectiveness_intensifier_mk1"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_weapon_armor_effectiveness_intensifier_mk2"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_weapon_armor_effectiveness_intensifier_mk3"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_weapon_armor_effectiveness_intensifier_mk4"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_weapon_max_damage_intensifier_mk1"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_weapon_max_damage_intensifier_mk2"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_weapon_max_damage_intensifier_mk3"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_weapon_max_damage_intensifier_mk4"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_weapon_min_damage_intensifier_mk1"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_weapon_min_damage_intensifier_mk2"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_weapon_min_damage_intensifier_mk3"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_weapon_min_damage_intensifier_mk4"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_weapon_quick_shot_upgrade_mk1"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_weapon_quick_shot_upgrade_mk2"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_weapon_quick_shot_upgrade_mk3"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_weapon_quick_shot_upgrade_mk4"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_weapon_shield_effectiveness_intensifier_mk1"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_weapon_shield_effectiveness_intensifier_mk2"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_weapon_shield_effectiveness_intensifier_mk3"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_weapon_shield_effectiveness_intensifier_mk4"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_weapon_speed_limiter_upgrade_mk1"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_weapon_speed_limiter_upgrade_mk2"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_weapon_speed_limiter_upgrade_mk3"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_weapon_speed_limiter_upgrade_mk4"
+        }
+      ]
+    },
+    {
+      "id": "mark_v_armor_upgrade",
+      "name": "Mark V Armor Upgrade",
+      "members": [
+        {
+          "kind": "Schematic",
+          "id": "space_armor_armor_reinforcement_panel_mk1"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_armor_armor_reinforcement_panel_mk2"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_armor_armor_reinforcement_panel_mk3"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_armor_armor_reinforcement_panel_mk4"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_armor_armor_reinforcement_panel_mk5"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_armor_mass_reduction_kit_mk1"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_armor_mass_reduction_kit_mk2"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_armor_mass_reduction_kit_mk3"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_armor_mass_reduction_kit_mk4"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_armor_mass_reduction_kit_mk5"
+        }
+      ]
+    },
+    {
+      "id": "mark_v_booster_upgrade",
+      "name": "Mark V Booster Upgrade",
+      "members": [
+        {
+          "kind": "Schematic",
+          "id": "space_booster_booster_overdriver_mk1"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_booster_booster_overdriver_mk2"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_booster_booster_overdriver_mk3"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_booster_booster_overdriver_mk4"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_booster_booster_overdriver_mk5"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_booster_extended_life_fuel_cell_mk1"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_booster_extended_life_fuel_cell_mk2"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_booster_extended_life_fuel_cell_mk3"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_booster_extended_life_fuel_cell_mk4"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_booster_extended_life_fuel_cell_mk5"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_booster_fast_charge_fuel_cell_mk1"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_booster_fast_charge_fuel_cell_mk2"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_booster_fast_charge_fuel_cell_mk3"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_booster_fast_charge_fuel_cell_mk4"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_booster_fast_charge_fuel_cell_mk5"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_booster_heavy_fuel_cell_mk1"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_booster_heavy_fuel_cell_mk2"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_booster_heavy_fuel_cell_mk3"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_booster_heavy_fuel_cell_mk4"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_booster_heavy_fuel_cell_mk5"
+        }
+      ]
+    },
+    {
+      "id": "mark_v_capacitor_upgrade",
+      "name": "Mark V Capacitor Upgrade",
+      "members": [
+        {
+          "kind": "Schematic",
+          "id": "space_capacitor_energy_saver_battery_mk1"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_capacitor_energy_saver_battery_mk2"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_capacitor_energy_saver_battery_mk3"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_capacitor_energy_saver_battery_mk4"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_capacitor_energy_saver_battery_mk5"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_capacitor_extended_life_battery_mk1"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_capacitor_extended_life_battery_mk2"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_capacitor_extended_life_battery_mk3"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_capacitor_extended_life_battery_mk4"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_capacitor_extended_life_battery_mk5"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_capacitor_heavy_battery_mk1"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_capacitor_heavy_battery_mk2"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_capacitor_heavy_battery_mk3"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_capacitor_heavy_battery_mk4"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_capacitor_heavy_battery_mk5"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_capacitor_quick_recharge_battery_mk1"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_capacitor_quick_recharge_battery_mk2"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_capacitor_quick_recharge_battery_mk3"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_capacitor_quick_recharge_battery_mk4"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_capacitor_quick_recharge_battery_mk5"
+        }
+      ]
+    },
+    {
+      "id": "mark_v_droid_interface_upgrade",
+      "name": "Mark V Droid Interface Upgrade",
+      "members": [
+        {
+          "kind": "Schematic",
+          "id": "space_droid_interface_droid_brain_upgrade_mk1"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_droid_interface_droid_brain_upgrade_mk2"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_droid_interface_droid_brain_upgrade_mk3"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_droid_interface_droid_brain_upgrade_mk4"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_droid_interface_droid_brain_upgrade_mk5"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_droid_interface_maintenance_reduction_kit_mk1"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_droid_interface_maintenance_reduction_kit_mk2"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_droid_interface_maintenance_reduction_kit_mk3"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_droid_interface_maintenance_reduction_kit_mk4"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_droid_interface_maintenance_reduction_kit_mk5"
+        }
+      ]
+    },
+    {
+      "id": "mark_v_engine_upgrade",
+      "name": "Mark V Engine Upgrade",
+      "members": [
+        {
+          "kind": "Schematic",
+          "id": "space_engine_engine_limiter_mk1"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_engine_engine_limiter_mk2"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_engine_engine_limiter_mk3"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_engine_engine_limiter_mk4"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_engine_engine_limiter_mk5"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_engine_engine_overdriver_mk1"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_engine_engine_overdriver_mk2"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_engine_engine_overdriver_mk3"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_engine_engine_overdriver_mk4"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_engine_engine_overdriver_mk5"
+        }
+      ]
+    },
+    {
+      "id": "mark_v_reactor_upgrade",
+      "name": "Mark V Reactor Upgrade",
+      "members": [
+        {
+          "kind": "Schematic",
+          "id": "space_reactor_reactor_limiter_mk1"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_reactor_reactor_limiter_mk2"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_reactor_reactor_limiter_mk3"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_reactor_reactor_limiter_mk4"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_reactor_reactor_limiter_mk5"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_reactor_reactor_overcharger_mk1"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_reactor_reactor_overcharger_mk2"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_reactor_reactor_overcharger_mk3"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_reactor_reactor_overcharger_mk4"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_reactor_reactor_overcharger_mk5"
+        }
+      ]
+    },
+    {
+      "id": "mark_v_shield_upgrade",
+      "name": "Mark V Shield Upgrade",
+      "members": [
+        {
+          "kind": "Schematic",
+          "id": "space_shields_shield_energy_saver_kit_mk1"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_shields_shield_energy_saver_kit_mk2"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_shields_shield_energy_saver_kit_mk3"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_shields_shield_energy_saver_kit_mk4"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_shields_shield_energy_saver_kit_mk5"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_shields_shield_intensifier_mk1"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_shields_shield_intensifier_mk2"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_shields_shield_intensifier_mk3"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_shields_shield_intensifier_mk4"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_shields_shield_intensifier_mk5"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_shields_shield_limiter_mk1"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_shields_shield_limiter_mk2"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_shields_shield_limiter_mk3"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_shields_shield_limiter_mk4"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_shields_shield_limiter_mk5"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_shields_shield_overcharger_mk1"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_shields_shield_overcharger_mk2"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_shields_shield_overcharger_mk3"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_shields_shield_overcharger_mk4"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_shields_shield_overcharger_mk5"
+        }
+      ]
+    },
+    {
+      "id": "mark_v_weapon_upgrade",
+      "name": "Mark V Weapon Upgrade",
+      "members": [
+        {
+          "kind": "Schematic",
+          "id": "space_weapon_armor_effectiveness_intensifier_mk1"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_weapon_armor_effectiveness_intensifier_mk2"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_weapon_armor_effectiveness_intensifier_mk3"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_weapon_armor_effectiveness_intensifier_mk4"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_weapon_armor_effectiveness_intensifier_mk5"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_weapon_max_damage_intensifier_mk1"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_weapon_max_damage_intensifier_mk2"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_weapon_max_damage_intensifier_mk3"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_weapon_max_damage_intensifier_mk4"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_weapon_max_damage_intensifier_mk5"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_weapon_min_damage_intensifier_mk1"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_weapon_min_damage_intensifier_mk2"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_weapon_min_damage_intensifier_mk3"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_weapon_min_damage_intensifier_mk4"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_weapon_min_damage_intensifier_mk5"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_weapon_quick_shot_upgrade_mk1"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_weapon_quick_shot_upgrade_mk2"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_weapon_quick_shot_upgrade_mk3"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_weapon_quick_shot_upgrade_mk4"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_weapon_quick_shot_upgrade_mk5"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_weapon_shield_effectiveness_intensifier_mk1"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_weapon_shield_effectiveness_intensifier_mk2"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_weapon_shield_effectiveness_intensifier_mk3"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_weapon_shield_effectiveness_intensifier_mk4"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_weapon_shield_effectiveness_intensifier_mk5"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_weapon_speed_limiter_upgrade_mk1"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_weapon_speed_limiter_upgrade_mk2"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_weapon_speed_limiter_upgrade_mk3"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_weapon_speed_limiter_upgrade_mk4"
+        },
+        {
+          "kind": "Schematic",
+          "id": "space_weapon_speed_limiter_upgrade_mk5"
+        }
+      ]
+    },
+    {
+      "id": "medium_bio_food_component",
+      "name": "Medium Bio Food Component",
+      "members": [
+        {
+          "kind": "Schematic",
+          "id": "bio_engineer_bio_component_bio_component_food_medium_flavor"
+        },
+        {
+          "kind": "Schematic",
+          "id": "bio_engineer_bio_component_bio_component_food_medium_filling"
+        },
+        {
+          "kind": "Schematic",
+          "id": "bio_engineer_bio_component_bio_component_food_medium_quantity"
+        },
+        {
+          "kind": "Schematic",
+          "id": "bio_engineer_bio_component_bio_component_food_medium_nutrition"
+        }
+      ]
+    },
+    {
+      "id": "medium_food_additive_class",
+      "name": "Medium Food Additive Class",
+      "members": [
+        {
+          "kind": "Schematic",
+          "id": "food_additive_additive_light"
+        },
+        {
+          "kind": "Schematic",
+          "id": "food_additive_additive_medium"
+        }
+      ]
+    },
+    {
+      "id": "melee_core_enhancement",
+      "name": "Melee Core Enhancement",
+      "members": [
+        {
+          "kind": "LootItem",
+          "id": "geonosian_solidifying_agent"
+        }
+      ]
+    },
+    {
+      "id": "padded_armor_segment_class",
+      "name": "Padded Armor Segment Class",
+      "members": [
+        {
+          "kind": "Schematic",
+          "id": "armor_segment_padded"
+        },
+        {
+          "kind": "Schematic",
+          "id": "armor_segment_padded_advanced"
+        },
+        {
+          "kind": "LootItem",
+          "id": "armor_segment_enhancement_fambaa"
+        }
+      ]
+    },
+    {
+      "id": "projectile_feed_mechanism_class",
+      "name": "Projectile Feed Mechanism Class",
+      "members": [
+        {
+          "kind": "Schematic",
+          "id": "weapon_component_projectile_feed_mechanism"
+        },
+        {
+          "kind": "Schematic",
+          "id": "weapon_component_projectile_feed_mechanism_advanced"
+        }
+      ]
+    },
+    {
+      "id": "projectile_feed_mechanism_enhancement",
+      "name": "Projectile Feed Mechanism Enhancement",
+      "members": [
+        {
+          "kind": "LootItem",
+          "id": "shared_spider_spine"
+        },
+        {
+          "kind": "LootItem",
+          "id": "projectile_feed_mechanism_enhancement_max_damage"
+        },
+        {
+          "kind": "LootItem",
+          "id": "projectile_feed_mechanism_enhancement_min_damage"
+        },
+        {
+          "kind": "LootItem",
+          "id": "projectile_feed_mechanism_enhancement_gorax"
+        }
+      ]
+    },
+    {
+      "id": "projectile_pistol_barrel_class",
+      "name": "Projectile Pistol Barrel Class",
+      "members": [
+        {
+          "kind": "Schematic",
+          "id": "weapon_component_projectile_pistol_barrel"
+        },
+        {
+          "kind": "Schematic",
+          "id": "weapon_component_projectile_pistol_barrel_advanced"
+        },
+        {
+          "kind": "LootItem",
+          "id": "projectile_pistol_barrel_quest"
+        }
+      ]
+    },
+    {
+      "id": "projectile_rifle_barrel_class",
+      "name": "Projectile Rifle Barrel Class",
+      "members": [
+        {
+          "kind": "Schematic",
+          "id": "weapon_component_projectile_rifle_barrel"
+        },
+        {
+          "kind": "Schematic",
+          "id": "weapon_component_projectile_rifle_barrel_advanced"
+        },
+        {
+          "kind": "LootItem",
+          "id": "projectile_rifle_barrel_advanced_quest"
+        }
+      ]
+    },
+    {
+      "id": "r_i_s_armor_segment_class",
+      "name": "R.I.S. Armor Segment Class",
+      "members": [
+        {
+          "kind": "Schematic",
+          "id": "armor_armor_segment_ris"
+        },
+        {
+          "kind": "Schematic",
+          "id": "armor_armor_segment_ris_acklay"
+        }
+      ]
+    },
+    {
+      "id": "redundant_power_supply_class",
+      "name": "Redundant Power Supply Class",
+      "members": [
+        {
+          "kind": "Schematic",
+          "id": "droid_component_power_supply_redundant"
+        },
+        {
+          "kind": "Schematic",
+          "id": "droid_component_power_supply_redundant_advanced"
+        }
+      ]
+    },
+    {
+      "id": "reinforcement_core_class",
+      "name": "Reinforcement Core Class",
+      "members": [
+        {
+          "kind": "Schematic",
+          "id": "weapon_component_reinforcement_core"
+        },
+        {
+          "kind": "Schematic",
+          "id": "weapon_component_reinforcement_core_advanced"
+        },
+        {
+          "kind": "LootItem",
+          "id": "acklay_bone_reinforcement_core"
+        }
+      ]
+    },
+    {
+      "id": "repair_unit_casing_class",
+      "name": "Repair Unit Casing Class",
+      "members": [
+        {
+          "kind": "Schematic",
+          "id": "droid_component_repair_unit_casing"
+        },
+        {
+          "kind": "Schematic",
+          "id": "droid_component_repair_unit_casing_advanced"
+        }
+      ]
+    },
+    {
+      "id": "resilience_compound_class",
+      "name": "Resilience Compound Class",
+      "members": [
+        {
+          "kind": "Schematic",
+          "id": "chemistry_component_resilience_compound"
+        },
+        {
+          "kind": "Schematic",
+          "id": "chemistry_component_resilience_compound_advanced"
+        }
+      ]
+    },
+    {
+      "id": "weapon_stock_class",
+      "name": "Rifle Stock Class",
+      "members": [
+        {
+          "kind": "Schematic",
+          "id": "weapon_component_stock"
+        },
+        {
+          "kind": "Schematic",
+          "id": "weapon_component_stock_advanced"
+        },
+        {
+          "kind": "LootItem",
+          "id": "stock_advanced_quest"
+        }
+      ]
+    },
+    {
+      "id": "secret_research_data",
+      "name": "Secret Research Data",
+      "members": [
+        {
+          "kind": "LootItem",
+          "id": "imperial_biochemical_reports"
+        },
+        {
+          "kind": "LootItem",
+          "id": "rebel_biochemical_research"
+        }
+      ]
+    },
+    {
+      "id": "solid_delivery_shell_class",
+      "name": "Solid Delivery Shell Class",
+      "members": [
+        {
+          "kind": "Schematic",
+          "id": "chemistry_component_solid_delivery_shell"
+        },
+        {
+          "kind": "Schematic",
+          "id": "chemistry_component_solid_delivery_shell_advanced"
+        }
+      ]
+    },
+    {
+      "id": "sword_core_class",
+      "name": "Sword Core Class",
+      "members": [
+        {
+          "kind": "Schematic",
+          "id": "weapon_component_sword_core"
+        },
+        {
+          "kind": "Schematic",
+          "id": "weapon_component_sword_core_advanced"
+        },
+        {
+          "kind": "Schematic",
+          "id": "weapon_component_sword_core_geo"
+        },
+        {
+          "kind": "LootItem",
+          "id": "rancor_tooth"
+        },
+        {
+          "kind": "LootItem",
+          "id": "rancor_tooth_quest"
+        }
+      ]
+    },
+    {
+      "id": "ubese_armor_segment_class",
+      "name": "Ubese Armor Segment Class",
+      "members": [
+        {
+          "kind": "Schematic",
+          "id": "armor_segment_ubese"
+        },
+        {
+          "kind": "Schematic",
+          "id": "armor_segment_ubese_advanced"
+        }
+      ]
+    },
+    {
+      "id": "unit_delivery_cartridge_class",
+      "name": "Unit Delivery Cartridge Class",
+      "members": [
+        {
+          "kind": "Schematic",
+          "id": "droid_component_unit_delivery_cartridge"
+        },
+        {
+          "kind": "Schematic",
+          "id": "droid_component_unit_delivery_cartridge_advanced"
+        }
+      ]
+    },
+    {
+      "id": "vibro_blade_unit_enhancement",
+      "name": "Vibro Blade Unit Enhancement",
+      "members": [
+        {
+          "kind": "LootItem",
+          "id": "vibro_unit_enhancement_wounding"
+        },
+        {
+          "kind": "LootItem",
+          "id": "vibro_unit_enhancement_max_damage"
+        },
+        {
+          "kind": "LootItem",
+          "id": "vibro_unit_enhancement_min_damage"
+        }
+      ]
+    },
+    {
+      "id": "weapon_scope_class",
+      "name": "Weapon Scope Class",
+      "members": [
+        {
+          "kind": "Schematic",
+          "id": "weapon_component_scope_weapon"
+        },
+        {
+          "kind": "Schematic",
+          "id": "weapon_component_scope_weapon_advanced"
+        },
+        {
+          "kind": "LootItem",
+          "id": "scope_weapon_advanced_quest"
+        }
+      ]
+    }
+  ]
+}

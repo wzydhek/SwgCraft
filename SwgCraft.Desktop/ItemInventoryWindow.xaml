@@ -1,0 +1,77 @@
+<Window x:Class="SwgCraft.Desktop.ItemInventoryWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Item Inventory" Height="620" Width="1060">
+    <DockPanel>
+        <ToolBarTray DockPanel.Dock="Top">
+            <ToolBar Band="0">
+                <Label Content="Item:"/>
+                <Border x:Name="ItemHost" Width="320"
+                        ToolTip="Type to search your looted items and schematics (a crafted item is a schematic's product)"/>
+                <Label Content="Serial:"/>
+                <TextBox x:Name="NewSerialBox" Width="110" VerticalContentAlignment="Center"
+                         ToolTip="Optional. Units with the same serial number came from one factory run (needed for 'identical' components)."/>
+                <Label Content="Qty:"/>
+                <TextBox x:Name="NewQtyBox" Width="50" Text="1" VerticalContentAlignment="Center"/>
+                <Label Content="Note:"/>
+                <TextBox x:Name="NewNoteBox" Width="150" VerticalContentAlignment="Center"
+                         ToolTip="Optional note for the stack. Adding to an existing stack keeps its note unless you type a new one."/>
+                <Button Content="Add Item" Click="AddItem_Click" Padding="8,2" FontWeight="Bold"
+                        ToolTip="Add this quantity of the item (with this serial) to the inventory; an existing stack of the same item and serial grows"/>
+                <Separator/>
+                <Label Content="Search:"/>
+                <TextBox x:Name="SearchBox" Width="130" TextChanged="Search_Changed" VerticalContentAlignment="Center"/>
+            </ToolBar>
+            <ToolBar Band="1">
+                <Label Content="Selected stack - Amount:"/>
+                <TextBox x:Name="AmountBox" Width="60" VerticalContentAlignment="Center"/>
+                <Button Content="+ Add" Click="Plus_Click" Padding="8,2" ToolTip="Add the amount to the selected stack"/>
+                <Button Content="- Use" Click="Minus_Click" Padding="8,2" ToolTip="Subtract the amount from the selected stack"/>
+                <Button Content="= Set" Click="Set_Click" Padding="8,2" ToolTip="Set the selected stack to exactly this amount (0 removes it)"/>
+                <Button Content="Remove" Click="Remove_Click" Padding="8,2"/>
+                <Separator/>
+                <Label Content="Serial:"/>
+                <TextBox x:Name="SerialBox" Width="110" VerticalContentAlignment="Center"/>
+                <Button Content="Set Serial" Click="SetSerial_Click" Padding="8,2" ToolTip="Change the selected stack's serial number (empty for none)"/>
+            </ToolBar>
+        </ToolBarTray>
+        <StatusBar DockPanel.Dock="Bottom">
+            <StatusBarItem DockPanel.Dock="Right"><TextBlock x:Name="CountText"/></StatusBarItem>
+            <StatusBarItem><TextBlock x:Name="StatusText"/></StatusBarItem>
+        </StatusBar>
+        <GroupBox x:Name="NotePanel" DockPanel.Dock="Bottom" Header="Note for the selected stack" Margin="4,2,4,2" IsEnabled="False">
+            <DockPanel>
+                <StackPanel DockPanel.Dock="Right" Margin="6,0,0,0">
+                    <Button Content="Save Note" Click="SaveNote_Click" Padding="10,3" FontWeight="Bold"/>
+                    <Button Content="Undo" Click="UndoNote_Click" Padding="10,3" Margin="0,4,0,0"
+                            ToolTip="Put back the saved note"/>
+                </StackPanel>
+                <TextBox x:Name="NoteBox" Height="96" AcceptsReturn="True" AcceptsTab="False" TextWrapping="Wrap"
+                         VerticalScrollBarVisibility="Auto" TextChanged="NoteBox_TextChanged"
+                         ToolTip="Enter starts a new line. Press Save Note (or Ctrl+S) to keep it."/>
+            </DockPanel>
+        </GroupBox>
+        <DataGrid x:Name="ItemGrid" AutoGenerateColumns="False" IsReadOnly="True" SelectionMode="Single"
+                  GridLinesVisibility="Horizontal" HeadersVisibility="Column" SelectionChanged="ItemGrid_SelectionChanged">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Type" Width="80" Binding="{Binding TypeText}"/>
+                <DataGridTextColumn Header="Item" Width="*" Binding="{Binding Name}"/>
+                <DataGridTextColumn Header="Serial" Width="130" Binding="{Binding SerialText}"/>
+                <DataGridTextColumn Header="Quantity" Width="70" Binding="{Binding Quantity}">
+                    <DataGridTextColumn.ElementStyle>
+                        <Style TargetType="TextBlock"><Setter Property="HorizontalAlignment" Value="Right"/></Style>
+                    </DataGridTextColumn.ElementStyle>
+                </DataGridTextColumn>
+                <DataGridTextColumn Header="Note" Width="240" Binding="{Binding NoteOneLine}">
+                    <DataGridTextColumn.ElementStyle>
+                        <Style TargetType="TextBlock">
+                            <Setter Property="TextTrimming" Value="CharacterEllipsis"/>
+                            <Setter Property="ToolTip" Value="{Binding Note}"/>
+                        </Style>
+                    </DataGridTextColumn.ElementStyle>
+                </DataGridTextColumn>
+                <DataGridTextColumn Header="Updated" Width="130" Binding="{Binding Updated}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+    </DockPanel>
+</Window>

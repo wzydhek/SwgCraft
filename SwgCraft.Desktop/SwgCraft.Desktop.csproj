@@ -1,0 +1,29 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net10.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <!-- Static data (resources, professions, schematics, ...) ships in a "data" folder next to the exe. -->
+  <ItemGroup>
+    <None Update="data\*.json" CopyToOutputDirectory="PreserveNewest" />
+  </ItemGroup>
+
+  <!-- Debug builds read and save the project's own data folder, so edits survive Clean/Rebuild (see AppPaths.DefaultStaticDataFolder). -->
+  <ItemGroup Condition="'$(Configuration)' == 'Debug'">
+    <AssemblyAttribute Include="System.Reflection.AssemblyMetadataAttribute">
+      <_Parameter1>SwgCraftSourceDataFolder</_Parameter1>
+      <_Parameter2>$(MSBuildProjectDirectory)\data</_Parameter2>
+    </AssemblyAttribute>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\SwgCraft.Core\SwgCraft.Core.csproj" />
+    <ProjectReference Include="..\SwgCraft.Data\SwgCraft.Data.csproj" />
+  </ItemGroup>
+
+</Project>
