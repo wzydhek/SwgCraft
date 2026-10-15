@@ -361,3 +361,9 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+/SwgCraft.Desktop/data/categories.json.bak
+/SwgCraft.Desktop/data/componentclasses.json.bak
+/SwgCraft.Desktop/data/lootitems.json.bak
+/SwgCraft.Desktop/data/professions.json.bak
+/SwgCraft.Desktop/data/schematics.json.bak
+/SwgCraft.Desktop/data/tabs.json.bak
