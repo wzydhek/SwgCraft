@@ -164,6 +164,16 @@ public partial class MainWindow : Window
         _inventory.Show();
     }
 
+    BuildPlannerWindow? _buildPlanner;
+
+    void BuildPlanner_Click(object sender, RoutedEventArgs e)
+    {
+        if (_buildPlanner != null) { _buildPlanner.Activate(); return; }
+        _buildPlanner = new BuildPlannerWindow { Owner = this };
+        _buildPlanner.Closed += (_, _) => _buildPlanner = null;
+        _buildPlanner.Show();
+    }
+
     HarvestWindow? _harvest;
 
     void WthSummary_Click(object sender, RoutedEventArgs e) => WthSummaryWindow.ShowSingle(this);

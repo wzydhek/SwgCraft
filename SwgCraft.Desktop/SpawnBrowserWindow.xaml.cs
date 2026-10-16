@@ -1,6 +1,7 @@
 using System.IO;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Data;
 using Microsoft.Win32;
 using SwgCraft.Core;
 using SwgCraft.Data;
@@ -10,7 +11,7 @@ namespace SwgCraft.Desktop;
 public sealed record SpawnRow(
     string Name, string TypeName, string TypeId,
     int? ER, int? CR, int? CD, int? DR, int? FL, int? HR, int? MB, int? PE, int? OQ, int? SR, int? UT,
-    string Spawned, string Status, string Planets);
+    string Spawned, string Status, string Planets, Dictionary<string, StatCell> Highlight);
 
 public sealed record SyncRow(string Time, string Status, int Added, int Updated, int Reopened, int Replaced,
                              int Despawned, int Unmapped, string Notes);
@@ -20,6 +21,7 @@ public partial class SpawnBrowserWindow : Window
     public SpawnBrowserWindow()
     {
         InitializeComponent();
+        AddStatHighlighting();
         Services.ActiveGalaxyChanged += Refresh;
         Services.SpawnDataChanged += Refresh;
         Services.TreeChanged += Refresh;
@@ -30,6 +32,24 @@ public partial class SpawnBrowserWindow : Window
             Services.TreeChanged -= Refresh;
         };
         Refresh();
+    }
+
+    /// <summary>
+    /// Colours the 11 stat cells like the resource inventory (light / darker green at the pricing settings' thresholds of the
+    /// type's maximum). The columns keep their numbers, so sorting by a stat still sorts numerically.
+    /// </summary>
+    void AddStatHighlighting()
+    {
+        var baseStyle = TryFindResource(typeof(DataGridCell)) as Style;   // keeps the normal selection look
+        var stats = StatInfo.All.Select(s => s.ToString()).ToHashSet();
+        foreach (var col in SpawnGrid.Columns)
+        {
+            if (col.Header is not string header || !stats.Contains(header)) continue;
+            var style = new Style(typeof(DataGridCell), baseStyle);
+            style.Setters.Add(new Setter(Control.BackgroundProperty,
+                new Binding($"Highlight[{header}].Background") { Mode = BindingMode.OneWay }));
+            col.CellStyle = style;
+        }
     }
 
     void Filter_Changed(object sender, RoutedEventArgs e) { if (IsLoaded) Refresh(); }
@@ -76,7 +96,7 @@ public partial class SpawnBrowserWindow : Window
             s.DespawnedUtc == null ? "Current"
             : s.Source == SpawnSources.Manual ? "Past spawn"
             : "Despawned " + s.DespawnedUtc.Value.ToLocalTime().ToString("yyyy-MM-dd"),
-            s.Planets);
+            s.Planets, StatHighlight.Cells(s, Services.Tree));
     }
 
     void Import_Click(object sender, RoutedEventArgs e)

@@ -1,0 +1,150 @@
+<Window x:Class="SwgCraft.Desktop.BuildPlannerWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:local="clr-namespace:SwgCraft.Desktop"
+        Title="Build Planner" Height="820" Width="1400">
+    <DockPanel>
+        <ToolBarTray DockPanel.Dock="Top">
+            <ToolBar Band="0">
+                <Label Content="Profession:"/>
+                <ComboBox x:Name="ProfessionFilterBox" Width="150" DisplayMemberPath="Display" SelectionChanged="TargetFilter_Changed"
+                          ToolTip="Only list schematics this profession can make"/>
+                <Label Content="Tab:"/>
+                <ComboBox x:Name="TabFilterBox" Width="150" DisplayMemberPath="Display" SelectionChanged="TargetFilter_Changed"
+                          ToolTip="Only list schematics on this crafting tab (narrowed to the chosen profession)"/>
+                <Label Content="Category:"/>
+                <ComboBox x:Name="CategoryFilterBox" Width="170" DisplayMemberPath="Display" SelectionChanged="TargetFilter_Changed"
+                          ToolTip="Only list schematics in this category (narrowed to the chosen profession and tab)"/>
+                <Separator/>
+                <Label Content="Build:"/>
+                <Border x:Name="TargetHost" Width="320" ToolTip="Type to search the schematics (narrowed by the Profession, Tab and Category filters)"/>
+                <Label Content="Qty:"/>
+                <TextBox x:Name="QtyBox" Width="50" Text="1" VerticalContentAlignment="Center"/>
+                <Button Content="Plan" Click="Plan_Click" Padding="12,2" FontWeight="Bold" IsDefault="True"/>
+                <Button x:Name="StepsButton" Content="Build Steps..." Click="Steps_Click" Padding="8,2" IsEnabled="False"
+                        ToolTip="The plan as a numbered sequence: parts first, each hand-crafting batch and factory run in order, the final item last"/>
+            </ToolBar>
+            <ToolBar Band="1">
+                <CheckBox x:Name="IgnoreExpBox" Content="Ignore experimentation" VerticalAlignment="Center" Margin="4,0" Click="Option_Click"
+                          ToolTip="Pick resources as if quality didn't matter: general-purpose spawns first, biggest stack first (Generic-marked first); types other schematics want specifically only when nothing else is held. Schematics marked to ignore experimentation always do."/>
+                <CheckBox x:Name="OptionalBox" Content="Include optional components" VerticalAlignment="Center" Margin="4,0" Click="Option_Click"/>
+                <CheckBox x:Name="FactoryBox" Content="Factory runs for everything crafted" VerticalAlignment="Center" Margin="4,0" Click="Option_Click"
+                          ToolTip="Plan every crafted item as factory run(s): all units of a run use one spawn per resource slot. Identical components, and everything a factory-run item uses, are always factory runs. Single items can be switched in the plan."/>
+            </ToolBar>
+        </ToolBarTray>
+        <StatusBar DockPanel.Dock="Bottom">
+            <StatusBarItem DockPanel.Dock="Right"><TextBlock x:Name="CostText"/></StatusBarItem>
+            <StatusBarItem><TextBlock x:Name="StatusText"/></StatusBarItem>
+        </StatusBar>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="5"/>
+                <RowDefinition Height="250"/>
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="760"/>
+                    <ColumnDefinition Width="5"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <GroupBox Grid.Column="0" Header="What the build needs (each kind of item once, all its uses added up)">
+                    <DataGrid x:Name="ItemGrid" AutoGenerateColumns="False" IsReadOnly="True" HeadersVisibility="Column" SelectionMode="Single"
+                              GridLinesVisibility="Horizontal" CanUserSortColumns="False" SelectionChanged="ItemGrid_SelectionChanged">
+                        <DataGrid.RowStyle>
+                            <Style TargetType="DataGridRow">
+                                <Setter Property="Foreground" Value="{Binding Foreground}"/>
+                                <Setter Property="FontWeight" Value="{Binding Weight}"/>
+                            </Style>
+                        </DataGrid.RowStyle>
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Item" Width="200" Binding="{Binding ItemText}"/>
+                            <DataGridTextColumn Header="Kind" Width="65" Binding="{Binding Kind}"/>
+                            <DataGridTextColumn Header="Needed" Width="55" Binding="{Binding Needed}"/>
+                            <DataGridTextColumn Header="Inventory" Width="65" Binding="{Binding FromInventory}"/>
+                            <DataGridTextColumn Header="Craft" Width="50" Binding="{Binding Craft}"/>
+                            <DataGridTextColumn Header="How" Width="170" Binding="{Binding How}"/>
+                            <DataGridTextColumn Header="Missing" Width="55" Binding="{Binding Missing}"/>
+                            <DataGridTextColumn Header="Used by" Width="*" Binding="{Binding UsedBy}"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </GroupBox>
+                <GridSplitter Grid.Column="1" Width="5" HorizontalAlignment="Stretch"/>
+
+                <DockPanel Grid.Column="2" Margin="4,0,0,0">
+                    <TextBlock x:Name="NodeTitle" DockPanel.Dock="Top" FontWeight="Bold" FontSize="14" Margin="2,4,2,2" TextWrapping="Wrap"/>
+                    <TextBlock x:Name="NodeInfo" DockPanel.Dock="Top" Margin="2,0,2,4" TextWrapping="Wrap"/>
+                    <StackPanel DockPanel.Dock="Top" Orientation="Horizontal" Margin="2,0,2,4">
+                        <Button x:Name="ForceCraftButton" Click="ForceCraft_Click" Padding="8,2" Visibility="Collapsed" Margin="0,0,6,0"/>
+                        <Button x:Name="FactoryButton" Click="Factory_Click" Padding="8,2" Visibility="Collapsed"/>
+                    </StackPanel>
+                    <GroupBox DockPanel.Dock="Top" Header="Items taken from item inventory" x:Name="ItemTakeBox">
+                        <ListBox x:Name="ItemTakeList" MaxHeight="90"/>
+                    </GroupBox>
+                    <GroupBox Header="Resources for the crafted units (by hand: each unit takes a slot's amount from one spawn; factory: each run uses one spawn per slot)">
+                        <DataGrid x:Name="ResourceGrid" AutoGenerateColumns="False" IsReadOnly="True" HeadersVisibility="Column"
+                                  GridLinesVisibility="Horizontal" CanUserSortColumns="False">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="Slot" Width="40" Binding="{Binding Slot}"/>
+                                <DataGridTextColumn Header="Resource" Width="170" Binding="{Binding Resource}"/>
+                                <DataGridTextColumn Header="Each" Width="45" Binding="{Binding Each}"/>
+                                <DataGridTextColumn Header="Units" Width="70" Binding="{Binding Crafts}"/>
+                                <DataGridTextColumn Header="Spawn" Width="110" Binding="{Binding Spawn}" FontWeight="SemiBold"/>
+                                <DataGridTextColumn Header="Type" Width="150" Binding="{Binding Type}"/>
+                                <DataGridTextColumn Header="Amount" Width="60" Binding="{Binding Units}"/>
+                                <DataGridTextColumn Header="Value" Width="50" Binding="{Binding Value}"/>
+                                <DataGridTextColumn Header="% cap" Width="50" Binding="{Binding Cap}"/>
+                                <DataGridTextColumn Header="Price" Width="55" Binding="{Binding Price}"/>
+                                <DataGridTextColumn Header="Cost" Width="70" Binding="{Binding Cost}"/>
+                                <DataGridTextColumn Header="Short" Width="*" Binding="{Binding Short}">
+                                    <DataGridTextColumn.ElementStyle>
+                                        <Style TargetType="TextBlock"><Setter Property="Foreground" Value="Firebrick"/><Setter Property="FontWeight" Value="Bold"/></Style>
+                                    </DataGridTextColumn.ElementStyle>
+                                </DataGridTextColumn>
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </GroupBox>
+                </DockPanel>
+            </Grid>
+
+            <GridSplitter Grid.Row="1" Height="5" HorizontalAlignment="Stretch"/>
+
+            <TabControl Grid.Row="2">
+                <TabItem x:Name="PullTab" Header="Resources to pull">
+                    <DataGrid x:Name="PullGrid" AutoGenerateColumns="False" IsReadOnly="True" HeadersVisibility="Column" GridLinesVisibility="Horizontal">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Spawn" Width="130" Binding="{Binding Spawn}" FontWeight="SemiBold"/>
+                            <DataGridTextColumn Header="Type" Width="200" Binding="{Binding Type}"/>
+                            <DataGridTextColumn Header="Units to use" Width="90" Binding="{Binding Units}" SortMemberPath="UnitsSort"/>
+                            <DataGridTextColumn Header="Held" Width="80" Binding="{Binding Held}" SortMemberPath="HeldSort"/>
+                            <DataGridTextColumn Header="Cost" Width="90" Binding="{Binding Cost}" SortMemberPath="CostSort"/>
+                            <DataGridTextColumn Header="Used for" Width="*" Binding="{Binding UsedFor}"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </TabItem>
+                <TabItem x:Name="ShortTab" Header="Shortages">
+                    <DataGrid x:Name="ShortGrid" AutoGenerateColumns="False" IsReadOnly="True" HeadersVisibility="Column" GridLinesVisibility="Horizontal">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="For" Width="220" Binding="{Binding For}"/>
+                            <DataGridTextColumn Header="Short of" Width="220" Binding="{Binding What}" FontWeight="SemiBold"/>
+                            <DataGridTextColumn Header="Amount" Width="140" Binding="{Binding Amount}"/>
+                            <DataGridTextColumn Header="Spawning now (best first)" Width="*" Binding="{Binding Suggestions}"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </TabItem>
+                <TabItem x:Name="ItemsTab" Header="Items from inventory">
+                    <DataGrid x:Name="ItemsGrid" AutoGenerateColumns="False" IsReadOnly="True" HeadersVisibility="Column" GridLinesVisibility="Horizontal">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Item" Width="260" Binding="{Binding Item}" FontWeight="SemiBold"/>
+                            <DataGridTextColumn Header="Serial" Width="120" Binding="{Binding Serial}"/>
+                            <DataGridTextColumn Header="Units to use" Width="90" Binding="{Binding Units}"/>
+                            <DataGridTextColumn Header="Held" Width="80" Binding="{Binding Held}"/>
+                            <DataGridTextColumn Header="Used for" Width="*" Binding="{Binding UsedFor}"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </TabItem>
+            </TabControl>
+        </Grid>
+    </DockPanel>
+</Window>

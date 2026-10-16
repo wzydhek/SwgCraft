@@ -96,6 +96,32 @@ public static class HarvestPlanner
         return result.OrderBy(n => n.ResourceId, StringComparer.Ordinal).ThenBy(n => n.WeightsText, StringComparer.Ordinal).ToList();
     }
 
+    /// <summary>
+    /// The resource types wanted specifically: leaf types (not groups) that an enabled schematic with experimentation names in
+    /// a resource slot - the bold lines of What to Harvest - with the stat mixes they are wanted for. Spawns of these types are
+    /// worth keeping for those schematics rather than spending where any resource would do.
+    /// </summary>
+    public static Dictionary<string, List<SortedDictionary<Stat, int>>> SpecificNeeds(
+        IEnumerable<Schematic> schematics, Func<string, bool> professionEnabled, ResourceTree tree)
+    {
+        var result = new Dictionary<string, List<SortedDictionary<Stat, int>>>(StringComparer.Ordinal);
+        foreach (var s in schematics)
+        {
+            if (s.IgnoreExperimentation || s.Experiments.Count == 0) continue;
+            if (!s.Professions.Any(p => !string.IsNullOrWhiteSpace(p) && professionEnabled(p.Trim()))) continue;
+            var weights = s.Experiments.SelectMany(e => e.Modifiers).Select(m => Normalize(m.Weights)).Where(w => w.Count > 0).ToList();
+            if (weights.Count == 0) continue;
+            foreach (var res in s.Resources.Select(r => r.Resource?.Trim() ?? "").Where(r => r.Length > 0).Distinct(StringComparer.Ordinal))
+            {
+                if (tree.Find(res) is not { IsLeaf: true }) continue;
+                if (!result.TryGetValue(res, out var list)) result[res] = list = new List<SortedDictionary<Stat, int>>();
+                foreach (var w in weights)
+                    if (!list.Any(x => x.SequenceEqual(w))) list.Add(w);
+            }
+        }
+        return result;
+    }
+
     /// <summary>Weighted average of the stats (a missing stat counts as 0), on the game's 0-1000 scale.</summary>
     public static double Score(IReadOnlyDictionary<Stat, int> stats, IReadOnlyDictionary<Stat, int> weights)
     {

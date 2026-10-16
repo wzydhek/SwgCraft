@@ -26,8 +26,11 @@
                 <Separator/>
                 <MenuItem Header="_Spawn Browser..." Click="SpawnBrowser_Click"/>
                 <MenuItem Header="_Manage Galaxies..." Click="Galaxies_Click"/>
-                <MenuItem Header="_Inventory..." Click="Inventory_Click"/>
+                <MenuItem Header="Resource _Inventory..." Click="Inventory_Click"/>
                 <MenuItem Header="I_tem Inventory..." Click="ItemInventory_Click"/>
+            </MenuItem>
+            <MenuItem Header="_Build">
+                <MenuItem Header="Build _Planner..." Click="BuildPlanner_Click"/>
             </MenuItem>
         </Menu>
         <ToolBar DockPanel.Dock="Top">

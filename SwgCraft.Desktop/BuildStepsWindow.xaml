@@ -1,0 +1,15 @@
+<Window x:Class="SwgCraft.Desktop.BuildStepsWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Build Steps" Height="760" Width="980" WindowStartupLocation="CenterOwner">
+    <DockPanel>
+        <ToolBar DockPanel.Dock="Top">
+            <Button Content="Copy" Click="Copy_Click" Padding="10,2" ToolTip="Copy the whole report to the clipboard"/>
+            <Button Content="Save as Text..." Click="Save_Click" Padding="10,2"/>
+            <Separator/>
+            <TextBlock x:Name="SummaryText" VerticalAlignment="Center" Margin="6,0"/>
+        </ToolBar>
+        <TextBox x:Name="ReportBox" IsReadOnly="True" FontFamily="Consolas" FontSize="12.5" TextWrapping="NoWrap"
+                 VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto" Padding="6"/>
+    </DockPanel>
+</Window>
