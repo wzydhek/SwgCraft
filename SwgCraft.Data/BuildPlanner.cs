@@ -20,12 +20,17 @@ public sealed record BuildInputs(
 /// <param name="ForceCraft">Item keys (see BuildItem.Key) to craft even if item inventory has them.</param>
 /// <param name="FactoryRunsByDefault">Make every crafted item in factory run(s) unless toggled.</param>
 /// <param name="FactoryToggle">Item keys that do the opposite of <paramref name="FactoryRunsByDefault"/>. Ignored where a factory run is required.</param>
+/// <param name="OptionalToggle">Slot keys (see BuildPlanner.SlotKey) of optional slots that do the opposite of <paramref name="IncludeOptional"/>.</param>
+/// <param name="ClassChoice">Slot key -> the class member to use there (an item key: "schematic:id" or "loot:id"). Without a
+/// choice a class slot takes any member from inventory and crafts the rest from the class's default recipe.</param>
 public sealed record BuildOptions(
     bool IgnoreExperimentation = false,
     bool IncludeOptional = false,
     IReadOnlySet<string>? ForceCraft = null,
     bool FactoryRunsByDefault = false,
-    IReadOnlySet<string>? FactoryToggle = null);
+    IReadOnlySet<string>? FactoryToggle = null,
+    IReadOnlySet<string>? OptionalToggle = null,
+    IReadOnlyDictionary<string, string>? ClassChoice = null);
 
 // ================================================================ outputs
 
@@ -110,6 +115,13 @@ public sealed record BuildComponent(BuildItem Child, int PerUnit, bool Identical
 /// <summary>One component slot of a crafted item.</summary>
 public sealed record BuildSlotUse(int SlotIndex, BuildItem Child, int PerUnit, bool Identical);
 
+/// <summary>
+/// A component slot of a schematic as planned, for choosing: whether an optional slot is used, and for a class slot which
+/// member fills it (<see cref="ChosenMember"/>, an item key; null = any member, crafted from the class's default recipe).
+/// </summary>
+public sealed record BuildSlotChoice(int SlotIndex, string Key, ComponentSlot Slot, string TargetLabel, bool Included, BuildItem Child,
+                                     string? ClassId, string? ChosenMember);
+
 /// <summary>A factory run: its size (not counting the manufacturing schematic) and the identical groups it makes.</summary>
 public sealed record FactoryRunPlan(int Size, IReadOnlyList<BuildDemand> Groups);
 
@@ -145,6 +157,8 @@ public sealed class BuildItem
 
     public List<BuildComponent> Components { get; } = new();
     public List<BuildSlotUse> Slots { get; } = new();
+    /// <summary>Every component slot of the schematic (optional ones too), with what fills it.</summary>
+    public List<BuildSlotChoice> SlotChoices { get; } = new();
     public List<string> SkippedOptional { get; } = new();
     public List<BuildItem> UsedBy => Demands.Select(d => d.From).Where(f => f != this).Distinct().ToList();
 
@@ -281,6 +295,12 @@ public static class BuildPlanner
 
     static string NameOf(Schematic s) => string.IsNullOrWhiteSpace(s.Name) ? s.Id : s.Name.Trim();
 
+    /// <summary>A schematic's component slot, for BuildOptions.OptionalToggle and ClassChoice.</summary>
+    public static string SlotKey(string schematicId, int slotIndex) => $"{schematicId}#{slotIndex}";
+
+    /// <summary>An item key for a class member.</summary>
+    public static string MemberKey(MemberKind kind, string id) => KeyFor(kind == MemberKind.LootItem ? BuildItemKind.LootItem : BuildItemKind.Schematic, id);
+
     // ------------------------------------------------------------ the item graph
 
     /// <summary>Builds the edges from the target down, cuts loops (the item that would need itself is marked), and returns users before parts.</summary>
@@ -330,16 +350,33 @@ public static class BuildPlanner
         return post;
     }
 
-    /// <summary>The direct parts of an item: a schematic's component slots (optional ones only if asked), a class's recipe.</summary>
+    /// <summary>
+    /// The direct parts of an item: a schematic's component slots (optional ones only if switched on; a class slot filled by the
+    /// chosen member if there is one), a class's recipe.
+    /// </summary>
     static IEnumerable<(BuildItem Child, ComponentSlot Slot)> ChildrenOf(State st, BuildItem item)
     {
         if (item.ItemKind == BuildItemKind.Schematic && item.Schematic is { } s)
         {
-            foreach (var slot in s.Components)
+            for (int i = 0; i < s.Components.Count; i++)
             {
+                var slot = s.Components[i];
+                var key = SlotKey(s.Id, i);
                 var kind = slot.Kind switch { SlotKind.Class => BuildItemKind.Class, SlotKind.LootItem => BuildItemKind.LootItem, _ => BuildItemKind.Schematic };
-                var child = st.Get(kind, slot.Target);
-                if (slot.Optional && !st.Options.IncludeOptional)
+                var target = st.Get(kind, slot.Target);
+                var child = target;
+                string? chosen = null;
+                if (kind == BuildItemKind.Class && st.Options.ClassChoice?.GetValueOrDefault(key) is { Length: > 0 } pick
+                    && st.In.Classes.Find(slot.Target) is { } cls && cls.Members.Any(x => MemberKey(x.Kind, x.Id) == pick))
+                {
+                    chosen = pick;
+                    var m = cls.Members.First(x => MemberKey(x.Kind, x.Id) == pick);
+                    child = st.Get(m.Kind == MemberKind.LootItem ? BuildItemKind.LootItem : BuildItemKind.Schematic, m.Id);
+                }
+                bool included = !slot.Optional || (st.Options.IncludeOptional ^ (st.Options.OptionalToggle?.Contains(key) == true));
+                item.SlotChoices.Add(new BuildSlotChoice(i, key, slot, target.Label, included, child,
+                                                         kind == BuildItemKind.Class ? slot.Target : null, chosen));
+                if (!included)
                 {
                     item.SkippedOptional.Add(child.Label);
                     continue;
@@ -430,7 +467,7 @@ public static class BuildPlanner
             item.Problem = $"Schematic '{item.Id}' does not exist.";
             return;
         }
-        if (item.Problem != null && st.Edges[item].Count < s.Components.Count(c => !c.Optional || st.Options.IncludeOptional))
+        if (item.Problem != null && st.Edges[item].Count < item.SlotChoices.Count(c => c.Included))
         {
             item.MissingCount = rest;   // part of a loop
             return;

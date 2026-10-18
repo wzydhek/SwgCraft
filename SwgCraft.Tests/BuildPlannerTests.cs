@@ -296,6 +296,62 @@ public sealed class BuildPlannerTests
         Assert.Equal(1, I(forced, "stock").CraftCount);
     }
 
+    [Fact]
+    public void Optional_slots_can_be_switched_one_by_one_and_a_class_slot_can_use_a_chosen_member()
+    {
+        var handler = Sch("handler", false);
+        var stock = Sch("stock", false);
+        var grip = Sch("grip", false);
+        var basic = Sch("basic_scope", false);
+        var adv = Sch("adv_scope", false);
+        var classes = new ComponentClassesDocument();
+        classes.Classes.Add(new ComponentClass
+        {
+            Id = "scope", Name = "Scope",
+            Members = { new ClassMember { Kind = MemberKind.Schematic, Id = "basic_scope" }, new ClassMember { Kind = MemberKind.Schematic, Id = "adv_scope" },
+                        new ClassMember { Kind = MemberKind.LootItem, Id = "loot_scope" } },
+        });
+        var rifle = Sch("rifle", false);
+        rifle.Components.Add(Slot(SlotKind.Schematic, "handler"));
+        rifle.Components.Add(Slot(SlotKind.Schematic, "stock", optional: true));
+        rifle.Components.Add(Slot(SlotKind.Class, "scope"));
+        rifle.Components.Add(Slot(SlotKind.Schematic, "grip", optional: true));
+        var inputs = Inputs(new[] { rifle, handler, stock, grip, basic, adv },
+                            items: new[] { Item(1, MemberKind.LootItem, "loot_scope", 1) }, classes: classes);
+
+        // defaults: no optional slots; the class takes the held looted scope, then crafts its default recipe
+        var plan = BuildPlanner.Plan(inputs, "rifle", 2);
+        Assert.Equal(4, plan.Target.SlotChoices.Count);
+        Assert.Equal(new[] { true, false, true, false }, plan.Target.SlotChoices.Select(c => c.Included).ToArray());
+        Assert.Equal(BuildPlanner.SlotKey("rifle", 1), plan.Target.SlotChoices[1].Key);
+        Assert.Equal("scope", plan.Target.SlotChoices[2].ClassId);
+        Assert.Equal((1, 1), (I(plan, "scope").FromInventoryCount, I(plan, "basic_scope").CraftCount));
+
+        // switch just the stock on, and choose the advanced scope
+        var chosen = BuildPlanner.Plan(inputs, "rifle", 2, new BuildOptions(
+            OptionalToggle: new HashSet<string> { BuildPlanner.SlotKey("rifle", 1) },
+            ClassChoice: new Dictionary<string, string> { [BuildPlanner.SlotKey("rifle", 2)] = BuildPlanner.MemberKey(MemberKind.Schematic, "adv_scope") }));
+        Assert.Equal(2, I(chosen, "stock").CraftCount);
+        Assert.DoesNotContain(chosen.Items, i => i.Id == "grip");
+        Assert.Equal(2, I(chosen, "adv_scope").CraftCount);                  // the held looted scope isn't an advanced scope
+        Assert.DoesNotContain(chosen.Items, i => i.Id == "scope" || i.Id == "basic_scope");
+        Assert.Equal("schematic:adv_scope", chosen.Target.SlotChoices[2].ChosenMember);
+
+        // all optional slots on, except the grip; the looted scope chosen: one held, one missing
+        var loot = BuildPlanner.Plan(inputs, "rifle", 2, new BuildOptions(IncludeOptional: true,
+            OptionalToggle: new HashSet<string> { BuildPlanner.SlotKey("rifle", 3) },
+            ClassChoice: new Dictionary<string, string> { [BuildPlanner.SlotKey("rifle", 2)] = "loot:loot_scope" }));
+        Assert.Contains(loot.Items, i => i.Id == "stock");
+        Assert.DoesNotContain(loot.Items, i => i.Id == "grip");
+        Assert.Equal((1, 1), (I(loot, "loot_scope").FromInventoryCount, I(loot, "loot_scope").MissingCount));
+
+        // a choice that isn't a member of the class is ignored
+        var bad = BuildPlanner.Plan(inputs, "rifle", 2, new BuildOptions(
+            ClassChoice: new Dictionary<string, string> { [BuildPlanner.SlotKey("rifle", 2)] = "schematic:handler" }));
+        Assert.Null(bad.Target.SlotChoices[2].ChosenMember);
+        Assert.Equal(1, I(bad, "basic_scope").CraftCount);
+    }
+
     // ------------------------------------------------------------ factory runs
 
     [Fact]

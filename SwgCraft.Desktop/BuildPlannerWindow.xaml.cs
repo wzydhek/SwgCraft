@@ -60,6 +60,19 @@ public sealed class BuildItemVm
     public FontWeight Weight { get; }
 }
 
+/// <summary>A component slot of the selected item: optional on/off and, for a class slot, the member to use.</summary>
+public sealed class SlotChoiceVm
+{
+    public string Key { get; init; } = "";
+    public string Text { get; init; } = "";
+    public bool IsOptional { get; init; }
+    public bool Included { get; init; }
+    public string CheckTip => IsOptional ? "Use this optional component" : "Required";
+    public List<RefOption> Options { get; init; } = new();
+    public string Chosen { get; init; } = "";
+    public Visibility ChoiceVisibility => Options.Count > 0 ? Visibility.Visible : Visibility.Collapsed;
+}
+
 public sealed record BuildResourceRow(string Slot, string Resource, string Each, string Crafts, string Spawn, string Type,
                                       string Units, string Value, string Cap, string Price, string Cost, string Short);
 public sealed record BuildPullRow(string Spawn, string Type, string Units, int UnitsSort, string Held, int HeldSort,
@@ -74,6 +87,9 @@ public partial class BuildPlannerWindow : Window
     List<RefOption> _targetOptions = new();
     readonly HashSet<string> _forceCraft = new(StringComparer.Ordinal);
     readonly HashSet<string> _factoryToggle = new(StringComparer.Ordinal);
+    readonly HashSet<string> _optionalToggle = new(StringComparer.Ordinal);            // optional slots switched against the checkbox
+    readonly Dictionary<string, string> _classChoice = new(StringComparer.Ordinal);    // class slot -> member item key
+    ComponentClassesDocument _classes = new();
     List<Schematic> _allSchematics = new();
     bool _settingFilters;
     string? _plannedTarget;
@@ -186,6 +202,7 @@ public partial class BuildPlannerWindow : Window
     void Option_Click(object sender, RoutedEventArgs e)
     {
         if (ReferenceEquals(sender, FactoryBox)) _factoryToggle.Clear();   // per-item switches are relative to this default
+        if (ReferenceEquals(sender, OptionalBox)) _optionalToggle.Clear();  // per-slot switches too
         if (_plan != null) RunPlan(keepForced: true);
     }
 
@@ -199,6 +216,8 @@ public partial class BuildPlannerWindow : Window
         {
             _forceCraft.Clear();
             _factoryToggle.Clear();
+            _optionalToggle.Clear();
+            _classChoice.Clear();
         }
 
         var schematics = Services.StaticData.LoadSchematics();
@@ -215,7 +234,9 @@ public partial class BuildPlannerWindow : Window
                 new SchematicCatalog(schematics.Value), new ClassCatalog(classes.Value), new LootCatalog(loot.Value), Services.Tree,
                 store.Inventory(), store.ItemInventory(), store.Spawns(currentOnly: true, null), Services.Settings.IsProfessionEnabled);
             var options = new BuildOptions(IgnoreExpBox.IsChecked == true, OptionalBox.IsChecked == true, new HashSet<string>(_forceCraft),
-                                           FactoryBox.IsChecked == true, new HashSet<string>(_factoryToggle));
+                                           FactoryBox.IsChecked == true, new HashSet<string>(_factoryToggle),
+                                           new HashSet<string>(_optionalToggle), new Dictionary<string, string>(_classChoice));
+            _classes = classes.Value;
             _plan = BuildPlanner.Plan(inputs, target, qty, options);
             _plannedTarget = target;
 
@@ -348,9 +369,21 @@ public partial class BuildPlannerWindow : Window
         FactoryButton.Content = n.FactoryRun ? "Hand-craft instead of a factory run" : "Make it a factory run";
         FactoryButton.ToolTip = "Switch this item between factory run(s) and hand-crafting. A factory run also makes everything it uses in factory runs.";
 
+        SlotList.ItemsSource = n.SlotChoices.Select(SlotVm).ToList();
+        SlotBox.Visibility = n.SlotChoices.Count > 0 ? Visibility.Visible : Visibility.Collapsed;
+        // slot choices only matter for units that get crafted
+        string? slotNote = n.SlotChoices.Count == 0 || n.CraftCount > 0 ? null
+            : n.FromInventoryCount > 0
+                ? $"All {n.FromInventoryCount:N0} come from item inventory, so none are crafted and these slots aren't planned. " +
+                  "Press \"Craft new instead of using inventory\" to build new ones with these choices."
+                : "None are crafted, so these slots aren't planned.";
+        SlotNote.Text = slotNote ?? "";
+        SlotNote.Visibility = slotNote != null ? Visibility.Visible : Visibility.Collapsed;
+
         ItemTakeBox.Visibility = n.FromInventory.Count > 0 ? Visibility.Visible : Visibility.Collapsed;
         ItemTakeList.ItemsSource = n.FromInventory.Select(t =>
-            $"{t.Quantity:N0} x {ItemName(t.Stack)}{(t.Stack.Serial != null ? $" (serial {t.Stack.Serial})" : "")} of {t.Stack.Quantity:N0} held").ToList();
+            $"{t.Quantity:N0} x {ItemName(t.Stack)}{(t.Stack.Serial != null ? $" (serial {t.Stack.Serial})" : "")} of {t.Stack.Quantity:N0} held" +
+            (string.IsNullOrWhiteSpace(t.Stack.Note) ? "" : " - " + string.Join("; ", t.Stack.Note.Split('\n', StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries)))).ToList();
 
         var rows = new List<BuildResourceRow>();
         foreach (var r in n.Resources)
@@ -373,6 +406,48 @@ public partial class BuildPlannerWindow : Window
             }
         }
         ResourceGrid.ItemsSource = rows;
+    }
+
+    SlotChoiceVm SlotVm(BuildSlotChoice c)
+    {
+        var options = new List<RefOption>();
+        if (c.ClassId != null)
+        {
+            options.Add(new RefOption("", "Any member (held first, then the default recipe)"));
+            var cls = _classes.Classes.FirstOrDefault(x => x.Id == c.ClassId);
+            if (cls != null)
+                options.AddRange(cls.Members.Select(m => new RefOption(BuildPlanner.MemberKey(m.Kind, m.Id),
+                    (_itemNames.TryGetValue($"{m.Kind}:{m.Id}", out var name) ? name : m.Id) + (m.Kind == MemberKind.LootItem ? " (looted)" : ""))));
+        }
+        int q = Math.Max(1, c.Slot.Quantity);
+        var what = c.ClassId != null ? $"{c.TargetLabel} (class)" : c.TargetLabel;
+        return new SlotChoiceVm
+        {
+            Key = c.Key,
+            Text = $"Slot {c.SlotIndex + 1}: {q} x {what}" + (c.Slot.Identical && q >= 2 ? ", identical" : "") +
+                   (c.Slot.Optional ? (c.Included ? " - optional, used" : " - optional, not used") : ""),
+            IsOptional = c.Slot.Optional,
+            Included = c.Included,
+            Options = options,
+            Chosen = c.ChosenMember ?? "",
+        };
+    }
+
+    void SlotIncluded_Click(object sender, RoutedEventArgs e)
+    {
+        if ((sender as FrameworkElement)?.DataContext is not SlotChoiceVm vm || !vm.IsOptional) return;
+        if (!_optionalToggle.Remove(vm.Key)) _optionalToggle.Add(vm.Key);
+        RunPlan(keepForced: true);
+    }
+
+    void SlotChoice_SelectionChanged(object sender, SelectionChangedEventArgs e)
+    {
+        // the first selection comes from the binding when the row is shown; only a change by the user re-plans
+        if (e.RemovedItems.Count == 0 || sender is not ComboBox box || box.DataContext is not SlotChoiceVm vm) return;
+        var key = box.SelectedValue as string ?? "";
+        if (key == vm.Chosen) return;
+        if (key.Length == 0) _classChoice.Remove(vm.Key); else _classChoice[vm.Key] = key;
+        Dispatcher.BeginInvoke(new Action(() => RunPlan(keepForced: true)));   // not while the combo box is still handling the click
     }
 
     void Steps_Click(object sender, RoutedEventArgs e)

@@ -27,7 +27,8 @@
             <ToolBar Band="1">
                 <CheckBox x:Name="IgnoreExpBox" Content="Ignore experimentation" VerticalAlignment="Center" Margin="4,0" Click="Option_Click"
                           ToolTip="Pick resources as if quality didn't matter: general-purpose spawns first, biggest stack first (Generic-marked first); types other schematics want specifically only when nothing else is held. Schematics marked to ignore experimentation always do."/>
-                <CheckBox x:Name="OptionalBox" Content="Include optional components" VerticalAlignment="Center" Margin="4,0" Click="Option_Click"/>
+                <CheckBox x:Name="OptionalBox" Content="Include optional components" VerticalAlignment="Center" Margin="4,0" Click="Option_Click"
+                          ToolTip="The default for optional slots. Switch single slots in the Component slots list of the selected item (changing this clears those switches)."/>
                 <CheckBox x:Name="FactoryBox" Content="Factory runs for everything crafted" VerticalAlignment="Center" Margin="4,0" Click="Option_Click"
                           ToolTip="Plan every crafted item as factory run(s): all units of a run use one spawn per resource slot. Identical components, and everything a factory-run item uses, are always factory runs. Single items can be switched in the plan."/>
             </ToolBar>
@@ -79,6 +80,33 @@
                         <Button x:Name="ForceCraftButton" Click="ForceCraft_Click" Padding="8,2" Visibility="Collapsed" Margin="0,0,6,0"/>
                         <Button x:Name="FactoryButton" Click="Factory_Click" Padding="8,2" Visibility="Collapsed"/>
                     </StackPanel>
+                    <GroupBox DockPanel.Dock="Top" x:Name="SlotBox" Header="Component slots (tick optional ones to use them; pick which member fills a class slot)">
+                        <DockPanel>
+                        <TextBlock x:Name="SlotNote" DockPanel.Dock="Top" TextWrapping="Wrap" Foreground="DarkGoldenrod" Margin="0,0,0,3" Visibility="Collapsed"/>
+                        <ScrollViewer MaxHeight="150" VerticalScrollBarVisibility="Auto">
+                            <ItemsControl x:Name="SlotList">
+                                <ItemsControl.ItemTemplate>
+                                    <DataTemplate DataType="{x:Type local:SlotChoiceVm}">
+                                        <Grid Margin="0,1">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*"/>
+                                                <ColumnDefinition Width="260"/>
+                                            </Grid.ColumnDefinitions>
+                                            <CheckBox Grid.Column="0" VerticalAlignment="Center" IsChecked="{Binding Included, Mode=OneWay}"
+                                                      IsEnabled="{Binding IsOptional}" Click="SlotIncluded_Click" ToolTip="{Binding CheckTip}">
+                                                <TextBlock Text="{Binding Text}" TextTrimming="CharacterEllipsis"/>
+                                            </CheckBox>
+                                            <ComboBox Grid.Column="1" Margin="4,0,0,0" ItemsSource="{Binding Options}" DisplayMemberPath="Display"
+                                                      SelectedValuePath="Key" SelectedValue="{Binding Chosen, Mode=OneWay}"
+                                                      Visibility="{Binding ChoiceVisibility}" SelectionChanged="SlotChoice_SelectionChanged"
+                                                      ToolTip="Which member of the component class fills this slot"/>
+                                        </Grid>
+                                    </DataTemplate>
+                                </ItemsControl.ItemTemplate>
+                            </ItemsControl>
+                        </ScrollViewer>
+                        </DockPanel>
+                    </GroupBox>
                     <GroupBox DockPanel.Dock="Top" Header="Items taken from item inventory" x:Name="ItemTakeBox">
                         <ListBox x:Name="ItemTakeList" MaxHeight="90"/>
                     </GroupBox>
