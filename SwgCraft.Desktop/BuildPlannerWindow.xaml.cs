@@ -23,8 +23,8 @@ public sealed class BuildItemVm
         How = HowText(item);
         Missing = item.MissingCount > 0 ? $"{item.MissingCount:N0}" : "";
         UsedBy = string.Join(", ", item.UsedBy.Select(u => u.Label));
-        Foreground = item.MissingCount > 0 || item.UnmadeInRuns > 0 ? Brushes.Firebrick
-                   : shortRes ? Brushes.DarkOrange
+        Foreground = item.MissingCount > 0 || (item.FactoryRun && item.FactoryBlockedBy != null) ? Brushes.Firebrick
+                   : shortRes || item.UnmadeInRuns > 0 ? Brushes.DarkOrange
                    : item.CraftCount == 0 && item.FromInventoryCount > 0 ? Brushes.DarkGreen
                    : Brushes.Black;
         Weight = item.IsTarget ? FontWeights.Bold : FontWeights.Normal;
@@ -36,13 +36,17 @@ public sealed class BuildItemVm
         if (n.ItemKind == BuildItemKind.Class)
             return n.CraftCount > 0 && n.Recipe != null ? $"made as {n.Recipe.Label}" : n.FromInventoryCount > 0 ? "inventory" : "";
         if (n.CraftCount == 0) return n.FromInventoryCount > 0 ? "inventory" : "";
-        if (!n.FactoryRun) return "by hand";
+        if (!n.FactoryRun) return "by hand" + (n.FactoryBlockedBy != null && n.CraftCount >= 2 ? $" (no factory run: needs looted {n.FactoryBlockedBy})" : "");
         var why = n.FactoryRequired ? (n.Demands.Any(d => d.FromFactory) ? " (inherited)" : " (identical)") : "";
         var parts = new List<string>();
         if (n.Runs.Count == 1) parts.Add($"1 factory run of {n.Runs[0].Size:N0}{why}");
         else if (n.Runs.Count > 1) parts.Add($"{n.Runs.Count} factory runs: {string.Join(" + ", n.Runs.Select(r => r.Size))}{why}");
         if (n.HandUnits > 0) parts.Add($"{n.HandUnits:N0} by hand");
-        if (n.UnmadeInRuns > 0) parts.Add(n.Runs.Count == 0 && n.HandUnits == 0 ? "factory run not possible" + why : $"{n.UnmadeInRuns:N0} not possible");
+        if (n.UnmadeInRuns > 0)
+            parts.Add(n.Runs.Count == 0 && n.HandUnits == 0
+                ? $"1 factory run of {n.UnmadeInRuns:N0}{why} - short of resources"
+                : $"{n.UnmadeInRuns:N0} more in a run - short of resources");
+        if (n.FactoryBlockedBy != null) parts.Add($"factory run not possible: needs looted {n.FactoryBlockedBy}");
         return string.Join(", ", parts);
     }
 
@@ -283,7 +287,7 @@ public partial class BuildPlannerWindow : Window
 
         // shortages: resources and items
         var shorts = slots.Where(x => x.Slot.ShortCrafts > 0 || x.Slot.ShortSetups > 0).Select(x => new BuildShortRow(
-                x.Node.Label, $"{ResLabel(x.Slot.ResourceId)} (slot {x.Slot.SlotIndex + 1})",
+                x.Node.Label, $"{ResLabel(x.Slot.ResourceId)} (slot {SlotText(x.Slot)})",
                 $"{x.Slot.ShortAmount:N0} ({x.Slot.ShortCrafts + x.Slot.ShortSetups:N0} x {x.Slot.AmountEach:N0}{(x.Slot.ShortSetups > 0 ? ", incl. the manufacturing schematic" : "")})",
                 x.Slot.Suggestions.Count == 0 ? "nothing suitable is spawning"
                     : string.Join(";  ", x.Slot.Suggestions.Select(s => $"{s.Spawn.Name} {s.Value:0}{(s.CapPercent is double p ? $" ({p:0}%)" : "")} - {s.Spawn.Planets}"))))
@@ -343,7 +347,9 @@ public partial class BuildPlannerWindow : Window
             if (n.FactoryRun)
             {
                 info.Add($"Factory run{(n.FactoryReason != null ? " because " + n.FactoryReason : "")}. " +
-                         (n.Runs.Count == 0 ? "No run is possible with the stock held." : $"Runs: {string.Join(" + ", n.Runs.Select(r => r.Size))}.") +
+                         (n.Runs.Count > 0 ? $"Runs: {string.Join(" + ", n.Runs.Select(r => r.Size))}. " : "") +
+                         (n.UnmadeInRuns > 0 ? $"{n.UnmadeInRuns:N0} more need resources: no single spawn held covers a run of them yet (see Shortages). " : "") +
+                         (n.FactoryBlockedBy != null ? $"Not really possible: {n.FactoryBlockedBy} is looted, and a run needs identical sets of it. " : "") +
                          " Every unit of a run uses the same spawn for each resource slot, and everything it uses is factory-made too.");
                 var groups = n.Runs.Select((r, i) => (Run: r, Index: i)).Where(x => x.Run.Groups.Count > 0)
                     .Select(x => $"run {x.Index + 1}: {string.Join(", ", x.Run.Groups.Select(g => $"{g.Units:N0} for {g.From.Label}"))}").ToList();
@@ -352,6 +358,7 @@ public partial class BuildPlannerWindow : Window
                 if (n.HandUnits > 0) info.Add($"{n.HandUnits:N0} made by hand instead: a factory run of one would only waste a unit's worth.");
             }
             else info.Add("Hand-crafted: each unit can use a different spawn." +
+                          (n.FactoryBlockedBy != null && n.CraftCount >= 2 ? $" (No factory run: it would need identical sets of looted {n.FactoryBlockedBy}.)" : "") +
                           (n.CraftCount == 1 && FactoryBox.IsChecked == true ? " (Only one is needed, so no factory run: it would waste a unit's worth on the manufacturing schematic.)" : ""));
             if (n.Components.Count > 0)
                 info.Add("Uses per unit: " + string.Join(", ", n.Components.Select(c => $"{c.PerUnit} x {c.Child.Label}{(c.Slots > 1 ? $" ({c.Slots} slots)" : "")}")) + ".");
@@ -391,12 +398,12 @@ public partial class BuildPlannerWindow : Window
             string label = ResLabel(r.ResourceId);
             string shortText = r.ShortCrafts > 0 || r.ShortSetups > 0 ? $"{r.ShortAmount:N0} short ({r.ShortCrafts} unit(s))" : "";
             if (r.Takes.Count == 0)
-                rows.Add(new BuildResourceRow($"{r.SlotIndex + 1}", label, $"{r.AmountEach:N0}", $"{r.Crafts:N0}", "(none held)", "", "", "", "", "", "", shortText));
+                rows.Add(new BuildResourceRow(SlotText(r), label, $"{r.AmountEach:N0}", $"{r.Crafts:N0}", "(none held)", "", "", "", "", "", "", shortText));
             bool first = true;
             foreach (var t in r.Takes)
             {
                 rows.Add(new BuildResourceRow(
-                    first ? $"{r.SlotIndex + 1}" : "", first ? label : "", first ? $"{r.AmountEach:N0}" : "",
+                    first ? SlotText(r) : "", first ? label : "", first ? $"{r.AmountEach:N0}" : "",
                     n.FactoryRun && r.Takes.IndexOf(t) < n.Runs.Count ? $"run of {t.Crafts:N0} + 1" : $"{t.Crafts:N0}",
                     t.Stack.Spawn.Name, ResLabel(t.Stack.Spawn.ResourceTypeId) + (t.Specific ? " (type-specific)" : ""), $"{t.Quantity:N0}",
                     r.QualityMatters ? $"{t.Value:0}" : "", r.QualityMatters && t.CapPercent is double p ? $"{p:0}%" : "",
@@ -407,6 +414,9 @@ public partial class BuildPlannerWindow : Window
         }
         ResourceGrid.ItemsSource = rows;
     }
+
+    /// <summary>"1" or "1 Frame": the slot number and its in-game name.</summary>
+    static string SlotText(ResourceSlotPlan r) => string.IsNullOrWhiteSpace(r.Name) ? $"{r.SlotIndex + 1}" : $"{r.SlotIndex + 1} {r.Name.Trim()}";
 
     SlotChoiceVm SlotVm(BuildSlotChoice c)
     {
@@ -424,7 +434,7 @@ public partial class BuildPlannerWindow : Window
         return new SlotChoiceVm
         {
             Key = c.Key,
-            Text = $"Slot {c.SlotIndex + 1}: {q} x {what}" + (c.Slot.Identical && q >= 2 ? ", identical" : "") +
+            Text = $"Slot {c.SlotIndex + 1}{(string.IsNullOrWhiteSpace(c.Slot.Name) ? "" : " (" + c.Slot.Name.Trim() + ")")}: {q} x {what}" + (c.Slot.Identical && q >= 2 ? ", identical" : "") +
                    (c.Slot.Optional ? (c.Included ? " - optional, used" : " - optional, not used") : ""),
             IsOptional = c.Slot.Optional,
             Included = c.Included,

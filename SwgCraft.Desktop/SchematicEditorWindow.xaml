@@ -142,6 +142,8 @@
                                           SelectionMode="Single" GridLinesVisibility="Horizontal" HeadersVisibility="Column"
                                           ItemsSource="{Binding Resources}">
                                     <DataGrid.Columns>
+                                        <DataGridTextColumn Header="Slot name (as in game)" Width="170"
+                                                            Binding="{Binding Name, UpdateSourceTrigger=PropertyChanged}"/>
                                         <DataGridTextColumn Header="Amount" Width="80"
                                                             Binding="{Binding Amount, UpdateSourceTrigger=PropertyChanged}"/>
                                     </DataGrid.Columns>
@@ -164,6 +166,8 @@
                                           SelectionMode="Single" GridLinesVisibility="Horizontal" HeadersVisibility="Column"
                                           ItemsSource="{Binding Components}">
                                     <DataGrid.Columns>
+                                        <DataGridTextColumn Header="Slot name (as in game)" Width="170"
+                                                            Binding="{Binding Name, UpdateSourceTrigger=PropertyChanged}"/>
                                         <DataGridTextColumn Header="Qty" Width="60"
                                                             Binding="{Binding Quantity, UpdateSourceTrigger=PropertyChanged}"/>
                                         <DataGridCheckBoxColumn Header="Identical" Width="70"

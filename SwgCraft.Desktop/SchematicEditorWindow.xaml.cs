@@ -44,9 +44,9 @@ public partial class SchematicEditorWindow : Window
         _schematics.CollectionChanged += (_, _) => UpdateCount();
 
         _componentCol = new PickerColumn("Component (schematic, class or looted item) - type to search", nameof(ComponentSlotVm.Key));
-        ComponentGrid.Columns.Insert(0, _componentCol);
+        ComponentGrid.Columns.Insert(1, _componentCol);   // after the slot name
         _resourceCol = new PickerColumn("Resource - type to search", nameof(ResourceSlotVm.Resource));
-        ResourceGrid.Columns.Insert(0, _resourceCol);
+        ResourceGrid.Columns.Insert(1, _resourceCol);     // after the slot name
         _skillCol = new PickerColumn("Skill - type to search", nameof(SkillSlotVm.Skill));
         SkillGrid.Columns.Add(_skillCol);
         BuildExperimentColumns();

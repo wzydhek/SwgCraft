@@ -557,6 +557,46 @@ public sealed class BuildPlannerTests
         Assert.True(plan.Complete);
     }
 
+    [Fact]
+    public void Only_a_looted_part_blocks_a_factory_run_and_missing_resources_are_a_shortage()
+    {
+        var classes = new ComponentClassesDocument();
+        classes.Classes.Add(new ComponentClass { Id = "enh", Name = "Enhancement", Members = { new ClassMember { Kind = MemberKind.LootItem, Id = "krayt" } } });
+        var adv = Sch("adv", false, ("steel", 10));
+        adv.Components.Add(Slot(SlotKind.Class, "enh", optional: true));
+        var rifle = Sch("rifle", false);
+        rifle.Components.Add(Slot(SlotKind.Schematic, "adv", qty: 5, identical: true));
+        var stock = new[] { Res(1, "steel", 500, 100) };
+
+        // optional enhancement off: a normal run of 5 (+1 for the schematic)
+        var plain = BuildPlanner.Plan(Inputs(new[] { rifle, adv }, stock, classes: classes), "rifle", 1);
+        var a = I(plain, "adv");
+        Assert.Null(a.FactoryBlockedBy);
+        Assert.Equal(new[] { 5 }, a.Runs.Select(r => r.Size));
+        Assert.True(plain.Complete);
+
+        // no steel held: still one run of 5, short of resources - not "impossible"
+        var poor = BuildPlanner.Plan(Inputs(new[] { rifle, adv }, classes: classes), "rifle", 1);
+        var p = I(poor, "adv");
+        Assert.True(p.FactoryRun);
+        Assert.Null(p.FactoryBlockedBy);
+        Assert.Equal(5, p.UnmadeInRuns);
+        Assert.Equal(60, p.Resources[0].ShortAmount);
+        Assert.Contains("need more resources", p.Problem);
+
+        // the looted enhancement switched on: a run would need 6 identical looted enhancements
+        var looted = BuildPlanner.Plan(Inputs(new[] { rifle, adv }, stock, classes: classes), "rifle", 1,
+                                       new BuildOptions(OptionalToggle: new HashSet<string> { BuildPlanner.SlotKey("adv", 0) }));
+        Assert.Equal("Enhancement", I(looted, "adv").FactoryBlockedBy);
+
+        // a factory run that was only chosen falls back to hand-crafting
+        var crate = Sch("crate", false, ("steel", 1));
+        crate.Components.Add(Slot(SlotKind.Class, "enh"));
+        var chosen = BuildPlanner.Plan(Inputs(new[] { crate }, stock, classes: classes), "crate", 3, new BuildOptions(FactoryRunsByDefault: true));
+        Assert.False(chosen.Target.FactoryRun);
+        Assert.Equal("Enhancement", chosen.Target.FactoryBlockedBy);
+    }
+
     // ------------------------------------------------------------ build steps
 
     [Fact]
@@ -599,6 +639,26 @@ public sealed class BuildPlannerTests
         Assert.True(at >= 0);
         Assert.Contains("4,050  spawn1", step.Lines[at + 2]);    // sorted by resource name: iron, then steel
         Assert.Contains("16,200  spawn2", step.Lines[at + 1]);
+    }
+
+    [Fact]
+    public void Build_steps_show_the_in_game_slot_names()
+    {
+        var handler = Sch("handler", false);
+        var stock = Sch("stock", false);
+        var rifle = Sch("rifle", false, ("steel", 10));
+        rifle.Resources[0].Name = "Frame";
+        rifle.Components.Add(Slot(SlotKind.Schematic, "handler"));
+        rifle.Components[0].Name = "Grip Assembly";
+        rifle.Components.Add(Slot(SlotKind.Schematic, "stock", optional: true));
+        rifle.Components[1].Name = "Stock";
+        var plan = BuildPlanner.Plan(Inputs(new[] { rifle, handler, stock }, new[] { Res(1, "steel", 500, 100) }), "rifle", 1);
+
+        var last = BuildSteps.From(plan, id => id, s => s.ItemId).Last();
+        Assert.Contains(last.Lines, l => l.StartsWith("Resource Frame - steel, 10 per unit: spawn1"));
+        Assert.Contains(last.Lines, l => l.StartsWith("Component handler (Grip Assembly): 1 per unit"));
+        Assert.Contains(last.Lines, l => l == "Optional component stock (Stock): not used");
+        Assert.Equal("Frame", plan.Target.Resources[0].Name);
     }
 
     [Fact]

@@ -61,7 +61,8 @@ public sealed class SchematicsDocument
     /// 6: a component slot can be a looted item. 5: schematics can be marked to ignore experimentation in builds. 4: schematics have a crafting tab. 3: schematics list the skills that can craft them. 2: experiments hold a list of modifiers,
     /// each with its own percentages (1: one set of percentages per experiment). Older files still load.
     /// </summary>
-    public const int CurrentSchemaVersion = 6;
+    /// <summary>7: resource and component slots can have a name (the slot's label in the game's crafting window).</summary>
+    public const int CurrentSchemaVersion = 7;
     public int SchemaVersion { get; set; } = CurrentSchemaVersion;
     public List<Schematic> Schematics { get; set; } = new();
 }
@@ -110,6 +111,10 @@ public sealed class Schematic
 /// <summary>A component the schematic consumes: another schematic's product, or any member of a component class.</summary>
 public sealed class ComponentSlot
 {
+    /// <summary>The slot's label in the game's crafting window (e.g. "Socket Cluster"); null when not filled in.</summary>
+    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+    public string? Name { get; set; }
+
     [JsonConverter(typeof(JsonStringEnumConverter))]
     public SlotKind Kind { get; set; }
 
@@ -130,6 +135,10 @@ public sealed class ComponentSlot
 /// <summary>A resource the schematic consumes. Resource is a resource-tree node ID; an interior node means "any resource below it".</summary>
 public sealed class ResourceSlot
 {
+    /// <summary>The slot's label in the game's crafting window (e.g. "Frame"); null when not filled in.</summary>
+    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+    public string? Name { get; set; }
+
     public string Resource { get; set; } = "";
     public int Amount { get; set; } = 1;
 }

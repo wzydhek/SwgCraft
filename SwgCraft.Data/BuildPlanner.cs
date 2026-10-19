@@ -57,6 +57,8 @@ public sealed record ShortageSuggestion(Spawn Spawn, double Value, double? CapPe
 public sealed class ResourceSlotPlan
 {
     public int SlotIndex { get; init; }
+    /// <summary>The slot's name in the game (null if the schematic doesn't have one).</summary>
+    public string? Name { get; init; }
     public string ResourceId { get; init; } = "";
     /// <summary>Amount per unit crafted.</summary>
     public int AmountEach { get; init; }
@@ -113,7 +115,7 @@ public sealed class BuildDemand
 public sealed record BuildComponent(BuildItem Child, int PerUnit, bool Identical, int Slots);
 
 /// <summary>One component slot of a crafted item.</summary>
-public sealed record BuildSlotUse(int SlotIndex, BuildItem Child, int PerUnit, bool Identical);
+public sealed record BuildSlotUse(int SlotIndex, BuildItem Child, int PerUnit, bool Identical, string? Name = null);
 
 /// <summary>
 /// A component slot of a schematic as planned, for choosing: whether an optional slot is used, and for a class slot which
@@ -175,7 +177,12 @@ public sealed class BuildItem
     public int HandUnits { get; set; }
     /// <summary>Units crafted by hand (all of them for a hand-crafted item).</summary>
     public int ByHand => FactoryRun ? HandUnits : CraftCount;
-    /// <summary>Factory units that no run could be formed for.</summary>
+    /// <summary>
+    /// The looted parts (or classes with nothing craftable) that keep this item from being factory-made: a run needs an
+    /// identical set of every component. Null when nothing does.
+    /// </summary>
+    public string? FactoryBlockedBy { get; set; }
+    /// <summary>Factory units that no run could be formed for with the resources held (they are short, see the resource slots).</summary>
     public int UnmadeInRuns => FactoryRun ? CraftCount - Runs.Sum(r => r.Size) - HandUnits : 0;
     public List<ResourceSlotPlan> Resources { get; } = new();
 }
@@ -480,7 +487,12 @@ public static class BuildPlanner
         bool identical = need.Groups.Count > 0;
         bool chosen = st.Options.FactoryRunsByDefault ^ (st.Options.FactoryToggle?.Contains(item.Key) == true);
         item.FactoryRequired = identical;
-        item.FactoryRun = identical || (chosen && rest >= 2);   // a run of one only wastes a unit's worth on the schematic
+        // a factory run needs identical sets of every component: a looted part (or a class with nothing craftable) can't be one
+        var blockers = st.Edges[item].Select(e => e.Child)
+            .Where(c => c.ItemKind == BuildItemKind.LootItem || (c.ItemKind == BuildItemKind.Class && c.Recipe == null))
+            .Select(c => c.Label).Distinct().ToList();
+        item.FactoryBlockedBy = blockers.Count > 0 ? string.Join(", ", blockers) : null;
+        item.FactoryRun = identical || (chosen && rest >= 2 && blockers.Count == 0);   // a run of one only wastes a unit's worth on the schematic
         var factoryUsers = need.Groups.Where(g => g.FromFactory).Select(g => g.From.Label).Distinct().ToList();
         item.FactoryReason = factoryUsers.Count > 0
                 ? $"a factory run of {string.Join(", ", factoryUsers)} needs identical components (one set per run plus one for its manufacturing schematic)"
@@ -507,7 +519,7 @@ public static class BuildPlanner
         {
             int q = Math.Max(1, slot.Quantity);
             int index = s.Components.IndexOf(slot);
-            item.Slots.Add(new BuildSlotUse(index, child, q, item.FactoryRun || (slot.Identical && q >= 2)));
+            item.Slots.Add(new BuildSlotUse(index, child, q, item.FactoryRun || (slot.Identical && q >= 2), slot.Name));
 
             for (int r = 0; r < runs.Count; r++)
                 child.Demands.Add(new BuildDemand(item, q * (runs[r] + 1), identical: true, fromFactory: true, parentRun: r, slotIndex: index));
@@ -588,7 +600,7 @@ public static class BuildPlanner
             bool quality = item.QualityMatters && modifiers.Count > 0;
             var plan = new ResourceSlotPlan
             {
-                SlotIndex = i, ResourceId = res, AmountEach = Math.Max(1, slot.Amount), Crafts = item.CraftCount,
+                SlotIndex = i, Name = slot.Name, ResourceId = res, AmountEach = Math.Max(1, slot.Amount), Crafts = item.CraftCount,
                 QualityMatters = quality,
                 KeepsSpecificBack = !quality || st.In.Tree.Find(res) is { IsLeaf: false },
             };
@@ -738,9 +750,9 @@ public static class BuildPlanner
                 p.ShortSetups = 1;
                 p.Setups++;
             }
-            item.Problem = $"{rest:N0} unit(s) can't be made in a factory run: no single spawn in stock has enough for " +
-                           (lacking.Count > 0 ? string.Join(", ", lacking.Select(p => $"slot {p.SlotIndex + 1}")) : "every slot at once") +
-                           " (a run needs one more unit's worth for the manufacturing schematic" +
+            item.Problem = $"{rest:N0} unit(s) need more resources for a factory run: no single spawn held has enough for " +
+                           (lacking.Count > 0 ? string.Join(", ", lacking.Select(p => $"slot {p.SlotIndex + 1}" + (string.IsNullOrWhiteSpace(p.Name) ? "" : $" ({p.Name.Trim()})"))) : "every slot at once") +
+                           " (one spawn per slot covers the whole run plus one unit's worth for the manufacturing schematic" +
                            (groups.Count > 0 ? $"; identical groups of {string.Join(", ", groups.Select(g => g.Units).Distinct())} must stay in one run)." : ").");
         }
     }

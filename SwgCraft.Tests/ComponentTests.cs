@@ -333,6 +333,36 @@ public sealed class ComponentTests : IDisposable
     }
 
     [Fact]
+    public void Slot_names_are_kept_and_blank_ones_are_not_written()
+    {
+        var store = Store();
+        SeedReferenceFiles(store);
+        File.WriteAllText(store.SchematicsPath, """
+            { "schemaVersion": 6, "schematics": [ { "id": "a", "name": "A", "professions": [ "weaponsmith" ],
+              "resources": [ { "resource": "steel", "amount": 10 } ],
+              "components": [ { "kind": "Schematic", "target": "b", "quantity": 1 } ] },
+              { "id": "b", "name": "B", "professions": [ "weaponsmith" ] } ] }
+            """);
+        var doc = store.LoadSchematics().Value;   // a version 6 file has no names
+        var s = doc.Schematics[0];
+        Assert.Null(s.Resources[0].Name);
+        s.Resources[0].Name = "Frame";
+        s.Components[0].Name = "Socket Cluster";
+        s.Resources.Add(new ResourceSlot { Resource = "steel", Amount = 5 });   // no name
+
+        Assert.True(store.SaveSchematics(doc).Saved);
+        var text = File.ReadAllText(store.SchematicsPath);
+        Assert.Contains("\"name\": \"Frame\"", text);
+        Assert.Contains("\"name\": \"Socket Cluster\"", text);
+        Assert.Equal(4, text.Split("\"name\":").Length - 1);   // the two schematics' names + the two slot names: no empty name written
+
+        var again = store.LoadSchematics().Value.Schematics[0];
+        Assert.Equal("Frame", again.Resources[0].Name);
+        Assert.Null(again.Resources[1].Name);
+        Assert.Equal("Socket Cluster", again.Components[0].Name);
+    }
+
+    [Fact]
     public void Old_percentages_next_to_modifiers_are_kept_and_reported_not_dropped()
     {
         var store = Store();

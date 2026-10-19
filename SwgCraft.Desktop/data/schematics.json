@@ -1,5 +1,5 @@
 {
-  "schemaVersion": 6,
+  "schemaVersion": 7,
   "schematics": [
     {
       "id": "space_chassis_awing",
@@ -2213,21 +2213,25 @@
       "size": 4,
       "components": [
         {
+          "name": "Extra Trim",
           "kind": "Schematic",
           "target": "clothing_component_clothing_fiberplast_panel",
           "quantity": 1
         },
         {
+          "name": "Hardware",
           "kind": "Schematic",
           "target": "clothing_component_clothing_metal_fasteners",
           "quantity": 1
         },
         {
+          "name": "Skirt Material",
           "kind": "Schematic",
           "target": "clothing_component_clothing_fiberplast_panel",
           "quantity": 1
         },
         {
+          "name": "Bodice",
           "kind": "Schematic",
           "target": "clothing_component_clothing_fiberplast_panel",
           "quantity": 1
@@ -2235,6 +2239,7 @@
       ],
       "resources": [
         {
+          "name": "Trim and Binding",
           "resource": "fiberplast",
           "amount": 15
         }
@@ -5654,11 +5659,13 @@
       "size": 1,
       "components": [
         {
+          "name": "Red Wiring",
           "kind": "LootItem",
           "target": "red_wiring",
           "quantity": 2
         },
         {
+          "name": "Copper Battery",
           "kind": "LootItem",
           "target": "cheap_copper_battery",
           "quantity": 1
@@ -5666,6 +5673,7 @@
       ],
       "resources": [
         {
+          "name": "Interior Gears",
           "resource": "metal_ferrous",
           "amount": 40
         }
@@ -5862,11 +5870,13 @@
       "size": 1,
       "components": [
         {
+          "name": "Container",
           "kind": "Class",
           "target": "glass",
           "quantity": 1
         },
         {
+          "name": "Additive",
           "kind": "Class",
           "target": "light_food_additive_class",
           "quantity": 1,
@@ -5875,10 +5885,12 @@
       ],
       "resources": [
         {
+          "name": "Water",
           "resource": "water",
           "amount": 20
         },
         {
+          "name": "Protein Fortifier",
           "resource": "meat",
           "amount": 14
         }
@@ -5960,10 +5972,12 @@
       "components": [],
       "resources": [
         {
+          "name": "Metal Repair Parts",
           "resource": "steel",
           "amount": 80
         },
         {
+          "name": "Fiberplast Patching Compound",
           "resource": "fiberplast",
           "amount": 60
         }
@@ -7671,6 +7685,7 @@
       "size": 1,
       "components": [
         {
+          "name": "Power Plant AV-21",
           "kind": "LootItem",
           "target": "power_plant_av_21",
           "quantity": 1
@@ -7678,10 +7693,12 @@
       ],
       "resources": [
         {
+          "name": "Vehicle Body",
           "resource": "metal_nonferrous",
           "amount": 1125
         },
         {
+          "name": "Structural Frame",
           "resource": "metal_ferrous",
           "amount": 3125
         }
@@ -9510,11 +9527,13 @@
       "size": 1,
       "components": [
         {
+          "name": "Carbosyrup",
           "kind": "Schematic",
           "target": "food_component_ingredient_carbosyrup",
           "quantity": 1
         },
         {
+          "name": "Additive",
           "kind": "Class",
           "target": "light_food_additive_class",
           "quantity": 1,
@@ -9523,6 +9542,7 @@
       ],
       "resources": [
         {
+          "name": "Fruit Core",
           "resource": "fruit",
           "amount": 5
         }
@@ -9851,6 +9871,7 @@
       "size": 1,
       "components": [
         {
+          "name": "Additive",
           "kind": "Class",
           "target": "light_food_additive_class",
           "quantity": 1,
@@ -9859,10 +9880,12 @@
       ],
       "resources": [
         {
+          "name": "Dried Fruit",
           "resource": "organic",
           "amount": 3
         },
         {
+          "name": "Crust",
           "resource": "cereal",
           "amount": 8
         }
@@ -10029,16 +10052,19 @@
       "size": 3,
       "components": [
         {
+          "name": "Armor",
           "kind": "Class",
           "target": "bone_armor_segment_class",
           "quantity": 1
         },
         {
+          "name": "Load-bearing Harness",
           "kind": "Schematic",
           "target": "clothing_component_clothing_fiberplast_panel",
           "quantity": 1
         },
         {
+          "name": "Reinforcement",
           "kind": "Schematic",
           "target": "clothing_component_clothing_fiberplast_panel",
           "quantity": 1
@@ -10046,26 +10072,32 @@
       ],
       "resources": [
         {
+          "name": "Auxiliary Coverage",
           "resource": "bone",
           "amount": 15
         },
         {
+          "name": "Body",
           "resource": "hide",
           "amount": 15
         },
         {
+          "name": "Inner Liner",
           "resource": "hide",
           "amount": 15
         },
         {
+          "name": "Hardware and Attachments",
           "resource": "metal",
           "amount": 10
         },
         {
+          "name": "Bindings and Reinforcement",
           "resource": "petrochem_inert",
           "amount": 5
         },
         {
+          "name": "Padding",
           "resource": "hide",
           "amount": 5
         }
@@ -10145,21 +10177,25 @@
       "size": 3,
       "components": [
         {
+          "name": "Armor",
           "kind": "Class",
           "target": "bone_armor_segment_class",
           "quantity": 1
         },
         {
+          "name": "Load-bearing Harness",
           "kind": "Schematic",
           "target": "clothing_component_clothing_fiberplast_panel",
           "quantity": 1
         },
         {
+          "name": "Reinforcment",
           "kind": "Schematic",
           "target": "clothing_component_clothing_fiberplast_panel",
           "quantity": 1
         },
         {
+          "name": "Auxiliary Coerage 2",
           "kind": "Schematic",
           "target": "clothing_component_clothing_fiberplast_panel",
           "quantity": 1
@@ -10167,26 +10203,32 @@
       ],
       "resources": [
         {
+          "name": "Auxiliary Coverage",
           "resource": "bone",
           "amount": 40
         },
         {
+          "name": "Body",
           "resource": "hide",
           "amount": 40
         },
         {
+          "name": "Inner Liner",
           "resource": "hide",
           "amount": 40
         },
         {
+          "name": "Hardware and Attachements",
           "resource": "metal",
           "amount": 25
         },
         {
+          "name": "Bindings and Reinforcement",
           "resource": "petrochem_inert",
           "amount": 25
         },
         {
+          "name": "Padding",
           "resource": "hide",
           "amount": 25
         }
@@ -10266,21 +10308,25 @@
       "size": 3,
       "components": [
         {
+          "name": "Armor",
           "kind": "Class",
           "target": "bone_armor_segment_class",
           "quantity": 1
         },
         {
+          "name": "Load-bearing Harness",
           "kind": "Schematic",
           "target": "clothing_component_clothing_fiberplast_panel",
           "quantity": 1
         },
         {
+          "name": "Reinforcement",
           "kind": "Schematic",
           "target": "clothing_component_clothing_fiberplast_panel",
           "quantity": 1
         },
         {
+          "name": "Auxiliary Coverage 2",
           "kind": "Schematic",
           "target": "clothing_component_clothing_fiberplast_panel",
           "quantity": 1
@@ -10288,26 +10334,32 @@
       ],
       "resources": [
         {
+          "name": "Auxiliary Coverage",
           "resource": "bone",
           "amount": 10
         },
         {
+          "name": "Body",
           "resource": "hide",
           "amount": 10
         },
         {
+          "name": "Inner Liner",
           "resource": "hide",
           "amount": 10
         },
         {
+          "name": "Hardware and Attachments",
           "resource": "metal",
           "amount": 5
         },
         {
+          "name": "Bindings and Reinforcement",
           "resource": "petrochem_inert",
           "amount": 3
         },
         {
+          "name": "Padding",
           "resource": "hide",
           "amount": 5
         }
@@ -10387,21 +10439,25 @@
       "size": 3,
       "components": [
         {
+          "name": "Armor",
           "kind": "Class",
           "target": "bone_armor_segment_class",
           "quantity": 1
         },
         {
+          "name": "Load-bearing Harness",
           "kind": "Schematic",
           "target": "clothing_component_clothing_fiberplast_panel",
           "quantity": 1
         },
         {
+          "name": "Reinforcement",
           "kind": "Schematic",
           "target": "clothing_component_clothing_fiberplast_panel",
           "quantity": 1
         },
         {
+          "name": "Auxiliary Coverage 2",
           "kind": "Schematic",
           "target": "clothing_component_clothing_fiberplast_panel",
           "quantity": 1
@@ -10409,26 +10465,32 @@
       ],
       "resources": [
         {
+          "name": "Auxiliary Coverage",
           "resource": "bone",
           "amount": 30
         },
         {
+          "name": "Body",
           "resource": "hide",
           "amount": 30
         },
         {
+          "name": "Inner Liner",
           "resource": "hide",
           "amount": 30
         },
         {
+          "name": "Hardware and Attachments",
           "resource": "metal",
           "amount": 20
         },
         {
+          "name": "Bindings and Reinforcement",
           "resource": "petrochem_inert",
           "amount": 10
         },
         {
+          "name": "Padding",
           "resource": "hide",
           "amount": 10
         }
@@ -10508,16 +10570,19 @@
       "size": 3,
       "components": [
         {
+          "name": "Armor",
           "kind": "Class",
           "target": "bone_armor_segment_class",
           "quantity": 1
         },
         {
+          "name": "Load-bearing Harness",
           "kind": "Schematic",
           "target": "clothing_component_clothing_fiberplast_panel",
           "quantity": 1
         },
         {
+          "name": "Reinforcement",
           "kind": "Schematic",
           "target": "clothing_component_clothing_fiberplast_panel",
           "quantity": 1
@@ -10525,26 +10590,32 @@
       ],
       "resources": [
         {
+          "name": "Auxiliary Coverage",
           "resource": "bone",
           "amount": 15
         },
         {
+          "name": "Body",
           "resource": "hide",
           "amount": 15
         },
         {
+          "name": "Inner Liner",
           "resource": "hide",
           "amount": 15
         },
         {
+          "name": "Hardware and Attachments",
           "resource": "metal",
           "amount": 10
         },
         {
+          "name": "Bindings and Reinforcement",
           "resource": "petrochem_inert",
           "amount": 5
         },
         {
+          "name": "Padding",
           "resource": "hide",
           "amount": 5
         }
@@ -10624,21 +10695,25 @@
       "size": 3,
       "components": [
         {
+          "name": "Armor",
           "kind": "Class",
           "target": "bone_armor_segment_class",
           "quantity": 1
         },
         {
+          "name": "Load-bearing Harness",
           "kind": "Schematic",
           "target": "clothing_component_clothing_fiberplast_panel",
           "quantity": 1
         },
         {
+          "name": "Reinforement",
           "kind": "Schematic",
           "target": "clothing_component_clothing_fiberplast_panel",
           "quantity": 1
         },
         {
+          "name": "Auxiliary Coverage 2",
           "kind": "Schematic",
           "target": "clothing_component_clothing_fiberplast_panel",
           "quantity": 1
@@ -10646,26 +10721,32 @@
       ],
       "resources": [
         {
+          "name": "Auxiliary Coverage",
           "resource": "bone",
           "amount": 15
         },
         {
+          "name": "Body",
           "resource": "hide",
           "amount": 15
         },
         {
+          "name": "Inner Liner",
           "resource": "hide",
           "amount": 15
         },
         {
+          "name": "Hardware and Attachements",
           "resource": "metal",
           "amount": 10
         },
         {
+          "name": "Bindings and Reinforcement",
           "resource": "petrochem_inert",
           "amount": 5
         },
         {
+          "name": "Padding",
           "resource": "hide",
           "amount": 5
         }
@@ -10743,29 +10824,60 @@
       "tab": "armor",
       "complexity": 16,
       "size": 3,
-      "components": [],
+      "components": [
+        {
+          "name": "Armor",
+          "kind": "LootItem",
+          "target": "projectile_feed_mechanism_enhancement_gorax",
+          "quantity": 1
+        },
+        {
+          "name": "Load-bearing harness",
+          "kind": "Schematic",
+          "target": "clothing_component_clothing_fiberplast_panel",
+          "quantity": 1
+        },
+        {
+          "name": "Reinforcement",
+          "kind": "Schematic",
+          "target": "clothing_component_clothing_fiberplast_panel",
+          "quantity": 1
+        },
+        {
+          "name": "Auxiliary Coverage 2",
+          "kind": "Schematic",
+          "target": "clothing_component_clothing_fiberplast_panel",
+          "quantity": 1
+        }
+      ],
       "resources": [
         {
+          "name": "Auxiliary Coverage",
           "resource": "bone",
           "amount": 30
         },
         {
+          "name": "Body",
           "resource": "hide",
           "amount": 30
         },
         {
+          "name": "Inner Liner",
           "resource": "hide",
           "amount": 30
         },
         {
+          "name": "Hardware and Attachments",
           "resource": "metal",
           "amount": 20
         },
         {
+          "name": "Bindings and Reinforcement",
           "resource": "petrochem_inert",
           "amount": 10
         },
         {
+          "name": "Padding",
           "resource": "hide",
           "amount": 10
         }
@@ -10845,16 +10957,19 @@
       "size": 3,
       "components": [
         {
+          "name": "Armor",
           "kind": "Class",
           "target": "bone_armor_segment_class",
           "quantity": 1
         },
         {
+          "name": "Load-bearing Harness",
           "kind": "Schematic",
           "target": "clothing_component_clothing_fiberplast_panel",
           "quantity": 1
         },
         {
+          "name": "Reinforcement",
           "kind": "Schematic",
           "target": "clothing_component_clothing_fiberplast_panel",
           "quantity": 1
@@ -10862,26 +10977,32 @@
       ],
       "resources": [
         {
+          "name": "Auxiliary Coverage",
           "resource": "bone",
           "amount": 15
         },
         {
+          "name": "Body",
           "resource": "hide",
           "amount": 15
         },
         {
+          "name": "Inner Liner",
           "resource": "hide",
           "amount": 15
         },
         {
+          "name": "Hardware and Attachements",
           "resource": "metal",
           "amount": 10
         },
         {
+          "name": "Bindings and Reinforcement",
           "resource": "petrochem_inert",
           "amount": 5
         },
         {
+          "name": "Padding",
           "resource": "hide",
           "amount": 5
         }
@@ -10961,21 +11082,25 @@
       "size": 3,
       "components": [
         {
+          "name": "Armor",
           "kind": "Class",
           "target": "bone_armor_segment_class",
           "quantity": 1
         },
         {
+          "name": "Load-bearing Harness",
           "kind": "Schematic",
           "target": "clothing_component_clothing_fiberplast_panel",
           "quantity": 1
         },
         {
+          "name": "Reinforcement",
           "kind": "Schematic",
           "target": "clothing_component_clothing_fiberplast_panel",
           "quantity": 1
         },
         {
+          "name": "Auxiliary Coverage 2",
           "kind": "Schematic",
           "target": "clothing_component_clothing_fiberplast_panel",
           "quantity": 1
@@ -10983,26 +11108,32 @@
       ],
       "resources": [
         {
+          "name": "Auxiliary Coverage",
           "resource": "bone",
           "amount": 15
         },
         {
+          "name": "Body",
           "resource": "hide",
           "amount": 15
         },
         {
+          "name": "Inner Liner",
           "resource": "hide",
           "amount": 15
         },
         {
+          "name": "Hardware and Attachments",
           "resource": "metal",
           "amount": 10
         },
         {
+          "name": "Bindings and Reinforcement",
           "resource": "petrochem_inert",
           "amount": 5
         },
         {
+          "name": "Padding",
           "resource": "hide",
           "amount": 5
         }
@@ -11082,6 +11213,7 @@
       "size": 4,
       "components": [
         {
+          "name": "Segmenbt Enhancement",
           "kind": "Class",
           "target": "armor_segment_enhancement",
           "quantity": 1,
@@ -11090,10 +11222,12 @@
       ],
       "resources": [
         {
+          "name": "Bone Armor Segment",
           "resource": "bone",
           "amount": 14
         },
         {
+          "name": "Armor Segment Mounting Tabs",
           "resource": "metal",
           "amount": 3
         }
@@ -12410,11 +12544,13 @@
       "size": 1,
       "components": [
         {
+          "name": "Container",
           "kind": "Class",
           "target": "glass",
           "quantity": 1
         },
         {
+          "name": "Additive",
           "kind": "Class",
           "target": "light_food_additive_class",
           "quantity": 1,
@@ -12423,10 +12559,12 @@
       ],
       "resources": [
         {
+          "name": "Water",
           "resource": "water",
           "amount": 10
         },
         {
+          "name": "Flavoring Extract",
           "resource": "cereal",
           "amount": 5
         }
@@ -13364,11 +13502,13 @@
       "size": 1,
       "components": [
         {
+          "name": "Carbosyrup",
           "kind": "Schematic",
           "target": "food_component_ingredient_carbosyrup",
           "quantity": 1
         },
         {
+          "name": "Additive",
           "kind": "Class",
           "target": "light_food_additive_class",
           "quantity": 1,
@@ -13377,10 +13517,12 @@
       ],
       "resources": [
         {
+          "name": "Sweet Meat",
           "resource": "meat",
           "amount": 20
         },
         {
+          "name": "Bone Fragments",
           "resource": "bone",
           "amount": 20
         }
@@ -13554,6 +13696,7 @@
       "components": [],
       "resources": [
         {
+          "name": "Tubers",
           "resource": "flora_food",
           "amount": 6
         }
@@ -13771,6 +13914,7 @@
       "size": 3,
       "components": [
         {
+          "name": "Outer Shell",
           "kind": "Schematic",
           "target": "clothing_component_clothing_fiberplast_panel",
           "quantity": 1
@@ -13778,10 +13922,12 @@
       ],
       "resources": [
         {
+          "name": "Bindings and Binding Hardware",
           "resource": "petrochem_inert",
           "amount": 15
         },
         {
+          "name": "Inner Liner",
           "resource": "fiberplast",
           "amount": 30
         }
@@ -13804,10 +13950,12 @@
       "components": [],
       "resources": [
         {
+          "name": "Outer Shell",
           "resource": "fiberplast",
           "amount": 16
         },
         {
+          "name": "Bidnings and Binding Hardware",
           "resource": "metal",
           "amount": 4
         }
@@ -13856,14 +14004,17 @@
       "components": [],
       "resources": [
         {
+          "name": "Body",
           "resource": "fiberplast",
           "amount": 8
         },
         {
+          "name": "Bindings and Binding Hardware",
           "resource": "petrochem_inert",
           "amount": 4
         },
         {
+          "name": "Inner Shoe Sole",
           "resource": "hide",
           "amount": 8
         }
@@ -14861,11 +15012,13 @@
       "size": 1,
       "components": [
         {
+          "name": "Tumble Blender",
           "kind": "Schematic",
           "target": "item_item_tumble_blender",
           "quantity": 1
         },
         {
+          "name": "Feed Tubes",
           "kind": "LootItem",
           "target": "feed_tube",
           "quantity": 1
@@ -14873,10 +15026,12 @@
       ],
       "resources": [
         {
+          "name": "Chemical Tubing",
           "resource": "fiberplast",
           "amount": 50
         },
         {
+          "name": "Reaction Housing",
           "resource": "gemstone",
           "amount": 30
         }
@@ -20397,21 +20552,25 @@
       "size": 1,
       "components": [
         {
+          "name": "Agitator Motor",
           "kind": "Schematic",
           "target": "item_item_agitator_motor",
           "quantity": 1
         },
         {
+          "name": "Feed Tubes",
           "kind": "LootItem",
           "target": "feed_tube",
           "quantity": 1
         },
         {
+          "name": "Pulverizer",
           "kind": "LootItem",
           "target": "pulverizer",
           "quantity": 4
         },
         {
+          "name": "Spinning Blades",
           "kind": "LootItem",
           "target": "spinner_blade",
           "quantity": 4
@@ -20419,10 +20578,12 @@
       ],
       "resources": [
         {
+          "name": "Chemical Tubing",
           "resource": "fiberplast",
           "amount": 50
         },
         {
+          "name": "Metal Slides",
           "resource": "steel",
           "amount": 45
         }
@@ -20551,6 +20712,7 @@
       "size": 1,
       "components": [
         {
+          "name": "Additive",
           "kind": "Class",
           "target": "light_food_additive_class",
           "quantity": 1,
@@ -20559,10 +20721,12 @@
       ],
       "resources": [
         {
+          "name": "Flaky Crust",
           "resource": "cereal",
           "amount": 15
         },
         {
+          "name": "Meaty Core",
           "resource": "meat",
           "amount": 10
         }
@@ -22116,11 +22280,13 @@
       "size": 2,
       "components": [
         {
+          "name": "Hardware",
           "kind": "Schematic",
           "target": "clothing_component_clothing_metal_fasteners",
           "quantity": 1
         },
         {
+          "name": "Reinforcement",
           "kind": "Schematic",
           "target": "clothing_component_clothing_fiberplast_panel",
           "quantity": 1
@@ -22128,6 +22294,7 @@
       ],
       "resources": [
         {
+          "name": "Load-bearing Harness",
           "resource": "fiberplast",
           "amount": 15
         }
@@ -25378,22 +25545,27 @@
       "components": [],
       "resources": [
         {
+          "name": "Load-bearing Frame",
           "resource": "metal",
           "amount": 110
         },
         {
+          "name": "Body Sell and Casing",
           "resource": "steel",
           "amount": 60
         },
         {
+          "name": "Structure Foundation",
           "resource": "ore",
           "amount": 50
         },
         {
+          "name": "Plant-handling Mechanism",
           "resource": "metal_nonferrous",
           "amount": 15
         },
         {
+          "name": "Bio Storage Tank",
           "resource": "aluminum",
           "amount": 15
         }
@@ -26387,22 +26559,27 @@
       "components": [],
       "resources": [
         {
+          "name": "Load-bearing Frame",
           "resource": "metal",
           "amount": 110
         },
         {
+          "name": "Body Shell and Casing",
           "resource": "steel",
           "amount": 60
         },
         {
+          "name": "Structure Foundation",
           "resource": "ore",
           "amount": 50
         },
         {
+          "name": "Bore Mechanism",
           "resource": "metal_nonferrous",
           "amount": 15
         },
         {
+          "name": "Liquid Storage Tank",
           "resource": "aluminum",
           "amount": 15
         }
@@ -26451,22 +26628,27 @@
       "components": [],
       "resources": [
         {
+          "name": "Load-bearing Frame",
           "resource": "metal",
           "amount": 110
         },
         {
+          "name": "Body Shell and Casing",
           "resource": "steel",
           "amount": 60
         },
         {
+          "name": "Structure Foundation",
           "resource": "ore",
           "amount": 50
         },
         {
+          "name": "Bore Mechanism",
           "resource": "metal_nonferrous",
           "amount": 15
         },
         {
+          "name": "Ore Storage Tank",
           "resource": "aluminum",
           "amount": 15
         }
@@ -26515,22 +26697,27 @@
       "components": [],
       "resources": [
         {
+          "name": "Load-bearing Frame",
           "resource": "metal",
           "amount": 110
         },
         {
+          "name": "Body Shell and Casing",
           "resource": "steel",
           "amount": 60
         },
         {
+          "name": "Structure Foundation",
           "resource": "ore",
           "amount": 50
         },
         {
+          "name": "Chiller Bar Structure",
           "resource": "metal_nonferrous",
           "amount": 15
         },
         {
+          "name": "Vapor Storage Tank",
           "resource": "aluminum",
           "amount": 15
         }
@@ -26579,22 +26766,27 @@
       "components": [],
       "resources": [
         {
+          "name": "Load-bearing Frame",
           "resource": "metal",
           "amount": 110
         },
         {
+          "name": "Body Shell and Casing",
           "resource": "steel",
           "amount": 60
         },
         {
+          "name": "Structure Foundation",
           "resource": "ore",
           "amount": 50
         },
         {
+          "name": "Bore Mechanism",
           "resource": "metal_nonferrous",
           "amount": 15
         },
         {
+          "name": "Gas Storage tank",
           "resource": "aluminum",
           "amount": 15
         }
@@ -29702,22 +29894,27 @@
       "components": [],
       "resources": [
         {
+          "name": "Load-bearing Frame",
           "resource": "metal",
           "amount": 145
         },
         {
+          "name": "Body Shell and Casing",
           "resource": "steel",
           "amount": 45
         },
         {
+          "name": "Structure Foundation",
           "resource": "ore",
           "amount": 40
         },
         {
+          "name": "Generator Unit",
           "resource": "metal_nonferrous",
           "amount": 20
         },
         {
+          "name": "Capacitance Tank",
           "resource": "aluminum",
           "amount": 10
         }
@@ -32237,6 +32434,7 @@
       "components": [],
       "resources": [
         {
+          "name": "Wheat",
           "resource": "wheat",
           "amount": 10
         }
@@ -34790,6 +34988,7 @@
       "size": 1,
       "components": [
         {
+          "name": "Additive",
           "kind": "Class",
           "target": "light_food_additive_class",
           "quantity": 1,
@@ -34798,10 +34997,12 @@
       ],
       "resources": [
         {
+          "name": "Dried Bread",
           "resource": "wheat",
           "amount": 5
         },
         {
+          "name": "Meat Filling",
           "resource": "meat_herbivore",
           "amount": 10
         }
@@ -40595,6 +40796,7 @@
       "size": 1,
       "components": [
         {
+          "name": "Additive",
           "kind": "Class",
           "target": "light_food_additive_class",
           "quantity": 1,
@@ -40603,10 +40805,12 @@
       ],
       "resources": [
         {
+          "name": "Protein Source",
           "resource": "meat",
           "amount": 8
         },
         {
+          "name": "Preservative Wrap",
           "resource": "hide",
           "amount": 7
         }
@@ -42643,10 +42847,12 @@
       "components": [],
       "resources": [
         {
+          "name": "Body",
           "resource": "fiberplast",
           "amount": 8
         },
         {
+          "name": "Bindings and Reinforcement",
           "resource": "metal",
           "amount": 2
         }
@@ -43432,21 +43638,25 @@
       "size": 1,
       "components": [
         {
+          "name": "Agitator Motor",
           "kind": "Schematic",
           "target": "item_item_agitator_motor",
           "quantity": 1
         },
         {
+          "name": "Feed Tubes",
           "kind": "LootItem",
           "target": "feed_tube",
           "quantity": 1
         },
         {
+          "name": "Processor Attachments",
           "kind": "LootItem",
           "target": "processor_attachment",
           "quantity": 1
         },
         {
+          "name": "Spinning Blades",
           "kind": "LootItem",
           "target": "spinner_blade",
           "quantity": 4
@@ -43454,10 +43664,12 @@
       ],
       "resources": [
         {
+          "name": "Chemical Tubing",
           "resource": "fiberplast",
           "amount": 50
         },
         {
+          "name": "Bowl",
           "resource": "metal",
           "amount": 50
         }
@@ -44963,21 +45175,25 @@
       "size": 4,
       "components": [
         {
+          "name": "Extra Trim",
           "kind": "Schematic",
           "target": "clothing_component_clothing_fiberplast_panel",
           "quantity": 1
         },
         {
+          "name": "Hardware",
           "kind": "Schematic",
           "target": "clothing_component_clothing_metal_fasteners",
           "quantity": 1
         },
         {
+          "name": "Skirt Material",
           "kind": "Schematic",
           "target": "clothing_component_clothing_fiberplast_panel",
           "quantity": 1
         },
         {
+          "name": "Bodice",
           "kind": "Schematic",
           "target": "clothing_component_clothing_fiberplast_panel",
           "quantity": 1
@@ -44985,6 +45201,7 @@
       ],
       "resources": [
         {
+          "name": "Trim and Binding",
           "resource": "fiberplast",
           "amount": 15
         }
@@ -45908,11 +46125,13 @@
       "size": 1,
       "components": [
         {
+          "name": "Power Supply Component",
           "kind": "Class",
           "target": "geonosian_power_cube",
           "quantity": 1
         },
         {
+          "name": "Melee Core Enhancement",
           "kind": "LootItem",
           "target": "geonosian_solidifying_agent",
           "quantity": 1,
@@ -45921,6 +46140,7 @@
       ],
       "resources": [
         {
+          "name": "Reinforcement Core",
           "resource": "steel_ditanium",
           "amount": 50
         }
@@ -46029,22 +46249,26 @@
       "size": 1,
       "components": [
         {
+          "name": "Blaster power Handler Component",
           "kind": "Class",
           "target": "blaster_power_handler_class",
           "quantity": 4,
           "identical": true
         },
         {
+          "name": "Ranged Weapon Barrel Component",
           "kind": "Class",
           "target": "blaster_pistol_barrel_class",
           "quantity": 1
         },
         {
+          "name": "Power Supply Component",
           "kind": "Class",
           "target": "geonosian_power_cube",
           "quantity": 1
         },
         {
+          "name": "Ranged Weapon Scope Component",
           "kind": "Class",
           "target": "weapon_scope_class",
           "quantity": 1,
@@ -46053,14 +46277,17 @@
       ],
       "resources": [
         {
+          "name": "Weapon Frame Assembly",
           "resource": "aluminum_chromium",
           "amount": 142
         },
         {
+          "name": "Blaster Assembly Receiver Housing",
           "resource": "copper_mythra",
           "amount": 60
         },
         {
+          "name": "Weapon Grip and Trigger Assembly",
           "resource": "aluminum_chromium",
           "amount": 28
         }
@@ -46161,11 +46388,13 @@
       "size": 1,
       "components": [
         {
+          "name": "Power Supply Component",
           "kind": "Class",
           "target": "geonosian_power_cube",
           "quantity": 1
         },
         {
+          "name": "Melee Core Enhancement",
           "kind": "LootItem",
           "target": "geonosian_solidifying_agent",
           "quantity": 1,
@@ -46174,6 +46403,7 @@
       ],
       "resources": [
         {
+          "name": "Sword Core",
           "resource": "steel_neutronium",
           "amount": 50
         }
@@ -47824,14 +48054,17 @@
       "components": [],
       "resources": [
         {
+          "name": "Outer Shell",
           "resource": "fiberplast",
           "amount": 10
         },
         {
+          "name": "Binding and Weatherproofing",
           "resource": "petrochem_inert",
           "amount": 6
         },
         {
+          "name": "Inner Liner",
           "resource": "fiberplast",
           "amount": 6
         }
@@ -51575,14 +51808,17 @@
       "components": [],
       "resources": [
         {
+          "name": "Core Boot Component",
           "resource": "hide",
           "amount": 20
         },
         {
+          "name": "Bindings and Binding Hardware",
           "resource": "petrochem_inert",
           "amount": 10
         },
         {
+          "name": "Shoe Sole",
           "resource": "petrochem_inert",
           "amount": 15
         }
@@ -52583,24 +52819,28 @@
       "size": 1,
       "components": [
         {
+          "name": "Segment Enhancement",
           "kind": "Class",
           "target": "armor_segment_enhancement",
           "quantity": 1,
           "optional": true
         },
         {
+          "name": "Armor Layer",
           "kind": "Class",
           "target": "armor_layer",
           "quantity": 1,
           "optional": true
         },
         {
+          "name": "Additional Defensive Layer",
           "kind": "Class",
           "target": "armor_layer",
           "quantity": 1,
           "optional": true
         },
         {
+          "name": "Power Supply Component",
           "kind": "Class",
           "target": "geonosian_power_cube",
           "quantity": 1
@@ -52608,10 +52848,12 @@
       ],
       "resources": [
         {
+          "name": "Bone Armor Segment",
           "resource": "bone_mammal_yavin4",
           "amount": 32
         },
         {
+          "name": "Armor Segment Mounting Tabs",
           "resource": "aluminum_chromium",
           "amount": 10
         }
@@ -52691,40 +52933,47 @@
       "size": 1,
       "components": [
         {
+          "name": "Reinforcement Matrix",
           "kind": "LootItem",
           "target": "woolamander_harrower_bone_fragment",
           "quantity": 1
         },
         {
+          "name": "Flexor Matrix",
           "kind": "LootItem",
           "target": "gurk_king_hide",
           "quantity": 1
         },
         {
+          "name": "Armor Layer",
           "kind": "Class",
           "target": "armor_layer",
           "quantity": 1,
           "optional": true
         },
         {
+          "name": "Segment Enhancement",
           "kind": "Class",
           "target": "armor_segment_enhancement",
           "quantity": 1,
           "optional": true
         },
         {
+          "name": "Additioanl Defensive Layer",
           "kind": "Class",
           "target": "armor_layer",
           "quantity": 1,
           "optional": true
         },
         {
+          "name": "Additioanl Defensive Layer",
           "kind": "Class",
           "target": "armor_layer",
           "quantity": 1,
           "optional": true
         },
         {
+          "name": "Power Supply Component",
           "kind": "Class",
           "target": "geonosian_power_cube",
           "quantity": 1,
@@ -52733,14 +52982,17 @@
       ],
       "resources": [
         {
+          "name": "Armor Segment Layer Assembly Plate",
           "resource": "aluminum_titanium",
           "amount": 160
         },
         {
+          "name": "Armro Layer Weld Tabs",
           "resource": "ore_intrusive_chanlon",
           "amount": 160
         },
         {
+          "name": "Armor Segment Mounting Tabs",
           "resource": "bone_mammal_yavin4",
           "amount": 75
         }
@@ -56581,10 +56833,12 @@
       "components": [],
       "resources": [
         {
+          "name": "Body",
           "resource": "fiberplast",
           "amount": 25
         },
         {
+          "name": "Bindings and Binding Hardware",
           "resource": "petrochem_inert_polymer",
           "amount": 5
         }
@@ -56640,10 +56894,12 @@
       "components": [],
       "resources": [
         {
+          "name": "Body",
           "resource": "fiberplast",
           "amount": 25
         },
         {
+          "name": "Bindings and Binding Hardware",
           "resource": "petrochem_inert_polymer",
           "amount": 5
         }
@@ -57484,11 +57740,13 @@
       "size": 3,
       "components": [
         {
+          "name": "Hardware",
           "kind": "Schematic",
           "target": "clothing_component_clothing_metal_fasteners",
           "quantity": 1
         },
         {
+          "name": "Inner Liner",
           "kind": "Schematic",
           "target": "clothing_component_clothing_fiberplast_panel",
           "quantity": 1
@@ -57496,10 +57754,12 @@
       ],
       "resources": [
         {
+          "name": "Body",
           "resource": "fiberplast",
           "amount": 20
         },
         {
+          "name": "Bindings and Reinforcement",
           "resource": "petrochem_inert_polymer",
           "amount": 10
         }
@@ -58801,6 +59061,7 @@
       "size": 3,
       "components": [
         {
+          "name": "Colorizable Cloth Panel",
           "kind": "Schematic",
           "target": "clothing_component_clothing_fiberplast_panel",
           "quantity": 1
@@ -58808,6 +59069,7 @@
       ],
       "resources": [
         {
+          "name": "Bindings and Binding Hardware",
           "resource": "petrochem_inert",
           "amount": 13
         }
@@ -58860,10 +59122,12 @@
       "components": [],
       "resources": [
         {
+          "name": "Body",
           "resource": "fiberplast",
           "amount": 55
         },
         {
+          "name": "Bindings and Binding Hardware",
           "resource": "petrochem_inert_polymer",
           "amount": 35
         }
@@ -58885,11 +59149,13 @@
       "size": 3,
       "components": [
         {
+          "name": "Hardware",
           "kind": "Schematic",
           "target": "clothing_component_clothing_metal_fasteners",
           "quantity": 1
         },
         {
+          "name": "Inner Liner",
           "kind": "Schematic",
           "target": "clothing_component_clothing_fiberplast_panel",
           "quantity": 1
@@ -58897,10 +59163,12 @@
       ],
       "resources": [
         {
+          "name": "Body",
           "resource": "fiberplast",
           "amount": 20
         },
         {
+          "name": "Bindings and Reinforcement",
           "resource": "petrochem_inert_polymer",
           "amount": 10
         }
@@ -59220,10 +59488,12 @@
       "components": [],
       "resources": [
         {
+          "name": "Body",
           "resource": "fiberplast",
           "amount": 45
         },
         {
+          "name": "Bindings and Binding Hardware",
           "resource": "petrochem_inert_polymer",
           "amount": 15
         }
@@ -59588,11 +59858,13 @@
       "size": 1,
       "components": [
         {
+          "name": "Container",
           "kind": "Class",
           "target": "glass",
           "quantity": 1
         },
         {
+          "name": "Additive",
           "kind": "Class",
           "target": "light_food_additive_class",
           "quantity": 1,
@@ -59601,10 +59873,12 @@
       ],
       "resources": [
         {
+          "name": "Milk",
           "resource": "milk",
           "amount": 15
         },
         {
+          "name": "Fruit Flavoring",
           "resource": "fruit",
           "amount": 10
         }
@@ -59663,11 +59937,13 @@
       "size": 1,
       "components": [
         {
+          "name": "Container",
           "kind": "Class",
           "target": "glass",
           "quantity": 1
         },
         {
+          "name": "Additive",
           "kind": "Class",
           "target": "light_food_additive_class",
           "quantity": 1,
@@ -59676,10 +59952,12 @@
       ],
       "resources": [
         {
+          "name": "Alcohol",
           "resource": "cereal",
           "amount": 10
         },
         {
+          "name": "Bantha Flavoring",
           "resource": "hide_wooly",
           "amount": 15
         }
@@ -59959,6 +60237,7 @@
       "size": 1,
       "components": [
         {
+          "name": "Additive",
           "kind": "Class",
           "target": "light_food_additive_class",
           "quantity": 1,
@@ -59967,14 +60246,17 @@
       ],
       "resources": [
         {
+          "name": "Protein Source",
           "resource": "meat",
           "amount": 15
         },
         {
+          "name": "Fruit Additive",
           "resource": "fruit",
           "amount": 5
         },
         {
+          "name": "Preservative Wrap",
           "resource": "hide",
           "amount": 5
         }
@@ -60109,11 +60391,13 @@
       "size": 1,
       "components": [
         {
+          "name": "Carbosyrup",
           "kind": "Schematic",
           "target": "food_component_ingredient_carbosyrup",
           "quantity": 1
         },
         {
+          "name": "Additive",
           "kind": "Class",
           "target": "light_food_additive_class",
           "quantity": 1,
@@ -60122,10 +60406,12 @@
       ],
       "resources": [
         {
+          "name": "Fruit Core",
           "resource": "fruit",
           "amount": 20
         },
         {
+          "name": "Preservative Wrap",
           "resource": "hide",
           "amount": 20
         }
@@ -62927,11 +63213,13 @@
       "size": 3,
       "components": [
         {
+          "name": "Hardware",
           "kind": "Schematic",
           "target": "clothing_component_clothing_metal_fasteners",
           "quantity": 1
         },
         {
+          "name": "Inner Liner",
           "kind": "Schematic",
           "target": "clothing_component_clothing_fiberplast_panel",
           "quantity": 1
@@ -62939,10 +63227,12 @@
       ],
       "resources": [
         {
+          "name": "Heavy outer shell",
           "resource": "fiberplast",
           "amount": 30
         },
         {
+          "name": "Binding and Weatherproofing",
           "resource": "petrochem_inert_polymer",
           "amount": 20
         }
@@ -63199,6 +63489,7 @@
       "components": [],
       "resources": [
         {
+          "name": "Crystal",
           "resource": "gemstone",
           "amount": 100
         }
@@ -63935,14 +64226,17 @@
       "components": [],
       "resources": [
         {
+          "name": "Outer Shell",
           "resource": "hide",
           "amount": 10
         },
         {
+          "name": "Inner Liner",
           "resource": "fiberplast",
           "amount": 10
         },
         {
+          "name": "No-slip Grip Pads",
           "resource": "petrochem_inert_polymer",
           "amount": 10
         }
@@ -66137,6 +66431,7 @@
       "size": 1,
       "components": [
         {
+          "name": "Bio Component",
           "kind": "Class",
           "target": "light_food_bio_component",
           "quantity": 1
@@ -66144,6 +66439,7 @@
       ],
       "resources": [
         {
+          "name": "Suspension Agent",
           "resource": "water",
           "amount": 10
         }
@@ -68554,21 +68850,25 @@
       "size": 3,
       "components": [
         {
+          "name": "Extra Trim",
           "kind": "Schematic",
           "target": "clothing_component_clothing_fiberplast_panel",
           "quantity": 1
         },
         {
+          "name": "Hardware",
           "kind": "Schematic",
           "target": "clothing_component_clothing_metal_fasteners",
           "quantity": 1
         },
         {
+          "name": "Skirt Material",
           "kind": "Schematic",
           "target": "clothing_component_clothing_fiberplast_panel",
           "quantity": 1
         },
         {
+          "name": "Bodice",
           "kind": "Schematic",
           "target": "clothing_component_clothing_fiberplast_panel",
           "quantity": 1
@@ -68576,6 +68876,7 @@
       ],
       "resources": [
         {
+          "name": "Trim and Binding",
           "resource": "hide",
           "amount": 30
         }
@@ -76491,10 +76792,12 @@
       "components": [],
       "resources": [
         {
+          "name": "Fastener Housing",
           "resource": "metal",
           "amount": 5
         },
         {
+          "name": "Fastener Clip",
           "resource": "metal",
           "amount": 10
         }
@@ -76546,11 +76849,13 @@
       "size": 1,
       "components": [
         {
+          "name": "Power Motor",
           "kind": "LootItem",
           "target": "small_power_motor",
           "quantity": 1
         },
         {
+          "name": "Heating Element",
           "kind": "LootItem",
           "target": "heating_element",
           "quantity": 4
@@ -76558,14 +76863,17 @@
       ],
       "resources": [
         {
+          "name": "Chemical Tubing",
           "resource": "fiberplast",
           "amount": 50
         },
         {
+          "name": "Liquid Metal Housing",
           "resource": "steel",
           "amount": 40
         },
         {
+          "name": "Metal Casing",
           "resource": "iron",
           "amount": 25
         }
@@ -79530,6 +79838,7 @@
       "size": 1,
       "components": [
         {
+          "name": "Hardware",
           "kind": "Schematic",
           "target": "clothing_component_clothing_metal_fasteners",
           "quantity": 1
@@ -79537,10 +79846,12 @@
       ],
       "resources": [
         {
+          "name": "Outer Shell",
           "resource": "fiberplast",
           "amount": 10
         },
         {
+          "name": "Bindings and Reinforcement",
           "resource": "petrochem_inert_polymer",
           "amount": 10
         }
@@ -80213,11 +80524,13 @@
       "size": 1,
       "components": [
         {
+          "name": "Tumble Blender",
           "kind": "Schematic",
           "target": "item_item_tumble_blender",
           "quantity": 1
         },
         {
+          "name": "Pulverizer",
           "kind": "LootItem",
           "target": "pulverizer",
           "quantity": 8
@@ -80225,14 +80538,17 @@
       ],
       "resources": [
         {
+          "name": "Chemical Tubing",
           "resource": "fiberplast",
           "amount": 50
         },
         {
+          "name": "Smashing Plates",
           "resource": "steel",
           "amount": 40
         },
         {
+          "name": "Sifting Plates",
           "resource": "iron",
           "amount": 15
         }
@@ -83158,6 +83474,7 @@
       "size": 3,
       "components": [
         {
+          "name": "Fiberplast Panel",
           "kind": "Schematic",
           "target": "clothing_component_clothing_fiberplast_panel",
           "quantity": 1
@@ -83165,6 +83482,7 @@
       ],
       "resources": [
         {
+          "name": "Trim and Binding",
           "resource": "fiberplast",
           "amount": 25
         }
@@ -83212,6 +83530,7 @@
       "size": 3,
       "components": [
         {
+          "name": "Bindings and Binding Hardware",
           "kind": "Schematic",
           "target": "clothing_component_clothing_metal_fasteners",
           "quantity": 1
@@ -83219,10 +83538,12 @@
       ],
       "resources": [
         {
+          "name": "Body",
           "resource": "fiberplast",
           "amount": 15
         },
         {
+          "name": "Trim and Binding",
           "resource": "hide",
           "amount": 5
         }
@@ -83497,11 +83818,13 @@
       "size": 3,
       "components": [
         {
+          "name": "Hardware",
           "kind": "Schematic",
           "target": "clothing_component_clothing_metal_fasteners",
           "quantity": 1
         },
         {
+          "name": "Inner Liner",
           "kind": "Schematic",
           "target": "clothing_component_clothing_fiberplast_panel",
           "quantity": 1
@@ -83509,10 +83832,12 @@
       ],
       "resources": [
         {
+          "name": "Body",
           "resource": "fiberplast",
           "amount": 20
         },
         {
+          "name": "Bindings and Reinforcement",
           "resource": "petrochem_inert_polymer",
           "amount": 10
         }
@@ -86445,16 +86770,19 @@
       "size": 1,
       "components": [
         {
+          "name": "Armor",
           "kind": "Class",
           "target": "r_i_s_armor_segment_class",
           "quantity": 1
         },
         {
+          "name": "Load-bearing Harness",
           "kind": "Schematic",
           "target": "clothing_component_clothing_synthetic_cloth",
           "quantity": 1
         },
         {
+          "name": "Reinforcement",
           "kind": "LootItem",
           "target": "giant_dune_kimogila_scales",
           "quantity": 1
@@ -86462,26 +86790,32 @@
       ],
       "resources": [
         {
+          "name": "Auxiliary Coverage",
           "resource": "armophous_vendusii",
           "amount": 150
         },
         {
+          "name": "Body",
           "resource": "fuel_petrochem_solid_known",
           "amount": 100
         },
         {
+          "name": "Inner Liner",
           "resource": "fiberplast_talus",
           "amount": 85
         },
         {
+          "name": "Hardware and Attachement",
           "resource": "aluminum_chromium",
           "amount": 70
         },
         {
+          "name": "Bindings and Reinforcement",
           "resource": "copper_platinite",
           "amount": 60
         },
         {
+          "name": "Padding",
           "resource": "hide_wooly_rori",
           "amount": 40
         }
@@ -86561,16 +86895,19 @@
       "size": 1,
       "components": [
         {
+          "name": "Armor",
           "kind": "Class",
           "target": "r_i_s_armor_segment_class",
           "quantity": 1
         },
         {
+          "name": "Load-bearing Harness",
           "kind": "Schematic",
           "target": "clothing_component_clothing_synthetic_cloth",
           "quantity": 1
         },
         {
+          "name": "Reinforcement",
           "kind": "LootItem",
           "target": "giant_dune_kimogila_scales",
           "quantity": 1
@@ -86578,26 +86915,32 @@
       ],
       "resources": [
         {
+          "name": "Auxiliary Coverage",
           "resource": "armophous_vendusii",
           "amount": 175
         },
         {
+          "name": "Body",
           "resource": "fuel_petrochem_solid_known",
           "amount": 100
         },
         {
+          "name": "Inner Liner",
           "resource": "fiberplast_talus",
           "amount": 85
         },
         {
+          "name": "Hardware and Attachements",
           "resource": "aluminum_chromium",
           "amount": 70
         },
         {
+          "name": "Bindings and Reinforcement",
           "resource": "copper_platinite",
           "amount": 40
         },
         {
+          "name": "Padding",
           "resource": "hide_wooly_rori",
           "amount": 40
         }
@@ -86677,16 +87020,19 @@
       "size": 1,
       "components": [
         {
+          "name": "Armor",
           "kind": "Class",
           "target": "r_i_s_armor_segment_class",
           "quantity": 1
         },
         {
+          "name": "Load-bearing Harness",
           "kind": "Schematic",
           "target": "clothing_component_clothing_synthetic_cloth",
           "quantity": 1
         },
         {
+          "name": "Reinforcement",
           "kind": "LootItem",
           "target": "giant_dune_kimogila_scales",
           "quantity": 1
@@ -86694,26 +87040,32 @@
       ],
       "resources": [
         {
+          "name": "Auxiliary Coverage",
           "resource": "armophous_vendusii",
           "amount": 150
         },
         {
+          "name": "Body",
           "resource": "fuel_petrochem_solid_known",
           "amount": 75
         },
         {
+          "name": "Inner Liner",
           "resource": "fiberplast_talus",
           "amount": 65
         },
         {
+          "name": "Hardware and Attachments",
           "resource": "aluminum_chromium",
           "amount": 50
         },
         {
+          "name": "Bindings and Reinforcement",
           "resource": "copper_platinite",
           "amount": 40
         },
         {
+          "name": "Reinforcement",
           "resource": "hide_wooly_rori",
           "amount": 30
         }
@@ -86793,16 +87145,19 @@
       "size": 1,
       "components": [
         {
+          "name": "Armor",
           "kind": "Class",
           "target": "r_i_s_armor_segment_class",
           "quantity": 1
         },
         {
+          "name": "Load-bearing Harness",
           "kind": "Schematic",
           "target": "clothing_component_clothing_synthetic_cloth",
           "quantity": 1
         },
         {
+          "name": "Reinforcement",
           "kind": "LootItem",
           "target": "giant_dune_kimogila_scales",
           "quantity": 1
@@ -86810,26 +87165,32 @@
       ],
       "resources": [
         {
+          "name": "Auxiliary Coverage",
           "resource": "armophous_vendusii",
           "amount": 300
         },
         {
+          "name": "Body",
           "resource": "fuel_petrochem_solid_known",
           "amount": 150
         },
         {
+          "name": "Inner Liner",
           "resource": "fiberplast_talus",
           "amount": 120
         },
         {
+          "name": "Hardware and Attachments",
           "resource": "aluminum_chromium",
           "amount": 100
         },
         {
+          "name": "Bindings and Reinforcement",
           "resource": "copper_platinite",
           "amount": 80
         },
         {
+          "name": "Padding",
           "resource": "hide_wooly_rori",
           "amount": 60
         }
@@ -86909,16 +87270,19 @@
       "size": 1,
       "components": [
         {
+          "name": "Armor",
           "kind": "Class",
           "target": "r_i_s_armor_segment_class",
           "quantity": 1
         },
         {
+          "name": "Load-bearing Harness",
           "kind": "Schematic",
           "target": "clothing_component_clothing_synthetic_cloth",
           "quantity": 1
         },
         {
+          "name": "Reinforcment",
           "kind": "LootItem",
           "target": "giant_dune_kimogila_scales",
           "quantity": 1
@@ -86926,26 +87290,32 @@
       ],
       "resources": [
         {
+          "name": "Auxiliary Coverage",
           "resource": "armophous_vendusii",
           "amount": 150
         },
         {
+          "name": "Body",
           "resource": "fuel_petrochem_solid_known",
           "amount": 75
         },
         {
+          "name": "Inner Liner",
           "resource": "fiberplast_talus",
           "amount": 65
         },
         {
+          "name": "Hardware and Attachments",
           "resource": "aluminum_chromium",
           "amount": 50
         },
         {
+          "name": "Bindings and Reinforcement",
           "resource": "copper_platinite",
           "amount": 40
         },
         {
+          "name": "Padding",
           "resource": "hide_wooly_rori",
           "amount": 30
         }
@@ -87025,6 +87395,7 @@
       "size": 3,
       "components": [
         {
+          "name": "Reinforcement Matrix",
           "kind": "LootItem",
           "target": "peko_peko_albatross_feather",
           "quantity": 1
@@ -87032,14 +87403,17 @@
       ],
       "resources": [
         {
+          "name": "Armor Layer Frame",
           "resource": "copper_polysteel",
           "amount": 135
         },
         {
+          "name": "Defensive Layer Microlattice",
           "resource": "crystalline_laboi_mineral_crystal",
           "amount": 85
         },
         {
+          "name": "Blast-harmonics Absorption Medium",
           "resource": "ore_intrusive_oridium",
           "amount": 100
         }
@@ -87107,16 +87481,19 @@
       "size": 1,
       "components": [
         {
+          "name": "Armor",
           "kind": "Class",
           "target": "r_i_s_armor_segment_class",
           "quantity": 1
         },
         {
+          "name": "Load-bearing Harness",
           "kind": "Schematic",
           "target": "clothing_component_clothing_synthetic_cloth",
           "quantity": 1
         },
         {
+          "name": "Reinforcement",
           "kind": "LootItem",
           "target": "giant_dune_kimogila_scales",
           "quantity": 1
@@ -87124,26 +87501,32 @@
       ],
       "resources": [
         {
+          "name": "Auxiliary Coverage",
           "resource": "armophous_vendusii",
           "amount": 150
         },
         {
+          "name": "Body",
           "resource": "fuel_petrochem_solid_known",
           "amount": 100
         },
         {
+          "name": "Inner Liner",
           "resource": "fiberplast_talus",
           "amount": 85
         },
         {
+          "name": "Hardware and Attachments",
           "resource": "aluminum_chromium",
           "amount": 70
         },
         {
+          "name": "Bindings and Reinforcement",
           "resource": "copper_platinite",
           "amount": 60
         },
         {
+          "name": "Padding",
           "resource": "hide_wooly_rori",
           "amount": 40
         }
@@ -87223,16 +87606,19 @@
       "size": 1,
       "components": [
         {
+          "name": "Armor",
           "kind": "Class",
           "target": "r_i_s_armor_segment_class",
           "quantity": 1
         },
         {
+          "name": "Load-bearing Harness",
           "kind": "Schematic",
           "target": "clothing_component_clothing_synthetic_cloth",
           "quantity": 1
         },
         {
+          "name": "Reinforcement",
           "kind": "LootItem",
           "target": "giant_dune_kimogila_scales",
           "quantity": 1
@@ -87240,26 +87626,32 @@
       ],
       "resources": [
         {
+          "name": "Auxiliary Coverage",
           "resource": "armophous_vendusii",
           "amount": 150
         },
         {
+          "name": "Body",
           "resource": "fuel_petrochem_solid_known",
           "amount": 75
         },
         {
+          "name": "Inner Liner",
           "resource": "fiberplast_talus",
           "amount": 65
         },
         {
+          "name": "Hardware and Attachements",
           "resource": "aluminum_chromium",
           "amount": 50
         },
         {
+          "name": "Bindings and Reinforcement",
           "resource": "copper_platinite",
           "amount": 40
         },
         {
+          "name": "Padding",
           "resource": "hide_wooly_rori",
           "amount": 30
         }
@@ -87339,16 +87731,19 @@
       "size": 1,
       "components": [
         {
+          "name": "Armor",
           "kind": "Class",
           "target": "r_i_s_armor_segment_class",
           "quantity": 1
         },
         {
+          "name": "Load-bearing Harness",
           "kind": "Schematic",
           "target": "clothing_component_clothing_synthetic_cloth",
           "quantity": 1
         },
         {
+          "name": "Reinforcement",
           "kind": "LootItem",
           "target": "giant_dune_kimogila_scales",
           "quantity": 1
@@ -87356,26 +87751,32 @@
       ],
       "resources": [
         {
+          "name": "Auxiliary Coverage",
           "resource": "armophous_vendusii",
           "amount": 150
         },
         {
+          "name": "Body",
           "resource": "fuel_petrochem_solid_known",
           "amount": 75
         },
         {
+          "name": "Inner Liner",
           "resource": "fiberplast_talus",
           "amount": 65
         },
         {
+          "name": "Hardware and Attachments",
           "resource": "aluminum_chromium",
           "amount": 50
         },
         {
+          "name": "Bindings and Reinforcement",
           "resource": "copper_platinite",
           "amount": 40
         },
         {
+          "name": "Padding",
           "resource": "hide_wooly_rori",
           "amount": 30
         }
@@ -87455,16 +87856,19 @@
       "size": 1,
       "components": [
         {
+          "name": "Armor",
           "kind": "Class",
           "target": "r_i_s_armor_segment_class",
           "quantity": 1
         },
         {
+          "name": "Load-bearing Harness",
           "kind": "Schematic",
           "target": "clothing_component_clothing_synthetic_cloth",
           "quantity": 1
         },
         {
+          "name": "Reinforcement",
           "kind": "LootItem",
           "target": "giant_dune_kimogila_scales",
           "quantity": 1
@@ -87472,26 +87876,32 @@
       ],
       "resources": [
         {
+          "name": "Auxiliary Coverage",
           "resource": "armophous_vendusii",
           "amount": 150
         },
         {
+          "name": "Body",
           "resource": "fuel_petrochem_solid_known",
           "amount": 75
         },
         {
+          "name": "Inner Liner",
           "resource": "fiberplast_talus",
           "amount": 65
         },
         {
+          "name": "Hardware and Attachments",
           "resource": "aluminum_chromium",
           "amount": 50
         },
         {
+          "name": "Bindings and Reinforcement",
           "resource": "copper_platinite",
           "amount": 40
         },
         {
+          "name": "Padding",
           "resource": "hide_wooly_rori",
           "amount": 30
         }
@@ -87571,28 +87981,33 @@
       "size": 1,
       "components": [
         {
+          "name": "Reinforcement Matrix",
           "kind": "LootItem",
           "target": "woolamander_harrower_bone_fragment",
           "quantity": 1
         },
         {
+          "name": "Flexor Matrix",
           "kind": "LootItem",
           "target": "gurk_king_hide",
           "quantity": 1
         },
         {
+          "name": "Armor Layer",
           "kind": "Class",
           "target": "armor_layer",
           "quantity": 1,
           "optional": true
         },
         {
+          "name": "Segment Enhancement",
           "kind": "Class",
           "target": "armor_segment_enhancement",
           "quantity": 1,
           "optional": true
         },
         {
+          "name": "Additional Defensive Layer",
           "kind": "Class",
           "target": "armor_layer",
           "quantity": 1,
@@ -87601,14 +88016,17 @@
       ],
       "resources": [
         {
+          "name": "Armor Segment Layer Assembly Plate",
           "resource": "aluminum_titanium",
           "amount": 160
         },
         {
+          "name": "Armor Lyaer Weld Tabs",
           "resource": "ore_intrusive_chanlon",
           "amount": 160
         },
         {
+          "name": "Armor Segment Mounting Tabs",
           "resource": "fiberplast_rori",
           "amount": 75
         }
@@ -90863,11 +91281,13 @@
       "size": 1,
       "components": [
         {
+          "name": "Container",
           "kind": "Class",
           "target": "glass",
           "quantity": 1
         },
         {
+          "name": "Additive",
           "kind": "Class",
           "target": "light_food_additive_class",
           "quantity": 1,
@@ -90876,10 +91296,12 @@
       ],
       "resources": [
         {
+          "name": "Water",
           "resource": "water",
           "amount": 10
         },
         {
+          "name": "Fruit Flavoring",
           "resource": "fruit",
           "amount": 15
         }
@@ -94413,10 +94835,12 @@
       "components": [],
       "resources": [
         {
+          "name": "Outer Shell",
           "resource": "fiberplast",
           "amount": 15
         },
         {
+          "name": "Bindings and Binding Hardware",
           "resource": "metal",
           "amount": 4
         }
@@ -94438,6 +94862,7 @@
       "size": 3,
       "components": [
         {
+          "name": "Outer Shell",
           "kind": "Schematic",
           "target": "clothing_component_clothing_fiberplast_panel",
           "quantity": 1
@@ -94445,10 +94870,12 @@
       ],
       "resources": [
         {
+          "name": "Bindings and Binding hardware",
           "resource": "petrochem_inert",
           "amount": 15
         },
         {
+          "name": "Inner Liner",
           "resource": "fiberplast",
           "amount": 15
         }
@@ -94471,10 +94898,12 @@
       "components": [],
       "resources": [
         {
+          "name": "Body",
           "resource": "fiberplast",
           "amount": 25
         },
         {
+          "name": "Bindings and Binding Hardware",
           "resource": "petrochem_inert_polymer",
           "amount": 5
         }
@@ -94496,11 +94925,13 @@
       "size": 2,
       "components": [
         {
+          "name": "Hardware",
           "kind": "Schematic",
           "target": "clothing_component_clothing_metal_fasteners",
           "quantity": 1
         },
         {
+          "name": "Reinforcement",
           "kind": "Schematic",
           "target": "clothing_component_clothing_fiberplast_panel",
           "quantity": 1
@@ -94508,6 +94939,7 @@
       ],
       "resources": [
         {
+          "name": "Load-bearing Harness",
           "resource": "fiberplast",
           "amount": 15
         }
@@ -94666,10 +95098,12 @@
       "components": [],
       "resources": [
         {
+          "name": "Body",
           "resource": "fiberplast",
           "amount": 16
         },
         {
+          "name": "Bindings and Binding Hardware",
           "resource": "metal",
           "amount": 4
         }
@@ -94725,10 +95159,12 @@
       "components": [],
       "resources": [
         {
+          "name": "Body",
           "resource": "hide",
           "amount": 15
         },
         {
+          "name": "Bindings and Reinforcement",
           "resource": "petrochem_inert",
           "amount": 5
         }
@@ -95242,6 +95678,7 @@
       "components": [],
       "resources": [
         {
+          "name": "Crystal",
           "resource": "gemstone",
           "amount": 10
         }
@@ -96276,10 +96713,12 @@
       "components": [],
       "resources": [
         {
+          "name": "Body",
           "resource": "fiberplast",
           "amount": 30
         },
         {
+          "name": "Bindings and Binding Hardware",
           "resource": "petrochem_inert_polymer",
           "amount": 15
         }
@@ -96772,11 +97211,13 @@
       "size": 1,
       "components": [
         {
+          "name": "Container",
           "kind": "Class",
           "target": "glass",
           "quantity": 1
         },
         {
+          "name": "Additive",
           "kind": "Class",
           "target": "light_food_additive_class",
           "quantity": 1,
@@ -96785,10 +97226,12 @@
       ],
       "resources": [
         {
+          "name": "Water",
           "resource": "water",
           "amount": 5
         },
         {
+          "name": "Flavoring Extract",
           "resource": "organic",
           "amount": 2
         }
@@ -98366,11 +98809,13 @@
       "size": 1,
       "components": [
         {
+          "name": "Container",
           "kind": "Class",
           "target": "glass",
           "quantity": 1
         },
         {
+          "name": "Additive",
           "kind": "Class",
           "target": "light_food_additive_class",
           "quantity": 1,
@@ -98379,10 +98824,12 @@
       ],
       "resources": [
         {
+          "name": "Alcohol",
           "resource": "cereal",
           "amount": 15
         },
         {
+          "name": "Reactive Element",
           "resource": "gas_reactive",
           "amount": 15
         }
@@ -103228,11 +103675,13 @@
       "size": 1,
       "components": [
         {
+          "name": "Noodle Dough",
           "kind": "Schematic",
           "target": "food_component_ingredient_ball_of_dough",
           "quantity": 1
         },
         {
+          "name": "Additive",
           "kind": "Class",
           "target": "light_food_additive_class",
           "quantity": 1,
@@ -103241,10 +103690,12 @@
       ],
       "resources": [
         {
+          "name": "Thickening Agent",
           "resource": "hide",
           "amount": 20
         },
         {
+          "name": "Vegetable Mix",
           "resource": "vegetable",
           "amount": 20
         }
@@ -103353,29 +103804,34 @@
       "size": 1,
       "components": [
         {
+          "name": "Blaster Power Handler Component",
           "kind": "Class",
           "target": "blaster_power_handler_class",
           "quantity": 5,
           "identical": true
         },
         {
+          "name": "Ranged Weapon Barrel Component",
           "kind": "Class",
           "target": "blaster_rifle_barrel_class",
           "quantity": 1
         },
         {
+          "name": "Power Supply Component",
           "kind": "Class",
           "target": "geonosian_power_cube",
           "quantity": 2,
           "identical": true
         },
         {
+          "name": "Ranged Weapon Scope Component",
           "kind": "Class",
           "target": "weapon_scope_class",
           "quantity": 1,
           "optional": true
         },
         {
+          "name": "Ranged Weapon Rifle Stock Component",
           "kind": "Class",
           "target": "weapon_stock_class",
           "quantity": 1,
@@ -103384,14 +103840,17 @@
       ],
       "resources": [
         {
+          "name": "Weapon Frame Assembly",
           "resource": "aluminum_titanium",
           "amount": 100
         },
         {
+          "name": "Blaster Assembly Receiver Housing",
           "resource": "copper_platinite",
           "amount": 40
         },
         {
+          "name": "Weapon Grip and Trigger Assembly",
           "resource": "aluminum_duralumin",
           "amount": 15
         }
@@ -105307,6 +105766,7 @@
       "size": 1,
       "components": [
         {
+          "name": "Additive",
           "kind": "Class",
           "target": "light_food_additive_class",
           "quantity": 1,
@@ -105315,10 +105775,12 @@
       ],
       "resources": [
         {
+          "name": "Dried Bread",
           "resource": "cereal",
           "amount": 3
         },
         {
+          "name": "Preservative Wrap",
           "resource": "hide",
           "amount": 8
         }
@@ -105390,18 +105852,22 @@
       "components": [],
       "resources": [
         {
+          "name": "Large Pocket",
           "resource": "fiberplast",
           "amount": 50
         },
         {
+          "name": "Small Utility Pocket",
           "resource": "petrochem_inert_polymer",
           "amount": 10
         },
         {
+          "name": "Strap Comfort-pad",
           "resource": "hide",
           "amount": 5
         },
         {
+          "name": "Strap Adjustment",
           "resource": "metal",
           "amount": 5
         }
@@ -105462,10 +105928,12 @@
       "components": [],
       "resources": [
         {
+          "name": "Body",
           "resource": "hide",
           "amount": 12
         },
         {
+          "name": "Bindings and Binding Hardware",
           "resource": "petrochem_inert_polymer",
           "amount": 6
         }
@@ -105679,16 +106147,19 @@
       "size": 1,
       "components": [
         {
+          "name": "Blue Wiring",
           "kind": "LootItem",
           "target": "blue_wiring",
           "quantity": 3
         },
         {
+          "name": "Copper Battery",
           "kind": "LootItem",
           "target": "cheap_copper_battery",
           "quantity": 2
         },
         {
+          "name": "Agitator Motor",
           "kind": "Schematic",
           "target": "item_item_agitator_motor",
           "quantity": 1
@@ -105696,10 +106167,12 @@
       ],
       "resources": [
         {
+          "name": "Interior Gears",
           "resource": "metal_ferrous",
           "amount": 40
         },
         {
+          "name": "Inert Atmosphere Lining",
           "resource": "fiberplast",
           "amount": 40
         }
@@ -106225,6 +106698,7 @@
       "size": 1,
       "components": [
         {
+          "name": "Hardware",
           "kind": "Schematic",
           "target": "clothing_component_clothing_metal_fasteners",
           "quantity": 1
@@ -106232,10 +106706,12 @@
       ],
       "resources": [
         {
+          "name": "Outer Shell",
           "resource": "fiberplast",
           "amount": 10
         },
         {
+          "name": "Bindings and Reinforcement",
           "resource": "metal",
           "amount": 10
         }
@@ -111352,10 +111828,12 @@
       "components": [],
       "resources": [
         {
+          "name": "Outer Shell Half",
           "resource": "hide",
           "amount": 15
         },
         {
+          "name": "Outer Shell Half",
           "resource": "hide",
           "amount": 10
         }
@@ -111378,10 +111856,12 @@
       "components": [],
       "resources": [
         {
+          "name": "Heavy Outer Shell",
           "resource": "hide",
           "amount": 35
         },
         {
+          "name": "Binding and Weatherproofing",
           "resource": "petrochem_inert_polymer",
           "amount": 5
         }
@@ -112506,14 +112986,17 @@
       "components": [],
       "resources": [
         {
+          "name": "Outer Shell",
           "resource": "hide",
           "amount": 10
         },
         {
+          "name": "Inner Liner",
           "resource": "petrochem_inert",
           "amount": 3
         },
         {
+          "name": "No-slip Grip Pads",
           "resource": "petrochem_inert",
           "amount": 2
         }
@@ -112578,10 +113061,12 @@
       "components": [],
       "resources": [
         {
+          "name": "Heavy Outer Shell",
           "resource": "fiberplast",
           "amount": 18
         },
         {
+          "name": "Binding and Weatherproofing",
           "resource": "petrochem_inert_polymer",
           "amount": 2
         }
@@ -112906,11 +113391,13 @@
       "size": 3,
       "components": [
         {
+          "name": "Hardware",
           "kind": "Schematic",
           "target": "clothing_component_clothing_metal_fasteners",
           "quantity": 1
         },
         {
+          "name": "Inner Liner",
           "kind": "Schematic",
           "target": "clothing_component_clothing_fiberplast_panel",
           "quantity": 1
@@ -112918,10 +113405,12 @@
       ],
       "resources": [
         {
+          "name": "Body",
           "resource": "fiberplast",
           "amount": 20
         },
         {
+          "name": "Bindings and Reinforcement",
           "resource": "petrochem_inert_polymer",
           "amount": 10
         }
@@ -113120,11 +113609,13 @@
       "size": 3,
       "components": [
         {
+          "name": "Bindings and Binding Hardware",
           "kind": "Schematic",
           "target": "clothing_component_clothing_metal_fasteners",
           "quantity": 1
         },
         {
+          "name": "Reinforcement",
           "kind": "Schematic",
           "target": "clothing_component_clothing_fiberplast_panel",
           "quantity": 1
@@ -113132,14 +113623,17 @@
       ],
       "resources": [
         {
+          "name": "Body",
           "resource": "fiberplast",
           "amount": 25
         },
         {
+          "name": "Inner Liner",
           "resource": "hide_wooly",
           "amount": 10
         },
         {
+          "name": "Shoe Sole",
           "resource": "petrochem_inert_polymer",
           "amount": 10
         }
@@ -113162,14 +113656,17 @@
       "components": [],
       "resources": [
         {
+          "name": "Trim and Binding",
           "resource": "fiberplast",
           "amount": 10
         },
         {
+          "name": "Hardware",
           "resource": "metal",
           "amount": 5
         },
         {
+          "name": "Skirt Material",
           "resource": "fiberplast",
           "amount": 15
         }
@@ -113191,6 +113688,7 @@
       "size": 3,
       "components": [
         {
+          "name": "Colorizable Cloth Panel",
           "kind": "Schematic",
           "target": "clothing_component_clothing_fiberplast_panel",
           "quantity": 1
@@ -113198,6 +113696,7 @@
       ],
       "resources": [
         {
+          "name": "Bindings and Binding Hardware",
           "resource": "petrochem_inert",
           "amount": 13
         }

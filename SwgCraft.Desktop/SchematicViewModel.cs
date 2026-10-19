@@ -29,7 +29,7 @@ public sealed class ComponentSlotVm : ObservableObject
     public const string LootPrefix = "loot:";
 
     readonly ChangeTracker _t;
-    string _key = "";
+    string _key = "", _name = "";
     int _quantity = 1;
     bool _identical, _optional;
 
@@ -46,6 +46,8 @@ public sealed class ComponentSlotVm : ObservableObject
     public string Key { get => _key; set { if (value != null) Set(ref _key, value); } }
     public void RaiseKey() => Raise(nameof(Key));
 
+    /// <summary>The slot's label in the game's crafting window.</summary>
+    public string Name { get => _name; set => Set(ref _name, value ?? ""); }
     public int Quantity { get => _quantity; set => Set(ref _quantity, value); }
     public bool Identical { get => _identical; set => Set(ref _identical, value); }
     public bool Optional { get => _optional; set => Set(ref _optional, value); }
@@ -54,7 +56,7 @@ public sealed class ComponentSlotVm : ObservableObject
 
     public static ComponentSlotVm FromModel(ComponentSlot m, ChangeTracker t) => new(t)
     {
-        _key = KeyFor(m.Kind, m.Target), _quantity = m.Quantity, _identical = m.Identical, _optional = m.Optional
+        _key = KeyFor(m.Kind, m.Target), _name = m.Name ?? "", _quantity = m.Quantity, _identical = m.Identical, _optional = m.Optional
     };
 
     public ComponentSlot ToModel()
@@ -66,6 +68,7 @@ public sealed class ComponentSlotVm : ObservableObject
             (SlotKind.Schematic, "");
         return new ComponentSlot
         {
+            Name = string.IsNullOrWhiteSpace(_name) ? null : _name.Trim(),
             Kind = kind,
             Target = id, Quantity = _quantity, Identical = _identical, Optional = _optional
         };
@@ -92,10 +95,13 @@ public sealed class SkillSlotVm : ObservableObject
 public sealed class ResourceSlotVm : ObservableObject
 {
     readonly ChangeTracker _t;
-    string _resource = "";
+    string _resource = "", _name = "";
     int _amount = 1;
 
     public ResourceSlotVm(ChangeTracker t) => _t = t;
+
+    /// <summary>The slot's label in the game's crafting window.</summary>
+    public string Name { get => _name; set => Set(ref _name, value ?? ""); }
 
     /// <summary>Resource-tree node ID. A null write (a picker losing its list) is ignored so a refresh can't wipe the choice.</summary>
     public string Resource { get => _resource; set { if (value != null) Set(ref _resource, value); } }
@@ -105,8 +111,8 @@ public sealed class ResourceSlotVm : ObservableObject
 
     protected override void OnChanged() => _t.Touch();
 
-    public static ResourceSlotVm FromModel(ResourceSlot m, ChangeTracker t) => new(t) { _resource = m.Resource, _amount = m.Amount };
-    public ResourceSlot ToModel() => new() { Resource = _resource, Amount = _amount };
+    public static ResourceSlotVm FromModel(ResourceSlot m, ChangeTracker t) => new(t) { _name = m.Name ?? "", _resource = m.Resource, _amount = m.Amount };
+    public ResourceSlot ToModel() => new() { Name = string.IsNullOrWhiteSpace(_name) ? null : _name.Trim(), Resource = _resource, Amount = _amount };
 }
 
 /// <summary>

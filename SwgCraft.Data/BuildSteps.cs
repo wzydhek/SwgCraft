@@ -61,7 +61,8 @@ public static class BuildSteps
                 numbers.Add(n);
                 int rest = item.UnmadeInRuns;
                 steps.Add(new BuildStep(n, item, rest, true, item.Runs.Count, item.Runs.Count,
-                                        $"Factory run of {rest:N0} x {name}: NOT POSSIBLE with the stock held",
+                                        (item.Runs.Count > 0 ? "Another factory run" : "Factory run") +
+                                        $": {rest:N0} x {name} - SHORT of resources (get the SHORT amounts below first)",
                                         Lines(item, rest, runIndex: -1, factory: true, last: true)));
             }
         }
@@ -91,7 +92,14 @@ public static class BuildSteps
             if (made.MadeInRun is int run && stepsOf.TryGetValue(maker, out var nums) && run < nums.Count)
                 return $"step {nums[run]}" + (maker != child ? $" ({maker.Label})" : "");
             if (child.ItemKind == BuildItemKind.LootItem || child.MissingCount > 0) return "MISSING (needs one serial stack holding them all)";
-            return stepsOf.TryGetValue(maker, out var all) && all.Count > 0 ? $"step {all[^1]} (NOT POSSIBLE)" : "NOT POSSIBLE";
+            return stepsOf.TryGetValue(maker, out var all) && all.Count > 0 ? $"step {all[^1]} (short of resources)" : "nowhere yet";
+        }
+
+        // " (Wall Section A, Wall Section B)": the in-game names of the slots this component fills, if the schematic has them
+        static string SlotNames(BuildItem item, BuildItem child)
+        {
+            var names = item.Slots.Where(x => x.Child == child && !string.IsNullOrWhiteSpace(x.Name)).Select(x => x.Name!.Trim()).ToList();
+            return names.Count == 0 ? "" : $" ({string.Join(", ", names)})";
         }
 
         static string SpecificNote(ResourceTake t) =>
@@ -106,6 +114,9 @@ public static class BuildSteps
                 lines.Add($"First craft one {item.Label} with the components and resources below to make the manufacturing schematic " +
                           $"(it uses up one unit's worth), then run {units:N0} in a factory - every unit uses the same spawns and identical components.");
                 if (item.FactoryReason != null) lines.Add($"Factory run because {item.FactoryReason}.");
+                if (item.FactoryBlockedBy != null)
+                    lines.Add($"PROBLEM: a factory run needs an identical set of every component, and {item.FactoryBlockedBy} is looted - " +
+                              "only possible with one serial stack holding the whole set.");
                 var groups = runIndex >= 0 && runIndex < item.Runs.Count ? item.Runs[runIndex].Groups : Array.Empty<BuildDemand>();
                 if (groups.Count > 0)
                     lines.Add("This run makes identical sets for: " + string.Join("; ", groups.Select(g =>
@@ -115,7 +126,7 @@ public static class BuildSteps
 
             foreach (var r in item.Resources)
             {
-                var head = $"{resourceLabel(r.ResourceId)}, {r.AmountEach:N0} per unit";
+                var head = (string.IsNullOrWhiteSpace(r.Name) ? "" : r.Name.Trim() + " - ") + $"{resourceLabel(r.ResourceId)}, {r.AmountEach:N0} per unit";
                 if (factory)
                 {
                     if (runIndex >= 0 && runIndex < r.Takes.Count)
@@ -163,17 +174,18 @@ public static class BuildSteps
                 {
                     var d = slot.Child.Demands.FirstOrDefault(x => x.From == item && x.ParentRun == ri && x.SlotIndex == slot.SlotIndex);
                     int total = slot.PerUnit * (units + 1);
-                    lines.Add($"Component {slot.Child.Label} (slot {slot.SlotIndex + 1}): {slot.PerUnit} per unit - {slot.PerUnit * units:N0} for the run " +
+                    lines.Add($"Component {slot.Child.Label} (slot {slot.SlotIndex + 1}{(string.IsNullOrWhiteSpace(slot.Name) ? "" : ": " + slot.Name.Trim())}): {slot.PerUnit} per unit - {slot.PerUnit * units:N0} for the run " +
                               $"+ {slot.PerUnit} for the manufacturing schematic = {total:N0}, all identical" +
                               (d != null ? " - from " + GroupSource(slot.Child, d) : ""));
                 }
             }
             else
                 foreach (var c in item.Components)
-                    lines.Add($"Component {c.Child.Label}: {c.PerUnit} per unit, {c.PerUnit * units:N0} here" +
+                    lines.Add($"Component {c.Child.Label}{SlotNames(item, c.Child)}: {c.PerUnit} per unit, {c.PerUnit * units:N0} here" +
                               (c.Child.Demands.Any(d => d.From == item && d.ParentRun == -1 && d.Identical) ? " (identical sets)" : "") +
                               Sources(c.Child));
-            foreach (var o in item.SkippedOptional) lines.Add($"Optional component {o}: not used");
+            foreach (var o in item.SlotChoices.Where(x => !x.Included))
+                lines.Add($"Optional component {o.Child.Label}{(string.IsNullOrWhiteSpace(o.Slot.Name) ? "" : $" ({o.Slot.Name.Trim()})")}: not used");
 
             if (last && item.Problem != null) lines.Add("Note: " + item.Problem);
             return lines;

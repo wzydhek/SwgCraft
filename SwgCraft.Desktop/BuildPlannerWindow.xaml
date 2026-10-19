@@ -114,7 +114,7 @@
                         <DataGrid x:Name="ResourceGrid" AutoGenerateColumns="False" IsReadOnly="True" HeadersVisibility="Column"
                                   GridLinesVisibility="Horizontal" CanUserSortColumns="False">
                             <DataGrid.Columns>
-                                <DataGridTextColumn Header="Slot" Width="40" Binding="{Binding Slot}"/>
+                                <DataGridTextColumn Header="Slot" Width="110" Binding="{Binding Slot}"/>
                                 <DataGridTextColumn Header="Resource" Width="170" Binding="{Binding Resource}"/>
                                 <DataGridTextColumn Header="Each" Width="45" Binding="{Binding Each}"/>
                                 <DataGridTextColumn Header="Units" Width="70" Binding="{Binding Crafts}"/>
