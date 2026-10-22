@@ -606,6 +606,276 @@ public partial class SchematicEditorWindow : Window
     /// Overwrites the selected schematic's name, ID, complexity, size and skill with one tab-separated line from the clipboard.
     /// The copied skill may be cut short ("Installations III"), so it matches the skill whose name starts with it.
     /// </summary>
+    // ------------------------------------------------------------ fill from a SWGEmu draft schematic script
+
+    SchematicScriptIndex? _scriptIndex;
+    StringCatalog? _strings;
+
+    void FromScript_Click(object sender, RoutedEventArgs e)
+    {
+        CommitAll();
+        if (Selected is not { } vm)
+        {
+            SetStatus("From Script: select a schematic first.");
+            return;
+        }
+
+        string? file = null;
+        while (true)
+        {
+            // the scripts folder (asked for once, then remembered in the settings)
+            var folder = Services.Settings.SchematicScriptsFolder;
+            if (string.IsNullOrWhiteSpace(folder) || !Directory.Exists(folder))
+            {
+                if (!ChooseScriptsFolder()) return;
+                continue;
+            }
+            if (_scriptIndex == null || !string.Equals(_scriptIndex.Root, folder, StringComparison.OrdinalIgnoreCase))
+            {
+                System.Windows.Input.Mouse.OverrideCursor = System.Windows.Input.Cursors.Wait;
+                try { _scriptIndex = new SchematicScriptIndex(folder); }
+                catch (Exception ex) when (ex is IOException or UnauthorizedAccessException)
+                {
+                    MessageBox.Show(this, "Could not read the scripts folder:\n" + ex.Message, Title, MessageBoxButton.OK, MessageBoxImage.Warning);
+                    return;
+                }
+                finally { System.Windows.Input.Mouse.OverrideCursor = null; }
+            }
+
+            file ??= _scriptIndex.Find(vm.Id?.Trim() ?? "");
+            if (file == null)
+            {
+                var ask = MessageBox.Show(this, $"No script in {folder} matches the ID '{vm.Id}'.\n\nPick the .lua file for it?", Title,
+                                          MessageBoxButton.YesNo, MessageBoxImage.Question);
+                if (ask != MessageBoxResult.Yes || (file = PickScriptFile(folder)) == null) return;
+            }
+
+            SchematicScript script;
+            try { script = SchematicScriptReader.ReadFile(file); }
+            catch (Exception ex) when (ex is IOException or UnauthorizedAccessException)
+            {
+                MessageBox.Show(this, "Could not read the script:\n" + ex.Message, Title, MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
+            }
+
+            System.Windows.Input.Mouse.OverrideCursor = System.Windows.Input.Cursors.Wait;
+            ScriptMergeResult result;
+            try
+            {
+                _strings ??= new StringCatalog(Services.StaticData.LoadStrings().Value);
+                var all = new SchematicsDocument();
+                all.Schematics.AddRange(_schematics.Select(s => s.ToModel()));
+                result = SchematicScriptMerge.Merge(vm.ToModel(), script, _strings, new SchematicCatalog(all),
+                                                    new ClassCatalog(Services.StaticData.LoadClasses().Value), Services.Tree, _scriptIndex);
+            }
+            finally { System.Windows.Input.Mouse.OverrideCursor = null; }
+
+            var report = new System.Text.StringBuilder();
+            void Section(string title, List<string> lines, string none)
+            {
+                report.AppendLine(title);
+                if (lines.Count == 0) report.AppendLine("  " + none);
+                foreach (var l in lines) report.AppendLine("  - " + l);
+                report.AppendLine();
+            }
+            Section("WILL BE FILLED IN / ADDED", result.Changes, "nothing - everything the script has is already entered");
+            Section("DIFFERENT FROM THE SCRIPT (left as entered)", result.Differences, "none");
+            if (result.Notes.Count > 0) Section("NOTES", result.Notes, "");
+
+            var rel = Path.GetRelativePath(folder, file);
+            var header = $"{vm.Name} ({vm.Id})  <-  {rel}" + (script.CustomObjectName is { Length: > 0 } n ? $"   [script name: {n}]" : "");
+            var dlg = new ScriptImportWindow(header, report.ToString(), result.Changes.Count > 0) { Owner = this };
+            dlg.ShowDialog();
+            switch (dlg.Choice)
+            {
+                case ScriptImportChoice.Apply:
+                    ApplyScriptMerge(vm, result.Merged);
+                    SetStatus($"From Script: {result.Changes.Count} change(s) made to {vm.Name} - save to keep them.");
+                    return;
+                case ScriptImportChoice.ChangeFolder:
+                    if (!ChooseScriptsFolder()) return;
+                    file = null;
+                    continue;
+                case ScriptImportChoice.PickFile:
+                    var picked = PickScriptFile(Path.GetDirectoryName(file) ?? folder);
+                    if (picked == null) return;
+                    file = picked;
+                    continue;
+                default:
+                    return;
+            }
+        }
+    }
+
+    // ------------------------------------------------------------ reports
+
+    static string Describe(Schematic s) => $"{(string.IsNullOrWhiteSpace(s.Name) ? "(no name)" : s.Name.Trim())} ({s.Id})";
+
+    void ShowReport(string title, string summary, string report, string fileName)
+    {
+        new BuildStepsWindow(report, summary, fileName) { Owner = this, Title = title }.Show();
+    }
+
+    /// <summary>Schematics with a resource or component slot that has no slot name.</summary>
+    void MissingNamesReport_Click(object sender, RoutedEventArgs e)
+    {
+        CommitAll();
+        var rows = _schematics.Select(v => v.ToModel())
+            .Select(s => (S: s,
+                          Res: s.Resources.Select((r, i) => (r, i)).Where(x => string.IsNullOrWhiteSpace(x.r.Name)).Select(x => x.i + 1).ToList(),
+                          Comp: s.Components.Select((c, i) => (c, i)).Where(x => string.IsNullOrWhiteSpace(x.c.Name)).Select(x => x.i + 1).ToList()))
+            .Where(x => x.Res.Count + x.Comp.Count > 0)
+            .OrderBy(x => x.S.Name, StringComparer.OrdinalIgnoreCase)
+            .ToList();
+
+        int slots = rows.Sum(x => x.Res.Count + x.Comp.Count);
+        var sb = new System.Text.StringBuilder();
+        sb.AppendLine($"SCHEMATICS WITH SLOTS WITHOUT A NAME: {rows.Count:N0} of {_schematics.Count:N0} schematics, {slots:N0} slots");
+        sb.AppendLine($"Fully named: {_schematics.Count - rows.Count:N0}. (Schematics with no slots at all count as fully named.)");
+        sb.AppendLine();
+        foreach (var (s, res, comp) in rows)
+        {
+            var parts = new List<string>();
+            if (res.Count > 0) parts.Add((res.Count == s.Resources.Count ? "all resource slots" : "resource slot" + (res.Count > 1 ? "s " : " ") + string.Join(", ", res)) + $" (of {s.Resources.Count})");
+            if (comp.Count > 0) parts.Add((comp.Count == s.Components.Count ? "all component slots" : "component slot" + (comp.Count > 1 ? "s " : " ") + string.Join(", ", comp)) + $" (of {s.Components.Count})");
+            sb.AppendLine($"{Describe(s)}: {string.Join("; ", parts)}");
+        }
+        ShowReport("Missing Slot Names", $"{rows.Count:N0} schematic(s), {slots:N0} slot(s) without a name", sb.ToString(), "missing slot names.txt");
+    }
+
+    /// <summary>Every schematic compared with its SWGEmu script: where they disagree, what could be filled in, and which have no script.</summary>
+    async void ScriptDiffReport_Click(object sender, RoutedEventArgs e)
+    {
+        CommitAll();
+        var folder = Services.Settings.SchematicScriptsFolder;
+        if (string.IsNullOrWhiteSpace(folder) || !Directory.Exists(folder))
+        {
+            if (!ChooseScriptsFolder()) return;
+            folder = Services.Settings.SchematicScriptsFolder!;
+        }
+
+        var models = _schematics.Select(v => v.ToModel()).ToList();
+        var all = new SchematicsDocument();
+        all.Schematics.AddRange(models);
+        var classes = new ClassCatalog(Services.StaticData.LoadClasses().Value);
+        var tree = Services.Tree;
+        var index = _scriptIndex is { } ix && string.Equals(ix.Root, folder, StringComparison.OrdinalIgnoreCase) ? ix : null;
+
+        SetStatus("Comparing every schematic with its script...");
+        System.Windows.Input.Mouse.OverrideCursor = System.Windows.Input.Cursors.Wait;
+        IsEnabled = false;
+        try
+        {
+            var report = await Task.Run(() =>
+            {
+                index ??= new SchematicScriptIndex(folder);
+                _strings ??= new StringCatalog(Services.StaticData.LoadStrings().Value);
+                var strings = _strings;
+                var catalog = new SchematicCatalog(all);
+
+                var noScript = new List<Schematic>();
+                var unreadable = new List<string>();
+                var differing = new List<(Schematic S, ScriptMergeResult R)>();
+                int fillable = 0, matching = 0;
+                foreach (var s in models.OrderBy(m => m.Name, StringComparer.OrdinalIgnoreCase))
+                {
+                    var file = index.Find(s.Id?.Trim() ?? "");
+                    if (file == null) { noScript.Add(s); continue; }
+                    ScriptMergeResult r;
+                    try { r = SchematicScriptMerge.Merge(s, SchematicScriptReader.ReadFile(file), strings, catalog, classes, tree, index); }
+                    catch (Exception ex) when (ex is IOException or UnauthorizedAccessException) { unreadable.Add($"{Describe(s)}: {ex.Message}"); continue; }
+                    if (r.Changes.Count > 0) fillable++;
+                    // a script whose slot lists don't line up is a disagreement worth seeing too
+                    var problems = r.Notes.Where(n => n.StartsWith("The script's slot lists", StringComparison.Ordinal)).ToList();
+                    if (r.Differences.Count + problems.Count > 0) differing.Add((s, r));
+                    else matching++;
+                }
+
+                var sb = new System.Text.StringBuilder();
+                sb.AppendLine($"SCHEMATICS COMPARED WITH THE SWGEMU SCRIPTS IN {folder}");
+                sb.AppendLine($"{models.Count:N0} schematics: {differing.Count:N0} differ, {matching:N0} agree, {noScript.Count:N0} have no script" +
+                              (unreadable.Count > 0 ? $", {unreadable.Count:N0} unreadable" : "") + ".");
+                sb.AppendLine($"{fillable:N0} of them have something From Script could fill in (empty slot names, missing slots, empty complexity or size).");
+                sb.AppendLine("Nothing has been changed.");
+                sb.AppendLine();
+
+                sb.AppendLine($"DIFFERENCES ({differing.Count:N0})");
+                foreach (var (s, r) in differing)
+                {
+                    sb.AppendLine(Describe(s) + "  <-  " + Path.GetRelativePath(folder, index.Find(s.Id!.Trim())!));
+                    foreach (var note in r.Notes.Where(x => x.StartsWith("The script's slot lists", StringComparison.Ordinal))) sb.AppendLine("    ! " + note);
+                    foreach (var d in r.Differences) sb.AppendLine("    - " + d);
+                }
+                sb.AppendLine();
+
+                sb.AppendLine($"NO SCRIPT FOUND FOR THE ID ({noScript.Count:N0})");
+                foreach (var s in noScript) sb.AppendLine("    " + Describe(s));
+                if (unreadable.Count > 0)
+                {
+                    sb.AppendLine();
+                    sb.AppendLine($"COULD NOT BE READ ({unreadable.Count:N0})");
+                    foreach (var u in unreadable) sb.AppendLine("    " + u);
+                }
+                return (Text: sb.ToString(), Summary: $"{differing.Count:N0} differ, {matching:N0} agree, {noScript.Count:N0} without a script");
+            });
+            _scriptIndex = index;
+            ShowReport("Script Differences", report.Summary, report.Text, "script differences.txt");
+            SetStatus("Script Differences: " + report.Summary + ".");
+        }
+        catch (Exception ex) when (ex is IOException or UnauthorizedAccessException)
+        {
+            MessageBox.Show(this, "Could not read the scripts:\n" + ex.Message, Title, MessageBoxButton.OK, MessageBoxImage.Warning);
+            SetStatus("Script Differences: could not read the scripts.");
+        }
+        finally
+        {
+            IsEnabled = true;
+            System.Windows.Input.Mouse.OverrideCursor = null;
+        }
+    }
+
+    /// <summary>Puts the filled-in slots, complexity and size into the schematic being edited (not saved yet).</summary>
+    void ApplyScriptMerge(SchematicVm vm, Schematic merged)
+    {
+        vm.Resources.Clear();
+        foreach (var r in merged.Resources) vm.Resources.Add(ResourceSlotVm.FromModel(r, _tracker));
+        vm.Components.Clear();
+        foreach (var c in merged.Components) vm.Components.Add(ComponentSlotVm.FromModel(c, _tracker));
+        if (vm.Complexity == null && merged.Complexity != null) vm.Complexity = merged.Complexity;
+        if (vm.Size == null && merged.Size != null) vm.Size = merged.Size;
+        _tracker.Touch();
+    }
+
+    bool ChooseScriptsFolder()
+    {
+        var dlg = new Microsoft.Win32.OpenFolderDialog
+        {
+            Title = "Choose the SWGEmu draft_schematic scripts folder (...\\scripts\\object\\draft_schematic)",
+            InitialDirectory = Services.Settings.SchematicScriptsFolder is { } f && Directory.Exists(f) ? f : "",
+        };
+        if (dlg.ShowDialog(this) != true) return false;
+        var folder = dlg.FolderName;
+        // pointing at the scripts root (or object) instead of draft_schematic itself is forgiven
+        foreach (var sub in new[] { Path.Combine("object", "draft_schematic"), "draft_schematic" })
+            if (Directory.Exists(Path.Combine(folder, sub))) { folder = Path.Combine(folder, sub); break; }
+        Services.Settings.SchematicScriptsFolder = folder;
+        try { SettingsStore.Save(Services.Settings); }
+        catch (Exception ex) when (ex is IOException or UnauthorizedAccessException) { SetStatus("Could not save the settings: " + ex.Message); }
+        _scriptIndex = null;
+        return true;
+    }
+
+    string? PickScriptFile(string folder)
+    {
+        var dlg = new Microsoft.Win32.OpenFileDialog
+        {
+            Title = "Pick the draft schematic script",
+            Filter = "Lua scripts (*.lua)|*.lua|All files (*.*)|*.*",
+            InitialDirectory = Directory.Exists(folder) ? folder : "",
+        };
+        return dlg.ShowDialog(this) == true ? dlg.FileName : null;
+    }
+
     void Fill_Click(object sender, RoutedEventArgs e)
     {
         CommitAll();   // finish any cell being edited first, so it can't overwrite what we fill in

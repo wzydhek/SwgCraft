@@ -802,7 +802,7 @@
                       }
                     },
                     {
-                      "id": "rethin_inert_gas",
+                      "id": "gas_inert_rethin",
                       "name": "Rethin Inert Gas",
                       "externalIds": {
                         "galaxyHarvester": "gas_inert_rethin"
@@ -3071,7 +3071,7 @@
                           }
                         },
                         {
-                          "id": "crism_siliclastic_ore",
+                          "id": "ore_siliclastic_crism",
                           "name": "Crism Siliclastic Ore",
                           "externalIds": {
                             "galaxyHarvester": "ore_siliclastic_crism"

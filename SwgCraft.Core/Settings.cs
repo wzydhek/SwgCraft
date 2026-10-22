@@ -69,6 +69,8 @@ public sealed class AppSettings
     public int MinFeedPercentOfPrevious { get; set; } = 50;
     public PriceSettings Pricing { get; set; } = new();
     public List<string> DisabledProfessions { get; set; } = new();
+    /// <summary>The draft_schematic folder of the SWGEmu (Core3) scripts, for filling schematics from them. Not written when null.</summary>
+    public string? SchematicScriptsFolder { get; set; }
     public bool IsProfessionEnabled(string professionId) =>
         !(DisabledProfessions?.Contains(professionId) ?? false);
 }

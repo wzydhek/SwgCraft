@@ -14,6 +14,14 @@
             <Separator/>
             <Button Content="Fill" Click="Fill_Click" Padding="8,2"
                     ToolTip="Overwrite the selected schematic's name, ID, skill, complexity and size from one copied line of 6 tab-separated values (name, ID, skill, -, complexity, size). The skill may be cut short; it matches the skill whose name starts with it."/>
+            <Button Content="From Script..." Click="FromScript_Click" Padding="8,2"
+                    ToolTip="Fill the selected schematic from its SWGEmu draft schematic script: blank slot names, missing slots, empty complexity and size. Nothing already entered is changed; differences are listed."/>
+            <Separator/>
+            <TextBlock Text="Reports:" VerticalAlignment="Center" Margin="4,0"/>
+            <Button Content="Missing Slot Names" Click="MissingNamesReport_Click" Padding="8,2"
+                    ToolTip="List the schematics that have a resource or component slot without a slot name (what is in the editor, saved or not)"/>
+            <Button Content="Script Differences" Click="ScriptDiffReport_Click" Padding="8,2"
+                    ToolTip="Compare every schematic with its SWGEmu draft schematic script and list where they disagree (nothing is changed)"/>
         </ToolBar>
         <StatusBar DockPanel.Dock="Bottom">
             <StatusBarItem DockPanel.Dock="Right">
