@@ -324,6 +324,22 @@
     {
       "id": "enhanced_effect_fragmentation_sleeve",
       "name": "Enhanced Effect Fragmentation Sleeve"
+    },
+    {
+      "id": "leather_heavy_duty",
+      "name": "Portion of Heavy Duty Leather"
+    },
+    {
+      "id": "clasp_heavy_duty",
+      "name": "Heavy Duty Clasp"
+    },
+    {
+      "id": "clothing_treatment_crystalline",
+      "name": "Crystalline Clothing Treatment"
+    },
+    {
+      "id": "pistol_de10_barrel",
+      "name": "DE-10 Pistol Barrel"
     }
   ]
 }

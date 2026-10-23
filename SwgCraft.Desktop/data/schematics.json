@@ -8936,6 +8936,142 @@
       "experiments": []
     },
     {
+      "id": "rifle_berserker",
+      "name": "Berserker Rifle",
+      "professions": [
+        "looter"
+      ],
+      "skills": [
+        "looter_looted"
+      ],
+      "category": "rifle",
+      "tab": "weapon",
+      "complexity": 16,
+      "size": 1,
+      "components": [
+        {
+          "name": "Feed Unit",
+          "kind": "Class",
+          "target": "projectile_feed_mechanism_class",
+          "quantity": 1
+        },
+        {
+          "name": "Ranged Weapon Barrel Component",
+          "kind": "Class",
+          "target": "projectile_rifle_barrel_class",
+          "quantity": 1
+        },
+        {
+          "name": "Barrel Stabilization Component",
+          "kind": "LootItem",
+          "target": "berserker_rifle_stabilization_component",
+          "quantity": 1
+        }
+      ],
+      "resources": [
+        {
+          "name": "Weapon Frame Assembly",
+          "resource": "metal_ferrous",
+          "amount": 14
+        },
+        {
+          "name": "Blaster Assembly Receiver Housing",
+          "resource": "iron",
+          "amount": 35
+        },
+        {
+          "name": "Weapon Grip and Trigger Assembly",
+          "resource": "metal",
+          "amount": 7
+        }
+      ],
+      "experiments": [
+        {
+          "name": "Experimental Damage",
+          "modifiers": [
+            {
+              "name": "Attack Speed",
+              "weights": {
+                "CD": 50,
+                "OQ": 50
+              }
+            },
+            {
+              "name": "Maximum Dmaage",
+              "weights": {
+                "CD": 50,
+                "OQ": 50
+              }
+            },
+            {
+              "name": "Minimum Damage",
+              "weights": {
+                "CD": 50,
+                "OQ": 50
+              }
+            },
+            {
+              "name": "Wound Chance",
+              "weights": {
+                "CD": 50,
+                "OQ": 50
+              }
+            }
+          ]
+        },
+        {
+          "name": "Experimental Durability",
+          "modifiers": [
+            {
+              "name": "Unit Integrity",
+              "weights": {
+                "CD": 50,
+                "OQ": 50
+              }
+            }
+          ]
+        },
+        {
+          "name": "Experimental Efficiency",
+          "modifiers": [
+            {
+              "name": "Attack Action Cost",
+              "weights": {
+                "CD": 50,
+                "OQ": 50
+              }
+            },
+            {
+              "name": "Attack Health Cost",
+              "weights": {
+                "CD": 50,
+                "OQ": 50
+              }
+            },
+            {
+              "name": "Attack Mind Cost",
+              "weights": {
+                "CD": 50,
+                "OQ": 50
+              }
+            }
+          ]
+        },
+        {
+          "name": "Experimental Range",
+          "modifiers": [
+            {
+              "name": "Medium Range Mod",
+              "weights": {
+                "CD": 50,
+                "OQ": 50
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
       "id": "food_drink_bespin_port",
       "name": "Bespin Port",
       "professions": [
@@ -9334,6 +9470,261 @@
         }
       ],
       "experiments": []
+    },
+    {
+      "id": "executioners_hack",
+      "name": "Black Sun Executioner\u0027s Hack",
+      "professions": [
+        "looter"
+      ],
+      "skills": [
+        "looter_looted"
+      ],
+      "category": "2h_weapon",
+      "tab": "weapon",
+      "complexity": 35,
+      "size": 1,
+      "components": [
+        {
+          "name": "Omnipotent Sword Core",
+          "kind": "Schematic",
+          "target": "weapon_component_sword_core_geo",
+          "quantity": 2,
+          "identical": true
+        }
+      ],
+      "resources": [
+        {
+          "name": "Edged Sword Structural Sleeve Assembly",
+          "resource": "steel_carbonite",
+          "amount": 60
+        },
+        {
+          "name": "Weapon Grip Assembly",
+          "resource": "aluminum_phrik",
+          "amount": 30
+        }
+      ],
+      "experiments": [
+        {
+          "name": "Experimental Damage",
+          "modifiers": [
+            {
+              "name": "Attack Speed",
+              "weights": {
+                "SR": 100
+              }
+            },
+            {
+              "name": "Maximum Damage",
+              "weights": {
+                "SR": 100
+              }
+            },
+            {
+              "name": "Minimum Damage",
+              "weights": {
+                "SR": 100
+              }
+            },
+            {
+              "name": "Wound Chance",
+              "weights": {
+                "SR": 100
+              }
+            }
+          ]
+        },
+        {
+          "name": "Experimental Durability",
+          "modifiers": [
+            {
+              "name": "Unit Integrity",
+              "weights": {
+                "SR": 100
+              }
+            }
+          ]
+        },
+        {
+          "name": "Experimental Efficiency",
+          "modifiers": [
+            {
+              "name": "Attack Action Cost",
+              "weights": {
+                "SR": 100
+              }
+            },
+            {
+              "name": "Attack Health Cost",
+              "weights": {
+                "SR": 100
+              }
+            },
+            {
+              "name": "Attack Mind Cost",
+              "weights": {
+                "SR": 100
+              }
+            }
+          ]
+        },
+        {
+          "name": "Experimental Range",
+          "modifiers": [
+            {
+              "name": "Maximum Range Modifier",
+              "weights": {
+                "SR": 100
+              }
+            },
+            {
+              "name": "Medium Range Mod",
+              "weights": {
+                "SR": 100
+              }
+            },
+            {
+              "name": "Minimum Range Modifier",
+              "weights": {
+                "SR": 100
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "razor_knuckler",
+      "name": "Blacksun Razor Knuckler",
+      "professions": [
+        "looter"
+      ],
+      "skills": [
+        "looter_looted"
+      ],
+      "category": "melee_weapon",
+      "tab": "weapon",
+      "complexity": 25,
+      "size": 1,
+      "components": [
+        {
+          "name": "Vibration Generator Component",
+          "kind": "LootItem",
+          "target": "nightsister_vibro_blade_unit",
+          "quantity": 1
+        }
+      ],
+      "resources": [
+        {
+          "name": "Grip Unit",
+          "resource": "metal_ferrous",
+          "amount": 12
+        },
+        {
+          "name": "Weapon Striking Face",
+          "resource": "steel",
+          "amount": 8
+        },
+        {
+          "name": "Vibration and Power Unit Bracket Assembly",
+          "resource": "metal",
+          "amount": 8
+        },
+        {
+          "name": "Power Cell Socket and Power-routing Harness",
+          "resource": "copper",
+          "amount": 4
+        }
+      ],
+      "experiments": [
+        {
+          "name": "Experimental Damage",
+          "modifiers": [
+            {
+              "name": "Attack Speed",
+              "weights": {
+                "SR": 100
+              }
+            },
+            {
+              "name": "Maximum Damage",
+              "weights": {
+                "SR": 100
+              }
+            },
+            {
+              "name": "Minimum Damge",
+              "weights": {
+                "SR": 100
+              }
+            },
+            {
+              "name": "Wound Chance",
+              "weights": {
+                "SR": 100
+              }
+            }
+          ]
+        },
+        {
+          "name": "Experimental Durability",
+          "modifiers": [
+            {
+              "name": "Unit Integrity",
+              "weights": {
+                "SR": 100
+              }
+            }
+          ]
+        },
+        {
+          "name": "Experimental Efficiency",
+          "modifiers": [
+            {
+              "name": "Attack Action Cost",
+              "weights": {
+                "SR": 100
+              }
+            },
+            {
+              "name": "Attack Health Cost",
+              "weights": {
+                "SR": 100
+              }
+            },
+            {
+              "name": "Attack Mind Cost",
+              "weights": {
+                "SR": 100
+              }
+            }
+          ]
+        },
+        {
+          "name": "Experimental Range",
+          "modifiers": [
+            {
+              "name": "Maximum Range Modifier",
+              "weights": {
+                "SR": 100
+              }
+            },
+            {
+              "name": "Medium Range Mod",
+              "weights": {
+                "SR": 100
+              }
+            },
+            {
+              "name": "Minimum Range Modifier",
+              "weights": {
+                "SR": 100
+              }
+            }
+          ]
+        }
+      ]
     },
     {
       "id": "weapon_component_blade_vibro_unit",
@@ -12390,6 +12781,114 @@
       "experiments": []
     },
     {
+      "id": "furniture_bottle_fat",
+      "name": "Bottle, fat",
+      "professions": [
+        "looter"
+      ],
+      "skills": [
+        "looter_looted"
+      ],
+      "category": "furniture",
+      "tab": "furniture",
+      "complexity": 9,
+      "size": 1,
+      "components": [],
+      "resources": [
+        {
+          "name": "Glass",
+          "resource": "gemstone_crystalline",
+          "amount": 55
+        }
+      ],
+      "experiments": [
+        {
+          "name": "Experimental Quality",
+          "modifiers": [
+            {
+              "name": "Quality",
+              "weights": {
+                "DR": 50,
+                "OQ": 50
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "furniture_bottle_pear",
+      "name": "Bottle, Pear shaped",
+      "professions": [
+        "looter"
+      ],
+      "skills": [
+        "looter_looted"
+      ],
+      "category": "furniture",
+      "tab": "furniture",
+      "complexity": 9,
+      "size": 1,
+      "components": [],
+      "resources": [
+        {
+          "name": "Glass",
+          "resource": "gemstone_crystalline",
+          "amount": 60
+        }
+      ],
+      "experiments": [
+        {
+          "name": "Experimental Quality",
+          "modifiers": [
+            {
+              "name": "Quality",
+              "weights": {
+                "DR": 50,
+                "OQ": 50
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "furniture_bottle_tall",
+      "name": "Bottle, tall",
+      "professions": [
+        "looter"
+      ],
+      "skills": [
+        "looter_looted"
+      ],
+      "category": "furniture",
+      "tab": "furniture",
+      "complexity": 9,
+      "size": 1,
+      "components": [],
+      "resources": [
+        {
+          "name": "Glass",
+          "resource": "gemstone_crystalline",
+          "amount": 60
+        }
+      ],
+      "experiments": [
+        {
+          "name": "Experimental Quality",
+          "modifiers": [
+            {
+              "name": "Quality",
+              "weights": {
+                "DR": 50,
+                "OQ": 50
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
       "id": "clothing_clothing_backpack_field_05",
       "name": "Bounty Hunter Pack",
       "professions": [
@@ -12585,6 +13084,78 @@
               "name": "Medium Range Mod",
               "weights": {
                 "CD": 50,
+                "OQ": 50
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "furniture_bowl_carved",
+      "name": "Bowl, carved",
+      "professions": [
+        "looter"
+      ],
+      "skills": [
+        "looter_looted"
+      ],
+      "category": "furniture",
+      "tab": "furniture",
+      "complexity": 9,
+      "size": 1,
+      "components": [],
+      "resources": [
+        {
+          "name": "Bowl",
+          "resource": "wood",
+          "amount": 50
+        }
+      ],
+      "experiments": [
+        {
+          "name": "Experimental Quality",
+          "modifiers": [
+            {
+              "name": "Quality",
+              "weights": {
+                "DR": 50,
+                "OQ": 50
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "furniture_bowl_plain",
+      "name": "Bowl, Plain",
+      "professions": [
+        "looter"
+      ],
+      "skills": [
+        "looter_looted"
+      ],
+      "category": "furniture",
+      "tab": "furniture",
+      "complexity": 9,
+      "size": 1,
+      "components": [],
+      "resources": [
+        {
+          "name": "Bowl",
+          "resource": "wood",
+          "amount": 50
+        }
+      ],
+      "experiments": [
+        {
+          "name": "Experimental Quality",
+          "modifiers": [
+            {
+              "name": "Quality",
+              "weights": {
+                "DR": 50,
                 "OQ": 50
               }
             }
@@ -12813,6 +13384,52 @@
               "weights": {
                 "FL": 20,
                 "PE": 30,
+                "OQ": 50
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "furniture_bubble_tank",
+      "name": "Bubble Tank",
+      "professions": [
+        "looter"
+      ],
+      "skills": [
+        "looter_looted"
+      ],
+      "category": "furniture",
+      "tab": "furniture",
+      "complexity": 15,
+      "size": 1,
+      "components": [],
+      "resources": [
+        {
+          "name": "Tank",
+          "resource": "gemstone_crystalline",
+          "amount": 35
+        },
+        {
+          "name": "Filler Liquid",
+          "resource": "petrochem_inert_polymer",
+          "amount": 30
+        },
+        {
+          "name": "Stand",
+          "resource": "gemstone_crystalline",
+          "amount": 15
+        }
+      ],
+      "experiments": [
+        {
+          "name": "Experimental Quality",
+          "modifiers": [
+            {
+              "name": "Quality",
+              "weights": {
+                "DR": 50,
                 "OQ": 50
               }
             }
@@ -13116,8 +13733,54 @@
       ]
     },
     {
+      "id": "furniture_cabinet_elegant",
+      "name": "Cabinet (Elegant)",
+      "professions": [
+        "looter"
+      ],
+      "skills": [
+        "looter_looted"
+      ],
+      "category": "furniture",
+      "tab": "furniture",
+      "complexity": 20,
+      "size": 1,
+      "components": [],
+      "resources": [
+        {
+          "name": "Frame",
+          "resource": "metal_nonferrous",
+          "amount": 200
+        },
+        {
+          "name": "Doors",
+          "resource": "metal",
+          "amount": 25
+        },
+        {
+          "name": "Shelves",
+          "resource": "metal",
+          "amount": 150
+        }
+      ],
+      "experiments": [
+        {
+          "name": "Experimental Quality",
+          "modifiers": [
+            {
+              "name": "Quality",
+              "weights": {
+                "DR": 50,
+                "OQ": 50
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
       "id": "furniture_cabinet_modern",
-      "name": "Cabinet",
+      "name": "Cabinet (Modern)",
       "professions": [
         "architect"
       ],
@@ -17839,6 +18502,46 @@
       ]
     },
     {
+      "id": "furniture_basket_closed",
+      "name": "Closed Basket",
+      "professions": [
+        "looter"
+      ],
+      "skills": [
+        "looter_looted"
+      ],
+      "category": "furniture",
+      "tab": "furniture",
+      "complexity": 18,
+      "size": 1,
+      "components": [],
+      "resources": [
+        {
+          "name": "Basket",
+          "resource": "softwood",
+          "amount": 30
+        },
+        {
+          "name": "Sealant",
+          "resource": "fiberplast",
+          "amount": 20
+        }
+      ],
+      "experiments": [
+        {
+          "name": "Experimental Quality",
+          "modifiers": [
+            {
+              "name": "Quality",
+              "weights": {
+                "OQ": 100
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
       "id": "item_clothing_station",
       "name": "Clothing and Armor Crafting Station",
       "professions": [
@@ -21492,6 +22195,239 @@
       ]
     },
     {
+      "id": "clothing_apron_field_01_quest_03",
+      "name": "Crafter\u0027s Apron (Clothing and Armor)",
+      "professions": [
+        "looter"
+      ],
+      "skills": [
+        "looter_looted"
+      ],
+      "category": "vest",
+      "tab": "clothing",
+      "complexity": 30,
+      "size": 1,
+      "components": [
+        {
+          "name": "Body",
+          "kind": "LootItem",
+          "target": "leather_heavy_duty",
+          "quantity": 2,
+          "identical": true
+        },
+        {
+          "name": "Colorizable Cloth Panel",
+          "kind": "Schematic",
+          "target": "clothing_component_clothing_synthetic_cloth",
+          "quantity": 1
+        },
+        {
+          "name": "Cutting Tools",
+          "kind": "Schematic",
+          "target": "weapon_knife_twilek_dagger",
+          "quantity": 1
+        },
+        {
+          "name": "Sewing Kit",
+          "kind": "Schematic",
+          "target": "item_clothing_tool",
+          "quantity": 1
+        }
+      ],
+      "resources": [
+        {
+          "name": "Bindings and Reinforcement",
+          "resource": "chemical",
+          "amount": 8
+        },
+        {
+          "name": "Bindings and Binding Hardware",
+          "resource": "chemical",
+          "amount": 3
+        },
+        {
+          "name": "Lining",
+          "resource": "hide",
+          "amount": 50
+        }
+      ],
+      "experiments": []
+    },
+    {
+      "id": "clothing_apron_field_01_quest_01",
+      "name": "Crafter\u0027s Apron (Cooking)",
+      "professions": [
+        "looter"
+      ],
+      "skills": [
+        "looter_looted"
+      ],
+      "category": "vest",
+      "tab": "clothing",
+      "complexity": 30,
+      "size": 1,
+      "components": [
+        {
+          "name": "Body",
+          "kind": "LootItem",
+          "target": "leather_heavy_duty",
+          "quantity": 2,
+          "identical": true
+        },
+        {
+          "name": "Colorizable Cloth Panel",
+          "kind": "Schematic",
+          "target": "clothing_component_clothing_synthetic_cloth",
+          "quantity": 1
+        },
+        {
+          "name": "Cooking Utensils",
+          "kind": "Schematic",
+          "target": "item_food_tool",
+          "quantity": 1
+        }
+      ],
+      "resources": [
+        {
+          "name": "Bindings and Reinforcement",
+          "resource": "chemical",
+          "amount": 8
+        },
+        {
+          "name": "Bindings and Binding Hardware",
+          "resource": "chemical",
+          "amount": 3
+        },
+        {
+          "name": "Lining",
+          "resource": "hide",
+          "amount": 50
+        },
+        {
+          "name": "Herbs and Spices",
+          "resource": "flora_food",
+          "amount": 10
+        }
+      ],
+      "experiments": []
+    },
+    {
+      "id": "clothing_apron_field_01_quest_02",
+      "name": "Crafter\u0027s Apron (Medical)",
+      "professions": [
+        "looter"
+      ],
+      "skills": [
+        "looter_looted"
+      ],
+      "category": "vest",
+      "tab": "clothing",
+      "complexity": 30,
+      "size": 1,
+      "components": [
+        {
+          "name": "Body",
+          "kind": "LootItem",
+          "target": "leather_heavy_duty",
+          "quantity": 2,
+          "identical": true
+        },
+        {
+          "name": "Colorizable Cloth Panel",
+          "kind": "Schematic",
+          "target": "clothing_component_clothing_synthetic_cloth",
+          "quantity": 1
+        },
+        {
+          "name": "Pharmaceutical Supplies",
+          "kind": "Schematic",
+          "target": "item_food_tool",
+          "quantity": 1
+        }
+      ],
+      "resources": [
+        {
+          "name": "Bindings and Reinforcement",
+          "resource": "chemical",
+          "amount": 8
+        },
+        {
+          "name": "Bindings and Binding Hardware",
+          "resource": "chemical",
+          "amount": 3
+        },
+        {
+          "name": "Lining",
+          "resource": "hide",
+          "amount": 50
+        },
+        {
+          "name": "Organic Medicine",
+          "resource": "organic",
+          "amount": 30
+        }
+      ],
+      "experiments": []
+    },
+    {
+      "id": "clothing_apron_field_01_quest_04",
+      "name": "Crafter\u0027s Apron (Structures and Furniture)",
+      "professions": [
+        "looter"
+      ],
+      "skills": [
+        "looter_looted"
+      ],
+      "category": "vest",
+      "tab": "clothing",
+      "complexity": 30,
+      "size": 1,
+      "components": [
+        {
+          "name": "Body",
+          "kind": "LootItem",
+          "target": "leather_heavy_duty",
+          "quantity": 2,
+          "identical": true
+        },
+        {
+          "name": "Colorizable Cloth Panel",
+          "kind": "Schematic",
+          "target": "clothing_component_clothing_synthetic_cloth",
+          "quantity": 1
+        },
+        {
+          "name": "Tool Kit",
+          "kind": "Schematic",
+          "target": "item_structure_tool",
+          "quantity": 1
+        }
+      ],
+      "resources": [
+        {
+          "name": "Bindings and Reinforcement",
+          "resource": "chemical",
+          "amount": 8
+        },
+        {
+          "name": "Bindings and Binding Hardware",
+          "resource": "chemical",
+          "amount": 3
+        },
+        {
+          "name": "Lining",
+          "resource": "hide",
+          "amount": 50
+        },
+        {
+          "name": "Spare Hardware",
+          "resource": "steel",
+          "amount": 20
+        }
+      ],
+      "experiments": []
+    },
+    {
       "id": "clothing_clothing_pants_field_29",
       "name": "Crafter\u0027s Pants",
       "professions": [
@@ -23570,6 +24506,57 @@
       ]
     },
     {
+      "id": "furniture_radar_table",
+      "name": "Data Terminal (Radar Table)",
+      "professions": [
+        "looter"
+      ],
+      "skills": [
+        "looter_looted"
+      ],
+      "category": "furniture",
+      "tab": "furniture",
+      "complexity": 9,
+      "size": 1,
+      "components": [],
+      "resources": [
+        {
+          "name": "Table Top",
+          "resource": "mineral",
+          "amount": 60
+        },
+        {
+          "name": "Frame",
+          "resource": "metal",
+          "amount": 50
+        },
+        {
+          "name": "Display",
+          "resource": "gemstone_crystalline",
+          "amount": 45
+        },
+        {
+          "name": "Electronics",
+          "resource": "aluminum",
+          "amount": 50
+        }
+      ],
+      "experiments": [
+        {
+          "name": "Experimental Quality",
+          "modifiers": [
+            {
+              "name": "Quality",
+              "weights": {
+                "DR": 50,
+                "OQ": 50
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
       "id": "furniture_terminal_wall",
       "name": "Data Terminal (Wall)",
       "professions": [
@@ -23621,6 +24608,156 @@
       ]
     },
     {
+      "id": "pistol_de_10",
+      "name": "DE-10 Pistol",
+      "professions": [
+        "looter"
+      ],
+      "skills": [
+        "looter_looted"
+      ],
+      "category": "pistol",
+      "tab": "weapon",
+      "complexity": 32,
+      "size": 1,
+      "components": [
+        {
+          "name": "Blaster Power Handler Component",
+          "kind": "Class",
+          "target": "blaster_power_handler_class",
+          "quantity": 2,
+          "identical": true
+        },
+        {
+          "name": "Ranged Weapon Scope Component",
+          "kind": "Class",
+          "target": "weapon_scope_class",
+          "quantity": 1,
+          "optional": true
+        },
+        {
+          "name": "DE-10 Barrel Component",
+          "kind": "LootItem",
+          "target": "pistol_de10_barrel",
+          "quantity": 1
+        }
+      ],
+      "resources": [
+        {
+          "name": "Weapon Frame Assembly",
+          "resource": "iron_plumbum",
+          "amount": 35
+        },
+        {
+          "name": "Blaster Assembly Receiver Housing",
+          "resource": "metal_ferrous",
+          "amount": 18
+        },
+        {
+          "name": "Weapon Grip and Trigger Assembly",
+          "resource": "metal",
+          "amount": 7
+        },
+        {
+          "name": "Coiled Inducer",
+          "resource": "copper_diatium",
+          "amount": 10
+        }
+      ],
+      "experiments": [
+        {
+          "name": "Experimental Damage",
+          "modifiers": [
+            {
+              "name": "Attack Speed",
+              "weights": {
+                "CD": 50,
+                "OQ": 50
+              }
+            },
+            {
+              "name": "Maximum Damage",
+              "weights": {
+                "CD": 50,
+                "OQ": 50
+              }
+            },
+            {
+              "name": "Minimum Damage",
+              "weights": {
+                "CD": 50,
+                "OQ": 50
+              }
+            },
+            {
+              "name": "Wound Chance",
+              "weights": {
+                "CD": 50,
+                "OQ": 50
+              }
+            }
+          ]
+        },
+        {
+          "name": "Experimental Durability",
+          "modifiers": [
+            {
+              "name": "Unit Integrity",
+              "weights": {
+                "CD": 50,
+                "OQ": 50
+              }
+            }
+          ]
+        },
+        {
+          "name": "Experimental Efficiency",
+          "modifiers": [
+            {
+              "name": "Attack Action Cost",
+              "weights": {
+                "CD": 50,
+                "OQ": 50
+              }
+            },
+            {
+              "name": "Attack Health Cost",
+              "weights": {
+                "CD": 50,
+                "OQ": 50
+              }
+            },
+            {
+              "name": "Attack Health Cost",
+              "weights": {
+                "CD": 50,
+                "OQ": 50
+              }
+            }
+          ]
+        },
+        {
+          "name": "Experimental Range",
+          "modifiers": [
+            {
+              "name": "Medium Range Mod",
+              "weights": {
+                "CD": 50,
+                "OQ": 50
+              }
+            },
+            {
+              "name": "Minimum Range Modifier",
+              "weights": {
+                "CD": 50,
+                "OQ": 50
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
       "id": "clothing_clothing_belt_field_02",
       "name": "Decorated Belt",
       "professions": [
@@ -23652,6 +24789,52 @@
         }
       ],
       "experiments": []
+    },
+    {
+      "id": "furniture_slave_brazier",
+      "name": "Decorative Brazier",
+      "professions": [
+        "looter"
+      ],
+      "skills": [
+        "looter_looted"
+      ],
+      "category": "furniture",
+      "tab": "furniture",
+      "complexity": 18,
+      "size": 1,
+      "components": [],
+      "resources": [
+        {
+          "name": "Base",
+          "resource": "iron",
+          "amount": 80
+        },
+        {
+          "name": "Frame",
+          "resource": "metal",
+          "amount": 90
+        },
+        {
+          "name": "Fuel",
+          "resource": "fuel_petrochem_solid",
+          "amount": 25
+        }
+      ],
+      "experiments": [
+        {
+          "name": "Experimental Quality",
+          "modifiers": [
+            {
+              "name": "Quality",
+              "weights": {
+                "DR": 50,
+                "OQ": 50
+              }
+            }
+          ]
+        }
+      ]
     },
     {
       "id": "clothing_clothing_dress_casual_05",
@@ -32042,6 +33225,58 @@
       "experiments": []
     },
     {
+      "id": "clothing_belt_field_05_quest",
+      "name": "Demolitionist\u0027s Belt",
+      "professions": [
+        "looter"
+      ],
+      "skills": [
+        "looter_looted"
+      ],
+      "category": "belt",
+      "tab": "clothing",
+      "complexity": 16,
+      "size": 1,
+      "components": [
+        {
+          "name": "Explosive Charges",
+          "kind": "Schematic",
+          "target": "munition_component_warhead_medium",
+          "quantity": 6,
+          "identical": true
+        },
+        {
+          "name": "Clasps",
+          "kind": "LootItem",
+          "target": "clasp_heavy_duty",
+          "quantity": 1
+        }
+      ],
+      "resources": [
+        {
+          "name": "Outer Shell",
+          "resource": "petrochem_inert",
+          "amount": 50
+        },
+        {
+          "name": "Bindings and Reinforcement",
+          "resource": "metal",
+          "amount": 25
+        },
+        {
+          "name": "Hardware",
+          "resource": "iron",
+          "amount": 35
+        },
+        {
+          "name": "Grenade Fasteners",
+          "resource": "metal_nonferrous",
+          "amount": 6
+        }
+      ],
+      "experiments": []
+    },
+    {
       "id": "food_dessert_deneelian_fizz_pudding",
       "name": "Deneelian Fizz Pudding",
       "professions": [
@@ -35409,6 +36644,56 @@
       ]
     },
     {
+      "id": "furniture_droid_body",
+      "name": "Droid Body",
+      "professions": [
+        "looter"
+      ],
+      "skills": [
+        "looter_looted"
+      ],
+      "category": "furniture",
+      "tab": "furniture",
+      "complexity": 18,
+      "size": 1,
+      "components": [],
+      "resources": [
+        {
+          "name": "Droid Trunk",
+          "resource": "metal",
+          "amount": 250
+        },
+        {
+          "name": "Droid Arms",
+          "resource": "metal",
+          "amount": 140
+        },
+        {
+          "name": "Droid Legs",
+          "resource": "metal",
+          "amount": 200
+        },
+        {
+          "name": "Droid Body Interior",
+          "resource": "aluminum_titanium",
+          "amount": 150
+        }
+      ],
+      "experiments": [
+        {
+          "name": "Experimental Quality",
+          "modifiers": [
+            {
+              "name": "Quality",
+              "weights": {
+                "OQ": 100
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
       "id": "droid_component_droid_brain",
       "name": "Droid Brain",
       "professions": [
@@ -36799,6 +38084,70 @@
           ]
         }
       ]
+    },
+    {
+      "id": "clothing_bandolier_field_02_quest",
+      "name": "Droidsmith\u0027s Tool Set",
+      "professions": [
+        "looter"
+      ],
+      "skills": [
+        "looter_looted"
+      ],
+      "category": "bandolier",
+      "tab": "clothing",
+      "complexity": 30,
+      "size": 1,
+      "components": [
+        {
+          "name": "Utility Pocket",
+          "kind": "Schematic",
+          "target": "clothing_component_clothing_cargo_pocket",
+          "quantity": 1
+        },
+        {
+          "name": "Reinforcement",
+          "kind": "Schematic",
+          "target": "clothing_component_clothing_reinforced_fiber_panels",
+          "quantity": 1
+        },
+        {
+          "name": "Tool Set",
+          "kind": "Schematic",
+          "target": "droid_droid_damage_repair_kit_a",
+          "quantity": 1
+        },
+        {
+          "name": "Clasps",
+          "kind": "LootItem",
+          "target": "clasp_heavy_duty",
+          "quantity": 2,
+          "identical": true
+        }
+      ],
+      "resources": [
+        {
+          "name": "Load-bearing Harness",
+          "resource": "fiberplast",
+          "amount": 20
+        },
+        {
+          "name": "Steel Interstructure",
+          "resource": "metal",
+          "amount": 15
+        },
+        {
+          "name": "Steel Crossframe",
+          "resource": "metal",
+          "amount": 10
+        },
+        {
+          "name": "Tool Mounts",
+          "resource": "metal_nonferrous",
+          "amount": 15
+        }
+      ],
+      "experiments": []
     },
     {
       "id": "munition_mine_dxr55",
@@ -44261,6 +45610,79 @@
           ]
         }
       ]
+    },
+    {
+      "id": "clothing_dress_formal_08_quest",
+      "name": "Exquisite Dancer\u0027s Leotard",
+      "professions": [
+        "looter"
+      ],
+      "skills": [
+        "looter_looted"
+      ],
+      "category": "dress",
+      "tab": "clothing",
+      "complexity": 23,
+      "size": 4,
+      "components": [
+        {
+          "name": "Extra Trim",
+          "kind": "Schematic",
+          "target": "clothing_component_clothing_trim",
+          "quantity": 3,
+          "identical": true
+        },
+        {
+          "name": "Jewelry Setting",
+          "kind": "Schematic",
+          "target": "clothing_component_clothing_jewelry_setting",
+          "quantity": 2,
+          "identical": true
+        },
+        {
+          "name": "Skirt Material",
+          "kind": "Schematic",
+          "target": "clothing_component_clothing_synthetic_cloth",
+          "quantity": 3,
+          "identical": true
+        },
+        {
+          "name": "Bodice",
+          "kind": "Schematic",
+          "target": "clothing_component_clothing_synthetic_cloth",
+          "quantity": 2,
+          "identical": true
+        },
+        {
+          "name": "Crystalline Clothing Treatment",
+          "kind": "LootItem",
+          "target": "clothing_treatment_crystalline",
+          "quantity": 1
+        }
+      ],
+      "resources": [
+        {
+          "name": "Trim and Binding",
+          "resource": "hide",
+          "amount": 60
+        },
+        {
+          "name": "Hardware",
+          "resource": "metal",
+          "amount": 50
+        },
+        {
+          "name": "Sequins",
+          "resource": "copper_mythra",
+          "amount": 20
+        },
+        {
+          "name": "Miniature Gemstones",
+          "resource": "gemstone_armophous",
+          "amount": 20
+        }
+      ],
+      "experiments": []
     },
     {
       "id": "clothing_clothing_dress_formal_14",
@@ -67083,6 +68505,52 @@
       ]
     },
     {
+      "id": "furniture_utensils",
+      "name": "Kitchen Utensils",
+      "professions": [
+        "looter"
+      ],
+      "skills": [
+        "looter_looted"
+      ],
+      "category": "furniture",
+      "tab": "furniture",
+      "complexity": 15,
+      "size": 1,
+      "components": [],
+      "resources": [
+        {
+          "name": "Utensil Bases",
+          "resource": "metal_nonferrous",
+          "amount": 45
+        },
+        {
+          "name": "Forks, Spoons",
+          "resource": "metal_nonferrous",
+          "amount": 150
+        },
+        {
+          "name": "Handles",
+          "resource": "petrochem_inert_polymer",
+          "amount": 50
+        }
+      ],
+      "experiments": [
+        {
+          "name": "Experimental Quality",
+          "modifiers": [
+            {
+              "name": "Quality",
+              "weights": {
+                "DR": 50,
+                "OQ": 50
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
       "id": "food_dessert_kiwik_clusjo_swirl",
       "name": "Kiwik Clusjo Swirl",
       "professions": [
@@ -67626,6 +69094,47 @@
           "name": "Frame",
           "resource": "metal",
           "amount": 150
+        }
+      ],
+      "experiments": [
+        {
+          "name": "Experimental Quality",
+          "modifiers": [
+            {
+              "name": "Quality",
+              "weights": {
+                "DR": 50,
+                "OQ": 50
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "furniture_couch_blue",
+      "name": "Large Couch (Blue)",
+      "professions": [
+        "looter"
+      ],
+      "skills": [
+        "looter_looted"
+      ],
+      "category": "furniture",
+      "tab": "furniture",
+      "complexity": 18,
+      "size": 1,
+      "components": [],
+      "resources": [
+        {
+          "name": "Cushions",
+          "resource": "hide",
+          "amount": 80
+        },
+        {
+          "name": "Frame",
+          "resource": "metal",
+          "amount": 90
         }
       ],
       "experiments": [
@@ -71485,6 +72994,56 @@
       ]
     },
     {
+      "id": "clothing_backpack_field_03_quest",
+      "name": "Lightweight Military Backpack",
+      "professions": [
+        "looter"
+      ],
+      "skills": [
+        "looter_looted"
+      ],
+      "category": "wearable_container",
+      "tab": "clothing",
+      "complexity": 30,
+      "size": 1,
+      "components": [
+        {
+          "name": "Strap Comfort-pad",
+          "kind": "LootItem",
+          "target": "leather_heavy_duty",
+          "quantity": 1
+        }
+      ],
+      "resources": [
+        {
+          "name": "Large Pocket",
+          "resource": "fiberplast",
+          "amount": 20
+        },
+        {
+          "name": "Small Utility Pocket",
+          "resource": "hide",
+          "amount": 10
+        },
+        {
+          "name": "Strap Adjustment",
+          "resource": "metal",
+          "amount": 5
+        },
+        {
+          "name": "Lightweight Frame",
+          "resource": "aluminum",
+          "amount": 15
+        },
+        {
+          "name": "Stabilizer Harness",
+          "resource": "petrochem_inert_polymer",
+          "amount": 5
+        }
+      ],
+      "experiments": []
+    },
+    {
       "id": "clothing_clothing_pants_formal_33",
       "name": "Lined Shorts",
       "professions": [
@@ -73678,6 +75237,108 @@
         }
       ],
       "experiments": []
+    },
+    {
+      "id": "drink_mandalorian_wine",
+      "name": "Mandalorian Wine",
+      "professions": [
+        "looter"
+      ],
+      "skills": [
+        "looter_looted"
+      ],
+      "category": "drink",
+      "tab": "food",
+      "complexity": 15,
+      "size": 1,
+      "components": [
+        {
+          "name": "First Alcohol",
+          "kind": "Schematic",
+          "target": "food_drink_alcohol",
+          "quantity": 1
+        },
+        {
+          "name": "Second Alcohol",
+          "kind": "Schematic",
+          "target": "food_drink_alcohol",
+          "quantity": 1
+        },
+        {
+          "name": "Container",
+          "kind": "Class",
+          "target": "glass",
+          "quantity": 1
+        },
+        {
+          "name": "Additive",
+          "kind": "Class",
+          "target": "heavy_food_additive_class",
+          "quantity": 1
+        }
+      ],
+      "resources": [
+        {
+          "name": "1st Mash",
+          "resource": "fruit_fruits",
+          "amount": 15
+        },
+        {
+          "name": "2nd Mash",
+          "resource": "rice_wild",
+          "amount": 15
+        }
+      ],
+      "experiments": [
+        {
+          "name": "Experimental Filling",
+          "modifiers": [
+            {
+              "name": "Filling",
+              "weights": {
+                "DR": 75,
+                "OQ": 25
+              }
+            }
+          ]
+        },
+        {
+          "name": "Experimental Flavor",
+          "modifiers": [
+            {
+              "name": "Flavor",
+              "weights": {
+                "FL": 67,
+                "OQ": 33
+              }
+            }
+          ]
+        },
+        {
+          "name": "Experimental Nutritional Value",
+          "modifiers": [
+            {
+              "name": "Nutritional Value",
+              "weights": {
+                "PE": 67,
+                "OQ": 33
+              }
+            }
+          ]
+        },
+        {
+          "name": "Experimental Quantity",
+          "modifiers": [
+            {
+              "name": "Quantity",
+              "weights": {
+                "DR": 25,
+                "PE": 75
+              }
+            }
+          ]
+        }
+      ]
     },
     {
       "id": "instrument_instrument_mandoviol",
@@ -89108,6 +90769,52 @@
       "experiments": []
     },
     {
+      "id": "furniture_stove",
+      "name": "Portable Stove",
+      "professions": [
+        "looter"
+      ],
+      "skills": [
+        "looter_looted"
+      ],
+      "category": "furniture",
+      "tab": "furniture",
+      "complexity": 12,
+      "size": 1,
+      "components": [],
+      "resources": [
+        {
+          "name": "Base",
+          "resource": "iron",
+          "amount": 35
+        },
+        {
+          "name": "Heating Element",
+          "resource": "fuel_petrochem_liquid",
+          "amount": 10
+        },
+        {
+          "name": "Grill",
+          "resource": "aluminum",
+          "amount": 20
+        }
+      ],
+      "experiments": [
+        {
+          "name": "Experimental Quality",
+          "modifiers": [
+            {
+              "name": "Quality",
+              "weights": {
+                "DR": 50,
+                "OQ": 50
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
       "id": "furniture_tree_potted",
       "name": "Potted Tree, Style One",
       "professions": [
@@ -93765,6 +95472,47 @@
                 "OQ": 34,
                 "SR": 33,
                 "UT": 33
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "furniture_radio",
+      "name": "Radio",
+      "professions": [
+        "looter"
+      ],
+      "skills": [
+        "looter_looted"
+      ],
+      "category": "furniture",
+      "tab": "furniture",
+      "complexity": 12,
+      "size": 1,
+      "components": [],
+      "resources": [
+        {
+          "name": "Speakers",
+          "resource": "metal",
+          "amount": 10
+        },
+        {
+          "name": "Frame",
+          "resource": "metal",
+          "amount": 25
+        }
+      ],
+      "experiments": [
+        {
+          "name": "Experimental Quality",
+          "modifiers": [
+            {
+              "name": "Quality",
+              "weights": {
+                "DR": 50,
+                "OQ": 50
               }
             }
           ]
@@ -100455,6 +102203,47 @@
       ]
     },
     {
+      "id": "furniture_shisa",
+      "name": "Shisa",
+      "professions": [
+        "looter"
+      ],
+      "skills": [
+        "looter_looted"
+      ],
+      "category": "furniture",
+      "tab": "furniture",
+      "complexity": 18,
+      "size": 1,
+      "components": [],
+      "resources": [
+        {
+          "name": "Base",
+          "resource": "gemstone_crystalline",
+          "amount": 80
+        },
+        {
+          "name": "Frame",
+          "resource": "metal",
+          "amount": 90
+        }
+      ],
+      "experiments": [
+        {
+          "name": "Experimental Quality",
+          "modifiers": [
+            {
+              "name": "Quality",
+              "weights": {
+                "DR": 50,
+                "OQ": 50
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
       "id": "clothing_component_clothing_shoe_sole",
       "name": "Shoe Sole",
       "professions": [
@@ -101516,6 +103305,45 @@
       "experiments": []
     },
     {
+      "id": "furniture_chair_cantina",
+      "name": "Small Cantina Seat",
+      "professions": [
+        "looter"
+      ],
+      "skills": [
+        "looter_looted"
+      ],
+      "category": "furniture",
+      "tab": "furniture",
+      "complexity": 12,
+      "size": 1,
+      "components": [],
+      "resources": [
+        {
+          "resource": "metal",
+          "amount": 80
+        },
+        {
+          "resource": "metal",
+          "amount": 35
+        }
+      ],
+      "experiments": [
+        {
+          "name": "Experimental Quality",
+          "modifiers": [
+            {
+              "name": "Quality",
+              "weights": {
+                "DR": 50,
+                "OQ": 50
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
       "id": "furniture_couch_small",
       "name": "Small Couch",
       "professions": [
@@ -102140,6 +103968,59 @@
           "modifiers": [
             {
               "name": "Skill Required",
+              "weights": {
+                "PE": 33,
+                "OQ": 67
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "quest_stimpack_a",
+      "name": "Small Stimpack A\u002B",
+      "professions": [
+        "looter"
+      ],
+      "skills": [
+        "looter_looted"
+      ],
+      "category": "pharmaceutical",
+      "tab": "chemical",
+      "complexity": 10,
+      "size": 3,
+      "components": [],
+      "resources": [
+        {
+          "name": "Organic Element",
+          "resource": "organic",
+          "amount": 8
+        },
+        {
+          "name": "Inorganic Element",
+          "resource": "inorganic",
+          "amount": 8
+        }
+      ],
+      "experiments": [
+        {
+          "name": "Experimental Charges",
+          "modifiers": [
+            {
+              "name": "Charges",
+              "weights": {
+                "OQ": 67,
+                "UT": 33
+              }
+            }
+          ]
+        },
+        {
+          "name": "Experimental Effectiveness",
+          "modifiers": [
+            {
+              "name": "Power",
               "weights": {
                 "PE": 33,
                 "OQ": 67
@@ -102819,6 +104700,69 @@
           "name": "Reinforcement",
           "resource": "metal",
           "amount": 35
+        }
+      ],
+      "experiments": []
+    },
+    {
+      "id": "clothing_backpack_field_06_quest",
+      "name": "Spec-Ops Field Agent Pack",
+      "professions": [
+        "looter"
+      ],
+      "skills": [
+        "looter_looted"
+      ],
+      "category": "wearable_container",
+      "tab": "clothing",
+      "complexity": 30,
+      "size": 1,
+      "components": [
+        {
+          "name": "Large Pocket",
+          "kind": "Schematic",
+          "target": "clothing_component_clothing_cargo_pocket",
+          "quantity": 1
+        },
+        {
+          "name": "Small Utility Pocket",
+          "kind": "Schematic",
+          "target": "clothing_component_clothing_cargo_pocket",
+          "quantity": 1
+        },
+        {
+          "name": "Hidden Pocket",
+          "kind": "Schematic",
+          "target": "clothing_component_clothing_cargo_pocket",
+          "quantity": 1
+        },
+        {
+          "name": "Strap Comfort-pad",
+          "kind": "LootItem",
+          "target": "leather_heavy_duty",
+          "quantity": 1
+        }
+      ],
+      "resources": [
+        {
+          "name": "Strap Adjustment",
+          "resource": "metal",
+          "amount": 5
+        },
+        {
+          "name": "Frame Reinforcement",
+          "resource": "aluminum_titanium",
+          "amount": 10
+        },
+        {
+          "name": "Pocket Plating",
+          "resource": "aluminum_titanium",
+          "amount": 10
+        },
+        {
+          "name": "Camouflage Net",
+          "resource": "vegetable_fungi_rori",
+          "amount": 10
         }
       ],
       "experiments": []
@@ -105538,6 +107482,52 @@
         }
       ],
       "experiments": []
+    },
+    {
+      "id": "furniture_lamp_street",
+      "name": "Streetlamp (Looted)",
+      "professions": [
+        "looter"
+      ],
+      "skills": [
+        "looter_looted"
+      ],
+      "category": "furniture",
+      "tab": "furniture",
+      "complexity": 16,
+      "size": 1,
+      "components": [],
+      "resources": [
+        {
+          "name": "Lamp Body",
+          "resource": "metal",
+          "amount": 35
+        },
+        {
+          "name": "Lamp Assembly",
+          "resource": "metal",
+          "amount": 15
+        },
+        {
+          "name": "Shade",
+          "resource": "mineral",
+          "amount": 20
+        }
+      ],
+      "experiments": [
+        {
+          "name": "Experimental Quality",
+          "modifiers": [
+            {
+              "name": "Quality",
+              "weights": {
+                "DR": 50,
+                "OQ": 50
+              }
+            }
+          ]
+        }
+      ]
     },
     {
       "id": "chemistry_medpack_disease_area_strength_a",
@@ -109496,6 +111486,88 @@
       ]
     },
     {
+      "id": "tanning_hide",
+      "name": "Tanned Hide",
+      "professions": [
+        "looter"
+      ],
+      "skills": [
+        "looter_looted"
+      ],
+      "category": "furniture",
+      "tab": "furniture",
+      "complexity": 25,
+      "size": 1,
+      "components": [],
+      "resources": [
+        {
+          "name": "Stretched Hide",
+          "resource": "hide_leathery",
+          "amount": 100
+        },
+        {
+          "name": "Frame",
+          "resource": "wood",
+          "amount": 150
+        }
+      ],
+      "experiments": [
+        {
+          "name": "Experimental Quality",
+          "modifiers": [
+            {
+              "name": "Quality",
+              "weights": {
+                "DR": 50,
+                "OQ": 50
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "tanning_hide_2",
+      "name": "Tanned Hide 2",
+      "professions": [
+        "looter"
+      ],
+      "skills": [
+        "looter_looted"
+      ],
+      "category": "furniture",
+      "tab": "furniture",
+      "complexity": 25,
+      "size": 1,
+      "components": [],
+      "resources": [
+        {
+          "name": "Stretched Hide",
+          "resource": "hide_leathery",
+          "amount": 100
+        },
+        {
+          "name": "Frame",
+          "resource": "wood",
+          "amount": 150
+        }
+      ],
+      "experiments": [
+        {
+          "name": "Experimental Quality",
+          "modifiers": [
+            {
+              "name": "Quality",
+              "weights": {
+                "DR": 50,
+                "OQ": 50
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
       "id": "clothing_armor_tantel_boots",
       "name": "Tantel Armor Boots",
       "professions": [
@@ -109980,6 +112052,52 @@
       ]
     },
     {
+      "id": "furniture_tatooine_tapestry",
+      "name": "Tapestry (Tatooine)",
+      "professions": [
+        "looter"
+      ],
+      "skills": [
+        "looter_looted"
+      ],
+      "category": "furniture",
+      "tab": "furniture",
+      "complexity": 18,
+      "size": 1,
+      "components": [],
+      "resources": [
+        {
+          "name": "Flag Base",
+          "resource": "metal",
+          "amount": 30
+        },
+        {
+          "name": "Flag",
+          "resource": "fiberplast",
+          "amount": 80
+        },
+        {
+          "name": "Paints and Colors",
+          "resource": "petrochem_inert_polymer",
+          "amount": 25
+        }
+      ],
+      "experiments": [
+        {
+          "name": "Experimental Quality",
+          "modifiers": [
+            {
+              "name": "Quality",
+              "weights": {
+                "DR": 50,
+                "OQ": 50
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
       "id": "clothing_clothing_backpack_field_04",
       "name": "Tech Pack",
       "professions": [
@@ -110019,6 +112137,116 @@
         }
       ],
       "experiments": []
+    },
+    {
+      "id": "furniture_technical_console_s01",
+      "name": "Technical Console",
+      "professions": [
+        "looter"
+      ],
+      "skills": [
+        "looter_looted"
+      ],
+      "category": "furniture",
+      "tab": "furniture",
+      "complexity": 36,
+      "size": 1,
+      "components": [],
+      "resources": [
+        {
+          "name": "Table Top",
+          "resource": "aluminum",
+          "amount": 250
+        },
+        {
+          "name": "Sealant",
+          "resource": "fiberplast",
+          "amount": 160
+        },
+        {
+          "name": "Frame",
+          "resource": "steel",
+          "amount": 30
+        },
+        {
+          "name": "Electronics",
+          "resource": "copper",
+          "amount": 150
+        },
+        {
+          "name": "Display",
+          "resource": "gemstone",
+          "amount": 150
+        }
+      ],
+      "experiments": [
+        {
+          "name": "Experimental Quality",
+          "modifiers": [
+            {
+              "name": "Quality",
+              "weights": {
+                "OQ": 100
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "furniture_technical_console_s02",
+      "name": "Technical Console 2",
+      "professions": [
+        "looter"
+      ],
+      "skills": [
+        "looter_looted"
+      ],
+      "category": "furniture",
+      "tab": "furniture",
+      "complexity": 36,
+      "size": 1,
+      "components": [],
+      "resources": [
+        {
+          "name": "Table Top",
+          "resource": "aluminum",
+          "amount": 250
+        },
+        {
+          "name": "Sealant",
+          "resource": "fiberplast",
+          "amount": 160
+        },
+        {
+          "name": "Frame",
+          "resource": "steel",
+          "amount": 30
+        },
+        {
+          "name": "Electronics",
+          "resource": "copper",
+          "amount": 150
+        },
+        {
+          "name": "Display",
+          "resource": "gemstone",
+          "amount": 150
+        }
+      ],
+      "experiments": [
+        {
+          "name": "Experimental Quality",
+          "modifiers": [
+            {
+              "name": "Quality",
+              "weights": {
+                "OQ": 100
+              }
+            }
+          ]
+        }
+      ]
     },
     {
       "id": "food_dish_teltier_noodles",
@@ -111004,6 +113232,59 @@
               "weights": {
                 "CD": 33,
                 "OQ": 67
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "furniture_throwpillow",
+      "name": "Throw Pillow",
+      "professions": [
+        "looter"
+      ],
+      "skills": [
+        "looter_looted"
+      ],
+      "category": "furniture",
+      "tab": "furniture",
+      "complexity": 15,
+      "size": 2,
+      "components": [],
+      "resources": [
+        {
+          "name": "Envelope",
+          "resource": "hide",
+          "amount": 50
+        },
+        {
+          "name": "Filling",
+          "resource": "hide",
+          "amount": 40
+        }
+      ],
+      "experiments": [
+        {
+          "name": "Experimental Durability",
+          "modifiers": [
+            {
+              "name": "Unit Integrity",
+              "weights": {
+                "OQ": 50,
+                "UT": 50
+              }
+            }
+          ]
+        },
+        {
+          "name": "Experimental Quality",
+          "modifiers": [
+            {
+              "name": "Quality",
+              "weights": {
+                "DR": 50,
+                "OQ": 50
               }
             }
           ]
@@ -118415,6 +120696,47 @@
       ]
     },
     {
+      "id": "furniture_spear_stand",
+      "name": "Weapon Rack",
+      "professions": [
+        "looter"
+      ],
+      "skills": [
+        "looter_looted"
+      ],
+      "category": "furniture",
+      "tab": "furniture",
+      "complexity": 25,
+      "size": 1,
+      "components": [],
+      "resources": [
+        {
+          "name": "Spears",
+          "resource": "iron",
+          "amount": 20
+        },
+        {
+          "name": "Frame",
+          "resource": "wood",
+          "amount": 250
+        }
+      ],
+      "experiments": [
+        {
+          "name": "Experimental Quality",
+          "modifiers": [
+            {
+              "name": "Quality",
+              "weights": {
+                "DR": 50,
+                "OQ": 50
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
       "id": "space_repair_weapon_repair_kit",
       "name": "Weapon Repair Kit",
       "professions": [
@@ -118745,6 +121067,70 @@
           ]
         }
       ]
+    },
+    {
+      "id": "clothing_bandolier_field_04_quest",
+      "name": "Weaponsmith\u0027s Tool Set",
+      "professions": [
+        "looter"
+      ],
+      "skills": [
+        "looter_looted"
+      ],
+      "category": "bandolier",
+      "tab": "clothing",
+      "complexity": 30,
+      "size": 1,
+      "components": [
+        {
+          "name": "Utility Pocket",
+          "kind": "Schematic",
+          "target": "clothing_component_clothing_cargo_pocket",
+          "quantity": 1
+        },
+        {
+          "name": "Reinforcement",
+          "kind": "Schematic",
+          "target": "clothing_component_clothing_reinforced_fiber_panels",
+          "quantity": 1
+        },
+        {
+          "name": "Tool Set",
+          "kind": "Schematic",
+          "target": "item_repairkit_weapon",
+          "quantity": 1
+        },
+        {
+          "name": "Clasps",
+          "kind": "LootItem",
+          "target": "clasp_heavy_duty",
+          "quantity": 2,
+          "identical": true
+        }
+      ],
+      "resources": [
+        {
+          "name": "Load-bearing Harness",
+          "resource": "fiberplast",
+          "amount": 20
+        },
+        {
+          "name": "Steel Interstructure",
+          "resource": "metal",
+          "amount": 15
+        },
+        {
+          "name": "Steel Crossframe",
+          "resource": "metal",
+          "amount": 10
+        },
+        {
+          "name": "Tool Mounts",
+          "resource": "metal_nonferrous",
+          "amount": 15
+        }
+      ],
+      "experiments": []
     },
     {
       "id": "clothing_clothing_wke_skirt_s03",
@@ -121516,6 +123902,45 @@
         }
       ],
       "experiments": []
+    },
+    {
+      "id": "furniture_table_gambling",
+      "name": "Gambling Table",
+      "professions": [
+        "looter"
+      ],
+      "skills": [
+        "looter_looted"
+      ],
+      "category": "terminal",
+      "tab": "furniture",
+      "complexity": 12,
+      "size": 1,
+      "components": [],
+      "resources": [
+        {
+          "resource": "metal",
+          "amount": 50
+        },
+        {
+          "resource": "mineral",
+          "amount": 20
+        }
+      ],
+      "experiments": [
+        {
+          "name": "Experimental Quality",
+          "modifiers": [
+            {
+              "name": "Quality",
+              "weights": {
+                "DR": 50,
+                "OQ": 50
+              }
+            }
+          ]
+        }
+      ]
     }
   ]
 }

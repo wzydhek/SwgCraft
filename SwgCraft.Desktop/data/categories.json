@@ -460,6 +460,10 @@
     {
       "id": "ris_armor",
       "name": "RIS Armor"
+    },
+    {
+      "id": "community_crafting_component",
+      "name": "Community Crafting Component"
     }
   ]
 }
