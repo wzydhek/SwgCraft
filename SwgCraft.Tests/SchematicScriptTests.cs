@@ -186,4 +186,109 @@ public sealed class SchematicScriptTests
         }
         finally { Directory.Delete(root, recursive: true); }
     }
+
+    [Fact]
+    public void Experimentation_is_read_from_the_object_script_and_compared_with_what_is_entered()
+    {
+        const string carbine = """
+            object_weapon_ranged_carbine_carbine_dxr6 = object_weapon_ranged_carbine_shared_carbine_dxr6:new {
+                numberExperimentalProperties = {1, 2, 2, 3, 1, 2},
+                experimentalProperties = {"XX", "CD", "OQ", "CD", "OQ", "DR", "OQ", "UT", "XX", "MA", "OQ"},
+                experimentalWeights = {1, 1, 1, 1, 2, 4, 1, 1, 1, 1, 1},
+                experimentalGroupTitles = {"null", "expDamage", "expDamage", "exp_durability", "null", "exp_durability"},
+                experimentalSubGroupTitles = {"null", "mindamage", "maxdamage", "hitpoints", "zerorangemod", "armor_action_encumbrance"},
+            }
+            """;
+        var doc = new StringsDocument();
+        var crafting = new StringFile { Name = "crafting" };
+        crafting.Entries.Add(new StringEntry { Id = "expdamage", Value = "Experimental Damage " });   // case and spaces don't matter
+        crafting.Entries.Add(new StringEntry { Id = "exp_durability", Value = "Experimental Durability" });
+        var attr = new StringFile { Name = "obj_attr_n" };
+        attr.Entries.Add(new StringEntry { Id = "mindamage", Value = "Minimum Damage" });
+        attr.Entries.Add(new StringEntry { Id = "maxdamage", Value = "Maximum Damage" });
+        attr.Entries.Add(new StringEntry { Id = "hitpoints", Value = "Unit Integrity" });
+        doc.Files.Add(crafting);
+        doc.Files.Add(attr);
+        var mods = ExperimentScriptReader.Parse(carbine, new StringCatalog(doc))!;
+
+        Assert.Equal(4, mods.Count);                                                       // the "null" group is not experimentable
+        Assert.Equal(("Experimental Damage", "Minimum Damage"), (mods[0].ExperimentName, mods[0].ModifierName));
+        Assert.Equal(new SortedDictionary<Stat, int> { [Stat.CD] = 33, [Stat.OQ] = 67 }, mods[1].Weights);   // weights 1:2
+        Assert.Equal(new SortedDictionary<Stat, int> { [Stat.DR] = 67, [Stat.OQ] = 17, [Stat.UT] = 16 }, mods[2].Weights);
+        Assert.Equal(new SortedDictionary<Stat, int> { [Stat.MB] = 50, [Stat.OQ] = 50 }, mods[3].Weights);  // MA is malleability
+        Assert.Equal("armor_action_encumbrance", mods[3].ModifierName);                     // no string: the ID
+
+        ExperimentModifier M(string name, params (Stat S, int P)[] w)
+        {
+            var m = new ExperimentModifier { Name = name };
+            foreach (var (st, p) in w) m.Weights[st] = p;
+            return m;
+        }
+        var s = new Schematic { Id = "dxr6" };
+        s.Experiments.Add(new Experiment { Name = "Experimental Damage", Modifiers = { M("minimum damage", (Stat.CD, 50), (Stat.OQ, 50)), M("Maximum Damage", (Stat.CD, 50), (Stat.OQ, 50)) } });
+        s.Experiments.Add(new Experiment { Name = "Experimental Durabiity", Modifiers = { M("Unit Integrity", (Stat.DR, 67), (Stat.OQ, 17), (Stat.UT, 16)), M("Armor Action Enc", (Stat.MB, 50), (Stat.OQ, 50)) } });
+        s.Experiments.Add(new Experiment { Name = "Experimental Range", Modifiers = { M("Range", (Stat.OQ, 100)) } });
+
+        var lines = ExperimentComparison.Compare(s, mods);
+        Assert.Contains(lines, l => l == "Experimental name: entered \"Experimental Durabiity\", script \"Experimental Durability\"" || l.Contains("Durabiity") && l.Contains("name"));
+        Assert.Contains(lines, l => l.StartsWith("Experimental Damage / Maximum Damage: entered CD 50, OQ 50, script CD 33, OQ 67"));
+        Assert.DoesNotContain(lines, l => l.Contains("Minimum Damage") || l.Contains("minimum damage"));   // same, ignoring case
+        Assert.Contains(lines, l => l.Contains("modifier name: entered \"Armor Action Enc\", script \"armor_action_encumbrance\""));
+        Assert.Contains(lines, l => l == "Experimental \"Experimental Range\" is entered but not in the script");
+    }
+
+    [Fact]
+    public void An_attribute_with_a_fixed_value_is_not_experimentable()
+    {
+        const string spice = """
+            object_tangible_food_spice_spice_booster_blue = object_tangible_food_spice_shared_spice_booster_blue:new {
+                numberExperimentalProperties = {1, 1, 3},
+                experimentalProperties = {"XX", "XX", "DR", "OQ", "UT"},
+                experimentalWeights = {1, 1, 4, 1, 1},
+                experimentalGroupTitles = {"null", "null", "exp_nutrition"},
+                experimentalSubGroupTitles = {"null", "null", "hitpoints"},
+                experimentalMin = {0, 0, 1000},
+                experimentalMax = {0, 0, 1000},
+            }
+            """;
+        var mods = ExperimentScriptReader.Parse(spice, StringCatalog.Empty)!;
+        Assert.Empty(mods);
+        Assert.Empty(ExperimentComparison.Compare(new Schematic { Id = "spices_spice_booster_blue" }, mods));
+        Assert.Single(ExperimentScriptReader.Parse(spice.Replace("experimentalMax = {0, 0, 1000}", "experimentalMax = {0, 0, 1200}"), StringCatalog.Empty)!);
+    }
+
+    [Fact]
+    public void A_script_name_missing_from_the_string_tables_is_not_a_difference()
+    {
+        const string bio = """
+            object_tangible_component_bio_bio_component_clothing_casual_medic_2 = x:new {
+                numberExperimentalProperties = {2, 2},
+                experimentalProperties = {"OQ", "PE", "OQ", "PE"},
+                experimentalWeights = {1, 1, 1, 1},
+                experimentalGroupTitles = {"exp_effectiveness", "exp_effectiveness"},
+                experimentalSubGroupTitles = {"cat_skill_mod_bonus.@stat_n:healing_injury_treatment", "cat_skill_mod_bonus.@stat_n:healing_wound_treatment"},
+                experimentalMin = {1, 1},
+                experimentalMax = {25, 25},
+            }
+            """;
+        var doc = new StringsDocument();
+        var crafting = new StringFile { Name = "crafting" };
+        crafting.Entries.Add(new StringEntry { Id = "exp_effectiveness", Value = "Experimental Effectiveness" });
+        doc.Files.Add(crafting);
+        var mods = ExperimentScriptReader.Parse(bio, new StringCatalog(doc))!;
+        Assert.Equal(2, mods.Count);
+        Assert.All(mods, m => Assert.False(m.ModifierNameKnown));
+
+        var s = new Schematic { Id = "bio_component_clothing_casual_medic_2" };
+        var exp = new Experiment { Name = "Experimental Effectiveness" };
+        foreach (var name in new[] { "Mod One", "Mod Two" })
+            exp.Modifiers.Add(new ExperimentModifier { Name = name, Weights = { [Stat.OQ] = 50, [Stat.PE] = 50 } });
+        s.Experiments.Add(exp);
+        Assert.Empty(ExperimentComparison.Compare(s, mods));
+
+        exp.Modifiers[1].Weights[Stat.OQ] = 67;
+        exp.Modifiers[1].Weights[Stat.PE] = 33;
+        var lines = ExperimentComparison.Compare(s, mods);
+        Assert.Contains(lines, l => l.StartsWith("Experimental Effectiveness / Mod Two: entered PE 33, OQ 67, script PE 50, OQ 50"));   // stats still compared
+    }
 }

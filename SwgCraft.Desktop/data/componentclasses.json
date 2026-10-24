@@ -742,7 +742,7 @@
       ]
     },
     {
-      "id": "combat_capable_socket_cluster_class",
+      "id": "combat_socket_bank",
       "name": "Combat-Capable Socket Cluster Class",
       "members": [
         {

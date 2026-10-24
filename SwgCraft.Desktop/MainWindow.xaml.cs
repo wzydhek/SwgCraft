@@ -178,6 +178,12 @@ public partial class MainWindow : Window
 
     void WthSummary_Click(object sender, RoutedEventArgs e) => WthSummaryWindow.ShowSingle(this);
 
+    // schematic reports (they read the saved static data; save in the editors first, then Refresh in the report)
+    void MissingSlotNames_Click(object sender, RoutedEventArgs e) => SchematicReports.ShowMissingSlotNames(this);
+    void ScriptDifferences_Click(object sender, RoutedEventArgs e) => SchematicReports.ShowScriptDifferences(this);
+    void SlotCandidates_Click(object sender, RoutedEventArgs e) => SchematicReports.ShowSlotCandidates(this);
+    void Experimentals_Click(object sender, RoutedEventArgs e) => SchematicReports.ShowExperimentals(this);
+
     void Harvest_Click(object sender, RoutedEventArgs e)
     {
         if (_harvest != null) { _harvest.Activate(); return; }

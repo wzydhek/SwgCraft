@@ -21,9 +21,6 @@
                 <MenuItem Header="Str_ings..." Click="Strings_Click"/>
             </MenuItem>
             <MenuItem Header="_Resources">
-                <MenuItem Header="_What to Harvest..." Click="Harvest_Click"/>
-                <MenuItem Header="WTH S_ummary..." Click="WthSummary_Click"/>
-                <Separator/>
                 <MenuItem Header="_Spawn Browser..." Click="SpawnBrowser_Click"/>
                 <MenuItem Header="_Manage Galaxies..." Click="Galaxies_Click"/>
                 <MenuItem Header="Resource _Inventory..." Click="Inventory_Click"/>
@@ -31,6 +28,19 @@
             </MenuItem>
             <MenuItem Header="_Build">
                 <MenuItem Header="Build _Planner..." Click="BuildPlanner_Click"/>
+            </MenuItem>
+            <MenuItem Header="Re_ports">
+                <MenuItem Header="_What to Harvest..." Click="Harvest_Click"/>
+                <MenuItem Header="WTH S_ummary..." Click="WthSummary_Click"/>
+                <Separator/>
+                <MenuItem Header="_Missing Slot Names..." Click="MissingSlotNames_Click"
+                          ToolTip="Saved schematics with a resource or component slot that has no slot name"/>
+                <MenuItem Header="Script _Differences..." Click="ScriptDifferences_Click"
+                          ToolTip="Saved schematics compared with their SWGEmu draft schematic scripts (slots, amounts, names, complexity, size)"/>
+                <MenuItem Header="Slot _Candidates..." Click="SlotCandidates_Click"
+                          ToolTip="From the SWGEmu scripts: what fits each kind of component slot, and which component classes are missing items"/>
+                <MenuItem Header="_Experimentals vs Scripts..." Click="Experimentals_Click"
+                          ToolTip="Saved schematics' experimentals compared with the experimentation data of the objects they make in the SWGEmu scripts"/>
             </MenuItem>
         </Menu>
         <ToolBar DockPanel.Dock="Top">
