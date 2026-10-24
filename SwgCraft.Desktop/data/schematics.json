@@ -104,8 +104,8 @@
       "components": [
         {
           "name": "Alcohol",
-          "kind": "Schematic",
-          "target": "food_drink_alcohol",
+          "kind": "Class",
+          "target": "alcohol_class",
           "quantity": 2,
           "identical": true
         },
@@ -446,7 +446,7 @@
         {
           "name": "Delivery Medium",
           "kind": "Class",
-          "target": "dispersal_mechanism_classs",
+          "target": "dispersal_mechanism_class",
           "quantity": 1
         },
         {
@@ -563,7 +563,7 @@
         {
           "name": "Delivery Medium",
           "kind": "Class",
-          "target": "dispersal_mechanism_classs",
+          "target": "dispersal_mechanism_class",
           "quantity": 2,
           "identical": true
         },
@@ -682,7 +682,7 @@
         {
           "name": "Delivery Medium",
           "kind": "Class",
-          "target": "dispersal_mechanism_classs",
+          "target": "dispersal_mechanism_class",
           "quantity": 2,
           "identical": true
         },
@@ -802,7 +802,7 @@
         {
           "name": "Delivery Medium",
           "kind": "Class",
-          "target": "dispersal_mechanism_classs",
+          "target": "dispersal_mechanism_class",
           "quantity": 1
         },
         {
@@ -919,7 +919,7 @@
         {
           "name": "Delivery Medium",
           "kind": "Class",
-          "target": "dispersal_mechanism_classs",
+          "target": "dispersal_mechanism_class",
           "quantity": 2,
           "identical": true
         },
@@ -1038,7 +1038,7 @@
         {
           "name": "Delivery Medium",
           "kind": "Class",
-          "target": "dispersal_mechanism_classs",
+          "target": "dispersal_mechanism_class",
           "quantity": 2,
           "identical": true
         },
@@ -1158,7 +1158,7 @@
         {
           "name": "Delivery Medium",
           "kind": "Class",
-          "target": "dispersal_mechanism_classs",
+          "target": "dispersal_mechanism_class",
           "quantity": 1
         },
         {
@@ -1268,7 +1268,7 @@
         {
           "name": "Delivery Medium",
           "kind": "Class",
-          "target": "dispersal_mechanism_classs",
+          "target": "dispersal_mechanism_class",
           "quantity": 1
         },
         {
@@ -1379,7 +1379,7 @@
         {
           "name": "Delivery Medium",
           "kind": "Class",
-          "target": "dispersal_mechanism_classs",
+          "target": "dispersal_mechanism_class",
           "quantity": 1
         },
         {
@@ -1491,7 +1491,7 @@
         {
           "name": "Delivery Medium",
           "kind": "Class",
-          "target": "dispersal_mechanism_classs",
+          "target": "dispersal_mechanism_class",
           "quantity": 1
         },
         {
@@ -1594,7 +1594,7 @@
         {
           "name": "Delivery Medium",
           "kind": "Class",
-          "target": "dispersal_mechanism_classs",
+          "target": "dispersal_mechanism_class",
           "quantity": 1
         },
         {
@@ -1705,7 +1705,7 @@
         {
           "name": "Delivery Medium",
           "kind": "Class",
-          "target": "dispersal_mechanism_classs",
+          "target": "dispersal_mechanism_class",
           "quantity": 1
         },
         {
@@ -8964,7 +8964,7 @@
         {
           "name": "Barrel Stabilization Component",
           "kind": "LootItem",
-          "target": "berserker_rifle_stabilization_component",
+          "target": "corvette_rifle_barrel",
           "quantity": 1
         }
       ],
@@ -9087,8 +9087,8 @@
       "components": [
         {
           "name": "Alcohol",
-          "kind": "Schematic",
-          "target": "food_drink_alcohol",
+          "kind": "Class",
+          "target": "alcohol_class",
           "quantity": 3,
           "identical": true
         },
@@ -9611,7 +9611,7 @@
         {
           "name": "Vibration Generator Component",
           "kind": "LootItem",
-          "target": "nightsister_vibro_blade_unit",
+          "target": "vibro_unit_nightsister",
           "quantity": 1
         }
       ],
@@ -11758,8 +11758,8 @@
       "components": [
         {
           "name": "Armor",
-          "kind": "LootItem",
-          "target": "projectile_feed_mechanism_enhancement_gorax",
+          "kind": "Class",
+          "target": "bone_armor_segment_class",
           "quantity": 1
         },
         {
@@ -13214,15 +13214,15 @@
       "components": [
         {
           "name": "First Alcohol",
-          "kind": "Schematic",
-          "target": "food_drink_alcohol",
+          "kind": "Class",
+          "target": "alcohol_class",
           "quantity": 3,
           "identical": true
         },
         {
           "name": "Second Alcohol",
-          "kind": "Schematic",
-          "target": "food_drink_alcohol",
+          "kind": "Class",
+          "target": "alcohol_class",
           "quantity": 3,
           "identical": true
         },
@@ -20569,7 +20569,7 @@
         {
           "name": "Delivery Medium",
           "kind": "Class",
-          "target": "dispersal_mechanism_classs",
+          "target": "dispersal_mechanism_class",
           "quantity": 1
         },
         {
@@ -20686,7 +20686,7 @@
         {
           "name": "Delivery Medium",
           "kind": "Class",
-          "target": "dispersal_mechanism_classs",
+          "target": "dispersal_mechanism_class",
           "quantity": 2,
           "identical": true
         },
@@ -20805,7 +20805,7 @@
         {
           "name": "Delivery Medium",
           "kind": "Class",
-          "target": "dispersal_mechanism_classs",
+          "target": "dispersal_mechanism_class",
           "quantity": 2,
           "identical": true
         },
@@ -20925,7 +20925,7 @@
         {
           "name": "Delivery Medium",
           "kind": "Class",
-          "target": "dispersal_mechanism_classs",
+          "target": "dispersal_mechanism_class",
           "quantity": 1
         },
         {
@@ -21035,7 +21035,7 @@
         {
           "name": "Delivery Medium",
           "kind": "Class",
-          "target": "dispersal_mechanism_classs",
+          "target": "dispersal_mechanism_class",
           "quantity": 1
         },
         {
@@ -21146,7 +21146,7 @@
         {
           "name": "Delivery Medium",
           "kind": "Class",
-          "target": "dispersal_mechanism_classs",
+          "target": "dispersal_mechanism_class",
           "quantity": 1
         },
         {
@@ -21756,8 +21756,8 @@
       "components": [
         {
           "name": "Alcohol",
-          "kind": "Schematic",
-          "target": "food_drink_alcohol",
+          "kind": "Class",
+          "target": "alcohol_class",
           "quantity": 1
         },
         {
@@ -21848,8 +21848,8 @@
       "components": [
         {
           "name": "Alcohol",
-          "kind": "Schematic",
-          "target": "food_drink_alcohol",
+          "kind": "Class",
+          "target": "alcohol_class",
           "quantity": 1
         },
         {
@@ -22519,7 +22519,7 @@
         {
           "name": "Creature Sample",
           "kind": "Class",
-          "target": "live_creature_sample",
+          "target": "sample_bugs",
           "quantity": 1
         }
       ],
@@ -23282,7 +23282,7 @@
         {
           "name": "Dispersal Mechanism",
           "kind": "Class",
-          "target": "dispersal_mechanism_classs",
+          "target": "dispersal_mechanism_class",
           "quantity": 2,
           "identical": true
         },
@@ -23367,7 +23367,7 @@
         {
           "name": "Dispersal Mechanism",
           "kind": "Class",
-          "target": "dispersal_mechanism_classs",
+          "target": "dispersal_mechanism_class",
           "quantity": 3,
           "identical": true
         },
@@ -23454,7 +23454,7 @@
         {
           "name": "Dispersal Mechanism",
           "kind": "Class",
-          "target": "dispersal_mechanism_classs",
+          "target": "dispersal_mechanism_class",
           "quantity": 4,
           "identical": true
         },
@@ -23762,7 +23762,7 @@
         {
           "name": "Dispersal Mechanism",
           "kind": "Class",
-          "target": "dispersal_mechanism_classs",
+          "target": "dispersal_mechanism_class",
           "quantity": 2,
           "identical": true
         },
@@ -23847,7 +23847,7 @@
         {
           "name": "Dispersal Mechanism",
           "kind": "Class",
-          "target": "dispersal_mechanism_classs",
+          "target": "dispersal_mechanism_class",
           "quantity": 3,
           "identical": true
         },
@@ -23934,7 +23934,7 @@
         {
           "name": "Dispersal Mechanism",
           "kind": "Class",
-          "target": "dispersal_mechanism_classs",
+          "target": "dispersal_mechanism_class",
           "quantity": 4,
           "identical": true
         },
@@ -24728,7 +24728,7 @@
               }
             },
             {
-              "name": "Attack Health Cost",
+              "name": "Attack Mind Cost",
               "weights": {
                 "CD": 50,
                 "OQ": 50
@@ -38490,8 +38490,8 @@
       "components": [
         {
           "name": "Alcohol",
-          "kind": "Schematic",
-          "target": "food_drink_alcohol",
+          "kind": "Class",
+          "target": "alcohol_class",
           "quantity": 1
         },
         {
@@ -40456,8 +40456,8 @@
       "components": [
         {
           "name": "Alcohol",
-          "kind": "Schematic",
-          "target": "food_drink_alcohol",
+          "kind": "Class",
+          "target": "alcohol_class",
           "quantity": 4,
           "identical": true
         },
@@ -47594,8 +47594,8 @@
       "components": [
         {
           "name": "Alcohol",
-          "kind": "Schematic",
-          "target": "food_drink_alcohol",
+          "kind": "Class",
+          "target": "alcohol_class",
           "quantity": 4,
           "identical": true
         },
@@ -48034,7 +48034,7 @@
         {
           "name": "Delivery Medium",
           "kind": "Class",
-          "target": "dispersal_mechanism_classs",
+          "target": "dispersal_mechanism_class",
           "quantity": 1
         },
         {
@@ -48151,7 +48151,7 @@
         {
           "name": "Delivery Medium",
           "kind": "Class",
-          "target": "dispersal_mechanism_classs",
+          "target": "dispersal_mechanism_class",
           "quantity": 2,
           "identical": true
         },
@@ -48270,7 +48270,7 @@
         {
           "name": "Delivery Medium",
           "kind": "Class",
-          "target": "dispersal_mechanism_classs",
+          "target": "dispersal_mechanism_class",
           "quantity": 2,
           "identical": true
         },
@@ -48390,7 +48390,7 @@
         {
           "name": "Delivery Medium",
           "kind": "Class",
-          "target": "dispersal_mechanism_classs",
+          "target": "dispersal_mechanism_class",
           "quantity": 1
         },
         {
@@ -48500,7 +48500,7 @@
         {
           "name": "Delivery Medium",
           "kind": "Class",
-          "target": "dispersal_mechanism_classs",
+          "target": "dispersal_mechanism_class",
           "quantity": 1
         },
         {
@@ -48611,7 +48611,7 @@
         {
           "name": "Delivery Medium",
           "kind": "Class",
-          "target": "dispersal_mechanism_classs",
+          "target": "dispersal_mechanism_class",
           "quantity": 1
         },
         {
@@ -49806,6 +49806,45 @@
       ]
     },
     {
+      "id": "furniture_table_gambling",
+      "name": "Gambling Table",
+      "professions": [
+        "looter"
+      ],
+      "skills": [
+        "looter_looted"
+      ],
+      "category": "terminal",
+      "tab": "furniture",
+      "complexity": 12,
+      "size": 1,
+      "components": [],
+      "resources": [
+        {
+          "resource": "metal",
+          "amount": 50
+        },
+        {
+          "resource": "mineral",
+          "amount": 20
+        }
+      ],
+      "experiments": [
+        {
+          "name": "Experimental Quality",
+          "modifiers": [
+            {
+              "name": "Quality",
+              "weights": {
+                "DR": 50,
+                "OQ": 50
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
       "id": "food_drink_garrmorl",
       "name": "Garrmorl",
       "professions": [
@@ -49821,8 +49860,8 @@
       "components": [
         {
           "name": "Alcohol",
-          "kind": "Schematic",
-          "target": "food_drink_alcohol",
+          "kind": "Class",
+          "target": "alcohol_class",
           "quantity": 2,
           "identical": true
         },
@@ -51308,8 +51347,8 @@
       "components": [
         {
           "name": "Alcohol",
-          "kind": "Schematic",
-          "target": "food_drink_alcohol",
+          "kind": "Class",
+          "target": "alcohol_class",
           "quantity": 1
         },
         {
@@ -52553,7 +52592,7 @@
         {
           "name": "Delivery Medium",
           "kind": "Class",
-          "target": "dispersal_mechanism_classs",
+          "target": "dispersal_mechanism_class",
           "quantity": 1
         },
         {
@@ -52670,7 +52709,7 @@
         {
           "name": "Delivery Medium",
           "kind": "Class",
-          "target": "dispersal_mechanism_classs",
+          "target": "dispersal_mechanism_class",
           "quantity": 2,
           "identical": true
         },
@@ -52789,7 +52828,7 @@
         {
           "name": "Delivery Medium",
           "kind": "Class",
-          "target": "dispersal_mechanism_classs",
+          "target": "dispersal_mechanism_class",
           "quantity": 2,
           "identical": true
         },
@@ -52909,7 +52948,7 @@
         {
           "name": "Delivery Medium",
           "kind": "Class",
-          "target": "dispersal_mechanism_classs",
+          "target": "dispersal_mechanism_class",
           "quantity": 1
         },
         {
@@ -53026,7 +53065,7 @@
         {
           "name": "Delivery Medium",
           "kind": "Class",
-          "target": "dispersal_mechanism_classs",
+          "target": "dispersal_mechanism_class",
           "quantity": 2,
           "identical": true
         },
@@ -53145,7 +53184,7 @@
         {
           "name": "Delivery Medium",
           "kind": "Class",
-          "target": "dispersal_mechanism_classs",
+          "target": "dispersal_mechanism_class",
           "quantity": 2,
           "identical": true
         },
@@ -53265,7 +53304,7 @@
         {
           "name": "Delivery Medium",
           "kind": "Class",
-          "target": "dispersal_mechanism_classs",
+          "target": "dispersal_mechanism_class",
           "quantity": 1
         },
         {
@@ -53375,7 +53414,7 @@
         {
           "name": "Delivery Medium",
           "kind": "Class",
-          "target": "dispersal_mechanism_classs",
+          "target": "dispersal_mechanism_class",
           "quantity": 1
         },
         {
@@ -53486,7 +53525,7 @@
         {
           "name": "Delivery Medium",
           "kind": "Class",
-          "target": "dispersal_mechanism_classs",
+          "target": "dispersal_mechanism_class",
           "quantity": 1
         },
         {
@@ -53598,7 +53637,7 @@
         {
           "name": "Delivery Medium",
           "kind": "Class",
-          "target": "dispersal_mechanism_classs",
+          "target": "dispersal_mechanism_class",
           "quantity": 1
         },
         {
@@ -53701,7 +53740,7 @@
         {
           "name": "Delivery Medium",
           "kind": "Class",
-          "target": "dispersal_mechanism_classs",
+          "target": "dispersal_mechanism_class",
           "quantity": 1
         },
         {
@@ -53811,7 +53850,7 @@
         {
           "name": "Delivery Medium",
           "kind": "Class",
-          "target": "dispersal_mechanism_classs",
+          "target": "dispersal_mechanism_class",
           "quantity": 1
         },
         {
@@ -62131,8 +62170,8 @@
       "components": [
         {
           "name": "Alcohol",
-          "kind": "Schematic",
-          "target": "food_drink_alcohol",
+          "kind": "Class",
+          "target": "alcohol_class",
           "quantity": 1
         },
         {
@@ -75254,14 +75293,14 @@
       "components": [
         {
           "name": "First Alcohol",
-          "kind": "Schematic",
-          "target": "food_drink_alcohol",
+          "kind": "Class",
+          "target": "alcohol_class",
           "quantity": 1
         },
         {
           "name": "Second Alcohol",
-          "kind": "Schematic",
-          "target": "food_drink_alcohol",
+          "kind": "Class",
+          "target": "alcohol_class",
           "quantity": 1
         },
         {
@@ -84815,7 +84854,7 @@
         {
           "name": "Delivery Medium",
           "kind": "Class",
-          "target": "dispersal_mechanism_classs",
+          "target": "dispersal_mechanism_class",
           "quantity": 1
         },
         {
@@ -84932,7 +84971,7 @@
         {
           "name": "Delivery Medium",
           "kind": "Class",
-          "target": "dispersal_mechanism_classs",
+          "target": "dispersal_mechanism_class",
           "quantity": 2,
           "identical": true
         },
@@ -85051,7 +85090,7 @@
         {
           "name": "Delivery Medium",
           "kind": "Class",
-          "target": "dispersal_mechanism_classs",
+          "target": "dispersal_mechanism_class",
           "quantity": 2,
           "identical": true
         },
@@ -85171,7 +85210,7 @@
         {
           "name": "Delivery Medium",
           "kind": "Class",
-          "target": "dispersal_mechanism_classs",
+          "target": "dispersal_mechanism_class",
           "quantity": 1
         },
         {
@@ -85288,7 +85327,7 @@
         {
           "name": "Delivery Medium",
           "kind": "Class",
-          "target": "dispersal_mechanism_classs",
+          "target": "dispersal_mechanism_class",
           "quantity": 2,
           "identical": true
         },
@@ -85407,7 +85446,7 @@
         {
           "name": "Delivery Medium",
           "kind": "Class",
-          "target": "dispersal_mechanism_classs",
+          "target": "dispersal_mechanism_class",
           "quantity": 2,
           "identical": true
         },
@@ -85527,7 +85566,7 @@
         {
           "name": "Delivery Medium",
           "kind": "Class",
-          "target": "dispersal_mechanism_classs",
+          "target": "dispersal_mechanism_class",
           "quantity": 1
         },
         {
@@ -85637,7 +85676,7 @@
         {
           "name": "Delivery Medium",
           "kind": "Class",
-          "target": "dispersal_mechanism_classs",
+          "target": "dispersal_mechanism_class",
           "quantity": 1
         },
         {
@@ -85748,7 +85787,7 @@
         {
           "name": "Delivery Medium",
           "kind": "Class",
-          "target": "dispersal_mechanism_classs",
+          "target": "dispersal_mechanism_class",
           "quantity": 1
         },
         {
@@ -85860,7 +85899,7 @@
         {
           "name": "Delivery Medium",
           "kind": "Class",
-          "target": "dispersal_mechanism_classs",
+          "target": "dispersal_mechanism_class",
           "quantity": 1
         },
         {
@@ -85963,7 +86002,7 @@
         {
           "name": "Delivery Medium",
           "kind": "Class",
-          "target": "dispersal_mechanism_classs",
+          "target": "dispersal_mechanism_class",
           "quantity": 1
         },
         {
@@ -86074,7 +86113,7 @@
         {
           "name": "Delivery Medium",
           "kind": "Class",
-          "target": "dispersal_mechanism_classs",
+          "target": "dispersal_mechanism_class",
           "quantity": 1
         },
         {
@@ -90017,8 +90056,8 @@
       "components": [
         {
           "name": "Delivery Medium",
-          "kind": "Schematic",
-          "target": "chemistry_component_liquid_delivery_suspension_advanced",
+          "kind": "Class",
+          "target": "advanced_liquid_suspension_class",
           "quantity": 1
         },
         {
@@ -90070,8 +90109,8 @@
       "components": [
         {
           "name": "Delivery Medium",
-          "kind": "Schematic",
-          "target": "chemistry_component_liquid_delivery_suspension_advanced",
+          "kind": "Class",
+          "target": "advanced_liquid_suspension_class",
           "quantity": 2,
           "identical": true
         },
@@ -90124,8 +90163,8 @@
       "components": [
         {
           "name": "Delivery Medium",
-          "kind": "Schematic",
-          "target": "chemistry_component_liquid_delivery_suspension_advanced",
+          "kind": "Class",
+          "target": "advanced_liquid_suspension_class",
           "quantity": 3,
           "identical": true
         },
@@ -92801,7 +92840,7 @@
         {
           "name": "Delivery Medium",
           "kind": "Class",
-          "target": "dispersal_mechanism_classs",
+          "target": "dispersal_mechanism_class",
           "quantity": 1
         },
         {
@@ -92918,7 +92957,7 @@
         {
           "name": "Delivery Medium",
           "kind": "Class",
-          "target": "dispersal_mechanism_classs",
+          "target": "dispersal_mechanism_class",
           "quantity": 2,
           "identical": true
         },
@@ -93037,7 +93076,7 @@
         {
           "name": "Delivery Medium",
           "kind": "Class",
-          "target": "dispersal_mechanism_classs",
+          "target": "dispersal_mechanism_class",
           "quantity": 2,
           "identical": true
         },
@@ -93157,7 +93196,7 @@
         {
           "name": "Delivery Medium",
           "kind": "Class",
-          "target": "dispersal_mechanism_classs",
+          "target": "dispersal_mechanism_class",
           "quantity": 1
         },
         {
@@ -93267,7 +93306,7 @@
         {
           "name": "Delivery Medium",
           "kind": "Class",
-          "target": "dispersal_mechanism_classs",
+          "target": "dispersal_mechanism_class",
           "quantity": 1
         },
         {
@@ -93378,7 +93417,7 @@
         {
           "name": "Delivery Medium",
           "kind": "Class",
-          "target": "dispersal_mechanism_classs",
+          "target": "dispersal_mechanism_class",
           "quantity": 1
         },
         {
@@ -97053,7 +97092,7 @@
         {
           "name": "Enhancement",
           "kind": "Class",
-          "target": "biological_component",
+          "target": "field_clothing_biological_component",
           "quantity": 1,
           "optional": true
         }
@@ -105672,7 +105711,7 @@
         {
           "name": "Delivery Medium",
           "kind": "Class",
-          "target": "dispersal_mechanism_classs",
+          "target": "dispersal_mechanism_class",
           "quantity": 1
         },
         {
@@ -105789,7 +105828,7 @@
         {
           "name": "Delivery Medium",
           "kind": "Class",
-          "target": "dispersal_mechanism_classs",
+          "target": "dispersal_mechanism_class",
           "quantity": 2,
           "identical": true
         },
@@ -105908,7 +105947,7 @@
         {
           "name": "Delivery Medium",
           "kind": "Class",
-          "target": "dispersal_mechanism_classs",
+          "target": "dispersal_mechanism_class",
           "quantity": 2,
           "identical": true
         },
@@ -106028,7 +106067,7 @@
         {
           "name": "Delivery Medium",
           "kind": "Class",
-          "target": "dispersal_mechanism_classs",
+          "target": "dispersal_mechanism_class",
           "quantity": 1
         },
         {
@@ -106138,7 +106177,7 @@
         {
           "name": "Delivery Medium",
           "kind": "Class",
-          "target": "dispersal_mechanism_classs",
+          "target": "dispersal_mechanism_class",
           "quantity": 1
         },
         {
@@ -106249,7 +106288,7 @@
         {
           "name": "Delivery Medium",
           "kind": "Class",
-          "target": "dispersal_mechanism_classs",
+          "target": "dispersal_mechanism_class",
           "quantity": 1
         },
         {
@@ -107546,7 +107585,7 @@
         {
           "name": "Delivery Medium",
           "kind": "Class",
-          "target": "dispersal_mechanism_classs",
+          "target": "dispersal_mechanism_class",
           "quantity": 1
         },
         {
@@ -107663,7 +107702,7 @@
         {
           "name": "Delivery Medium",
           "kind": "Class",
-          "target": "dispersal_mechanism_classs",
+          "target": "dispersal_mechanism_class",
           "quantity": 2,
           "identical": true
         },
@@ -107782,7 +107821,7 @@
         {
           "name": "Delivery Medium",
           "kind": "Class",
-          "target": "dispersal_mechanism_classs",
+          "target": "dispersal_mechanism_class",
           "quantity": 2,
           "identical": true
         },
@@ -107902,7 +107941,7 @@
         {
           "name": "Delivery Medium",
           "kind": "Class",
-          "target": "dispersal_mechanism_classs",
+          "target": "dispersal_mechanism_class",
           "quantity": 1
         },
         {
@@ -108012,7 +108051,7 @@
         {
           "name": "Delivery Medium",
           "kind": "Class",
-          "target": "dispersal_mechanism_classs",
+          "target": "dispersal_mechanism_class",
           "quantity": 1
         },
         {
@@ -108123,7 +108162,7 @@
         {
           "name": "Delivery Medium",
           "kind": "Class",
-          "target": "dispersal_mechanism_classs",
+          "target": "dispersal_mechanism_class",
           "quantity": 1
         },
         {
@@ -110508,7 +110547,7 @@
         {
           "name": "Enhancement",
           "kind": "Class",
-          "target": "biological_component",
+          "target": "casual_clothing_biological_component",
           "quantity": 1,
           "optional": true
         }
@@ -110679,8 +110718,8 @@
       "components": [
         {
           "name": "Alcohol",
-          "kind": "Schematic",
-          "target": "food_drink_alcohol",
+          "kind": "Class",
+          "target": "alcohol_class",
           "quantity": 2,
           "identical": true
         },
@@ -110770,8 +110809,8 @@
       "components": [
         {
           "name": "Alcohol",
-          "kind": "Schematic",
-          "target": "food_drink_alcohol",
+          "kind": "Class",
+          "target": "alcohol_class",
           "quantity": 3,
           "identical": true
         },
@@ -118675,8 +118714,8 @@
       "components": [
         {
           "name": "Alcohol",
-          "kind": "Schematic",
-          "target": "food_drink_alcohol",
+          "kind": "Class",
+          "target": "alcohol_class",
           "quantity": 2,
           "identical": true
         },
@@ -118773,8 +118812,8 @@
       "components": [
         {
           "name": "Alcohol",
-          "kind": "Schematic",
-          "target": "food_drink_alcohol",
+          "kind": "Class",
+          "target": "alcohol_class",
           "quantity": 2,
           "identical": true
         },
@@ -119296,8 +119335,8 @@
       "components": [
         {
           "name": "Alcohol",
-          "kind": "Schematic",
-          "target": "food_drink_alcohol",
+          "kind": "Class",
+          "target": "alcohol_class",
           "quantity": 1
         },
         {
@@ -121280,7 +121319,7 @@
         {
           "name": "Delivery Medium",
           "kind": "Class",
-          "target": "dispersal_mechanism_classs",
+          "target": "dispersal_mechanism_class",
           "quantity": 1
         },
         {
@@ -121397,7 +121436,7 @@
         {
           "name": "Delivery Medium",
           "kind": "Class",
-          "target": "dispersal_mechanism_classs",
+          "target": "dispersal_mechanism_class",
           "quantity": 2,
           "identical": true
         },
@@ -121516,7 +121555,7 @@
         {
           "name": "Delivery Medium",
           "kind": "Class",
-          "target": "dispersal_mechanism_classs",
+          "target": "dispersal_mechanism_class",
           "quantity": 2,
           "identical": true
         },
@@ -121636,7 +121675,7 @@
         {
           "name": "Delivery Medium",
           "kind": "Class",
-          "target": "dispersal_mechanism_classs",
+          "target": "dispersal_mechanism_class",
           "quantity": 1
         },
         {
@@ -121746,7 +121785,7 @@
         {
           "name": "Delivery Medium",
           "kind": "Class",
-          "target": "dispersal_mechanism_classs",
+          "target": "dispersal_mechanism_class",
           "quantity": 1
         },
         {
@@ -121857,7 +121896,7 @@
         {
           "name": "Delivery Medium",
           "kind": "Class",
-          "target": "dispersal_mechanism_classs",
+          "target": "dispersal_mechanism_class",
           "quantity": 1
         },
         {
@@ -123902,45 +123941,6 @@
         }
       ],
       "experiments": []
-    },
-    {
-      "id": "furniture_table_gambling",
-      "name": "Gambling Table",
-      "professions": [
-        "looter"
-      ],
-      "skills": [
-        "looter_looted"
-      ],
-      "category": "terminal",
-      "tab": "furniture",
-      "complexity": 12,
-      "size": 1,
-      "components": [],
-      "resources": [
-        {
-          "resource": "metal",
-          "amount": 50
-        },
-        {
-          "resource": "mineral",
-          "amount": 20
-        }
-      ],
-      "experiments": [
-        {
-          "name": "Experimental Quality",
-          "modifiers": [
-            {
-              "name": "Quality",
-              "weights": {
-                "DR": 50,
-                "OQ": 50
-              }
-            }
-          ]
-        }
-      ]
     }
   ]
 }

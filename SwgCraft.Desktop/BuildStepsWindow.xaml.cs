@@ -7,13 +7,52 @@ namespace SwgCraft.Desktop;
 public partial class BuildStepsWindow : Window
 {
     readonly string _fileName;
+    readonly Func<Task<(string Text, string Summary)?>>? _refresh;
 
-    public BuildStepsWindow(string report, string summary, string fileName)
+    /// <param name="refresh">Builds the report again (null hides the Refresh button); a null result keeps what is shown.</param>
+    public BuildStepsWindow(string report, string summary, string fileName, Func<Task<(string Text, string Summary)?>>? refresh = null)
     {
         InitializeComponent();
         ReportBox.Text = report;
         SummaryText.Text = summary;
         _fileName = fileName;
+        _refresh = refresh;
+        if (refresh != null)
+        {
+            RefreshButton.Visibility = Visibility.Visible;
+            KeyDown += (_, e) => { if (e.Key == System.Windows.Input.Key.F5 && RefreshButton.IsEnabled) Refresh_Click(this, new RoutedEventArgs()); };
+        }
+    }
+
+    async void Refresh_Click(object sender, RoutedEventArgs e)
+    {
+        if (_refresh == null) return;
+        RefreshButton.IsEnabled = false;
+        var oldSummary = SummaryText.Text;
+        SummaryText.Text = "Refreshing...";
+        System.Windows.Input.Mouse.OverrideCursor = System.Windows.Input.Cursors.Wait;
+        try
+        {
+            if (await _refresh() is { } r)
+            {
+                // keep the reader's place roughly where it was
+                var offset = ReportBox.VerticalOffset;
+                ReportBox.Text = r.Text;
+                SummaryText.Text = $"{r.Summary}   (refreshed {DateTime.Now:HH:mm:ss})";
+                ReportBox.ScrollToVerticalOffset(offset);
+            }
+            else SummaryText.Text = oldSummary;
+        }
+        catch (Exception ex)
+        {
+            SummaryText.Text = oldSummary;
+            MessageBox.Show(this, "Could not refresh the report:\n" + ex.Message, Title, MessageBoxButton.OK, MessageBoxImage.Warning);
+        }
+        finally
+        {
+            System.Windows.Input.Mouse.OverrideCursor = null;
+            RefreshButton.IsEnabled = true;
+        }
     }
 
     void Copy_Click(object sender, RoutedEventArgs e)

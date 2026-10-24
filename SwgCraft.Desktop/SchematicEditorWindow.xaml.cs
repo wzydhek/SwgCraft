@@ -711,15 +711,23 @@ public partial class SchematicEditorWindow : Window
 
     static string Describe(Schematic s) => $"{(string.IsNullOrWhiteSpace(s.Name) ? "(no name)" : s.Name.Trim())} ({s.Id})";
 
-    void ShowReport(string title, string summary, string report, string fileName)
+    /// <summary>Shows a report; <paramref name="refresh"/> builds it again for the window's Refresh button (null: keep what is shown).</summary>
+    void ShowReport(string title, string summary, string report, string fileName, Func<Task<(string Text, string Summary)?>>? refresh = null)
     {
-        new BuildStepsWindow(report, summary, fileName) { Owner = this, Title = title }.Show();
+        new BuildStepsWindow(report, summary, fileName, refresh) { Owner = this, Title = title }.Show();
     }
 
     /// <summary>Schematics with a resource or component slot that has no slot name.</summary>
     void MissingNamesReport_Click(object sender, RoutedEventArgs e)
     {
         CommitAll();
+        var r = ComputeMissingNames();
+        ShowReport("Missing Slot Names", r.Summary, r.Text, "missing slot names.txt",
+                   () => { CommitAll(); return Task.FromResult<(string Text, string Summary)?>(ComputeMissingNames()); });
+    }
+
+    (string Text, string Summary) ComputeMissingNames()
+    {
         var rows = _schematics.Select(v => v.ToModel())
             .Select(s => (S: s,
                           Res: s.Resources.Select((r, i) => (r, i)).Where(x => string.IsNullOrWhiteSpace(x.r.Name)).Select(x => x.i + 1).ToList(),
@@ -740,17 +748,28 @@ public partial class SchematicEditorWindow : Window
             if (comp.Count > 0) parts.Add((comp.Count == s.Components.Count ? "all component slots" : "component slot" + (comp.Count > 1 ? "s " : " ") + string.Join(", ", comp)) + $" (of {s.Components.Count})");
             sb.AppendLine($"{Describe(s)}: {string.Join("; ", parts)}");
         }
-        ShowReport("Missing Slot Names", $"{rows.Count:N0} schematic(s), {slots:N0} slot(s) without a name", sb.ToString(), "missing slot names.txt");
+        return (sb.ToString(), $"{rows.Count:N0} schematic(s), {slots:N0} slot(s) without a name");
     }
 
     /// <summary>Every schematic compared with its SWGEmu script: where they disagree, what could be filled in, and which have no script.</summary>
     async void ScriptDiffReport_Click(object sender, RoutedEventArgs e)
     {
         CommitAll();
+        IsEnabled = false;
+        (string Text, string Summary)? r;
+        try { r = await ComputeScriptDiffAsync(); }
+        finally { IsEnabled = true; }
+        if (r is { } report)
+            ShowReport("Script Differences", report.Summary, report.Text, "script differences.txt", () => { CommitAll(); return ComputeScriptDiffAsync(); });
+    }
+
+    async Task<(string Text, string Summary)?> ComputeScriptDiffAsync()
+    {
+        CommitAll();
         var folder = Services.Settings.SchematicScriptsFolder;
         if (string.IsNullOrWhiteSpace(folder) || !Directory.Exists(folder))
         {
-            if (!ChooseScriptsFolder()) return;
+            if (!ChooseScriptsFolder()) return null;
             folder = Services.Settings.SchematicScriptsFolder!;
         }
 
@@ -763,7 +782,6 @@ public partial class SchematicEditorWindow : Window
 
         SetStatus("Comparing every schematic with its script...");
         System.Windows.Input.Mouse.OverrideCursor = System.Windows.Input.Cursors.Wait;
-        IsEnabled = false;
         try
         {
             var report = await Task.Run(() =>
@@ -819,17 +837,92 @@ public partial class SchematicEditorWindow : Window
                 return (Text: sb.ToString(), Summary: $"{differing.Count:N0} differ, {matching:N0} agree, {noScript.Count:N0} without a script");
             });
             _scriptIndex = index;
-            ShowReport("Script Differences", report.Summary, report.Text, "script differences.txt");
             SetStatus("Script Differences: " + report.Summary + ".");
+            return report;
         }
         catch (Exception ex) when (ex is IOException or UnauthorizedAccessException)
         {
             MessageBox.Show(this, "Could not read the scripts:\n" + ex.Message, Title, MessageBoxButton.OK, MessageBoxImage.Warning);
             SetStatus("Script Differences: could not read the scripts.");
+            return null;
         }
         finally
         {
-            IsEnabled = true;
+            System.Windows.Input.Mouse.OverrideCursor = null;
+        }
+    }
+
+    ObjectTemplateIndex? _objectIndex;
+    LootScriptIndex? _lootScripts;
+    string? _objectIndexFolder;
+
+    /// <summary>What fits each kind of component slot (from the object scripts) against the component classes entered.</summary>
+    async void SlotCandidatesReport_Click(object sender, RoutedEventArgs e)
+    {
+        CommitAll();
+        IsEnabled = false;
+        (string Text, string Summary)? r;
+        try { r = await ComputeSlotCandidatesAsync(); }
+        finally { IsEnabled = true; }
+        if (r is { } report)
+            ShowReport("Slot Candidates", report.Summary, report.Text, "slot candidates.txt", () => { CommitAll(); return ComputeSlotCandidatesAsync(); });
+    }
+
+    async Task<(string Text, string Summary)?> ComputeSlotCandidatesAsync()
+    {
+        CommitAll();
+        var folder = Services.Settings.SchematicScriptsFolder;
+        if (string.IsNullOrWhiteSpace(folder) || !Directory.Exists(folder))
+        {
+            if (!ChooseScriptsFolder()) return null;
+            folder = Services.Settings.SchematicScriptsFolder!;
+        }
+        // the object scripts sit next to draft_schematic: scripts/object/tangible
+        var objectFolder = Path.Combine(Path.GetDirectoryName(Path.TrimEndingDirectorySeparator(folder)) ?? folder, "tangible");
+        if (!Directory.Exists(objectFolder))
+        {
+            MessageBox.Show(this, $"The object scripts were not found at\n{objectFolder}\n\nThe scripts folder should be ...\\scripts\\object\\draft_schematic, " +
+                                  "with ...\\scripts\\object\\tangible next to it.", Title, MessageBoxButton.OK, MessageBoxImage.Warning);
+            return null;
+        }
+
+        var models = _schematics.Select(v => v.ToModel()).ToList();
+        var classes = new ClassCatalog(Services.StaticData.LoadClasses().Value);
+        var loot = new LootCatalog(Services.StaticData.LoadLootItems().Value);
+        var index = _scriptIndex is { } ix && string.Equals(ix.Root, folder, StringComparison.OrdinalIgnoreCase) ? ix : null;
+        bool sameFolder = string.Equals(_objectIndexFolder, objectFolder, StringComparison.OrdinalIgnoreCase);
+        var objects = sameFolder ? _objectIndex : null;
+        var lootScripts = sameFolder ? _lootScripts : null;
+        // scripts/object/tangible -> scripts
+        var scriptsRoot = Path.GetDirectoryName(Path.GetDirectoryName(objectFolder)) ?? objectFolder;
+
+        SetStatus("Reading the object scripts and matching slots (the first time takes a little while)...");
+        System.Windows.Input.Mouse.OverrideCursor = System.Windows.Input.Cursors.Wait;
+        try
+        {
+            var report = await Task.Run(() =>
+            {
+                index ??= new SchematicScriptIndex(folder);
+                objects ??= new ObjectTemplateIndex(objectFolder);
+                lootScripts ??= new LootScriptIndex(scriptsRoot);
+                _strings ??= new StringCatalog(Services.StaticData.LoadStrings().Value);
+                return SlotCandidateReport.Build(models, index, objects, _strings, classes, loot, lootScripts);
+            });
+            _scriptIndex = index;
+            _objectIndex = objects;
+            _lootScripts = lootScripts;
+            _objectIndexFolder = objectFolder;
+            SetStatus("Slot Candidates: " + report.Summary + ".");
+            return report;
+        }
+        catch (Exception ex) when (ex is IOException or UnauthorizedAccessException)
+        {
+            MessageBox.Show(this, "Could not read the scripts:\n" + ex.Message, Title, MessageBoxButton.OK, MessageBoxImage.Warning);
+            SetStatus("Slot Candidates: could not read the scripts.");
+            return null;
+        }
+        finally
+        {
             System.Windows.Input.Mouse.OverrideCursor = null;
         }
     }

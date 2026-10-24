@@ -4,6 +4,8 @@
         Title="Build Steps" Height="760" Width="980" WindowStartupLocation="CenterOwner">
     <DockPanel>
         <ToolBar DockPanel.Dock="Top">
+            <Button x:Name="RefreshButton" Content="Refresh" Click="Refresh_Click" Padding="10,2" Visibility="Collapsed"
+                    ToolTip="Build the report again from the current schematics, component classes and looted items (F5)"/>
             <Button Content="Copy" Click="Copy_Click" Padding="10,2" ToolTip="Copy the whole report to the clipboard"/>
             <Button Content="Save as Text..." Click="Save_Click" Padding="10,2"/>
             <Separator/>

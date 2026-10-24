@@ -2,6 +2,42 @@
   "schemaVersion": 1,
   "classes": [
     {
+      "id": "advanced_liquid_suspension_class",
+      "name": "Advanced Liquid Suspension Class",
+      "members": [
+        {
+          "kind": "Schematic",
+          "id": "chemistry_component_liquid_delivery_suspension_advanced"
+        },
+        {
+          "kind": "LootItem",
+          "id": "liquid_delivery_suspension_quest"
+        }
+      ]
+    },
+    {
+      "id": "alcohol_class",
+      "name": "Alcohol Class",
+      "members": [
+        {
+          "kind": "Schematic",
+          "id": "food_drink_alcohol"
+        },
+        {
+          "kind": "LootItem",
+          "id": "drink_aludium_pu36"
+        },
+        {
+          "kind": "LootItem",
+          "id": "drink_kylessian_fruit_distillate"
+        },
+        {
+          "kind": "LootItem",
+          "id": "drink_sullustan_gin"
+        }
+      ]
+    },
+    {
       "id": "armor_layer",
       "name": "Armor Layer",
       "members": [
@@ -36,6 +72,14 @@
         {
           "kind": "Schematic",
           "id": "armor_component_armor_layer_kinetic"
+        },
+        {
+          "kind": "LootItem",
+          "id": "armor_layer_environmental"
+        },
+        {
+          "kind": "LootItem",
+          "id": "armor_layer_restraint"
         },
         {
           "kind": "LootItem",
@@ -86,6 +130,10 @@
         {
           "kind": "LootItem",
           "id": "armor_segment_enhancement_voritor_lizard"
+        },
+        {
+          "kind": "LootItem",
+          "id": "armor_segment_enhancement_dragonet"
         }
       ]
     },
@@ -100,76 +148,6 @@
         {
           "kind": "Schematic",
           "id": "armor_segment_zam_advanced"
-        }
-      ]
-    },
-    {
-      "id": "biological_component",
-      "name": "Biological Component",
-      "members": [
-        {
-          "kind": "Schematic",
-          "id": "bio_component_clothing_casual_medic_2"
-        },
-        {
-          "kind": "Schematic",
-          "id": "bio_component_clothing_casual_taming_2"
-        },
-        {
-          "kind": "Schematic",
-          "id": "bio_engineer_bio_component_bio_component_clothing_field_bleeding_2"
-        },
-        {
-          "kind": "Schematic",
-          "id": "bio_engineer_bio_component_bio_component_clothing_field_intimidate"
-        },
-        {
-          "kind": "Schematic",
-          "id": "bio_engineer_bio_component_bio_component_clothing_field_bleeding"
-        },
-        {
-          "kind": "Schematic",
-          "id": "bio_engineer_bio_component_bio_component_clothing_casual_entertainer_2"
-        },
-        {
-          "kind": "Schematic",
-          "id": "bio_engineer_bio_component_bio_component_clothing_field_intimidate_2"
-        },
-        {
-          "kind": "Schematic",
-          "id": "bio_engineer_bio_component_bio_component_clothing_field_cover_2"
-        },
-        {
-          "kind": "Schematic",
-          "id": "bio_engineer_bio_component_bio_component_clothing_casual_entertainer"
-        },
-        {
-          "kind": "Schematic",
-          "id": "bio_engineer_bio_component_bio_component_clothing_casual_medic"
-        },
-        {
-          "kind": "Schematic",
-          "id": "bio_engineer_bio_component_bio_component_clothing_casual_taming"
-        },
-        {
-          "kind": "Schematic",
-          "id": "bio_engineer_bio_component_bio_component_clothing_field_camo"
-        },
-        {
-          "kind": "Schematic",
-          "id": "bio_engineer_bio_component_bio_component_clothing_field_camo_2"
-        },
-        {
-          "kind": "Schematic",
-          "id": "bio_engineer_bio_component_bio_component_clothing_field_defense_2"
-        },
-        {
-          "kind": "Schematic",
-          "id": "bio_engineer_bio_component_bio_component_clothing_field_defense"
-        },
-        {
-          "kind": "Schematic",
-          "id": "bio_engineer_bio_component_bio_component_clothing_field_cover"
         }
       ]
     },
@@ -206,6 +184,10 @@
         {
           "kind": "LootItem",
           "id": "vibro_unit_quest"
+        },
+        {
+          "kind": "LootItem",
+          "id": "vibro_unit_nightsister"
         }
       ]
     },
@@ -220,6 +202,14 @@
         {
           "kind": "LootItem",
           "id": "blaster_power_handler_enhancement_max_damage"
+        },
+        {
+          "kind": "LootItem",
+          "id": "blaster_power_handler_enhancement_durability"
+        },
+        {
+          "kind": "LootItem",
+          "id": "blaster_power_handler_enhancement_min_damage"
         }
       ]
     },
@@ -256,6 +246,86 @@
         {
           "kind": "LootItem",
           "id": "blaster_pistol_barrel_quest"
+        },
+        {
+          "kind": "LootItem",
+          "id": "blaster_barrel_wp_muzzle_m_s01"
+        },
+        {
+          "kind": "LootItem",
+          "id": "blaster_barrel_wp_muzzle_sm_s01"
+        },
+        {
+          "kind": "LootItem",
+          "id": "blaster_barrel_wp_muzzle_lg_s02"
+        },
+        {
+          "kind": "LootItem",
+          "id": "blaster_barrel_wp_muzzle_m_s02"
+        },
+        {
+          "kind": "LootItem",
+          "id": "blaster_barrel_wp_muzzle_sm_s02"
+        },
+        {
+          "kind": "LootItem",
+          "id": "blaster_barrel_wp_muzzle_lg_s03"
+        },
+        {
+          "kind": "LootItem",
+          "id": "blaster_barrel_wp_muzzle_m_s03"
+        },
+        {
+          "kind": "LootItem",
+          "id": "blaster_barrel_wp_muzzle_sm_s03"
+        },
+        {
+          "kind": "LootItem",
+          "id": "blaster_barrel_wp_muzzle_lg_s04"
+        },
+        {
+          "kind": "LootItem",
+          "id": "blaster_barrel_wp_muzzle_m_s04"
+        },
+        {
+          "kind": "LootItem",
+          "id": "blaster_barrel_wp_muzzle_sm_s04"
+        },
+        {
+          "kind": "LootItem",
+          "id": "blaster_barrel_wp_muzzle_lg_s05"
+        },
+        {
+          "kind": "LootItem",
+          "id": "blaster_barrel_wp_muzzle_m_s05"
+        },
+        {
+          "kind": "LootItem",
+          "id": "blaster_barrel_wp_muzzle_sm_s05"
+        },
+        {
+          "kind": "LootItem",
+          "id": "blaster_barrel_wp_muzzle_lg_s06"
+        },
+        {
+          "kind": "LootItem",
+          "id": "blaster_barrel_wp_muzzle_m_s06"
+        },
+        {
+          "kind": "LootItem",
+          "id": "blaster_barrel_wp_muzzle_sm_s06"
+        },
+        {
+          "kind": "LootItem",
+          "id": "blaster_barrel_wp_muzzle_lg_s07"
+        },
+        {
+          "kind": "LootItem",
+          "id": "blaster_barrel_wp_muzzle_m_s07"
+        },
+        {
+          "kind": "LootItem",
+          "id": "blaster_barrel_wp_muzzle_sm_s07"
         }
       ]
     },
@@ -270,6 +340,94 @@
         {
           "kind": "Schematic",
           "id": "weapon_component_blaster_rifle_barrel_advanced"
+        },
+        {
+          "kind": "LootItem",
+          "id": "corvette_rifle_barrel"
+        },
+        {
+          "kind": "LootItem",
+          "id": "blaster_barrel_wp_muzzle_lg_s01_lg"
+        },
+        {
+          "kind": "LootItem",
+          "id": "blaster_barrel_wp_muzzle_m_s01_lg"
+        },
+        {
+          "kind": "LootItem",
+          "id": "blaster_barrel_wp_muzzle_sm_s01_lg"
+        },
+        {
+          "kind": "LootItem",
+          "id": "blaster_barrel_wp_muzzle_lg_s02_lg"
+        },
+        {
+          "kind": "LootItem",
+          "id": "blaster_barrel_wp_muzzle_m_s02_lg"
+        },
+        {
+          "kind": "LootItem",
+          "id": "blaster_barrel_wp_muzzle_sm_s02_lg"
+        },
+        {
+          "kind": "LootItem",
+          "id": "blaster_barrel_wp_muzzle_lg_s03_lg"
+        },
+        {
+          "kind": "LootItem",
+          "id": "blaster_barrel_wp_muzzle_m_s03_lg"
+        },
+        {
+          "kind": "LootItem",
+          "id": "blaster_barrel_wp_muzzle_sm_s03_lg"
+        },
+        {
+          "kind": "LootItem",
+          "id": "blaster_barrel_wp_muzzle_lg_s04_lg"
+        },
+        {
+          "kind": "LootItem",
+          "id": "blaster_barrel_wp_muzzle_m_s04_lg"
+        },
+        {
+          "kind": "LootItem",
+          "id": "blaster_barrel_wp_muzzle_sm_s04_lg"
+        },
+        {
+          "kind": "LootItem",
+          "id": "blaster_barrel_wp_muzzle_lg_s05_lg"
+        },
+        {
+          "kind": "LootItem",
+          "id": "blaster_barrel_wp_muzzle_m_s05_lg"
+        },
+        {
+          "kind": "LootItem",
+          "id": "blaster_barrel_wp_muzzle_sm_s05_lg"
+        },
+        {
+          "kind": "LootItem",
+          "id": "blaster_barrel_wp_muzzle_lg_s06_lg"
+        },
+        {
+          "kind": "LootItem",
+          "id": "blaster_barrel_wp_muzzle_m_s06_lg"
+        },
+        {
+          "kind": "LootItem",
+          "id": "blaster_barrel_wp_muzzle_sm_s06_lg"
+        },
+        {
+          "kind": "LootItem",
+          "id": "blaster_barrel_wp_muzzle_lg_s07_lg"
+        },
+        {
+          "kind": "LootItem",
+          "id": "blaster_barrel_wp_muzzle_m_s07_lg"
+        },
+        {
+          "kind": "LootItem",
+          "id": "blaster_barrel_wp_muzzle_sm_s07_lg"
         }
       ]
     },
@@ -296,6 +454,10 @@
         {
           "kind": "LootItem",
           "id": "armor_segment_bone_voritor_lizard"
+        },
+        {
+          "kind": "LootItem",
+          "id": "armor_segment_bone_donkuwah"
         }
       ]
     },
@@ -314,6 +476,44 @@
       ]
     },
     {
+      "id": "casual_clothing_biological_component",
+      "name": "Casual Clothing Biological Component",
+      "members": [
+        {
+          "kind": "Schematic",
+          "id": "bio_component_clothing_casual_medic_2"
+        },
+        {
+          "kind": "Schematic",
+          "id": "bio_component_clothing_casual_taming_2"
+        },
+        {
+          "kind": "Schematic",
+          "id": "bio_engineer_bio_component_bio_component_clothing_casual_entertainer_2"
+        },
+        {
+          "kind": "Schematic",
+          "id": "bio_engineer_bio_component_bio_component_clothing_casual_entertainer"
+        },
+        {
+          "kind": "Schematic",
+          "id": "bio_engineer_bio_component_bio_component_clothing_casual_medic"
+        },
+        {
+          "kind": "Schematic",
+          "id": "bio_engineer_bio_component_bio_component_clothing_casual_taming"
+        },
+        {
+          "kind": "LootItem",
+          "id": "bio_component_clothing_casual_charisma"
+        },
+        {
+          "kind": "LootItem",
+          "id": "bio_component_clothing_casual_charisma_2"
+        }
+      ]
+    },
+    {
       "id": "chemical_dispersion_mechanism_class",
       "name": "Chemical Dispersion Mechanism Class",
       "members": [
@@ -324,10 +524,6 @@
         {
           "kind": "Schematic",
           "id": "weapon_component_chemical_dispersion_mechanism_advanced"
-        },
-        {
-          "kind": "LootItem",
-          "id": "dispersal_mechanism_quest"
         }
       ]
     },
@@ -368,12 +564,16 @@
         {
           "kind": "LootItem",
           "id": "armor_segment_chitin_sharnaff"
+        },
+        {
+          "kind": "LootItem",
+          "id": "armor_segment_chitin_kliknick_adv"
         }
       ]
     },
     {
       "id": "combat_capable_service_module",
-      "name": "Combat Capable Service Module",
+      "name": "Combat Capable Service Modules",
       "members": [
         {
           "kind": "Schematic",
@@ -397,7 +597,7 @@
         },
         {
           "kind": "Schematic",
-          "id": "droid_component_droid_repair_module"
+          "id": "droid_component_repair_module"
         },
         {
           "kind": "Schematic",
@@ -534,6 +734,10 @@
         {
           "kind": "Schematic",
           "id": "droid_component_crafting_module_weapon"
+        },
+        {
+          "kind": "Schematic",
+          "id": "droid_component_crafting_module_space"
         }
       ]
     },
@@ -543,11 +747,167 @@
       "members": [
         {
           "kind": "Schematic",
-          "id": "droid_component_combat_socket_bank"
+          "id": "droid_component_auto_repair_module"
         },
         {
           "kind": "Schematic",
-          "id": "droid_component_module_socket_bank"
+          "id": "droid_component_combat_module"
+        },
+        {
+          "kind": "Schematic",
+          "id": "droid_component_crafting_module_clothing"
+        },
+        {
+          "kind": "Schematic",
+          "id": "droid_component_crafting_module_food"
+        },
+        {
+          "kind": "Schematic",
+          "id": "droid_component_crafting_module_space"
+        },
+        {
+          "kind": "Schematic",
+          "id": "droid_component_crafting_module_structure"
+        },
+        {
+          "kind": "Schematic",
+          "id": "droid_component_crafting_module_weapon"
+        },
+        {
+          "kind": "Schematic",
+          "id": "droid_component_data_storage_module_1"
+        },
+        {
+          "kind": "Schematic",
+          "id": "droid_component_data_storage_module_2"
+        },
+        {
+          "kind": "Schematic",
+          "id": "droid_component_data_storage_module_3"
+        },
+        {
+          "kind": "Schematic",
+          "id": "droid_component_data_storage_module_4"
+        },
+        {
+          "kind": "Schematic",
+          "id": "droid_component_data_storage_module_5"
+        },
+        {
+          "kind": "Schematic",
+          "id": "droid_component_data_storage_module_6"
+        },
+        {
+          "kind": "Schematic",
+          "id": "droid_component_detonation_module"
+        },
+        {
+          "kind": "Schematic",
+          "id": "droid_component_harvest_module"
+        },
+        {
+          "kind": "Schematic",
+          "id": "droid_component_item_storage_module_1"
+        },
+        {
+          "kind": "Schematic",
+          "id": "droid_component_item_storage_module_2"
+        },
+        {
+          "kind": "Schematic",
+          "id": "droid_component_item_storage_module_3"
+        },
+        {
+          "kind": "Schematic",
+          "id": "droid_component_item_storage_module_4"
+        },
+        {
+          "kind": "Schematic",
+          "id": "droid_component_item_storage_module_5"
+        },
+        {
+          "kind": "Schematic",
+          "id": "droid_component_item_storage_module_6"
+        },
+        {
+          "kind": "Schematic",
+          "id": "droid_component_medic_module_1"
+        },
+        {
+          "kind": "Schematic",
+          "id": "droid_component_medic_module_2"
+        },
+        {
+          "kind": "Schematic",
+          "id": "droid_component_medic_module_3"
+        },
+        {
+          "kind": "Schematic",
+          "id": "droid_component_medic_module_4"
+        },
+        {
+          "kind": "Schematic",
+          "id": "droid_component_medic_module_5"
+        },
+        {
+          "kind": "Schematic",
+          "id": "droid_component_medic_module_6"
+        },
+        {
+          "kind": "Schematic",
+          "id": "droid_component_merchant_barker"
+        },
+        {
+          "kind": "Schematic",
+          "id": "droid_component_performer_effects_a"
+        },
+        {
+          "kind": "Schematic",
+          "id": "droid_component_performer_effects_aa"
+        },
+        {
+          "kind": "Schematic",
+          "id": "droid_component_performer_effects_b"
+        },
+        {
+          "kind": "Schematic",
+          "id": "droid_component_performer_effects_c"
+        },
+        {
+          "kind": "Schematic",
+          "id": "droid_component_performer_effects_d"
+        },
+        {
+          "kind": "Schematic",
+          "id": "droid_component_performer_effects_e"
+        },
+        {
+          "kind": "Schematic",
+          "id": "droid_component_playback_module"
+        },
+        {
+          "kind": "Schematic",
+          "id": "droid_component_repair_module"
+        },
+        {
+          "kind": "Schematic",
+          "id": "droid_component_stimpack_dispensor"
+        },
+        {
+          "kind": "Schematic",
+          "id": "droid_component_struct_maint_module_1"
+        },
+        {
+          "kind": "Schematic",
+          "id": "droid_component_struct_maint_module_2"
+        },
+        {
+          "kind": "Schematic",
+          "id": "droid_component_struct_maint_module_3"
+        },
+        {
+          "kind": "Schematic",
+          "id": "droid_component_trap_module"
         }
       ]
     },
@@ -570,6 +930,40 @@
       ]
     },
     {
+      "id": "sample_bugs",
+      "name": "Creature Sample",
+      "members": [
+        {
+          "kind": "LootItem",
+          "id": "sample_bugs"
+        },
+        {
+          "kind": "LootItem",
+          "id": "sample_bats"
+        },
+        {
+          "kind": "LootItem",
+          "id": "sample_bees"
+        },
+        {
+          "kind": "LootItem",
+          "id": "sample_butterflies"
+        },
+        {
+          "kind": "LootItem",
+          "id": "sample_flies"
+        },
+        {
+          "kind": "LootItem",
+          "id": "sample_glowzees"
+        },
+        {
+          "kind": "LootItem",
+          "id": "sample_moths"
+        }
+      ]
+    },
+    {
       "id": "diagnostic_circuit_class",
       "name": "Diagnostic Circuit Class",
       "members": [
@@ -584,8 +978,8 @@
       ]
     },
     {
-      "id": "dispersal_mechanism_classs",
-      "name": "Dispersal Mechanism Classs",
+      "id": "dispersal_mechanism_class",
+      "name": "Dispersal Mechanism Class",
       "members": [
         {
           "kind": "Schematic",
@@ -598,6 +992,10 @@
         {
           "kind": "LootItem",
           "id": "rancor_bile"
+        },
+        {
+          "kind": "LootItem",
+          "id": "dispersal_mechanism_quest"
         }
       ]
     },
@@ -607,31 +1005,31 @@
       "members": [
         {
           "kind": "LootItem",
-          "id": "very_low_quality_dna_sample"
+          "id": "dna_sample_above_average"
         },
         {
           "kind": "LootItem",
-          "id": "low_quality_dna_sample"
+          "id": "dna_sample_average"
         },
         {
           "kind": "LootItem",
-          "id": "below_average_quality_dna_sample"
+          "id": "dna_sample_below_average"
         },
         {
           "kind": "LootItem",
-          "id": "average_quality_dna_sample"
+          "id": "dna_sample_high"
         },
         {
           "kind": "LootItem",
-          "id": "above_average_quality_dna_sample"
+          "id": "dna_sample_low"
         },
         {
           "kind": "LootItem",
-          "id": "high_quality_dna_sample"
+          "id": "dna_sample_very_high"
         },
         {
           "kind": "LootItem",
-          "id": "very_high_quality_dna_sample"
+          "id": "dna_sample_very_low"
         }
       ]
     },
@@ -739,7 +1137,7 @@
         },
         {
           "kind": "Schematic",
-          "id": "droid_component_droid_repair_module"
+          "id": "droid_component_repair_module"
         },
         {
           "kind": "Schematic",
@@ -876,6 +1274,10 @@
         {
           "kind": "Schematic",
           "id": "droid_component_crafting_module_weapon"
+        },
+        {
+          "kind": "Schematic",
+          "id": "droid_component_crafting_module_space"
         }
       ]
     },
@@ -905,10 +1307,6 @@
       "members": [
         {
           "kind": "LootItem",
-          "id": "enhanced_explosive_charge_composition"
-        },
-        {
-          "kind": "LootItem",
           "id": "acklay_venom"
         },
         {
@@ -924,6 +1322,52 @@
         {
           "kind": "LootItem",
           "id": "enhanced_explosive_charge_shaping"
+        }
+      ]
+    },
+    {
+      "id": "field_clothing_biological_component",
+      "name": "Field Clothing Biological Component",
+      "members": [
+        {
+          "kind": "Schematic",
+          "id": "bio_engineer_bio_component_bio_component_clothing_field_bleeding_2"
+        },
+        {
+          "kind": "Schematic",
+          "id": "bio_engineer_bio_component_bio_component_clothing_field_bleeding"
+        },
+        {
+          "kind": "Schematic",
+          "id": "bio_engineer_bio_component_bio_component_clothing_field_camo"
+        },
+        {
+          "kind": "Schematic",
+          "id": "bio_engineer_bio_component_bio_component_clothing_field_camo_2"
+        },
+        {
+          "kind": "Schematic",
+          "id": "bio_engineer_bio_component_bio_component_clothing_field_cover"
+        },
+        {
+          "kind": "Schematic",
+          "id": "bio_engineer_bio_component_bio_component_clothing_field_cover_2"
+        },
+        {
+          "kind": "Schematic",
+          "id": "bio_engineer_bio_component_bio_component_clothing_field_defense"
+        },
+        {
+          "kind": "Schematic",
+          "id": "bio_engineer_bio_component_bio_component_clothing_field_defense_2"
+        },
+        {
+          "kind": "Schematic",
+          "id": "bio_engineer_bio_component_bio_component_clothing_field_intimidate"
+        },
+        {
+          "kind": "Schematic",
+          "id": "bio_engineer_bio_component_bio_component_clothing_field_intimidate_2"
         }
       ]
     },
@@ -1004,6 +1448,10 @@
         {
           "kind": "LootItem",
           "id": "spider_venom"
+        },
+        {
+          "kind": "LootItem",
+          "id": "infection_amplifier_donkuwah"
         }
       ]
     },
@@ -1092,36 +1540,10 @@
         {
           "kind": "Schematic",
           "id": "chemistry_component_liquid_delivery_suspension_advanced"
-        }
-      ]
-    },
-    {
-      "id": "live_creature_sample",
-      "name": "Live Creature Sample",
-      "members": [
-        {
-          "kind": "LootItem",
-          "id": "sample_of_live_bats"
         },
         {
           "kind": "LootItem",
-          "id": "sample_of_live_bees"
-        },
-        {
-          "kind": "LootItem",
-          "id": "sample_of_live_butterflies"
-        },
-        {
-          "kind": "LootItem",
-          "id": "sample_of_live_flies"
-        },
-        {
-          "kind": "LootItem",
-          "id": "sample_of_live_glowzees"
-        },
-        {
-          "kind": "LootItem",
-          "id": "sample_of_live_moths"
+          "id": "liquid_delivery_suspension_quest"
         }
       ]
     },
@@ -2985,7 +3407,19 @@
         },
         {
           "kind": "LootItem",
-          "id": "armor_segment_enhancement_fambaa"
+          "id": "armor_segment_padded_acklay"
+        },
+        {
+          "kind": "LootItem",
+          "id": "armor_segment_padded_dune_lizard"
+        },
+        {
+          "kind": "LootItem",
+          "id": "armor_segment_padded_fambaa"
+        },
+        {
+          "kind": "LootItem",
+          "id": "armor_segment_padded_rancor"
         }
       ]
     },
@@ -3009,10 +3443,6 @@
       "members": [
         {
           "kind": "LootItem",
-          "id": "shared_spider_spine"
-        },
-        {
-          "kind": "LootItem",
           "id": "projectile_feed_mechanism_enhancement_max_damage"
         },
         {
@@ -3022,6 +3452,14 @@
         {
           "kind": "LootItem",
           "id": "projectile_feed_mechanism_enhancement_gorax"
+        },
+        {
+          "kind": "LootItem",
+          "id": "spider_spine"
+        },
+        {
+          "kind": "LootItem",
+          "id": "projectile_feed_mechanism_enhancement_durability"
         }
       ]
     },
@@ -3102,6 +3540,10 @@
           "id": "weapon_component_reinforcement_core_advanced"
         },
         {
+          "kind": "Schematic",
+          "id": "weapon_component_reinforcement_core_geo"
+        },
+        {
           "kind": "LootItem",
           "id": "acklay_bone_reinforcement_core"
         }
@@ -3159,11 +3601,11 @@
       "members": [
         {
           "kind": "LootItem",
-          "id": "imperial_biochemical_reports"
+          "id": "secret_imperial_biochem"
         },
         {
           "kind": "LootItem",
-          "id": "rebel_biochemical_research"
+          "id": "secret_rebel_biochem"
         }
       ]
     },
@@ -3204,6 +3646,10 @@
         {
           "kind": "LootItem",
           "id": "rancor_tooth_quest"
+        },
+        {
+          "kind": "LootItem",
+          "id": "sword_core_quest"
         }
       ]
     },
@@ -3250,6 +3696,10 @@
         {
           "kind": "LootItem",
           "id": "vibro_unit_enhancement_min_damage"
+        },
+        {
+          "kind": "LootItem",
+          "id": "vibro_unit_enhancement_durability"
         }
       ]
     },
@@ -3268,6 +3718,42 @@
         {
           "kind": "LootItem",
           "id": "scope_weapon_advanced_quest"
+        },
+        {
+          "kind": "LootItem",
+          "id": "scope_weapon_sm_s05"
+        },
+        {
+          "kind": "LootItem",
+          "id": "scope_weapon_sm_s04"
+        },
+        {
+          "kind": "LootItem",
+          "id": "scope_weapon_lg_s01"
+        },
+        {
+          "kind": "LootItem",
+          "id": "scope_weapon_sm_s01"
+        },
+        {
+          "kind": "LootItem",
+          "id": "scope_weapon_sm_s06"
+        },
+        {
+          "kind": "LootItem",
+          "id": "scope_weapon_lg_s03"
+        },
+        {
+          "kind": "LootItem",
+          "id": "scope_weapon_sm_s03"
+        },
+        {
+          "kind": "LootItem",
+          "id": "scope_weapon_lg_s02"
+        },
+        {
+          "kind": "LootItem",
+          "id": "scope_weapon_sm_s02"
         }
       ]
     }

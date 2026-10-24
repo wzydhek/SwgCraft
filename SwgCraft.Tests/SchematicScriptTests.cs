@@ -118,4 +118,72 @@ public sealed class SchematicScriptTests
         }
         finally { Directory.Delete(root, recursive: true); }
     }
+
+    [Fact]
+    public void A_slot_takes_its_template_and_everything_derived_from_it()
+    {
+        var objects = ObjectTemplateIndex.FromText("""
+            object_tangible_component_weapon_shared_blaster_power_handler = SharedTangibleObjectTemplate:new {
+                clientTemplateFileName = "object/tangible/component/weapon/shared_blaster_power_handler.iff"
+            --[[
+                objectName = "@craft_weapon_ingredients_n:blaster_power_handler",
+                derivedFromTemplates = {"object/tangible/component/base/shared_base_component.iff"}
+            ]]
+            }
+            ObjectTemplates:addClientTemplate(object_tangible_component_weapon_shared_blaster_power_handler, "x")
+            object_tangible_component_weapon_shared_blaster_power_handler_quest = SharedTangibleObjectTemplate:new {
+                clientTemplateFileName = "object/tangible/component/weapon/shared_blaster_power_handler_quest.iff"
+            --[[
+                objectName = "@craft_weapon_ingredients_n:powerhandler",
+                derivedFromTemplates = {"object/tangible/component/base/shared_base_component.iff", "object/tangible/component/weapon/shared_blaster_power_handler.iff"}
+            ]]
+            }
+            ObjectTemplates:addClientTemplate(object_tangible_component_weapon_shared_blaster_power_handler_quest, "y")
+            object_tangible_component_weapon_shared_scope_weapon = SharedTangibleObjectTemplate:new {
+                clientTemplateFileName = "object/tangible/component/weapon/shared_scope_weapon.iff"
+            }
+            ObjectTemplates:addClientTemplate(object_tangible_component_weapon_shared_scope_weapon, "z")
+            """);
+
+        Assert.Equal(3, objects.Count);
+        Assert.Equal(new[] { "object/tangible/component/weapon/blaster_power_handler.iff", "object/tangible/component/weapon/blaster_power_handler_quest.iff" },
+                     objects.Accepting("object/tangible/component/weapon/shared_blaster_power_handler.iff"));
+        Assert.True(objects.IsBase("object/tangible/component/weapon/blaster_power_handler.iff"));
+        Assert.False(objects.IsBase("object/tangible/component/weapon/blaster_power_handler_quest.iff"));
+        Assert.Equal("Blaster Power Handler Component.", objects.NameOf("object/tangible/component/weapon/shared_blaster_power_handler_quest.iff", Strings()));
+        Assert.Single(objects.Accepting("object/tangible/component/weapon/shared_scope_weapon.iff"));
+    }
+
+    [Fact]
+    public void Loot_items_and_the_draft_schematics_loot_schematics_teach_are_indexed()
+    {
+        var ix = LootScriptIndex.FromText(
+            new[] { ("blaster_power_handler_quest", """
+                blaster_power_handler_quest = {
+                    directObjectTemplate = "object/tangible/component/weapon/blaster_power_handler_quest.iff",
+                }
+                """) },
+            new[] { """
+                object_tangible_loot_loot_schematic_agitator_motor_schematic = object_tangible_loot_loot_schematic_shared_agitator_motor_schematic:new {
+                    templateType = LOOTSCHEMATIC,
+                    targetDraftSchematic = "object/draft_schematic/item/item_agitator_motor.iff",
+                }
+                ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_agitator_motor_schematic, "object/tangible/loot/loot_schematic/agitator_motor_schematic.iff")
+                """ });
+
+        Assert.Equal(new[] { "blaster_power_handler_quest" }, ix.LootItemsFor("object/tangible/component/weapon/shared_blaster_power_handler_quest.iff"));
+        Assert.Empty(ix.LootItemsFor("object/tangible/component/weapon/blaster_power_handler.iff"));
+        Assert.Equal(new[] { "object/tangible/loot/loot_schematic/agitator_motor_schematic.iff" }, ix.TeachersOf("object/draft_schematic/item/item_agitator_motor.iff"));
+
+        var root = Path.Combine(Path.GetTempPath(), "swgcraft-ds-" + Guid.NewGuid().ToString("N"));
+        try
+        {
+            Directory.CreateDirectory(Path.Combine(root, "item"));
+            var file = Path.Combine(root, "item", "item_agitator_motor.lua");
+            File.WriteAllText(file, "targetTemplate = \"object/tangible/component/item/agitator_motor.iff\",");
+            var scripts = new SchematicScriptIndex(root);
+            Assert.Equal("object/draft_schematic/item/item_agitator_motor.iff", scripts.DraftTemplateOf(file));
+        }
+        finally { Directory.Delete(root, recursive: true); }
+    }
 }

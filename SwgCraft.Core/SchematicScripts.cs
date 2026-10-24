@@ -129,6 +129,10 @@ public sealed class SchematicScriptIndex
     public string? Find(string schematicId) =>
         _byKey.TryGetValue(schematicId, out var files) && files.Count == 1 ? files[0] : null;
 
+    /// <summary>The draft schematic object a script file defines: "object/draft_schematic/weapon/rifle_disrupter_dxr6.iff".</summary>
+    public string DraftTemplateOf(string file) =>
+        "object/draft_schematic/" + System.IO.Path.ChangeExtension(System.IO.Path.GetRelativePath(Root, file), ".iff").Replace('\\', '/');
+
     /// <summary>The IDs a script file can be known by (its full joined path first).</summary>
     public IReadOnlyList<string> KeysOf(string file) => _keysOf.TryGetValue(file, out var k) ? k : Array.Empty<string>();
 

@@ -58,10 +58,6 @@
       "name": "Sharnaff Plating Segment"
     },
     {
-      "id": "armor_segment_enhancement_fambaa",
-      "name": "Fambaa Hide"
-    },
-    {
       "id": "armor_segment_composite_krayt",
       "name": "Krayt Dragon Composite Armor Segment"
     },
@@ -142,7 +138,7 @@
       "name": "Geonosian Solidifying Agent"
     },
     {
-      "id": "shared_spider_spine",
+      "id": "spider_spine",
       "name": "Spider Fang"
     },
     {
@@ -178,11 +174,11 @@
       "name": "Finely Tuned Vibro Motor"
     },
     {
-      "id": "imperial_biochemical_reports",
+      "id": "secret_imperial_biochem",
       "name": "Imperial Biochemical Reports"
     },
     {
-      "id": "rebel_biochemical_research",
+      "id": "secret_rebel_biochem",
       "name": "Rebel Biochemical Research"
     },
     {
@@ -202,35 +198,35 @@
       "name": "Peko Peko Albatross Feather"
     },
     {
-      "id": "nightsister_vibro_blade_unit",
+      "id": "vibro_unit_nightsister",
       "name": "Nightsister Vibro Blade Unit"
     },
     {
-      "id": "berserker_rifle_stabilization_component",
+      "id": "corvette_rifle_barrel",
       "name": "Berserker Rifle Stabilization component"
     },
     {
-      "id": "sample_of_live_bats",
+      "id": "sample_bats",
       "name": "Sample of Live Bats"
     },
     {
-      "id": "sample_of_live_bees",
+      "id": "sample_bees",
       "name": "Sample of Live Bees"
     },
     {
-      "id": "sample_of_live_butterflies",
+      "id": "sample_butterflies",
       "name": "Sample of Live Butterflies"
     },
     {
-      "id": "sample_of_live_flies",
+      "id": "sample_flies",
       "name": "Sample of Live Flies"
     },
     {
-      "id": "sample_of_live_glowzees",
+      "id": "sample_glowzees",
       "name": "Sample of Live Glowzees"
     },
     {
-      "id": "sample_of_live_moths",
+      "id": "sample_moths",
       "name": "Sample of Live Moths"
     },
     {
@@ -238,31 +234,31 @@
       "name": "Power Plant AV-21"
     },
     {
-      "id": "above_average_quality_dna_sample",
+      "id": "dna_sample_above_average",
       "name": "Above Average Quality DNA Sample"
     },
     {
-      "id": "average_quality_dna_sample",
+      "id": "dna_sample_average",
       "name": "Average Quality DNA Sample"
     },
     {
-      "id": "below_average_quality_dna_sample",
+      "id": "dna_sample_below_average",
       "name": "Below Average Quality DNA Sample"
     },
     {
-      "id": "high_quality_dna_sample",
+      "id": "dna_sample_high",
       "name": "High Quality DNA Sample"
     },
     {
-      "id": "low_quality_dna_sample",
+      "id": "dna_sample_low",
       "name": "Low Quality DNA Sample"
     },
     {
-      "id": "very_high_quality_dna_sample",
+      "id": "dna_sample_very_high",
       "name": "Very High Quality DNA Sample"
     },
     {
-      "id": "very_low_quality_dna_sample",
+      "id": "dna_sample_very_low",
       "name": "Very Low Quality DNA Sample"
     },
     {
@@ -340,6 +336,298 @@
     {
       "id": "pistol_de10_barrel",
       "name": "DE-10 Pistol Barrel"
+    },
+    {
+      "id": "drink_aludium_pu36",
+      "name": "Aludium pu36"
+    },
+    {
+      "id": "drink_kylessian_fruit_distillate",
+      "name": "Kylessian Fruit Distillate"
+    },
+    {
+      "id": "drink_sullustan_gin",
+      "name": "Sullustan Gin"
+    },
+    {
+      "id": "armor_segment_bone_donkuwah",
+      "name": "Donkuwah Bone Armor Segment"
+    },
+    {
+      "id": "liquid_delivery_suspension_quest",
+      "name": "Enhanced Liquid Suspension"
+    },
+    {
+      "id": "sword_core_quest",
+      "name": "Reinforced Sword Core"
+    },
+    {
+      "id": "armor_segment_chitin_kliknick_adv",
+      "name": "Reinforced Kliknik Shell"
+    },
+    {
+      "id": "armor_segment_padded_acklay",
+      "name": "Acklay Hide"
+    },
+    {
+      "id": "armor_segment_padded_dune_lizard",
+      "name": "Dune Lizard Hide Segment"
+    },
+    {
+      "id": "armor_segment_padded_fambaa",
+      "name": "Fambaa Hide Segment"
+    },
+    {
+      "id": "armor_segment_padded_rancor",
+      "name": "Rancor Padded Armor Segment"
+    },
+    {
+      "id": "armor_layer_environmental",
+      "name": "Environmental Protection Armor Layer"
+    },
+    {
+      "id": "armor_layer_restraint",
+      "name": "Restraint Protection Armor Layer"
+    },
+    {
+      "id": "armor_segment_enhancement_fambaa",
+      "name": "Fambaa Hide"
+    },
+    {
+      "id": "sample_bugs",
+      "name": "Live Creature Sample"
+    },
+    {
+      "id": "infection_amplifier_donkuwah",
+      "name": "Donkuwah Poison"
+    },
+    {
+      "id": "bio_component_clothing_casual_charisma",
+      "name": "Charigra"
+    },
+    {
+      "id": "bio_component_clothing_casual_charisma_2",
+      "name": "Personaphene"
+    },
+    {
+      "id": "blaster_power_handler_enhancement_durability",
+      "name": "Heavy Duty Power Converter"
+    },
+    {
+      "id": "blaster_power_handler_enhancement_min_damage",
+      "name": "Large Energy Capacitor"
+    },
+    {
+      "id": "projectile_feed_mechanism_enhancement_durability",
+      "name": "Heavy Duty Feed Mechanism"
+    },
+    {
+      "id": "vibro_unit_enhancement_durability",
+      "name": "Heavy Duty Vibro Motor"
+    },
+    {
+      "id": "blaster_barrel_wp_muzzle_m_s01",
+      "name": "T:1 Medium Blaster Muzzle"
+    },
+    {
+      "id": "blaster_barrel_wp_muzzle_sm_s01",
+      "name": "T:1 Small Blaster Muzzle"
+    },
+    {
+      "id": "blaster_barrel_wp_muzzle_lg_s02",
+      "name": "T:2 Large Blaster Muzzle"
+    },
+    {
+      "id": "blaster_barrel_wp_muzzle_m_s02",
+      "name": "T:2 Medium Blaster Muzzle"
+    },
+    {
+      "id": "blaster_barrel_wp_muzzle_sm_s02",
+      "name": "T:2 Small Blaster Muzzle"
+    },
+    {
+      "id": "blaster_barrel_wp_muzzle_lg_s03",
+      "name": "T:3 Large Blaster Muzzle"
+    },
+    {
+      "id": "blaster_barrel_wp_muzzle_m_s03",
+      "name": "T:3 Medium Blaster Muzzle"
+    },
+    {
+      "id": "blaster_barrel_wp_muzzle_sm_s03",
+      "name": "T:3 Small Blaster Muzzle"
+    },
+    {
+      "id": "blaster_barrel_wp_muzzle_lg_s04",
+      "name": "T:4 Large Blaster Muzzle"
+    },
+    {
+      "id": "blaster_barrel_wp_muzzle_m_s04",
+      "name": "T:4 Medium Blaster Muzzle"
+    },
+    {
+      "id": "blaster_barrel_wp_muzzle_sm_s04",
+      "name": "T:4 Small Blaster Muzzle"
+    },
+    {
+      "id": "blaster_barrel_wp_muzzle_lg_s05",
+      "name": "T:5 Large Blaster Muzzle"
+    },
+    {
+      "id": "blaster_barrel_wp_muzzle_m_s05",
+      "name": "T:5 Medium Blaster Muzzle"
+    },
+    {
+      "id": "blaster_barrel_wp_muzzle_sm_s05",
+      "name": "T:5 Small Blaster Muzzle"
+    },
+    {
+      "id": "blaster_barrel_wp_muzzle_lg_s06",
+      "name": "T:6 Large Blaster Muzzle"
+    },
+    {
+      "id": "blaster_barrel_wp_muzzle_m_s06",
+      "name": "T:6 Medium Blaster Muzzle"
+    },
+    {
+      "id": "blaster_barrel_wp_muzzle_sm_s06",
+      "name": "T:6 Small Blaster Muzzle"
+    },
+    {
+      "id": "blaster_barrel_wp_muzzle_lg_s07",
+      "name": "T:7 Large Blaster Muzzle"
+    },
+    {
+      "id": "blaster_barrel_wp_muzzle_m_s07",
+      "name": "T:7 Medium Blaster Muzzle"
+    },
+    {
+      "id": "blaster_barrel_wp_muzzle_sm_s07",
+      "name": "T:7 Small Blaster Muzzle"
+    },
+    {
+      "id": "blaster_barrel_wp_muzzle_lg_s01_lg",
+      "name": "T:1 Large Blaster Muzzle Lg"
+    },
+    {
+      "id": "blaster_barrel_wp_muzzle_m_s01_lg",
+      "name": "T:1 Medium Blaster Muzzle Lg"
+    },
+    {
+      "id": "blaster_barrel_wp_muzzle_sm_s01_lg",
+      "name": "T:1 Small Blaster Muzzle Lg"
+    },
+    {
+      "id": "blaster_barrel_wp_muzzle_lg_s02_lg",
+      "name": "T:2 Large Blaster Muzzle Lg"
+    },
+    {
+      "id": "blaster_barrel_wp_muzzle_m_s02_lg",
+      "name": "T:2 Medium Blaster Muzzle Lg"
+    },
+    {
+      "id": "blaster_barrel_wp_muzzle_sm_s02_lg",
+      "name": "T:2 Small Blaster Muzzle Lg"
+    },
+    {
+      "id": "blaster_barrel_wp_muzzle_lg_s03_lg",
+      "name": "T:3 Large Blaster Muzzle Lg"
+    },
+    {
+      "id": "blaster_barrel_wp_muzzle_m_s03_lg",
+      "name": "T:3 Medium Blaster Muzzle Lg"
+    },
+    {
+      "id": "blaster_barrel_wp_muzzle_sm_s03_lg",
+      "name": "T:3 Small Blaster Muzzle Lg"
+    },
+    {
+      "id": "blaster_barrel_wp_muzzle_lg_s04_lg",
+      "name": "T:4 Large Blaster Muzzle Lg"
+    },
+    {
+      "id": "blaster_barrel_wp_muzzle_m_s04_lg",
+      "name": "T:4 Medium Blaster Muzzle Lg"
+    },
+    {
+      "id": "blaster_barrel_wp_muzzle_sm_s04_lg",
+      "name": "T:4 Small Blaster Muzzle Lg"
+    },
+    {
+      "id": "blaster_barrel_wp_muzzle_lg_s05_lg",
+      "name": "T:5 Large Blaster Muzzle Lg"
+    },
+    {
+      "id": "blaster_barrel_wp_muzzle_m_s05_lg",
+      "name": "T:5 Medium Blaster Muzzle Lg"
+    },
+    {
+      "id": "blaster_barrel_wp_muzzle_sm_s05_lg",
+      "name": "T:5 Small Blaster Muzzle Lg"
+    },
+    {
+      "id": "blaster_barrel_wp_muzzle_lg_s06_lg",
+      "name": "T:6 Large Blaster Muzzle Lg"
+    },
+    {
+      "id": "blaster_barrel_wp_muzzle_m_s06_lg",
+      "name": "T:6 Medium Blaster Muzzle Lg"
+    },
+    {
+      "id": "blaster_barrel_wp_muzzle_sm_s06_lg",
+      "name": "T:6 Small Blaster Muzzle Lg"
+    },
+    {
+      "id": "blaster_barrel_wp_muzzle_lg_s07_lg",
+      "name": "T:7 Large Blaster Muzzle Lg"
+    },
+    {
+      "id": "blaster_barrel_wp_muzzle_m_s07_lg",
+      "name": "T:7 Medium Blaster Muzzle Lg"
+    },
+    {
+      "id": "blaster_barrel_wp_muzzle_sm_s07_lg",
+      "name": "T:7 Small Blaster Muzzle Lg"
+    },
+    {
+      "id": "scope_weapon_sm_s05",
+      "name": "Type Five Small Weapon Scope"
+    },
+    {
+      "id": "scope_weapon_sm_s04",
+      "name": "Type Four Small Weapon Scope"
+    },
+    {
+      "id": "scope_weapon_lg_s01",
+      "name": "Type One Large Weapon Scope"
+    },
+    {
+      "id": "scope_weapon_sm_s01",
+      "name": "Type One Small Weapon Scope"
+    },
+    {
+      "id": "scope_weapon_sm_s06",
+      "name": "Type Six Small Weapon Scope"
+    },
+    {
+      "id": "scope_weapon_lg_s03",
+      "name": "Type Three Large Weapon Scope"
+    },
+    {
+      "id": "scope_weapon_sm_s03",
+      "name": "Type Three Small Weapon Scope"
+    },
+    {
+      "id": "scope_weapon_lg_s02",
+      "name": "Type Two Large Weapon Scope"
+    },
+    {
+      "id": "scope_weapon_sm_s02",
+      "name": "Type Two Small Weapon Scope"
+    },
+    {
+      "id": "armor_segment_enhancement_dragonet",
+      "name": "Dragonet Hide"
     }
   ]
 }

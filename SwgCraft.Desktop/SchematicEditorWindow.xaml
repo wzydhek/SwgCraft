@@ -22,6 +22,8 @@
                     ToolTip="List the schematics that have a resource or component slot without a slot name (what is in the editor, saved or not)"/>
             <Button Content="Script Differences" Click="ScriptDiffReport_Click" Padding="8,2"
                     ToolTip="Compare every schematic with its SWGEmu draft schematic script and list where they disagree (nothing is changed)"/>
+            <Button Content="Slot Candidates" Click="SlotCandidatesReport_Click" Padding="8,2"
+                    ToolTip="From the SWGEmu scripts: every kind of component slot that more than one item fits, what fits it (crafted, looted, not entered yet), and which component classes are missing items"/>
         </ToolBar>
         <StatusBar DockPanel.Dock="Bottom">
             <StatusBarItem DockPanel.Dock="Right">
